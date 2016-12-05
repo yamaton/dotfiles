@@ -5,7 +5,6 @@ export LANG=en_US.UTF-8
 export EDITOR='code'         
 export PAGER=less
 export SHELL=zsh
-
 export LESS=-r                 # For ipython
 export CLICOLOR=1              # Enable terminal color theme (IR_Black_theme)
 
@@ -21,7 +20,6 @@ SAVEHIST=50000
 ##        Jump to Directories
 ## =======================================
 alias repos='~/repos'
-alias onedrive='/mnt/hgfs/OneDrive'
 
 
 ## =======================================
@@ -35,7 +33,6 @@ alias mv="mv -i"
 alias cp="cp -i"
 alias rm="rm -i"
 
-alias open='nautilus'
 
 ## Renaming multiple files using zmv 
 alias mmv='noglob zmv -W'
@@ -152,7 +149,7 @@ esac
 
 ## Syntax Highlighting
 # Use homebrew to install zsh-syntax-highlighting
-source /home/vierbein/tweaks/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/ubuntu/tweaks/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # ZSH_HIGHLIGHT_STYLES[command]='fg=yellow'
 # ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 # ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
@@ -169,46 +166,12 @@ setopt interactivecomments
 ## Use colors in prompt
 autoload colors && colors  
 
-PROMPT="%{$fg[green]%}%n🌙 %{$fg[green]%}%m %{$fg[yellow]%}➤ %{$reset_color%} "
+# PROMPT="%{$fg[green]%}%n🌙 %{$fg[green]%}%m %{$fg[yellow]%}➤ %{$reset_color%} "
 
 
 ## StackOverflow mentions that zsh comes with builtin colored prompt themes
 ## Type command "prompt -p adam1" for example.
 autoload -U promptinit && promptinit
-
-
-## -------------------------------------
-##    Z (https://github.com/rupa/z/)
-## -------------------------------------
-# `brew --prefix`/etc/profile.d/z.sh
-
-
-## -------------------------------------
-##  Stopwatch and Countdown
-##  http://superuser.com/questions/611538/is-there-a-way-to-display-a-countdown-or-stopwatch-timer-in-a-terminal
-## -------------------------------------
-function countdown(){
-    date1=$((`date +%s` + $1));
-
-    while [ "$date1" -ne `date +%s` ]; do
-        echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
-        sleep 0.1
-    done
-}
-
-function stopwatch(){
-    date1=`date +%s`;
-    while true; do
-        echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r";
-        sleep 0.1
-    done
- }
-
-
-## Stack (Haskell build tool)
-autoload -U +X compinit && compinit
-autoload -U +X bashcompinit && bashcompinit
-eval "$(stack --bash-completion-script "$(which stack)")"
 
 
 # unalias run-help
@@ -218,9 +181,10 @@ eval "$(stack --bash-completion-script "$(which stack)")"
 
 ## Zsh Git Prompt
 ## https://github.com/olivierverdier/zsh-git-prompt
-source /home/vierbein/tweaks/zsh-git-prompt/zshrc.sh
-GIT_PROMPT_EXECUTABLE="haskell"
+source /home/ubuntu/tweaks/zsh-git-prompt/zshrc.sh
 # an example prompt
 # PROMPT='%B%m%~%b$(git_super_status) %# '
 PROMPT='%{$fg[green]%}%n%{$fg[yellow]%}@%{$fg[green]%}%m%{$reset_color%}$(git_super_status)%{$fg[yellow]%}➤%{$reset_color%} '
 RPROMPT="%{$fg[green]%}[%{$fg[magenta]%}%~%{$fg[green]%}] %{$fg[cyan]%}%T %{$reset_color%}"
+
+
