@@ -1,5 +1,3 @@
-;; Set language encoding
-;(set-language-environment 'Japanese)
 (set-default-coding-systems 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (set-clipboard-coding-system 'utf-8)
@@ -37,7 +35,7 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
 ;; Save autosave files (i.e. #foo#) in one place, 
-;; *not* to scatter them all over the directories.
+;; not to scatter them all over the directories.
 ;; http://snarfed.org/space/gnu%20emacs%20backup%20files
 (defvar autosave-dir
  (concat "~/.emacs.d/emacs_autosaves/" (user-login-name) "/"))
@@ -67,7 +65,7 @@
 (setq clmemo-file-name "~/OneDrive/Personal/dailylog.txt")
 (setq clmemo-time-string-with-weekday t)
 (setq clmemo-title-list
-	  '("research" "office" "python" "mathematica" "diary" "study" 
+	  '("research" "office" "python"  "diary" "study" 
 		"emacs" "tennis" "gdgd" "log" "schedule" "todo" "memo"))
 
 ;; use color for selecting region
@@ -75,17 +73,6 @@
 
 ;; Comment/Uncomment region
 (global-set-key "\C-cc" 'comment-dwim)
-
-;; Set fonts
-;; (when (window-system)
-;;   (set-face-attribute 'default nil
-;;                       :font "Monaco-14")
-;;   (set-fontset-font "fontset-default"
-;;         'japanese-jisx0208
-;;         '("Hiragino Maru Gothic ProN" . "iso10646-1"))
-;;   (set-fontset-font "fontset-default"
-;;         'japanese-jisx0212
-;;         '("Hiragino Maru Gothic ProN" . "iso10646-1")))
 
 ;; ;; Disable Toolbar
 ;; (tool-bar-mode -1)
@@ -147,9 +134,6 @@
 ;; And this is the optimal, without menu, for Macbook Air 2011
 (when (window-system) (arrange-frame 90 56 1 22))
 
-;; org-mode  & org-journal
-;; (setq org-journal-dir "~/OneDrive/Personal/org/")
-;; (require 'org-journal)
 
 ;; Markdown mode
 (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
