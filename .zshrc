@@ -2,7 +2,7 @@
 ##             ENV variables
 ## =======================================
 export LANG=en_US.UTF-8
-export EDITOR='code'         
+export EDITOR=vim
 export PAGER=less
 export SHELL=zsh
 export LESS=-r                 # For ipython
@@ -149,7 +149,7 @@ esac
 
 ## Syntax Highlighting
 # Use homebrew to install zsh-syntax-highlighting
-source /home/ubuntu/tweaks/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source "$HOME"/confs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # ZSH_HIGHLIGHT_STYLES[command]='fg=yellow'
 # ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 # ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
@@ -181,7 +181,7 @@ autoload -U promptinit && promptinit
 
 ## Zsh Git Prompt
 ## https://github.com/olivierverdier/zsh-git-prompt
-source /home/ubuntu/tweaks/zsh-git-prompt/zshrc.sh
+source "$HOME"/confs/zsh-git-prompt/zshrc.sh
 # an example prompt
 # PROMPT='%B%m%~%b$(git_super_status) %# '
 PROMPT='%{$fg[green]%}%n%{$fg[yellow]%}@%{$fg[green]%}%m%{$reset_color%}$(git_super_status)%{$fg[yellow]%}➤%{$reset_color%} '
