@@ -8,4 +8,4 @@ sudo apt update
 sudo apt full-upgrade
 sudo apt install -y zsh
 chsh -s $(which zsh)
-sudo apt install -y tmux emacs-nox
+sudo apt install -y tmux emacs-nox htop
