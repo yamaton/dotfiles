@@ -6,7 +6,6 @@ cp mysetting/.tmux.conf ~
 cp mysetting/.emacs ~
 sudo apt update
 sudo apt full-upgrade
-sudo apt install zsh
+sudo apt install -y zsh
 chsh -s $(which zsh)
-sudo apt install tmux
-sudo apt install emacs-nox
+sudo apt install -y tmux emacs-nox
