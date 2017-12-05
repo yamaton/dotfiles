@@ -5,7 +5,13 @@ cp mysetting/.zshrc ~
 cp mysetting/.tmux.conf ~
 cp mysetting/.emacs ~
 sudo apt update
-sudo apt full-upgrade
 sudo apt install -y zsh
-chsh -s $(which zsh)
 sudo apt install -y tmux emacs-nox htop
+# tldr
+cd ~/confs/mysetting
+git clone https://github.com/tldr-pages/tldr-cpp-client.git tldr-c-client
+cd tldr-c-client
+./deps.sh
+make
+sudo make install
+
