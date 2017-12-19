@@ -8,6 +8,7 @@ sudo apt update
 sudo apt install -y zsh
 sudo apt install -y tmux emacs-nox htop
 # tldr
+sudo apt install libzip-dev libcurl4-openssl-dev  # tldr needs them
 cd ~/confs/mysetting
 git clone https://github.com/tldr-pages/tldr-cpp-client.git tldr-c-client
 cd tldr-c-client
