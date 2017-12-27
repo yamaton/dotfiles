@@ -25,7 +25,7 @@ alias repos='~/repos'
 ## =======================================
 ##            Alias Commands
 ## =======================================
-alias ls="ls --color" 
+alias ls="ls --color"
 alias la='ls -A'
 alias ll='ls -alF'
 
@@ -34,7 +34,7 @@ alias cp="cp -i"
 alias rm="rm -i"
 
 
-## Renaming multiple files using zmv 
+## Renaming multiple files using zmv
 alias mmv='noglob zmv -W'
 
 
@@ -52,7 +52,7 @@ alias -s pdf=open
 ##             ZSH config
 ## =======================================
 
-## Checkmarked [✓] settings are from .zshrc by naoya@Hatena. 
+## Checkmarked [✓] settings are from .zshrc by naoya@Hatena.
 ##  http://bloghackers.net/~naoya/webdb40/files/dot.zshrc
 
 ## Completion
@@ -65,10 +65,10 @@ compinit
 setopt prompt_subst
 
 # Do not add duplicates in a row to command history [✓]
-setopt hist_ignore_dups 
+setopt hist_ignore_dups
 
 # Share command history [✓]
-setopt share_history        
+setopt share_history
 
 ## Keyboad config ... emacs-like key binding (such as C-f, C-b)
 bindkey -e
@@ -80,7 +80,7 @@ setopt correct
 setopt list_types
 
 ## Disable beep [✓]
-setopt nobeep  
+setopt nobeep
 
 ## Display list automatically [✓]
 setopt auto_list
@@ -128,7 +128,7 @@ setopt hist_no_store
 # autoload predict-on
 # predict-on
 
-## Expand aliases before completing 
+## Expand aliases before completing
 setopt complete_aliases # aliased ls needs if file/dir completions work
 
 ## colors used in auto complections
@@ -149,7 +149,8 @@ esac
 
 ## Syntax Highlighting
 # Use homebrew to install zsh-syntax-highlighting
-source "$HOME"/confs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/confs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # ZSH_HIGHLIGHT_STYLES[command]='fg=yellow'
 # ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 # ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
@@ -164,7 +165,7 @@ setopt interactivecomments
 ## =======================================
 
 ## Use colors in prompt
-autoload colors && colors  
+autoload colors && colors
 
 # PROMPT="%{$fg[green]%}%n🌙 %{$fg[green]%}%m %{$fg[yellow]%}➤ %{$reset_color%} "
 
@@ -181,10 +182,22 @@ autoload -U promptinit && promptinit
 
 ## Zsh Git Prompt
 ## https://github.com/olivierverdier/zsh-git-prompt
-source "$HOME"/confs/zsh-git-prompt/zshrc.sh
+source ~/confs/zsh-git-prompt/zshrc.sh
+
 # an example prompt
 # PROMPT='%B%m%~%b$(git_super_status) %# '
 PROMPT='%{$fg[green]%}%n%{$fg[yellow]%}@%{$fg[green]%}%m%{$reset_color%}$(git_super_status)%{$fg[yellow]%}➤%{$reset_color%} '
 RPROMPT="%{$fg[green]%}[%{$fg[magenta]%}%~%{$fg[green]%}] %{$fg[cyan]%}%T %{$reset_color%}"
 
+## TLDR completion
+source ~/.tldr.complete
 
+## Bazel completion
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
+## autojump
+. /usr/share/autojump/autojump.sh
+
+## conda (> 4.4)
+. ~/miniconda3/etc/profile.d/conda.sh
