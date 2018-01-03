@@ -33,9 +33,9 @@ alias mv="mv -i"
 alias cp="cp -i"
 alias rm="rm -i"
 
+alias base="conda activate"
+alias tf="conda activate tf"
 
-## Renaming multiple files using zmv
-alias mmv='noglob zmv -W'
 
 
 ## =======================================
