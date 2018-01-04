@@ -1,4 +1,4 @@
-mkdir ~/confs
+[ ! -d ~/confs ] &&  mkdir ~/confs
 cd ~/confs
 sudo apt install -y git
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
