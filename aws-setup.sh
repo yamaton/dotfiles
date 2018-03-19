@@ -13,7 +13,6 @@ sudo apt install -y tmux emacs-nox htop ranger
 
 # autojump
 sudo apt install autojump
-echo ". /usr/local/etc/profile.d/autojump.sh" >> ~/.zshrc
 
 # tldr
 sudo apt install libzip-dev libcurl4-openssl-dev  # tldr needs them
@@ -29,6 +28,6 @@ echo "source ~/.tldr.complete" >> ~/.zshrc
 # ripgrep
 mkdir -p ~/bin/ripgrep
 cd ~/bin
-wget https://github.com/BurntSushi/ripgrep/releases/download/0.7.1/ripgrep-0.7.1-i686-unknown-linux-musl.tar.gz
-tar xzf ripgrep-0.7.1-i686-unknown-linux-musl.tar.gz -C ripgrep
+wget https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep-0.8.1-x86_64-unknown-linux-musl.tar.gz
+tar xzf ripgrep-0.8.1-x86_64-unknown-linux-musl.tar.gz -C ripgrep
 echo "export PATH=${PATH}:~/bin/ripgrep" >> ~/.zshenv
