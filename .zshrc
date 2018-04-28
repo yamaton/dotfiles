@@ -33,7 +33,7 @@ alias mv="mv -i"
 alias cp="cp -i"
 alias rm="rm -i"
 
-alias base="conda activate"
+alias base="conda activate base"
 alias tf="conda activate tf"
 
 
@@ -41,11 +41,11 @@ alias tf="conda activate tf"
 ## =======================================
 ##      Run application by Extension
 ## =======================================
-alias -s txt='code'
-alias -s cc='code'
-alias -s cpp='code'
-alias -s tex='code'
-alias -s py='code'
+alias -s txt=code
+alias -s cc=code
+alias -s cpp=code
+alias -s tex=code
+alias -s py=code
 alias -s pdf=open
 
 ## =======================================

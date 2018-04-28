@@ -20,7 +20,7 @@ cp mysetting/.tmux.conf ~
 cp mysetting/.emacs ~
 
 # misc software
-sudo apt install -y make cmake tmux emacs-nox htop ranger autojump meld
+sudo apt install -y make cmake tmux emacs-nox htop ranger autojump meld wget curl
 
 # tldr
 sudo apt install libzip-dev libcurl4-openssl-dev  # tldr needs them
@@ -34,7 +34,6 @@ mv ~/confs/tldr-c-client/autocomplete/complete.zsh ~/.tldr.complete
 echo "source ~/.tldr.complete" >> ~/.zshrc
 
 # ripgrep
-sudo apt install -y wget
 wget https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb
 sudo dpkg -i ripgrep_0.8.1_amd64.deb
 
