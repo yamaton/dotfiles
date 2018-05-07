@@ -1,0 +1,77 @@
+// Place your settings in this file to overwrite the default settings
+{
+    // Controls the font family.
+    "editor.fontFamily": "Fira Code",
+    // Controls the font size.
+    "editor.fontSize": 15,
+    // For Ligature for Fira Code
+    "editor.fontLigatures": true,
+    // Controls the line height.
+    "editor.lineHeight": 21,
+    // Disable preview mode
+    "workbench.editor.enablePreview": false,
+    // Disable telemetry reporting
+    "telemetry.enableTelemetry": false,
+    // Disable crash reporting
+    "telemetry.enableCrashReporter": false,
+    // Disable minimap
+    "editor.minimap.enabled": false,
+    //
+    // Extension and editor preferences
+    "editor.roundedSelection": false,
+    "editor.formatOnSave": false,
+    "explorer.openEditors.visible": 0,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        ".vscode": true,
+        "**/__pycache__": true,
+        "**/**/*.pyc": true
+    },
+    "editor.insertSpaces": false,
+    "editor.renderWhitespace": "none",
+    "editor.wordWrap": "on",
+    "window.zoomLevel": 0,
+    "window.menuBarVisibility": "toggle",
+    "workbench.colorTheme": "Monokai++",
+
+    // ------- Python -------
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintArgs": [
+        "--rcfile=~/.pylintrc"
+    ],
+    "python.linting.flake8Enabled": false,
+    "python.formatting.provider": "autopep8",
+    "python.unitTest.unittestEnabled": false,
+    "python.unitTest.pyTestEnabled": true,
+    "python.unitTest.nosetestsEnabled": false,
+
+    // ------- C++ / Clang ------
+    "clang-format.fallbackStyle": "WebKit",
+    "clang-format.style": "{BreakBeforeBraces: Allman, Standard: Cpp11, UseTab: ForIndentation, TabWidth: 4}",
+
+    // ------- Insert DateTime -------
+    "insertDateString.formatDate": "YYYY-MM-DD (DDD)",
+
+    // ------- Git Lens ---------
+    "gitlens.keymap": "alternate",
+    "gitlens.advanced.messages": {
+        "suppressShowKeyBindingsNotice": true
+    },
+
+    // ------- Sync Setting -------
+    "sync.gist": "8a4514ccddb882f50b35ca3e45b6333b",
+    "sync.lastUpload": "2018-04-25T02:26:41.896Z",
+    "sync.autoDownload": false,
+    "sync.autoUpload": false,
+    "sync.lastDownload": "",
+    "sync.forceDownload": false,
+    "sync.host": "",
+    "sync.pathPrefix": "",
+    "sync.quietSync": false,
+    "sync.askGistName": false,
+    "sync.removeExtensions": true,
+    "sync.syncExtensions": true
+}
