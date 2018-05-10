@@ -42,11 +42,8 @@
     "python.linting.pylintArgs": [
         "--rcfile=~/.pylintrc"
     ],
-    "python.linting.flake8Enabled": false,
     "python.formatting.provider": "autopep8",
-    "python.unitTest.unittestEnabled": false,
     "python.unitTest.pyTestEnabled": true,
-    "python.unitTest.nosetestsEnabled": false,
 
     // ------- C++ / Clang ------
     "clang-format.fallbackStyle": "WebKit",
