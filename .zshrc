@@ -5,15 +5,13 @@ export LANG=en_US.UTF-8
 export EDITOR=vim
 export PAGER=less
 export SHELL=zsh
-export LESS=-r                 # For ipython
-export CLICOLOR=1              # Enable terminal color theme (IR_Black_theme)
 
 ## =======================================
 ##            Command History
 ## =======================================
 HISTFILE=~/.zsh_history
-HISTSIZE=50000
-SAVEHIST=50000
+HISTSIZE=80000
+SAVEHIST=80000
 
 
 ## =======================================
@@ -46,7 +44,6 @@ alias -s cc=code
 alias -s cpp=code
 alias -s tex=code
 alias -s py=code
-alias -s pdf=open
 
 ## =======================================
 ##             ZSH config
