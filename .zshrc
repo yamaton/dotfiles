@@ -31,10 +31,11 @@ alias mv="mv -i"
 alias cp="cp -i"
 alias rm="rm -i"
 
-alias base="conda activate base"
+alias base="conda activate"
 alias tf="conda activate tf"
 
-
+alias vim=nvim
+alias bu="sudo apt update && sudo apt full-upgrade && base && conda update --all && tf && conda update --all"
 
 ## =======================================
 ##      Run application by Extension
@@ -196,3 +197,4 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 
 ## conda (> 4.4)
 . ~/miniconda3/etc/profile.d/conda.sh
+source ~/.tldr.complete
