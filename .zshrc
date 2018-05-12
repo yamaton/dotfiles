@@ -194,6 +194,8 @@ source ~/.tldr.complete
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
+## autojump
+. /usr/share/autojump/autojump.zsh
 
 ## conda (> 4.4)
 . ~/miniconda3/etc/profile.d/conda.sh
