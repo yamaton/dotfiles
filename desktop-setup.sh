@@ -15,7 +15,7 @@ sudo apt update
 sudo apt -y install code
 
 # misc software
-sudo apt install -y vlc gnome-tweak-tool filezilla meld cntlm
+sudo apt install -y vlc gnome-tweak-tool filezilla meld cntlm caffeine exfat-fuse exfat-utils
 sudo add-apt-repository universe
 sudo apt install -y fonts-firacode
 
