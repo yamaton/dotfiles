@@ -2,7 +2,7 @@
 ##             ENV variables
 ## =======================================
 export LANG=en_US.UTF-8
-export EDITOR=emacs
+export EDITOR=vim
 export PAGER=less
 export SHELL=zsh
 
@@ -43,6 +43,7 @@ alias bu="sudo apt update && sudo apt full-upgrade && base && conda update --all
 alias -s txt=code
 alias -s cc=code
 alias -s cpp=code
+alias -s tex=code
 alias -s py=code
 
 ## =======================================
@@ -148,16 +149,34 @@ esac
 # Use homebrew to install zsh-syntax-highlighting
 source ~/confs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# ZSH_HIGHLIGHT_STYLES[command]='fg=yellow'
+# ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+# ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
+
 ## Bash-like comment in command line
 ## See https://stackoverflow.com/questions/11670935/comments-in-command-line-zsh
 setopt interactivecomments
 
+
+## =======================================
+##     Prompt Customization
+## =======================================
+
 ## Use colors in prompt
 autoload colors && colors
+
+# PROMPT="%{$fg[green]%}%n🌙 %{$fg[green]%}%m %{$fg[yellow]%}➤ %{$reset_color%} "
+
 
 ## StackOverflow mentions that zsh comes with builtin colored prompt themes
 ## Type command "prompt -p adam1" for example.
 autoload -U promptinit && promptinit
+
+
+# unalias run-help
+# autoload run-help
+# HELPDIR=/usr/local/share/zsh/help
+
 
 ## Zsh Git Prompt
 ## https://github.com/olivierverdier/zsh-git-prompt
@@ -180,4 +199,5 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 
 ## conda (> 4.4)
 . ~/miniconda3/etc/profile.d/conda.sh
+source ~/.tldr.complete
 source ~/.tldr.complete

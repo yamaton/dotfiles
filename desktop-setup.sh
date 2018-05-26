@@ -1,10 +1,5 @@
-# for add-apt-repository
-sudo apt install -y software-properties-common
-
 # nvim
-sudo apt-add-repository ppa:neovim-ppa/unstable
-sudo apt-get update
-sudo apt-get install neovim
+## add appimage version once it works
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 mkdir -p ~/.config/nvim
 cp init.vim ~/.config/nvim/init.vim
@@ -18,6 +13,7 @@ sudo apt -y install code
 cp vscode/settings.json ~/.config/Code/User/settings.json
 
 # misc software
-sudo apt install -y meld cntlm exfat-fuse exfat-utils
-sudo add-apt-repository universe
-sudo apt install -y fonts-firacode
+sudo apt install -y meld
+
+# edit /etc/apt/sources.list and add contrib
+# sudo apt install -y fonts-firacode
