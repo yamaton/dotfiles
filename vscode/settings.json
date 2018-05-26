@@ -8,41 +8,28 @@
     "editor.fontLigatures": true,
     // Controls the line height.
     "editor.lineHeight": 21,
+    // Disable minimap
+    "editor.minimap.enabled": false,
     // Disable preview mode
     "workbench.editor.enablePreview": false,
     // Disable telemetry reporting
     "telemetry.enableTelemetry": false,
     // Disable crash reporting
     "telemetry.enableCrashReporter": false,
-    // Disable minimap
-    "editor.minimap.enabled": false,
     //
-    // Extension and editor preferences
+    // ----- Extension and editor preferences -----
     "editor.roundedSelection": false,
     "editor.formatOnSave": false,
     "explorer.openEditors.visible": 0,
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true,
-    "files.exclude": {
-        "**/.git": true,
-        "**/.DS_Store": true,
-        ".vscode": true,
-        "**/__pycache__": true,
-        "**/**/*.pyc": true
-    },
-    "editor.insertSpaces": false,
     "editor.renderWhitespace": "none",
     "editor.wordWrap": "on",
-    "window.zoomLevel": 0,
+    "files.trimTrailingWhitespace": true,
     "window.menuBarVisibility": "toggle",
     "workbench.colorTheme": "Monokai++",
 
     // ------- Python -------
     "python.linting.pylintEnabled": true,
-    "python.linting.pylintArgs": [
-        "--rcfile=~/.pylintrc"
-    ],
-    "python.formatting.provider": "autopep8",
+    "python.formatting.provider": "none",  // to use black
     "python.unitTest.pyTestEnabled": true,
 
     // ------- C++ / Clang ------
@@ -52,23 +39,4 @@
     // ------- Insert DateTime -------
     "insertDateString.formatDate": "YYYY-MM-DD (DDD)",
 
-    // ------- Git Lens ---------
-    "gitlens.keymap": "alternate",
-    "gitlens.advanced.messages": {
-        "suppressShowKeyBindingsNotice": true
-    },
-
-    // ------- Sync Setting -------
-    "sync.gist": "8a4514ccddb882f50b35ca3e45b6333b",
-    "sync.lastUpload": "2018-04-25T02:26:41.896Z",
-    "sync.autoDownload": false,
-    "sync.autoUpload": false,
-    "sync.lastDownload": "",
-    "sync.forceDownload": false,
-    "sync.host": "",
-    "sync.pathPrefix": "",
-    "sync.quietSync": false,
-    "sync.askGistName": false,
-    "sync.removeExtensions": true,
-    "sync.syncExtensions": true
 }

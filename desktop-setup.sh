@@ -11,6 +11,7 @@ sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt update
 sudo apt -y install code
+cp vscode/settings.json ~/.config/Code/User/settings.json
 
 # misc software
 sudo apt install -y vlc gnome-tweak-tool filezilla meld cntlm caffeine exfat-fuse exfat-utils
