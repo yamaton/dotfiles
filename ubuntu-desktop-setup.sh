@@ -1,8 +1,12 @@
+# for add-apt-repository
+sudo apt install -y software-properties-common
+
 # nvim
-sudo add-apt-repository ppa:neovim-ppa/stable
-sudo apt update
-sudo apt -y install neovim
+sudo apt-add-repository ppa:neovim-ppa/unstable
+sudo apt-get update
+sudo apt-get install neovim
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+mkdir -p ~/.config/nvim
 cp init.vim ~/.config/nvim/init.vim
 
 # vscode
@@ -14,8 +18,6 @@ sudo apt -y install code
 cp vscode/settings.json ~/.config/Code/User/settings.json
 
 # misc software
-sudo apt install -y vlc gnome-tweak-tool filezilla meld cntlm caffeine exfat-fuse exfat-utils
+sudo apt install -y meld cntlm exfat-fuse exfat-utils
 sudo add-apt-repository universe
 sudo apt install -y fonts-firacode
-
-
