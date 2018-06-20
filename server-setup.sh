@@ -22,7 +22,7 @@ cp "${BASEDIR}"/.tmux.conf ~
 cp "${BASEDIR}"/.emacs ~
 
 # misc software
-sudo apt install -y make cmake tmux emacs-nox htop ranger autojump meld wget curl
+sudo apt install -y make cmake tmux emacs-nox htop ranger autojump meld wget curl gnupg2
 
 # tldr
 sudo apt install -y libzip-dev libcurl4-openssl-dev  # tldr needs them
