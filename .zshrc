@@ -34,7 +34,6 @@ alias rm="rm -i"
 alias base="conda activate"
 alias tf="conda activate tf"
 
-alias vim=nvim
 alias bu="sudo apt update && sudo apt full-upgrade && base && conda update --all && tf && conda update --all"
 
 ## =======================================
