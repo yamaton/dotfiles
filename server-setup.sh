@@ -1,6 +1,12 @@
+BASEDIR=$(dirname $(readlink -f "$0"))
+CONFDIR="${HOME}/confs"
+
+echo "BASEDIR: ${BASEDIR}"
+echo "CONFDIR: ${CONFDIR}"
+
 # configurations are in ~/confs
-[ ! -d ~/confs ] &&  mkdir ~/confs
-cd ~/confs
+[ ! -d "${CONFDIR}" ] &&  mkdir "${CONFDIR}"
+cd "${CONFDIR}"
 
 # update the system
 sudo apt update && sudo apt full-upgrade
@@ -9,24 +15,24 @@ sudo apt update && sudo apt full-upgrade
 sudo apt install -y zsh
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 git clone -b fix_non_git_folders https://github.com/Segaja/zsh-git-prompt.git
-cp mysetting/.zshrc ~
+cp "${BASEDIR}"/.zshrc ~
 
 # tmux and emacs setting
-cp mysetting/.tmux.conf ~
-cp mysetting/.emacs ~
+cp "${BASEDIR}"/.tmux.conf ~
+cp "${BASEDIR}"/.emacs ~
 
 # misc software
 sudo apt install -y make cmake tmux emacs-nox htop ranger autojump meld wget curl
 
 # tldr
 sudo apt install -y libzip-dev libcurl4-openssl-dev  # tldr needs them
-cd ~/confs
+cd "${CONFDIR}"
 git clone https://github.com/tldr-pages/tldr-cpp-client.git tldr-cpp-client
 cd tldr-cpp-client
 ./deps.sh
 make
 sudo make install
-mv ~/confs/tldr-cpp-client/autocomplete/complete.zsh ~/.tldr.complete
+mv "${CONFDIR}"/tldr-cpp-client/autocomplete/complete.zsh ~/.tldr.complete
 echo "source ~/.tldr.complete" >> ~/.zshrc
 
 # ripgrep
