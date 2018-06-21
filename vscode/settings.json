@@ -29,7 +29,7 @@
 
     // ------- Python -------
     "python.linting.pylintEnabled": true,
-    "python.formatting.provider": "none",  // to use black
+    "python.formatting.provider": "black",
     "python.unitTest.pyTestEnabled": true,
 
     // ------- C++ / Clang ------
