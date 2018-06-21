@@ -1,3 +1,5 @@
+#!/bin/bash
+
 BASEDIR=$(dirname $(readlink -f "$0"))
 CONFDIR="${HOME}/confs"
 
