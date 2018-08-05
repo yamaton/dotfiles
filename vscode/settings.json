@@ -10,6 +10,12 @@
     "editor.lineHeight": 21,
     // Disable minimap
     "editor.minimap.enabled": false,
+    // Disable auto-autocomplete
+    "editor.quickSuggestions": {
+        "other": false,
+        "comments": false,
+        "strings": false
+    },
     // Disable preview mode
     "workbench.editor.enablePreview": false,
     // Disable telemetry reporting
