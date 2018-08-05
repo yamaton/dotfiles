@@ -27,15 +27,9 @@ cp "${BASEDIR}"/.emacs ~
 sudo apt install -y make cmake tmux emacs-nox htop ranger autojump meld wget curl gnupg2
 
 # tldr
-sudo apt install -y libzip-dev libcurl4-openssl-dev  # tldr needs them
+cd "${BASEDIR}"
+./setup-tldr.sh "${CONFDIR}"
 cd "${CONFDIR}"
-git clone https://github.com/tldr-pages/tldr-cpp-client.git tldr-cpp-client
-cd tldr-cpp-client
-./deps.sh
-make
-sudo make install
-mv "${CONFDIR}"/tldr-cpp-client/autocomplete/complete.zsh ~/.tldr.complete
-echo "source ~/.tldr.complete" >> ~/.zshrc
 
 # cht.sh
 mkdir ~/bin
