@@ -16,7 +16,7 @@ sudo apt update && sudo apt full-upgrade
 # zsh
 sudo apt install -y zsh
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-git clone -b fix_non_git_folders https://github.com/Segaja/zsh-git-prompt.git
+git clone https://github.com/starcraftman/zsh-git-prompt.git
 cp "${BASEDIR}"/.zshrc ~
 
 # tmux and emacs setting
