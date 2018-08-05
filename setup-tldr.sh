@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # * Usage
 # Run `./setup-dldr.sh <target-dir>`
 # Then it will clone tlcr-cpp-client under <target-dir> and install it.

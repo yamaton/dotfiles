@@ -24,7 +24,7 @@ cp "${BASEDIR}"/.tmux.conf ~
 cp "${BASEDIR}"/.emacs ~
 
 # misc software
-sudo apt install -y make cmake tmux emacs-nox htop ranger autojump meld wget curl gnupg2
+sudo apt install -y make cmake tmux emacs-nox htop ranger autojump wget curl gnupg2
 
 # tldr
 cd "${BASEDIR}"
@@ -32,11 +32,9 @@ cd "${BASEDIR}"
 cd "${CONFDIR}"
 
 # cht.sh
-if [ ! -d ~/bin ]; then
-    mkdir ~/bin
-fi
-curl https://cht.sh/:cht.sh > ~/bin/cht.sh
-chmod +x ~/bin/cht.sh
+[ ! -d "~/bin" ] &&  mkdir "~/bin"
+curl https://cht.sh/:cht.sh > "~/bin/cht.sh"
+chmod +x "~/bin/cht.sh"
 
 # ripgrep
 wget https://github.com/BurntSushi/ripgrep/releases/download/0.9.0/ripgrep_0.9.0_amd64.deb
