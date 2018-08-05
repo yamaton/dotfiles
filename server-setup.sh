@@ -32,7 +32,9 @@ cd "${BASEDIR}"
 cd "${CONFDIR}"
 
 # cht.sh
-mkdir ~/bin
+if [ ! -d ~/bin ]; then
+    mkdir ~/bin
+fi
 curl https://cht.sh/:cht.sh > ~/bin/cht.sh
 chmod +x ~/bin/cht.sh
 
