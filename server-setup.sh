@@ -73,7 +73,7 @@ echo ""
 echo "--------------------------"
 echo "       misc software"
 echo "---------------------------"
-apps="make cmake htop ranger autojump wget curl gnupg2"
+apps="make cmake htop ranger autojump wget curl gnupg2 source-highlight"
 for f in $apps
 do
     my_install $f

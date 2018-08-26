@@ -188,3 +188,7 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 ## conda (> 4.4)
 . ~/miniconda3/etc/profile.d/conda.sh
 
+## source-highlight in less
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESS=' -R '
+
