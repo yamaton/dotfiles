@@ -187,4 +187,4 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 
 ## conda (> 4.4)
 . ~/miniconda3/etc/profile.d/conda.sh
-source ~/.tldr.complete
+
