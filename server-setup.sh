@@ -5,7 +5,7 @@ CONFDIR="${HOME}/confs"
 
 my_install () {
     app="$(command -v $1)"
-    [ ! -x $app ] &&  sudo apt install -y $1
+    [ ! -x "$app" ] && sudo apt install -y "$1"
 }
 
 echo ""
@@ -34,6 +34,7 @@ echo "--------------------------"
 echo "         zsh & more"
 echo "---------------------------"
 my_install zsh
+
 if [ -d zsh-syntax-highlighting ]; then
     cd zsh-syntax-highlighting
     git pull
@@ -68,13 +69,14 @@ echo "---------------------------"
 [ ! -x "$(command -v emacs)" ] &&  sudo apt install -y emacs-nox
 cp "${BASEDIR}"/.emacs ~
 
+
 # misc software
 echo ""
 echo "--------------------------"
 echo "       misc software"
 echo "---------------------------"
-apps="make cmake htop ranger autojump wget curl gnupg2 source-highlight"
-for f in $apps
+APPS="cmake htop ranger autojump wget curl gnupg2 source-highlight jq csvtool"
+for f in "${APPS}"
 do
     my_install $f
 done
@@ -86,24 +88,25 @@ echo "--------------------------"
 echo "         tldr client"
 echo "---------------------------"
 cd "${BASEDIR}"
-sudo ./setup-tldr.sh "${CONFDIR}"
+sudo ./_setup-tldr.sh "${CONFDIR}"
 cd "${CONFDIR}"
+
 
 # cht.sh
 echo ""
 echo "--------------------------"
-echo "         cht.sh"
+echo "  
+
+       cht.sh"
 echo "---------------------------"
-[ ! -d ~/bin ] &&  mkdir ~/bin
-curl https://cht.sh/:cht.sh > ~/bin/cht.sh
-chmod +x ~/bin/cht.sh
+cd "${BASEDIR}"
+./_setup-cheetsheet.sh
+
 
 # ripgrep
 echo ""
 echo "--------------------------"
 echo "         Ripgrep"
 echo "---------------------------"
-if [ ! -x "$(command -v rg)" ]; then
-    wget https://github.com/BurntSushi/ripgrep/releases/download/0.9.0/ripgrep_0.9.0_amd64.deb
-    sudo dpkg -i ripgrep_0.9.0_amd64.deb
-fi
+cd "${BASEDIR}"
+sudo ./_setup-ripgrep.sh

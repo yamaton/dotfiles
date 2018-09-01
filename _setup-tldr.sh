@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # * Usage
-# Run `./setup-dldr.sh <target-dir>`
+# Run `./_setup-tldr.sh <target-dir>`
 # Then it will clone tlcr-cpp-client under <target-dir> and install it.
 
 if [ "$#" -gt 0 ]; then
