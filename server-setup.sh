@@ -20,13 +20,6 @@ cd "${CONFDIR}"
 # update the system
 sudo apt update && sudo apt full-upgrade
 
-# git
-echo ""
-echo "--------------------------"
-echo "         git"
-echo "---------------------------"
-my_install git
-
 
 # zsh
 echo ""
@@ -89,15 +82,12 @@ echo "         tldr client"
 echo "---------------------------"
 cd "${BASEDIR}"
 sudo ./_setup-tldr.sh "${CONFDIR}"
-cd "${CONFDIR}"
 
 
 # cht.sh
 echo ""
 echo "--------------------------"
-echo "  
-
-       cht.sh"
+echo "       cht.sh"
 echo "---------------------------"
 cd "${BASEDIR}"
 ./_setup-cheetsheet.sh

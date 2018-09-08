@@ -26,4 +26,4 @@ fi
 make
 sudo make install
 cp autocomplete/complete.zsh ~/.tldr.complete
-echo "source ~/.tldr.complete" >> ~/.zshrc
+
