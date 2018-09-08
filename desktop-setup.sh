@@ -19,7 +19,7 @@ cp ./vscode/settings.json ~/.config/Code/User/settings.json
 
 
 # misc software
-sudo apt install -y meld nautilus terminator
+sudo apt install -y meld terminator
 
 
 # fonts-firacode

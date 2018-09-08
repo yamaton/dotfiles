@@ -111,3 +111,13 @@ echo "        Ripgrep"
 echo "--------------------------"
 cd "${BASEDIR}"
 sudo ./_setup-ripgrep.sh
+
+
+# nnn
+echo ""
+echo "--------------------------"
+echo "        nnn"
+echo "--------------------------"
+sudo apt install -y libncursesw5-dev
+sudo ./_setup-nnn.sh "${CONFDIR}"
+
