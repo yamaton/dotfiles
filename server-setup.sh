@@ -43,9 +43,7 @@ if [ -d zsh-git-prompt ]; then
 else
     git clone https://github.com/starcraftman/zsh-git-prompt.git
 fi
-if [ -f ~/.zshrc ]; then
-    mv ~/.zshrc ~/.zshrc.backup
-fi
+[ -f ~/.zshrc ] && mv ~/.zshrc ~/.zshrc.backup
 cp "${BASEDIR}"/.zshrc ~
 
 
@@ -54,9 +52,7 @@ echo ""
 echo "--------------------------"
 echo "        colored man"
 echo "--------------------------"
-if [ -f ~/.less_termcap ]; then
-    mv ~/.less_termcap ~/.less_termcap.backup
-fi
+[ -f ~/.less_termcap ] && mv ~/.less_termcap ~/.less_termcap.backup
 cp "${BASEDIR}"/.less_termcap ~
 
 
@@ -66,9 +62,7 @@ echo "--------------------------"
 echo "        tmux"
 echo "--------------------------"
 my_install tmux
-if [ -f ~/.tmux.conf ]; then
-    mv ~/.tmux.conf ~/.tmux.conf.backup
-fi
+[ -f ~/.tmux.conf ] && mv ~/.tmux.conf ~/.tmux.conf.backup
 cp "${BASEDIR}"/.tmux.conf ~
 
 echo ""
@@ -76,9 +70,7 @@ echo "--------------------------"
 echo "        emacs"
 echo "--------------------------"
 [ ! -x "$(command -v emacs)" ] &&  sudo apt install -y emacs-nox
-if [ -f ~/.emacs ]; then
-    mv ~/.emacs ~/.emacs.backup
-fi
+[ -f ~/.emacs ] && mv ~/.emacs ~/.emacs.backup
 cp "${BASEDIR}"/.emacs ~
 
 
