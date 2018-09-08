@@ -64,6 +64,8 @@ echo "--------------------------"
 my_install tmux
 [ -f ~/.tmux.conf ] && mv ~/.tmux.conf ~/.tmux.conf.backup
 cp "${BASEDIR}"/.tmux.conf ~
+[ ! -d ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 
 echo ""
 echo "--------------------------"
