@@ -190,5 +190,9 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 
 ## source-highlight in less
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-export LESS=' -R '
+export LESS=" -R "
+
+## Colorful man
+[[ -f ~/.less_termcap ]] && . ~/.less_termcap
+
 

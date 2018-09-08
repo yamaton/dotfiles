@@ -49,6 +49,16 @@ fi
 cp "${BASEDIR}"/.zshrc ~
 
 
+# colored man with less
+echo ""
+echo "--------------------------"
+echo "        colored man"
+echo "--------------------------"
+if [ -f ~/.less_termcap ]; then
+    mv ~/.less_termcap ~/.less_termcap.backup
+fi
+cp "${BASEDIR}"/.less_termcap ~
+
 
 # tmux and emacs setting
 echo ""
