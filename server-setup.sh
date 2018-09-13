@@ -106,13 +106,22 @@ cd "${BASEDIR}"
 ./_setup-cheetsheet.sh
 
 
-# ripgrep
+# ripgrep ---better grep---
 echo ""
 echo "--------------------------"
-echo "        Ripgrep"
+echo "        ripgrep"
 echo "--------------------------"
 cd "${BASEDIR}"
 sudo ./_setup-ripgrep.sh
+
+
+# fd ---better find---
+echo ""
+echo "--------------------------"
+echo "        fd"
+echo "--------------------------"
+cd "${BASEDIR}"
+sudo ./_setup-fd.sh
 
 
 # nnn
