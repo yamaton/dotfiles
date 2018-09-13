@@ -81,7 +81,7 @@ echo ""
 echo "--------------------------"
 echo "        misc software"
 echo "--------------------------"
-APPS="cmake htop ranger autojump wget curl gnupg2 source-highlight jq csvtool"
+APPS="cmake htop autojump wget curl gnupg2 source-highlight jq csvtool"
 for f in "${APPS}"
 do
     my_install $f
