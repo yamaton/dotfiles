@@ -19,7 +19,7 @@ cp ./vscode/settings.json ~/.config/Code/User/settings.json
 
 
 # misc software
-sudo apt install -y meld terminator
+sudo apt install -y meld terminator --no-install-recommends
 
 
 # fonts-firacode
