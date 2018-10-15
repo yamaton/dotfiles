@@ -100,7 +100,7 @@ echo "--------------------------"
 echo "        cht.sh"
 echo "--------------------------"
 cd "${BASEDIR}"
-./_setup-cheetsheet.sh
+./_setup-cheatsheet.sh
 
 
 # ripgrep ---better grep---
