@@ -129,3 +129,11 @@ echo "--------------------------"
 sudo apt install -y libncursesw5-dev
 sudo ./_setup-nnn.sh "${CONFDIR}"
 
+
+# xsv
+echo ""
+echo "--------------------------"
+echo "        nnn"
+echo "--------------------------"
+./_setup-xsv.sh
+
