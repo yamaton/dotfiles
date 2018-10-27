@@ -7,7 +7,7 @@
 if [ "$#" -gt 0 ]; then
     REPO_DIR="$1"
 else
-    REPO_DIR="$HOME"/repos
+    REPO_DIR="$HOME"/confs
     if [ ! -d "$REPO_DIR" ]; then
         mkdir "$REPO_DIR"
     fi

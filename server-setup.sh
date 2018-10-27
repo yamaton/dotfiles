@@ -132,7 +132,7 @@ sudo ./_setup-nnn.sh "${CONFDIR}"
 # xsv
 echo ""
 echo "--------------------------"
-echo "        xsv"
+echo "        "
 echo "--------------------------"
 ./_setup-xsv.sh
 
