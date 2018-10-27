@@ -90,7 +90,7 @@ echo "--------------------------"
 echo "        tldr client"
 echo "--------------------------"
 cd "${BASEDIR}"
-sudo ./_setup-tldr.sh "${CONFDIR}"
+./_setup-tldr.sh "${CONFDIR}"
 
 
 # cht.sh
@@ -108,7 +108,7 @@ echo "--------------------------"
 echo "        ripgrep"
 echo "--------------------------"
 cd "${BASEDIR}"
-sudo ./_setup-ripgrep.sh
+./_setup-ripgrep.sh
 
 
 # fd ---better find---
@@ -117,7 +117,7 @@ echo "--------------------------"
 echo "        fd"
 echo "--------------------------"
 cd "${BASEDIR}"
-sudo ./_setup-fd.sh
+./_setup-fd.sh
 
 
 # nnn
@@ -126,7 +126,7 @@ echo "--------------------------"
 echo "        nnn"
 echo "--------------------------"
 sudo apt install -y libncursesw5-dev
-sudo ./_setup-nnn.sh "${CONFDIR}"
+./_setup-nnn.sh "${CONFDIR}"
 
 
 # xsv
