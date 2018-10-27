@@ -81,8 +81,7 @@ echo ""
 echo "--------------------------"
 echo "        misc software"
 echo "--------------------------"
-APPS="cmake htop autojump wget curl gnupg2 source-highlight jq csvtool python"
-sudo apt install -y "${APPS}"
+sudo apt install -y cmake htop autojump wget curl gnupg2 source-highlight jq csvtool python
 
 
 # tldr
@@ -133,7 +132,7 @@ sudo ./_setup-nnn.sh "${CONFDIR}"
 # xsv
 echo ""
 echo "--------------------------"
-echo "        nnn"
+echo "        xsv"
 echo "--------------------------"
 ./_setup-xsv.sh
 
