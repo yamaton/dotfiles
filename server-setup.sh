@@ -3,11 +3,6 @@
 BASEDIR=$(dirname $(readlink -f "$0"))
 CONFDIR="${HOME}/confs"
 
-my_install () {
-    app="$(command -v $1)"
-    [ ! -x "$app" ] && sudo apt install -y "$1"
-}
-
 echo ""
 echo "BASEDIR: ${BASEDIR}"
 echo "CONFDIR: ${CONFDIR}"
@@ -81,7 +76,8 @@ echo ""
 echo "--------------------------"
 echo "        misc software"
 echo "--------------------------"
-sudo apt install -y cmake htop autojump wget curl gnupg2 source-highlight jq csvtool python
+APPS="cmake htop autojump wget curl gnupg2 source-highlight jq csvtool python"
+sudo apt install -y $(printf "$APPS")
 
 
 # tldr
