@@ -125,10 +125,10 @@ sudo apt install -y libncursesw5-dev
 ./_setup-nnn.sh "${CONFDIR}"
 
 
-# xsv
+# xsv ---better csvtools ---
 echo ""
 echo "--------------------------"
-echo "        "
+echo "        xsv"
 echo "--------------------------"
 ./_setup-xsv.sh
 
