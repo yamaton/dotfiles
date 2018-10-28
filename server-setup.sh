@@ -132,3 +132,10 @@ echo "        xsv"
 echo "--------------------------"
 ./_setup-xsv.sh
 
+
+# gotop --system monitor ---
+echo ""
+echo "--------------------------"
+echo "        gotop"
+echo "--------------------------"
+./_setup-gotop.sh
