@@ -14,7 +14,7 @@ cp ./init.vim ~/.config/nvim/init.vim
 
 # vscode
 cd "${BASEDIR}"
-sudo ./_setup-vscode.sh
+./_setup-vscode.sh
 cp ./vscode/settings.json ~/.config/Code/User/settings.json
 
 
@@ -24,4 +24,4 @@ sudo apt install -y meld terminator --no-install-recommends
 
 # fonts-firacode
 cd "${BASEDIR}"
-sudo ./_setup-firacode.sh
+./_setup-firacode.sh

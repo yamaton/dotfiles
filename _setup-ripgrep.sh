@@ -1,5 +1,4 @@
-
-
+#!/bin/bash
 
 if [ ! -x "$(command -v rg)" ]; then
     if [ "$(uname -m)" == "x86_64" ]; then
