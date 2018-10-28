@@ -76,7 +76,7 @@ echo ""
 echo "--------------------------"
 echo "        misc software"
 echo "--------------------------"
-APPS="cmake htop autojump wget curl gnupg2 source-highlight jq csvtool python"
+APPS="cmake htop autojump wget curl gnupg2 source-highlight jq csvtool python parallel"
 sudo apt install -y $(printf "$APPS")
 
 
@@ -130,6 +130,7 @@ echo ""
 echo "--------------------------"
 echo "        xsv"
 echo "--------------------------"
+cd "${BASEDIR}"
 ./_setup-xsv.sh
 
 
@@ -138,4 +139,5 @@ echo ""
 echo "--------------------------"
 echo "        gotop"
 echo "--------------------------"
+cd "${BASEDIR}"
 ./_setup-gotop.sh
