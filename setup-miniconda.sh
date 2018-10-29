@@ -10,6 +10,6 @@ chmod +x ./Miniconda3-latest-Linux-x86_64.sh
 . ~/miniconda3/etc/profile.d/conda.sh
 cp "${BASEDIR}/.condarc" ~
 conda update --all
-conda create -n tf -c conda-forge tensorflow opencv
+conda create -n tf -c conda-forge tensorflow opencv=3.3.0
 conda activate tf
 conda config --add channels conda-forge --env
