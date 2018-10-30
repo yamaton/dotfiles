@@ -40,6 +40,8 @@ else
 fi
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/.zshrc.backup
 cp "${BASEDIR}"/.zshrc ~
+[ -f ~/.zshenv ] && mv ~/.zshenv ~/.zshenv.backup
+cp "${BASEDIR}"/.zshenv ~
 
 
 # colored man with less
