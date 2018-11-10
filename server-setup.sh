@@ -53,17 +53,16 @@ echo "--------------------------"
 cp "${BASEDIR}"/.less_termcap ~
 
 
-# tmux and emacs setting
+# tmux
 echo ""
 echo "--------------------------"
 echo "        tmux"
 echo "--------------------------"
-sudo apt install -y tmux
-[ -f ~/.tmux.conf ] && mv ~/.tmux.conf ~/.tmux.conf.backup
-cp "${BASEDIR}"/.tmux.conf ~
-[ ! -d ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+cd "${BASEDIR}"
+./_setup-tmux.sh
 
 
+# emacs
 echo ""
 echo "--------------------------"
 echo "        emacs"
