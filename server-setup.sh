@@ -40,6 +40,8 @@ else
 fi
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/.zshrc.backup
 cp "${BASEDIR}"/.zshrc ~
+[ -f ~/.zshenv ] && mv ~/.zshenv ~/.zshenv.backup
+cp "${BASEDIR}"/.zshenv ~
 
 
 # colored man with less
@@ -51,17 +53,16 @@ echo "--------------------------"
 cp "${BASEDIR}"/.less_termcap ~
 
 
-# tmux and emacs setting
+# tmux
 echo ""
 echo "--------------------------"
 echo "        tmux"
 echo "--------------------------"
-sudo apt install -y tmux
-[ -f ~/.tmux.conf ] && mv ~/.tmux.conf ~/.tmux.conf.backup
-cp "${BASEDIR}"/.tmux.conf ~
-[ ! -d ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+cd "${BASEDIR}"
+./_setup-tmux.sh
 
 
+# emacs
 echo ""
 echo "--------------------------"
 echo "        emacs"
@@ -76,7 +77,7 @@ echo ""
 echo "--------------------------"
 echo "        misc software"
 echo "--------------------------"
-APPS="cmake htop autojump wget curl gnupg2 source-highlight jq csvtool python"
+APPS="cmake htop autojump wget curl gnupg2 source-highlight jq csvtool python parallel"
 sudo apt install -y $(printf "$APPS")
 
 
@@ -130,6 +131,7 @@ echo ""
 echo "--------------------------"
 echo "        xsv"
 echo "--------------------------"
+cd "${BASEDIR}"
 ./_setup-xsv.sh
 
 
@@ -138,4 +140,5 @@ echo ""
 echo "--------------------------"
 echo "        gotop"
 echo "--------------------------"
+cd "${BASEDIR}"
 ./_setup-gotop.sh

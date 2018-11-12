@@ -192,7 +192,19 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=" -R "
 
-## Colorful man
+## colorful man
 [[ -f ~/.less_termcap ]] && . ~/.less_termcap
 
 
+## nnn ; cd on exit:
+[[ ! -d ~/tmp ]] && mkdir ~/tmp
+export NNN_TMPFILE="~/tmp/nnn"
+n()
+{
+        nnn -l "$@"
+
+        if [ -f $NNN_TMPFILE ]; then
+                . $NNN_TMPFILE
+                rm -f $NNN_TMPFILE
+        fi
+}
