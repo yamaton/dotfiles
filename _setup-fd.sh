@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -x "$(command -v fd)" ]; then
+if [ "$1" = "-f" ] || [ ! -x "$(command -v fd)" ]; then
     if [ "$(uname -m)" == "x86_64" ]; then
         wget https://github.com/sharkdp/fd/releases/download/v7.2.0/fd-musl_7.2.0_amd64.deb
         sudo apt install ./fd-musl_7.2.0_amd64.deb
