@@ -37,6 +37,8 @@ alias torch="conda deactivate; conda activate torch"
 
 alias bu="sudo apt update && sudo apt full-upgrade && base && conda update --all && tf && conda update --all"
 
+[ -x $(command -v nvim) ] && alias vim=nvim
+
 ## =======================================
 ##      Run application by Extension
 ## =======================================
