@@ -33,6 +33,7 @@ alias rm="rm -i"
 
 alias base="conda deactivate; conda activate"
 alias tf="conda deactivate; conda activate tf"
+alias torch="conda deactivate; conda activate torch"
 
 alias bu="sudo apt update && sudo apt full-upgrade && base && conda update --all && tf && conda update --all"
 
@@ -181,6 +182,9 @@ source ~/.tldr.complete
 ## Bazel completion
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
+
+## nnn auto completion
+zstyle ':completion:*' script ~/confs/nnn/scripts/auto-completion/zsh/_nnn
 
 ## autojump
 . /usr/share/autojump/autojump.zsh
