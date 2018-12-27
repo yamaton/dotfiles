@@ -31,8 +31,8 @@ alias mv="mv -i"
 alias cp="cp -i"
 alias rm="rm -i"
 
-alias base="conda activate"
-alias tf="conda activate tf"
+alias base="conda deactivate; conda activate"
+alias tf="conda deactivate; conda activate tf"
 
 alias bu="sudo apt update && sudo apt full-upgrade && base && conda update --all && tf && conda update --all"
 
