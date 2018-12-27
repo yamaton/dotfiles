@@ -10,7 +10,6 @@ echo ""
 
 # configurations are in ~/confs
 [ ! -d "${CONFDIR}" ] &&  mkdir "${CONFDIR}"
-cd "${CONFDIR}"
 
 # update the system
 sudo apt update && sudo apt full-upgrade

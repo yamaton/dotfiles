@@ -1,6 +1,7 @@
 #!/bin/bash
 
 BASEDIR=$(dirname $(readlink -f "$0"))
+REPO_DIR="${HOME}/confs"
 
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v zsh)" ]; then
@@ -11,9 +12,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v zsh)" ]; then
         sudo apt install -y zsh
     fi
 
-    REPO_DIR="${HOME}/confs"
     [ ! -d "$REPO_DIR" ] && mkdir "$REPO_DIR"
-
     cd ${REPO_DIR}
     if [ -d zsh-syntax-highlighting ]; then
         cd zsh-syntax-highlighting
