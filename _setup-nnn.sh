@@ -33,6 +33,9 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ]; then
             wget "$URI"
             sudo apt install "./nnn_${VERSION}_${OS}.amd64.deb"
         else
+            echo "[INFO] prepare to build nnn"
+            sudo apt install -y libncursesw5-dev
+
             echo "[INFO] build nnn"
             echo "REPO_DIR: ${REPO_DIR}"
             if [ ! -d nnn ]; then

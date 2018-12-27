@@ -108,7 +108,6 @@ echo ""
 echo "--------------------------"
 echo "        nnn"
 echo "--------------------------"
-sudo apt install -y libncursesw5-dev
 ./_setup-nnn.sh
 
 
