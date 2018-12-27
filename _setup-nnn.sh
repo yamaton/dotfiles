@@ -17,7 +17,7 @@ else
 fi
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ]; then
-    if [ $(uname -s) == "Darwin"]; then
+    if [ $(uname -s) == "Darwin" ]; then
         brew install nnn
     else
         codename=$(lsb_release -s -c)

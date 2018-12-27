@@ -11,7 +11,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v tmux)" ]; then
     BASEDIR=$(dirname $(readlink -f "$0"))
     CONFDIR="${HOME}/confs"
 
-    if [ $(uname -s) == "Darwin"]; then
+    if [ $(uname -s) == "Darwin" ]; then
         brew install tmux
     else
         cd "$CONFDIR"
