@@ -1,14 +1,20 @@
 #!/bin/bash
 
-if [ "$1" = "-f" ] || [ ! -x "$(command -v fd)" ]; then
-    if [ "$(uname -m)" == "x86_64" ]; then
-        wget https://github.com/sharkdp/fd/releases/download/v7.2.0/fd-musl_7.2.0_amd64.deb
-        sudo apt install ./fd-musl_7.2.0_amd64.deb
+CMD="fd"
+VERSION="v7.2.0"
+
+if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
+
+    if [ $(uname -s) == "Darwin"]; then
+        brew install "${CMD}"
+    elif [ $(uname -s) == "Linux"]; then
+        if [ "$(uname -m)" == "x86_64" ]; then
+            curl -L "https://github.com/sharkdp/fd/releases/download/${VERSION}/fd-musl_${VERSION}_amd64.deb" | sudo apt install -
+        elif [ "$(uname -m)" == "armv7l" ]; then
+            curl -L "https://github.com/sharkdp/fd/releases/download/${VERSION}/fd-${VERSION}-arm-unknown-linux-gnueabihf.tar.gz" | tar xzf -
+            [ ! -d ~/bin ] &&  mkdir ~/bin
+            cp "fd-${VERSION}-arm-unknown-linux-gnueabihf/${CMD}" ~/bin
+        fi
     fi
-    if [ "$(uname -m)" == "armv7l" ]; then
-        wget https://github.com/sharkdp/fd/releases/download/v7.2.0/fd-v7.2.0-arm-unknown-linux-gnueabihf.tar.gz
-        tar xzf fd-v7.2.0-arm-unknown-linux-gnueabihf.tar.gz
-        [ ! -d ~/bin ] &&  mkdir ~/bin
-        cp fd-v7.2.0-arm-unknown-linux-gnueabihf/fd ~/bin
-    fi
+
 fi
