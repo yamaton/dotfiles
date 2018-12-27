@@ -58,8 +58,7 @@ echo ""
 echo "--------------------------"
 echo "        misc software"
 echo "--------------------------"
-APPS="cmake htop autojump wget curl gnupg2 source-highlight jq csvtool python parallel"
-sudo apt install -y $(printf "$APPS")
+./_setup-misc.sh
 
 
 # tldr
