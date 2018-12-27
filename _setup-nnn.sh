@@ -7,14 +7,8 @@
 VERSION="2.1-1"
 VER_SHORT="v${VERSION%-*}"
 
-if [ "$#" -gt 0 ]; then
-    REPO_DIR="$1"
-else
-    REPO_DIR="$HOME"/confs
-    if [ ! -d "$REPO_DIR" ]; then
-        mkdir "$REPO_DIR"
-    fi
-fi
+REPO_DIR="${HOME}/confs"
+[ ! -d "$REPO_DIR" ] && mkdir "$REPO_DIR"
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ]; then
     if [ $(uname -s) == "Darwin" ]; then

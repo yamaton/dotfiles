@@ -68,7 +68,7 @@ echo "--------------------------"
 echo "        tldr client"
 echo "--------------------------"
 cd "${BASEDIR}"
-./_setup-tldr.sh "${CONFDIR}"
+./_setup-tldr.sh
 
 
 # cht.sh
@@ -104,7 +104,7 @@ echo "--------------------------"
 echo "        nnn"
 echo "--------------------------"
 sudo apt install -y libncursesw5-dev
-./_setup-nnn.sh "${CONFDIR}"
+./_setup-nnn.sh
 
 
 # xsv ---better csvtools ---

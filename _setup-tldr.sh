@@ -6,12 +6,8 @@
 
 CMD="tldr"
 
-if [ "$#" -gt 0 ]; then
-    REPO_DIR="$1"
-else
-    REPO_DIR="${HOME}/confs"
-    [ ! -d "$REPO_DIR" ] && mkdir "${REPO_DIR}"
-fi
+REPO_DIR="${HOME}/confs"
+[ ! -d "$REPO_DIR" ] && mkdir "${REPO_DIR}"
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
     if [ $(uname -s) == "Darwin" ]; then
