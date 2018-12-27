@@ -50,6 +50,15 @@ echo "        emacs"
 echo "--------------------------"
 ./_setup-emacs.sh
 
+
+# neovim
+echo ""
+echo "--------------------------"
+echo "        neovim"
+echo "--------------------------"
+./_setup-neovim.sh
+
+
 # misc software
 echo ""
 echo "--------------------------"

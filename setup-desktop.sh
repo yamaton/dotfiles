@@ -4,21 +4,6 @@ BASEDIR=$(dirname $(readlink -f "$0"))
 echo "BASEDIR: ${BASEDIR}"
 
 
-# neovim
-## [TODO] add appimage version once it works
-echo "-------------------------"
-echo "   neovim"
-echo "-------------------------"
-if [ ! -x "$(command -v nvim)" ]; then
-    sudo apt install neovim
-    cd "${BASEDIR}"
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    mkdir -p ~/.config/nvim
-    cp ./init.vim ~/.config/nvim/init.vim
-else
-    echo "[INFO] skipping; neovim is already available"
-fi
-
 # vscode
 echo "-------------------------"
 echo "   vscode"
@@ -36,6 +21,7 @@ echo "-------------------------"
 echo "   terminator"
 echo "-------------------------"
 sudo apt install -y terminator --no-install-recommends
+
 
 echo "-------------------------"
 echo "   meld"
