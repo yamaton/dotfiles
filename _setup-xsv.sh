@@ -1,10 +1,17 @@
 #!/bin/bash
 
-if [ "$1" = "-f" ] || [ ! -x "$(command -v xsv)" ]; then
-    if [ "$(uname -m)" == "x86_64" ]; then
-        wget https://github.com/BurntSushi/xsv/releases/download/0.13.0/xsv-0.13.0-x86_64-unknown-linux-musl.tar.gz
-        tar xzf xsv-0.13.0-x86_64-unknown-linux-musl.tar.gz
+CMD="xsv"
+VERSION="0.13.0"
+
+if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
+    if [ "$(uname -s)" == "Darwin" ]; then
+        brew install ${CMD}:
+    elif [ "$(uname -s)" == "Linux" ]; then
+        OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+        ARCH=$(uname -m | tr '[:upper:]' '[:lower:]')
+        URI="https://github.com/BurntSushi/xsv/releases/download/${VERSION}/${CMD}-${VERSION}-${ARCH}-unknown-${OS}-musl.tar.gz"
+        curl -L "${URI}" | tar xzf -
         [ ! -d ~/bin ] &&  mkdir ~/bin
-        mv xsv ~/bin
+        mv ${CMD} ~/bin
     fi
 fi
