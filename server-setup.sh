@@ -21,27 +21,8 @@ echo ""
 echo "--------------------------"
 echo "        zsh & more"
 echo "--------------------------"
-sudo apt install -y zsh
-
-if [ -d zsh-syntax-highlighting ]; then
-    cd zsh-syntax-highlighting
-    git pull
-    cd ..
-else
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-fi
-
-if [ -d zsh-git-prompt ]; then
-    cd zsh-git-prompt
-    git pull
-    cd ..
-else
-    git clone https://github.com/starcraftman/zsh-git-prompt.git
-fi
-[ -f ~/.zshrc ] && mv ~/.zshrc ~/.zshrc.backup
-cp "${BASEDIR}"/.zshrc ~
-[ -f ~/.zshenv ] && mv ~/.zshenv ~/.zshenv.backup
-cp "${BASEDIR}"/.zshenv ~
+cd "${BASEDIR}"
+./_setup_zsh.sh
 
 
 # colored man with less
@@ -69,7 +50,7 @@ echo "        emacs"
 echo "--------------------------"
 [ ! -x "$(command -v emacs)" ] &&  sudo apt install -y emacs-nox
 [ -f ~/.emacs ] && mv ~/.emacs ~/.emacs.backup
-cp "${BASEDIR}"/.emacs ~
+cp "${BASEDIR}/.emacs" ~
 
 
 # misc software
