@@ -48,10 +48,7 @@ echo ""
 echo "--------------------------"
 echo "        emacs"
 echo "--------------------------"
-[ ! -x "$(command -v emacs)" ] &&  sudo apt install -y emacs-nox
-[ -f ~/.emacs ] && mv ~/.emacs ~/.emacs.backup
-cp "${BASEDIR}/.emacs" ~
-
+./_setup-emacs.sh
 
 # misc software
 echo ""
