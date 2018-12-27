@@ -4,22 +4,27 @@
 # Run `./_setup-tmux.sh`
 # Then it will download source and build tmux under <repo-root>.
 
-BASEDIR=$(dirname $(readlink -f "$0"))
-CONFDIR="${HOME}/confs"
+VERSION="2.8"
 
-cd "$CONFDIR"
+if [ "$1" = "-f" ] || [ ! -x "$(command -v tmux)" ]; then
 
-sudo apt install libevent-dev libncurses5-dev libncursesw5-dev
-wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz
-tar xzf ./tmux-2.8.tar.gz
-cd tmux-2.8
-./configure && make -j4
+    BASEDIR=$(dirname $(readlink -f "$0"))
+    CONFDIR="${HOME}/confs"
 
+    if [ $(uname -s) == "Darwin"]; then
+        brew install tmux
+    else
+        cd "$CONFDIR"
+        sudo apt install libevent-dev libncurses5-dev libncursesw5-dev
+        curl -L "https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz" | tar xzf -
+        cd "tmux-${VERSION}"
+        ./configure && make -j4
+        [ ! -d ~/bin ] && mkdir ~/bin
+        mv tmux ~/bin
+    fi
 
-[ ! -d ~/bin ] && mkdir ~/bin
-mv tmux ~/bin
+    [ -f ~/.tmux.conf ] && mv ~/.tmux.conf ~/.tmux.conf.backup
+    cp "${BASEDIR}"/.tmux.conf ~
+    [ ! -d ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-
-[ -f ~/.tmux.conf ] && mv ~/.tmux.conf ~/.tmux.conf.backup
-cp "${BASEDIR}"/.tmux.conf ~
-[ ! -d ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
