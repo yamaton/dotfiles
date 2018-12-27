@@ -8,25 +8,21 @@ echo "BASEDIR: ${BASEDIR}"
 echo "-------------------------"
 echo "   vscode"
 echo "-------------------------"
-if [ ! -x "$(command -v code)" ]; then
-    cd "${BASEDIR}"
-    ./_setup-vscode.sh
-    cp ./vscode/settings.json ~/.config/Code/User/settings.json
-else
-    echo "[INFO] skipping; vscode is already available"
-fi
+cd "${BASEDIR}"
+./_setup-vscode.sh
+
 
 # misc software
 echo "-------------------------"
 echo "   terminator"
 echo "-------------------------"
-sudo apt install -y terminator --no-install-recommends
+[ -x $(command -v apt) ] && sudo apt install -y terminator --no-install-recommends
 
 
 echo "-------------------------"
 echo "   meld"
 echo "-------------------------"
-sudo apt install -y meld --no-install-recommends
+[ -x $(command -v apt) ] && sudo apt install -y meld --no-install-recommends
 
 
 # fonts-firacode
