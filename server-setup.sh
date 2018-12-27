@@ -22,7 +22,7 @@ echo "--------------------------"
 echo "        zsh & more"
 echo "--------------------------"
 cd "${BASEDIR}"
-./_setup_zsh.sh
+./_setup-zsh.sh
 
 
 # colored man with less
