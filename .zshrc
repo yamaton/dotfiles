@@ -39,6 +39,8 @@ alias bu="sudo apt update && sudo apt full-upgrade && base && conda update --all
 
 [ -x $(command -v nvim) ] && alias vim=nvim
 
+alias weather="curl wttr.in"
+
 ## =======================================
 ##      Run application by Extension
 ## =======================================
