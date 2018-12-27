@@ -8,3 +8,4 @@ create_default_packages:
   - jupyter
   - pylint
   - pytest
+  - black
