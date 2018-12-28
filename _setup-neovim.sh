@@ -18,9 +18,12 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ]; then
         wget "$URI"
         chmod +x ./nvim.appimage
         ## extract the content because crostini lacks fuse ##
-        ./nvim.appimage --appimage-extract
-        rm ./nvim.appimage
-        ln -s ./squashfs-root/usr/bin/nvim ./nvim
+        if [ $(lsb_release -sc) == "stretch" ]; then
+            ./nvim.appimage --appimage-extract
+            ln -s ./squashfs-root/usr/bin/nvim nvim
+        else
+            ln -s nvim.appimage nvim
+        fi
     fi
 
     [ ! -d "$REPO_DIR" ] && mkdir "$REPO_DIR"
