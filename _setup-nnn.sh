@@ -4,8 +4,7 @@
 # Run `./_setup-nnn.sh <repo-root>`
 # Then it will clone nnn under <repo-root> and install it.
 
-VERSION="2.1-1"
-VER_SHORT="v${VERSION%-*}"
+VERSION="2.2"
 
 REPO_DIR="${HOME}/confs"
 [ ! -d "$REPO_DIR" ] && mkdir "$REPO_DIR"
@@ -29,9 +28,9 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ]; then
         cd "${REPO_DIR}"
         if [ ! -z "$OS" ]; then
             echo "[INFO] getting deb file for $codename"
-            URI="https://github.com/jarun/nnn/releases/download/${VER_SHORT}/nnn_${VERSION}_${OS}.amd64.deb"
+            URI="https://github.com/jarun/nnn/releases/download/v${VERSION}/nnn_${VERSION}-1_${OS}.amd64.deb"
             wget "$URI"
-            sudo apt install "./nnn_${VERSION}_${OS}.amd64.deb"
+            sudo apt install "./nnn_${VERSION}-1_${OS}.amd64.deb"
         else
             echo "[INFO] prepare to build nnn"
             sudo apt install -y libncursesw5-dev
