@@ -126,3 +126,11 @@ echo "        gotop"
 echo "--------------------------"
 cd "${BASEDIR}"
 ./_setup-gotop.sh
+
+
+echo ""
+echo "--------------------------"
+echo "        fzf"
+echo "--------------------------"
+cd "${BASEDIR}"
+./_setup-fzf.sh
