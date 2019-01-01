@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APPS="cmake htop autojump wget curl gnupg2 source-highlight jq python parallel neofetch p7zip"
+APPS="cmake htop autojump wget curl gnupg2 source-highlight jq python parallel neofetch p7zip tree"
 
 if [ $(uname -s) == "Darwin" ]; then
     brew install $(printf "$APPS")
