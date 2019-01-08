@@ -1,9 +1,8 @@
 #!/bin/bash
 
+VERSION="1.206"
 
-if [ $(uname -s) == "Linux" ] && [ -x $(command -v apt) ]; then
 codename=$(lsb_release -c -s)
-
 if [ "$codename" == "stretch" ]; then
     echo "[INFO] Adding contrib non-free to /etc/apt/sources.list"
     # Edit /etc/apt/sources.list
@@ -19,12 +18,14 @@ deb-src http://security.debian.org/debian-security/ stretch/updates main contrib
 EOF
 fi
 
+
+if [ $(uname -s) == "Linux" ] && [ -x $(command -v apt) ]; then
     sudo apt update
     sudo apt install -y fonts-firacode
-
 else
-    VERSION="1.206"
+    [ ! -d ~/.fonts ] && mkdir ~/.fonts
+    cd ~/.fonts
     URI="https://github.com/tonsky/FiraCode/releases/download/${VERSION}/FiraCode_${VERSION}.zip"
+    wget -N "${URI}"
     7z x "./FiraCode_${VERSION}.zip"
-    echo "Take care of the rest and install Fira Code font manually "
 fi

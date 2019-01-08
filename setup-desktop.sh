@@ -34,8 +34,7 @@ cd "${BASEDIR}"
 
 
 echo "-------------------------"
-echo "   Source Code Pro fonts"
-echo "   (just downloading..)"
+echo "   Misc fonts"
 echo "-------------------------"
 cd "${BASEDIR}"
-./_download_fonts.sh
+./_setup-fonts.sh
