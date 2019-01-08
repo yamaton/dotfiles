@@ -11,7 +11,7 @@ else
 fi
 
 URI="https://repo.anaconda.com/miniconda/Miniconda3-latest-${OS}-x86_64.sh"
-wget "$URI"
+wget -N "$URI"
 chmod +x ./Miniconda3-latest-${OS}-x86_64.sh
 ./Miniconda3-latest-${OS}-x86_64.sh
 

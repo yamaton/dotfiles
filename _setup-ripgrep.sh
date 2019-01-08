@@ -8,7 +8,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v rg)" ]; then
     else
         if [ "$(uname -m)" == "x86_64" ]; then
             URI="https://github.com/BurntSushi/ripgrep/releases/download/${VERSION}/ripgrep_${VERSION}_amd64.deb"
-            wget "${URI}"
+            wget -N "${URI}"
             sudo apt install "./ripgrep_${VERSION}_amd64.deb"
         elif [ "$(uname -m)" == "armv7l" ]; then
             URI="https://github.com/BurntSushi/ripgrep/releases/download/${VERSION}/ripgrep-${VERSION}-arm-unknown-linux-gnueabihf.tar.gz"

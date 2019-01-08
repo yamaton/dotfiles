@@ -29,7 +29,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ]; then
         if [ ! -z "$OS" ]; then
             echo "[INFO] getting deb file for $codename"
             URI="https://github.com/jarun/nnn/releases/download/v${VERSION}/nnn_${VERSION}-1_${OS}.amd64.deb"
-            wget "$URI"
+            wget -N "$URI"
             sudo apt install "./nnn_${VERSION}-1_${OS}.amd64.deb"
         else
             echo "[INFO] prepare to build nnn"
