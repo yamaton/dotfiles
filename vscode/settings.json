@@ -40,7 +40,7 @@
 
     // ------- C++ / Clang ------
     "clang-format.fallbackStyle": "WebKit",
-    "clang-format.style": "{BreakBeforeBraces: Allman, Standard: Cpp11, UseTab: ForIndentation, TabWidth: 4}",
+    "clang-format.style": "{BreakBeforeBraces: Allman, Standard: Cpp11, IndentWidth: 4, UseTab: Never}",
 
     // ------- Insert DateTime -------
     "insertDateString.formatDate": "YYYY-MM-DD (DDD)",
