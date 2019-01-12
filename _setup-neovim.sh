@@ -17,6 +17,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ]; then
         cd "$BIN_DIR"
         wget -N "$URI"
         chmod +x ./nvim.appimage
+        [ -f nvim ] && rm -f nvim
         ## extract the content because crostini lacks fuse ##
         if [ $(lsb_release -sc) == "stretch" ]; then
             ./nvim.appimage --appimage-extract
