@@ -9,3 +9,5 @@ create_default_packages:
   - pylint
   - pytest
   - black
+  - rope
+
