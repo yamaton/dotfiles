@@ -35,7 +35,7 @@ alias base="conda deactivate; conda activate"
 alias tf="conda deactivate; conda activate tf"
 alias torch="conda deactivate; conda activate torch"
 
-alias bu="sudo apt update && sudo apt full-upgrade && base && conda update --all && tf && conda update --all"
+alias bu="sudo apt update && sudo apt full-upgrade && base && conda update --all && tf && conda update --all && base"
 
 [ -x $(command -v nvim) ] && alias vim=nvim
 
@@ -135,23 +135,19 @@ setopt complete_aliases # aliased ls needs if file/dir completions work
 
 ## colors used in auto complections
 case "${TERM}" in
-kterm*|xterm*)
-    export LSCOLORS=exfxcxdxbxegedabagacad
-    export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-    zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+    kterm*|xterm*)
+        export LSCOLORS=exfxcxdxbxegedabagacad
+        export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+        zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
     ;;
-cons25)
-    unset LANG
-    export LSCOLORS=ExFxCxdxBxegedabagacad
-    export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-    zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
+    cons25)
+        unset LANG
+        export LSCOLORS=ExFxCxdxBxegedabagacad
+        export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+        zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
     ;;
 esac
 
-
-## Syntax Highlighting
-# Use homebrew to install zsh-syntax-highlighting
-source ~/confs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 ## Bash-like comment in command line
@@ -166,11 +162,9 @@ setopt interactivecomments
 ## Use colors in prompt
 autoload colors && colors
 
-
 ## StackOverflow mentions that zsh comes with builtin colored prompt themes
 ## Type command "prompt -p adam1" for example.
 autoload -U promptinit && promptinit
-
 
 ## Zsh Git Prompt
 ## https://github.com/olivierverdier/zsh-git-prompt
@@ -203,16 +197,18 @@ export LESS=" -R "
 ## colorful man
 [[ -f ~/.less_termcap ]] && . ~/.less_termcap
 
-
 ## nnn ; cd on exit:
 [[ ! -d ~/tmp ]] && mkdir ~/tmp
 export NNN_TMPFILE="~/tmp/nnn"
 n()
 {
-        nnn -l "$@"
-
-        if [ -f $NNN_TMPFILE ]; then
-                . $NNN_TMPFILE
-                rm -f $NNN_TMPFILE
-        fi
+    nnn -l "$@"
+    if [ -f $NNN_TMPFILE ]; then
+        . $NNN_TMPFILE
+        rm -f $NNN_TMPFILE
+    fi
 }
+
+## zsh syntax highlighting
+source ~/confs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+

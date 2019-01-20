@@ -12,17 +12,12 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v code)" ]; then
         sudo apt update
         sudo apt -y install code
     else
-        echo "[WARNING] Install manually from https://code.visualstudio.com/"
-    fi
-
-    else
         echo "[INFO] skipping; vscode is already available"
     fi
 
 else
     echo "[WARNING] code already exists; skipping installation (use -f for force install)"
 fi
-
 
 echo "[INFO] copying vscode settings.json to ${CONFIG_DIR}"
 [ ! -d "${CONFIG_DIR}" ] && mkdir -p "${CONFIG_DIR}"
