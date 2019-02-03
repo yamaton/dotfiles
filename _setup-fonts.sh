@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+#
+# Per-user font installation
+#
+
 [ ! -d ~/.fonts ] && mkdir ~/.fonts
 cd ~/.fonts
 
@@ -19,5 +23,11 @@ echo "-------------------"
 echo "  Hasklig"
 echo "-------------------"
 wget -N https://github.com/i-tu/Hasklig/releases/download/1.1/Hasklig-1.1.zip
+unzip Hasklig-1.1.zip
+
+echo "-------------------"
+echo "  Inconsolata"
+echo "-------------------"
+wget -N https://www.levien.com/type/myfonts/Inconsolata.otf
 
 fc-cache -fv
