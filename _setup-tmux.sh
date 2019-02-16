@@ -28,6 +28,10 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v tmux)" ]; then
 
     [ -f ~/.tmux.conf ] && mv ~/.tmux.conf ~/.tmux.conf.backup
     cp "${BASEDIR}"/.tmux.conf ~
-    [ ! -d ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    if [ ! -d ~/.tmux/plugins/tpm ]; then
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    else
+        cd ~/.tmux/plugins/tpm && git pull
+    fi
 
 fi

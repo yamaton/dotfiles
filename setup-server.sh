@@ -21,7 +21,7 @@ echo "--------------------------"
 echo "        zsh & more"
 echo "--------------------------"
 cd "${BASEDIR}"
-./_setup-zsh.sh
+./_setup-zsh.sh -f
 
 
 # colored man with less
@@ -39,7 +39,7 @@ echo "--------------------------"
 echo "        tmux"
 echo "--------------------------"
 cd "${BASEDIR}"
-./_setup-tmux.sh
+./_setup-tmux.sh -f
 
 
 # emacs
@@ -47,7 +47,8 @@ echo ""
 echo "--------------------------"
 echo "        emacs"
 echo "--------------------------"
-./_setup-emacs.sh
+cd "${BASEDIR}"
+./_setup-emacs.sh -f
 
 
 # neovim
@@ -55,7 +56,8 @@ echo ""
 echo "--------------------------"
 echo "        neovim"
 echo "--------------------------"
-./_setup-neovim.sh
+cd "${BASEDIR}"
+./_setup-neovim.sh -f
 
 
 # misc software
@@ -63,6 +65,7 @@ echo ""
 echo "--------------------------"
 echo "        misc software"
 echo "--------------------------"
+cd "${BASEDIR}"
 ./_setup-misc.sh
 
 
@@ -72,7 +75,7 @@ echo "--------------------------"
 echo "        tldr client"
 echo "--------------------------"
 cd "${BASEDIR}"
-./_setup-tldr.sh
+./_setup-tldr.sh -f
 
 
 # cht.sh
@@ -90,7 +93,7 @@ echo "--------------------------"
 echo "        ripgrep"
 echo "--------------------------"
 cd "${BASEDIR}"
-./_setup-ripgrep.sh
+./_setup-ripgrep.sh -f
 
 
 # fd ---better find---
@@ -99,7 +102,7 @@ echo "--------------------------"
 echo "        fd"
 echo "--------------------------"
 cd "${BASEDIR}"
-./_setup-fd.sh
+./_setup-fd.sh -f
 
 
 # nnn
@@ -107,7 +110,8 @@ echo ""
 echo "--------------------------"
 echo "        nnn"
 echo "--------------------------"
-./_setup-nnn.sh
+cd "${BASEDIR}"
+./_setup-nnn.sh -f
 
 
 # xsv ---better csvtools ---
@@ -116,7 +120,7 @@ echo "--------------------------"
 echo "        xsv"
 echo "--------------------------"
 cd "${BASEDIR}"
-./_setup-xsv.sh
+./_setup-xsv.sh -f
 
 
 # gotop --system monitor ---
@@ -125,7 +129,7 @@ echo "--------------------------"
 echo "        gotop"
 echo "--------------------------"
 cd "${BASEDIR}"
-./_setup-gotop.sh
+./_setup-gotop.sh -f
 
 
 echo ""
@@ -133,4 +137,13 @@ echo "--------------------------"
 echo "        fzf"
 echo "--------------------------"
 cd "${BASEDIR}"
-./_setup-fzf.sh
+./_setup-fzf.sh -f
+
+
+echo ""
+echo "--------------------------"
+echo "        Cleaning up"
+echo "--------------------------"
+cd "${BASEDIR}"
+rm -f *.deb
+rm -f ../*.deb
