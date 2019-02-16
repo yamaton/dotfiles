@@ -1,6 +1,7 @@
 #!/bin/bash
 
-CMD=emacs
+BASEDIR=$(dirname $(readlink -f "$0"))
+CMD="emacs"
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
 
