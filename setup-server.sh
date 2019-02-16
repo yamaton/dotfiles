@@ -11,8 +11,11 @@ echo ""
 # configurations are in ~/confs
 [ ! -d "${CONFDIR}" ] &&  mkdir "${CONFDIR}"
 
-# update the system
-sudo apt update && sudo apt full-upgrade
+# update the system and install essential
+if [ $(uname -s) == "Linux" ] && [ -x $(command -v apt) ]; then
+    sudo apt update && sudo apt full-upgrade
+    sudo apt install -y curl openssh-server
+fi
 
 
 # zsh
