@@ -17,14 +17,9 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ]; then
         cd "$BIN_DIR"
         wget -N "$URI"
         chmod +x ./nvim.appimage
-        [ -f nvim ] && rm -f nvim
-        ## extract the content because crostini lacks fuse ##
-        if [ $(lsb_release -sc) == "stretch" ]; then
-            ./nvim.appimage --appimage-extract
-            ln -s ./squashfs-root/usr/bin/nvim nvim
-        else
-            ln -s nvim.appimage nvim
-        fi
+        sudo apt install fuse
+        [ -L ./nvim ] && rm -f ./nvim
+        ln -s ./nvim.appimage ./nvim
     fi
 
     [ ! -d "$REPO_DIR" ] && mkdir "$REPO_DIR"
