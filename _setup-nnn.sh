@@ -4,7 +4,7 @@
 # Run `./_setup-nnn.sh <repo-root>`
 # Then it will clone nnn under <repo-root> and install it.
 
-VERSION="2.2"
+VERSION="2.3"
 
 REPO_DIR="${HOME}/confs"
 [ ! -d "$REPO_DIR" ] && mkdir "$REPO_DIR"
@@ -26,7 +26,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ]; then
         esac
 
         cd "${REPO_DIR}"
-        if [ ! -z "$OS" ]; then
+        if [ ! -z "$OS" ] && [ $(uname -m) == "x86_64" ]; then
             echo "[INFO] getting deb file for $codename"
             URI="https://github.com/jarun/nnn/releases/download/v${VERSION}/nnn_${VERSION}-1_${OS}.amd64.deb"
             wget -N "$URI"

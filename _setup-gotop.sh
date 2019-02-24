@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CMD="gotop"
-VERSION="2.0.1"
+VERSION="3.0.0"
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
     if [ "$(uname -m)" == "x86_64" ]; then
