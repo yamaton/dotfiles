@@ -33,7 +33,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ]; then
             sudo apt install "./nnn_${VERSION}-1_${OS}.amd64.deb"
         else
             echo "[INFO] prepare to build nnn"
-            sudo apt install -y libncursesw5-dev
+            sudo apt install -y libncursesw5-dev libreadline-dev
 
             echo "[INFO] build nnn"
             echo "REPO_DIR: ${REPO_DIR}"
