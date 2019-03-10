@@ -13,10 +13,15 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
             wget -N "${URI}"
             sudo apt install "./$(basename ${URI})"
         elif [ "$(uname -m)" == "armv7l" ]; then
-            URI="https://github.com/sharkdp/fd/releases/download/v${VERSION}/fd-${VERSION}-arm-unknown-linux-gnueabihf.tar.gz"
-            curl -L "${URI}" | tar xzf -
+            URI="https://github.com/sharkdp/fd/releases/download/v${VERSION}/fd-v${VERSION}-arm-unknown-linux-musleabihf.tar.gz"
+            wget -N "${URI}"
+            NAME=$(basename ${URI})
+            tar xzf "./${NAME}"
+            echo "------"
+            NAME1="${NAME%.*.*}"
+	    echo "$NAME1"
             [ ! -d ~/bin ] &&  mkdir ~/bin
-            cp "${$(basename $URI)%.*.*}/$CMD" ~/bin
+            cp "${NAME1}/${CMD}" ~/bin
         fi
     fi
 
