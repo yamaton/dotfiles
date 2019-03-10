@@ -10,7 +10,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ]; then
 
     if [ $(uname -s) == "Darwin" ]; then
         brew install neovim
-    elif [ $(uname -s) == "Linux" ] && [ -x $(command -v apt) ]; then
+    elif [ $(uname -m) == "x86_64" ] && [ -x $(command -v apt) ]; then
         URI="https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage"
 
         [ ! -d "$BIN_DIR" ] && mkdir -p "$BIN_DIR"
@@ -20,6 +20,8 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ]; then
         sudo apt install fuse
         [ -L ./nvim ] && rm -f ./nvim
         ln -s ./nvim.appimage ./nvim
+    elif [ $(uname -m) != "x86_64" ] && [ -x $(command -v apt) ]; then
+        sudo apt install neovim
     fi
 
     [ ! -d "$REPO_DIR" ] && mkdir "$REPO_DIR"
