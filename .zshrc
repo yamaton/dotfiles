@@ -5,6 +5,7 @@ export LANG=en_US.UTF-8
 export EDITOR=vim
 export PAGER=less
 export SHELL=zsh
+export LC_NUMERIC=en_US.UTF-8
 
 ## =======================================
 ##            Command History
