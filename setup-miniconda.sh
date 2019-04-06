@@ -20,7 +20,7 @@ if [ $(uname -m) == "x86_64" ]; then
     cp "${BASEDIR}/.condarc" ~
 
     conda update --all
-    conda create -n tf -c conda-forge tensorflow opencv=3.3.0
+    conda create -n tf -c conda-forge tensorflow opencv=4.0.1
     conda activate tf
     conda config --add channels conda-forge --env
 else
