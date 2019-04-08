@@ -6,7 +6,8 @@ codename=$(lsb_release -c -s)
 if [ "$codename" == "stretch" ]; then
     echo "[INFO] Adding contrib non-free to /etc/apt/sources.list"
     # Edit /etc/apt/sources.list
-    sudo cat << 'EOF' > /etc/apt/sources.list
+    sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
+    sudo cat << EOF | sudo tee /etc/apt/sources.list > /dev/null
 deb http://deb.debian.org/debian stretch main contrib non-free
 deb-src http://deb.debian.org/debian stretch main contrib non-free
 
