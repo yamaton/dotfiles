@@ -11,14 +11,14 @@ else
 fi
 
 if [ $(uname -m) == "x86_64" ]; then
+    cp "${BASEDIR}/.condarc" ~
+
     URI="https://repo.anaconda.com/miniconda/Miniconda3-latest-${OS}-x86_64.sh"
     wget -N "$URI"
     chmod +x ./Miniconda3-latest-${OS}-x86_64.sh
     ./Miniconda3-latest-${OS}-x86_64.sh
 
     source ~/miniconda3/etc/profile.d/conda.sh
-    cp "${BASEDIR}/.condarc" ~
-
     conda update --all
     conda create -n tf -c conda-forge tensorflow opencv=4.1.0
     conda activate tf
