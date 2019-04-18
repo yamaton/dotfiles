@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="0.10.0"
+VERSION="11.0.1"
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v rg)" ]; then
     if [ "$(uname -s)" == "Darwin" ]; then
