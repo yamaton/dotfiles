@@ -30,4 +30,17 @@ echo "  Inconsolata"
 echo "-------------------"
 wget -N https://www.levien.com/type/myfonts/Inconsolata.otf
 
+echo "-------------------"
+echo "  Noto CJK"
+echo "-------------------"
+if [ -x $(command -v apt) ]; then
+    sudo apt update
+    sudo apt install -y fonts-noto-cjk
+else
+    wget -N https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip
+    wget -N https://noto-website-2.storage.googleapis.com/pkgs/NotoSerifCJKjp-hinted.zip
+    unzip NotoSansCJKjp-hinted.zip
+    unzip NotoSerifCJKjp-hinted.zip
+fi
+
 fc-cache -fv
