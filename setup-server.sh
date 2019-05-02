@@ -99,13 +99,13 @@ cd "${BASEDIR}"
 ./_setup-ripgrep.sh -f
 
 
-# fd ---better find---
+# bat ---quick look file---
 echo ""
 echo "--------------------------"
-echo "        fd"
+echo "        bat"
 echo "--------------------------"
 cd "${BASEDIR}"
-./_setup-fd.sh -f
+./_setup-bat.sh -f
 
 
 # nnn
