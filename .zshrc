@@ -213,3 +213,6 @@ n()
 ## zsh syntax highlighting
 source ~/confs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+## conda base as default environment
+conda deactivate; conda activate
+
