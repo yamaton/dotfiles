@@ -10,6 +10,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v rg)" ]; then
             URI="https://github.com/BurntSushi/ripgrep/releases/download/${VERSION}/ripgrep_${VERSION}_amd64.deb"
             wget -N "${URI}"
             sudo apt install "./ripgrep_${VERSION}_amd64.deb"
+            rm -f "./ripgrep_${VERSION}_amd64.deb"
         elif [ "$(uname -m)" == "armv7l" ]; then
             URI="https://github.com/BurntSushi/ripgrep/releases/download/${VERSION}/ripgrep-${VERSION}-arm-unknown-linux-gnueabihf.tar.gz"
             curl -L "${URI}" | tar xzf -
