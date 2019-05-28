@@ -4,7 +4,7 @@
 # Run `./_setup-nnn.sh <repo-root>`
 # Then it will clone nnn under <repo-root> and install it.
 
-VERSION="2.4"
+VERSION="2.5"
 
 REPO_DIR="${HOME}/confs"
 [ ! -d "$REPO_DIR" ] && mkdir "$REPO_DIR"
