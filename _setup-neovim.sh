@@ -11,7 +11,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ]; then
     if [ $(uname -s) == "Darwin" ]; then
         brew install neovim
     elif [ $(uname -m) == "x86_64" ] && [ -x $(command -v apt) ]; then
-        URI="https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage"
+        URI="https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
 
         [ ! -d "$BIN_DIR" ] && mkdir -p "$BIN_DIR"
         cd "$BIN_DIR"
