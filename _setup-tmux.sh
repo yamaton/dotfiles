@@ -4,8 +4,9 @@
 # Run `./_setup-tmux.sh`
 # Then it will download source and build tmux under <repo-root>.
 
-VERSION="3.0-rc2"
+VERSION="3.0-rc3"
 VER=$(echo $VERSION | cut -c 1-3)
+
 if [ "$1" = "-f" ] || [ ! -x "$(command -v tmux)" ]; then
 
     BASEDIR=$(dirname $(readlink -f "$0"))
