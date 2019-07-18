@@ -32,6 +32,8 @@ alias mv="mv -i"
 alias cp="cp -i"
 alias rm="rm -i"
 
+alias mkdir="mkdir -p"
+
 alias base="conda deactivate; conda activate"
 alias tf="conda deactivate; conda activate tf"
 alias torch="conda deactivate; conda activate torch"
