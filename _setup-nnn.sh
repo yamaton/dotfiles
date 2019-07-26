@@ -21,6 +21,8 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ]; then
                 OS="ubuntu16.04";;
             "stretch")
                 OS="debian9";;
+            "buster")
+                OS="";;  # to be filled out when available
             *)
                 OS="";;
         esac
