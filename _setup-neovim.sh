@@ -13,7 +13,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ]; then
     elif [ $(uname -m) == "x86_64" ] && [ -x $(command -v apt) ]; then
         URI="https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
 
-        [ ! -d "$BIN_DIR" ] && mkdir -p "$BIN_DIR"
+        mkdir -p "$BIN_DIR"
         cd "$BIN_DIR"
         wget -N "$URI"
         chmod +x ./nvim.appimage
@@ -24,11 +24,11 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ]; then
         sudo apt install neovim
     fi
 
-    [ ! -d "$REPO_DIR" ] && mkdir "$REPO_DIR"
+    mkdir -p "$REPO_DIR"
     cd "$REPO_DIR"
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-    [ ! -d "$CONFIG_DIR" ] && mkdir -p "$CONFIG_DIR"
+    mkdir -p "$CONFIG_DIR"
     cp "$BASEDIR"/init.vim "$CONFIG_DIR"
 else
     echo "[INFO] skipping; neovim is already available"
