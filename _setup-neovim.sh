@@ -17,11 +17,11 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ]; then
         cd "$BIN_DIR"
         wget -N "$URI"
         chmod +x ./nvim.appimage
-        sudo apt install fuse
+        sudo apt install -y fuse
         [ -L ./nvim ] && rm -f ./nvim
         ln -s ./nvim.appimage ./nvim
     elif [ $(uname -m) != "x86_64" ] && [ -x $(command -v apt) ]; then
-        sudo apt install neovim
+        sudo apt install -y neovim
     fi
 
     mkdir -p "$REPO_DIR"

@@ -16,7 +16,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v tmux)" ]; then
         brew install tmux
     elif [ -x $(command -v apt) ] && [ $(uname -s) == "Linux" ]; then
         cd "$CONFDIR"
-        sudo apt install libevent-dev libncurses5-dev libncursesw5-dev
+        sudo apt install -y libevent-dev libncurses5-dev libncursesw5-dev
         curl -L "https://github.com/tmux/tmux/releases/download/${VER}/tmux-${VERSION}.tar.gz" | tar xzf -
         cd "tmux-${VERSION}"
         ./configure && make -j4
@@ -24,7 +24,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v tmux)" ]; then
         mv tmux ~/bin
 
         # clipboard integration
-        sudo apt install xclip
+        sudo apt install -y xclip
     fi
 
     [ -f ~/.tmux.conf ] && mv ~/.tmux.conf ~/.tmux.conf.backup
