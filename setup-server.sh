@@ -135,6 +135,15 @@ cd "${BASEDIR}"
 ./_setup-gotop.sh -f
 
 
+# exa  ---ls replacement---
+echo ""
+echo "--------------------------"
+echo "        exa"
+echo "--------------------------"
+cd "${BASEDIR}"
+./_setup-exa.sh -f
+
+
 echo ""
 echo "--------------------------"
 echo "        fzf"
