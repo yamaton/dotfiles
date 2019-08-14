@@ -1,20 +1,11 @@
 #!/bin/bash
 
-VERSION="11.0.2"
-
-if [ "$1" = "-f" ] || [ ! -x "$(command -v rg)" ]; then
+if [ "$1" = "-f" ] || [ ! -x "$(command -v exa)" ]; then
     if [ "$(uname -s)" == "Darwin" ]; then
-        brew install ripgrep
+        brew install exa
+    elif [ "$(uname -m)" == "x86_64" ] && [ -x $(command -v cargo) ] ; then
+	cargo install exa
     else
-        if [ "$(uname -m)" == "x86_64" ]; then
-            URI="https://github.com/BurntSushi/ripgrep/releases/download/${VERSION}/ripgrep_${VERSION}_amd64.deb"
-            wget -N "${URI}"
-            sudo apt install "./ripgrep_${VERSION}_amd64.deb"
-            rm -f "./ripgrep_${VERSION}_amd64.deb"
-        elif [ "$(uname -m)" == "armv7l" ]; then
-            URI="https://github.com/BurntSushi/ripgrep/releases/download/${VERSION}/ripgrep-${VERSION}-arm-unknown-linux-gnueabihf.tar.gz"
-            curl -L "${URI}" | tar xzf -
-            cp "ripgrep-${VERSION}-arm-unknown-linux-gnueabihf/rg" ~/bin
-        fi
+	echo "cargo is missing. Exiting without installing exa..."
     fi
 fi
