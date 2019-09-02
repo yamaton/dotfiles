@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="0.11.0"
+VERSION="0.12.0"
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v bat)" ]; then
     if [ "$(uname -s)" == "Darwin" ]; then
