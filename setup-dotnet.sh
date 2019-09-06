@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "[NOTE] There is an issue in dotnet fsi"
+echo "       See https://github.com/dotnet/fsharp/pull/7495"
+
 if [ -d dotnet ]; then
     read -p "Remove existing dotnet directory? ([Y]/n)" RES
     if [ "$RES" == "n" ] || [ "$RES" == "N" ]; then
