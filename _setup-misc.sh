@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APPS="cmake htop autojump wget curl gnupg2 source-highlight jq python parallel neofetch p7zip tree trash-cli dstat"
+APPS="cmake htop autojump wget curl source-highlight jq parallel neofetch p7zip tree trash-cli"
 
 if [ $(uname -s) == "Darwin" ]; then
     for app in "${APPS}"; do
