@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CMD="fd"
-VERSION="7.3.0"
+VERSION="7.4.0"
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
 
