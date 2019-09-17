@@ -1,7 +1,15 @@
 #!/bin/bash
 
-echo "[NOTE] There is an issue in dotnet fsi"
-echo "       See https://github.com/dotnet/fsharp/pull/7495"
+echo "-----------------------------------------------------------"
+echo "[NOTE] dotnet fsi is broken since 3.0.100-preview8 to -rc1"
+echo ""
+echo "> Failed to install ctrl-c handler - Ctrl-C handling will not be available. Error was:"
+echo "	Could not load file or assembly 'Mono.Posix, Version=2.0.0.0, Culture=neutral,"
+echo "  PublicKeyToken=0738eb9f132ed756'. The system cannot find the file specified."
+echo ""
+echo "  See https://github.com/dotnet/fsharp/pull/7495"
+echo "-----------------------------------------------------------"
+echo ""
 
 if [ -d dotnet ]; then
     read -p "Remove existing dotnet directory? ([Y]/n)" RES
@@ -13,7 +21,7 @@ if [ -d dotnet ]; then
 fi
 
 mkdir dotnet && cd dotnet
-URL="https://download.visualstudio.microsoft.com/download/pr/498b8b41-7626-435e-bea8-878c39ccbbf3/c8df08e881d1bcf9a49a9ff5367090cc/dotnet-sdk-3.0.100-preview9-014004-linux-x64.tar.gz"
+URL="https://download.visualstudio.microsoft.com/download/pr/c624c5d6-0e9c-4dd9-9506-6b197ef44dc8/ad61b332f3abcc7dec3a49434e4766e1/dotnet-sdk-3.0.100-preview7-012821-linux-x64.tar.gz"
 wget $URL
 FILENAME=$(basename $URL)
 tar xzf $FILENAME
