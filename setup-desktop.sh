@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-BASEDIR=$(dirname $(readlink -f "$0"))
+BASEDIR=$(dirname "$(readlink -f "$0")")
 echo "BASEDIR: ${BASEDIR}"
 
 
@@ -8,7 +8,7 @@ echo "BASEDIR: ${BASEDIR}"
 echo "-------------------------"
 echo "   vscode"
 echo "-------------------------"
-cd "${BASEDIR}"
+cd "${BASEDIR}" || exit
 ./_setup-vscode.sh
 
 
@@ -16,25 +16,25 @@ cd "${BASEDIR}"
 echo "-------------------------"
 echo "   terminator"
 echo "-------------------------"
-[ -x $(command -v apt) ] && sudo apt install -y terminator --no-install-recommends
+[ -x "$(command -v apt)" ] && sudo apt install -y terminator --no-install-recommends
 
 
 echo "-------------------------"
 echo "   meld"
 echo "-------------------------"
-[ -x $(command -v apt) ] && sudo apt install -y meld --no-install-recommends
+[ -x "$(command -v apt)" ] && sudo apt install -y meld --no-install-recommends
 
 
 # fonts-firacode
 echo "-------------------------"
 echo "   Fira code fonts"
 echo "-------------------------"
-cd "${BASEDIR}"
+cd "${BASEDIR}" || exit
 ./_setup-firacode.sh
 
 
 echo "-------------------------"
 echo "   Misc fonts"
 echo "-------------------------"
-cd "${BASEDIR}"
+cd "${BASEDIR}" || exit
 ./_setup-fonts.sh

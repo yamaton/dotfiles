@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # * Usage
 # Run `./_setup-tldr.sh <target-dir>`
@@ -10,11 +10,11 @@ REPO_DIR="${HOME}/confs"
 [ ! -d "$REPO_DIR" ] && mkdir "${REPO_DIR}"
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
-    if [ $(uname -s) == "Darwin" ]; then
+    if [ "$(uname -s)" == "Darwin" ]; then
         brew install "${CMD}"
-    elif [ $(uname -s) == "Linux" ]; then
+    elif [ "$(uname -s)" == "Linux" ]; then
         sudo apt install -y libzip-dev libcurl4-openssl-dev  # tldr needs them
-        cd "${REPO_DIR}"
+        cd "${REPO_DIR}" || exit
         if [ ! -d tldr-cpp-client ]; then
             git clone https://github.com/tldr-pages/tldr-cpp-client.git
             cd tldr-cpp-client

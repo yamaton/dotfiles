@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 if [ "$1" = "-f" ] || [ ! -x "$(command -v docker)" ]; then
 if [ -x apt ]; then
 sudo apt autoremove docker docker-engine docker.io containerd runc

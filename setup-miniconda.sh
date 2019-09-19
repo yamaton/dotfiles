@@ -1,16 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-BASEDIR=$(dirname $(readlink -f "$0"))
+BASEDIR=$(dirname "$(readlink -f "$0")")
 CONFDIR="${HOME}/confs"
 
-cd "$CONFDIR"
-if [ $(uname -s) == "Darwin" ]; then
+cd "$CONFDIR" || exit
+if [ "$(uname -s)" == "Darwin" ]; then
     OS="MacOSX"
 else
     OS="Linux"
 fi
 
-if [ $(uname -m) == "x86_64" ]; then
+if [ "$(uname -m)" == "x86_64" ]; then
     cp "${BASEDIR}/.condarc" ~
 
     URI="https://repo.anaconda.com/miniconda/Miniconda3-latest-${OS}-x86_64.sh"
@@ -18,6 +18,7 @@ if [ $(uname -m) == "x86_64" ]; then
     chmod +x ./Miniconda3-latest-${OS}-x86_64.sh
     ./Miniconda3-latest-${OS}-x86_64.sh
 
+    # shellcheck source=/dev/null
     source ~/miniconda3/etc/profile.d/conda.sh
     conda update --all
     if [ -x "$(command -v nvidia-smi)" ]; then

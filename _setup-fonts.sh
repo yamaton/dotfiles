@@ -4,8 +4,7 @@
 # Per-user font installation
 #
 
-[ ! -d ~/.fonts ] && mkdir ~/.fonts
-cd ~/.fonts
+mkdir -p ~/.fonts && cd ~/.fonts
 
 echo "-------------------"
 echo "  Source Code Pro"
@@ -33,7 +32,7 @@ wget -N https://www.levien.com/type/myfonts/Inconsolata.otf
 echo "-------------------"
 echo "  Noto CJK"
 echo "-------------------"
-if [ -x $(command -v apt) ]; then
+if [ -x "$(command -v apt)" ]; then
     sudo apt update
     sudo apt install -y fonts-noto-cjk
 else

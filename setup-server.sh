@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-BASEDIR=$(dirname $(readlink -f "$0"))
+BASEDIR=$(dirname "$(readlink -f "$0")")
 CONFDIR="${HOME}/confs"
 
 echo ""
@@ -13,14 +13,14 @@ echo ""
 
 
 # update the system and install essential
-if [ $(uname -s) == "Linux" ] && [ -x $(command -v apt) ]; then
+if [ "$(uname -s)" == "Linux" ] && [ -x "$(command -v apt)" ]; then
     sudo apt update && sudo apt full-upgrade
     sudo apt install -y curl openssh-server
 fi
 
 
 # latest git (ubuntu only)
-if [ -x $(command -v apt) ] && [ $(lsb_release -i -s) == "Ubuntu" ]; then
+if [ -x "$(command -v apt)" ] && [ "$(lsb_release -i -s)" == "Ubuntu" ]; then
     echo ""
     echo "--------------------------"
     echo "       git from ppa"
@@ -36,7 +36,7 @@ echo ""
 echo "--------------------------"
 echo "        zsh & more"
 echo "--------------------------"
-cd "${BASEDIR}"
+cd "${BASEDIR}" || exit
 ./_setup-zsh.sh -f
 
 
@@ -54,7 +54,7 @@ echo ""
 echo "--------------------------"
 echo "        tmux"
 echo "--------------------------"
-cd "${BASEDIR}"
+cd "${BASEDIR}" || exit
 ./_setup-tmux.sh -f
 
 
@@ -63,7 +63,7 @@ echo ""
 echo "--------------------------"
 echo "        emacs"
 echo "--------------------------"
-cd "${BASEDIR}"
+cd "${BASEDIR}" || exit
 ./_setup-emacs.sh -f
 
 
@@ -72,7 +72,7 @@ echo ""
 echo "--------------------------"
 echo "        neovim"
 echo "--------------------------"
-cd "${BASEDIR}"
+cd "${BASEDIR}" || exit
 ./_setup-neovim.sh -f
 
 
@@ -81,7 +81,7 @@ echo ""
 echo "--------------------------"
 echo "        misc software"
 echo "--------------------------"
-cd "${BASEDIR}"
+cd "${BASEDIR}" || exit
 ./_setup-misc.sh
 
 
@@ -90,7 +90,7 @@ echo ""
 echo "--------------------------"
 echo "        tldr client"
 echo "--------------------------"
-cd "${BASEDIR}"
+cd "${BASEDIR}" || exit
 ./_setup-tldr.sh -f
 
 
@@ -99,7 +99,7 @@ echo ""
 echo "--------------------------"
 echo "        cht.sh"
 echo "--------------------------"
-cd "${BASEDIR}"
+cd "${BASEDIR}" || exit
 ./_setup-cheatsheet.sh
 
 
@@ -108,7 +108,7 @@ echo ""
 echo "--------------------------"
 echo "        ripgrep"
 echo "--------------------------"
-cd "${BASEDIR}"
+cd "${BASEDIR}" || exit
 ./_setup-ripgrep.sh -f
 
 
@@ -117,7 +117,7 @@ echo ""
 echo "--------------------------"
 echo "        bat"
 echo "--------------------------"
-cd "${BASEDIR}"
+cd "${BASEDIR}" || exit
 ./_setup-bat.sh -f
 
 
@@ -126,7 +126,7 @@ echo ""
 echo "--------------------------"
 echo "        nnn"
 echo "--------------------------"
-cd "${BASEDIR}"
+cd "${BASEDIR}" || exit
 ./_setup-nnn.sh -f
 
 
@@ -135,7 +135,7 @@ echo ""
 echo "--------------------------"
 echo "        xsv"
 echo "--------------------------"
-cd "${BASEDIR}"
+cd "${BASEDIR}" || exit
 ./_setup-xsv.sh -f
 
 
@@ -144,7 +144,7 @@ echo ""
 echo "--------------------------"
 echo "        gotop"
 echo "--------------------------"
-cd "${BASEDIR}"
+cd "${BASEDIR}" || exit
 ./_setup-gotop.sh -f
 
 
@@ -153,7 +153,7 @@ echo ""
 echo "--------------------------"
 echo "        exa"
 echo "--------------------------"
-cd "${BASEDIR}"
+cd "${BASEDIR}" || exit
 ./_setup-exa.sh -f
 
 
@@ -161,7 +161,7 @@ echo ""
 echo "--------------------------"
 echo "        fzf"
 echo "--------------------------"
-cd "${BASEDIR}"
+cd "${BASEDIR}" || exit
 ./_setup-fzf.sh -f
 
 
@@ -169,7 +169,7 @@ echo ""
 echo "--------------------------"
 echo "        Cleaning up"
 echo "--------------------------"
-cd "${BASEDIR}"
-rm -f *.deb
+cd "${BASEDIR}" || exit
+rm -f ./*.deb
 rm -f ../*.deb
 

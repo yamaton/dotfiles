@@ -2,10 +2,10 @@
 CMD=fzf
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
-    if [ $(uname -s) == "Darwin" ]; then
+    if [ "$(uname -s)" == "Darwin" ]; then
         brew install "${CMD}"
-        $(brew --prefix)/opt/fzf/install
-    elif [ $(uname -s) == "Linux" ]; then
+        "$(brew --prefix)"/opt/fzf/install
+    elif [ "$(uname -s)" == "Linux" ]; then
         if [ -d ~/.fzf ]; then
             cd ~/.fzf && git pull && ./install
         else

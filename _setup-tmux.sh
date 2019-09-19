@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # * Usage
 # Run `./_setup-tmux.sh`

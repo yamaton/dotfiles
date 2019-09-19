@@ -1,3 +1,3 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-echo -n $1 | xsel --clipboard --input
+echo -n "$1" | xsel --clipboard --input

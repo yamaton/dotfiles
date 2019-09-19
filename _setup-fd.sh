@@ -1,13 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 CMD="fd"
 VERSION="7.4.0"
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
 
-    if [ $(uname -s) == "Darwin" ]; then
+    if [ "$(uname -s)" == "Darwin" ]; then
         brew install "${CMD}"
-    elif [ $(uname -s) == "Linux" ]; then
+    elif [ "$(uname -s)" == "Linux" ]; then
         if [ "$(uname -m)" == "x86_64" ]; then
             URI="https://github.com/sharkdp/fd/releases/download/v${VERSION}/fd-musl_${VERSION}_amd64.deb"
             wget -N "${URI}"

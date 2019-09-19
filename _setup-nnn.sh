@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # * Usage
 # Run `./_setup-nnn.sh <repo-root>`
@@ -10,7 +10,7 @@ REPO_DIR="${HOME}/confs"
 [ ! -d "$REPO_DIR" ] && mkdir "$REPO_DIR"
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ]; then
-    if [ $(uname -s) == "Darwin" ]; then
+    if [ "$(uname -s)" == "Darwin" ]; then
         brew install nnn
     else
         codename=$(lsb_release -s -c)
@@ -27,8 +27,8 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ]; then
                 OS="";;
         esac
 
-        cd "${REPO_DIR}"
-        if [ ! -z "$OS" ] && [ $(uname -m) == "x86_64" ]; then
+        cd "${REPO_DIR}" || exit
+        if [ ! -z "$OS" ] && [ "$(uname -m)" == "x86_64" ]; then
             echo "[INFO] getting deb file for $codename"
             URI="https://github.com/jarun/nnn/releases/download/v${VERSION}/nnn_${VERSION}-1_${OS}.amd64.deb"
             wget -N "$URI"
