@@ -148,6 +148,13 @@ cd "${BASEDIR}" || exit
 ./_setup-gotop.sh -f
 
 
+# fd  ---find replacement---
+echo ""
+echo "--------------------------"
+echo "        fd"
+echo "--------------------------"
+cd "${BASEDIR}" || exit
+./_setup-fd.sh -f
 
 
 echo ""
