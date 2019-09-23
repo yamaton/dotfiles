@@ -148,13 +148,6 @@ cd "${BASEDIR}" || exit
 ./_setup-gotop.sh -f
 
 
-# exa  ---ls replacement---
-echo ""
-echo "--------------------------"
-echo "        exa"
-echo "--------------------------"
-cd "${BASEDIR}" || exit
-./_setup-exa.sh -f
 
 
 echo ""
