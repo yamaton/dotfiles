@@ -25,9 +25,9 @@ alias rm="rm -i"
 
 alias mkdir="mkdir -p"
 
-alias base="conda deactivate; conda activate"
-alias tf="conda deactivate; conda activate tf"
-alias torch="conda deactivate; conda activate torch"
+alias base="conda activate"
+alias tf="conda activate tf"
+alias torch="conda activate torch"
 
 alias bu="sudo apt update && sudo apt full-upgrade && base && conda update --all -y && tf && conda update --all -y && base"
 
@@ -206,6 +206,6 @@ n()
 ## zsh syntax highlighting
 source ~/confs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-## conda base as default environment
-conda deactivate; conda activate
+## activate conda base with (base) in prompt
+conda activate
 
