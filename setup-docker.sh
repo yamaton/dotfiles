@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 if [ "$1" = "-f" ] || [ ! -x "$(command -v docker)" ]; then
     if [ -x "$(command -v apt)" ]; then
+        sudo apt-get install \
+            apt-transport-https \
+            ca-certificates \
+            curl \
+            gnupg-agent \
+            software-properties-common
         sudo apt autoremove -y docker docker-engine docker.io containerd runc
         sudo apt install -y apt-transport-https ca-certificates curl software-properties-common gnupg-agent
         OS=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
