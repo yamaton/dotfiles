@@ -38,3 +38,13 @@ echo "   Misc fonts"
 echo "-------------------------"
 cd "${BASEDIR}" || exit
 ./_setup-fonts.sh
+
+
+echo "-------------------------"
+echo "   Joplin"
+echo "-------------------------"
+cd "${BASEDIR}" || exit
+./_setup-joplin.sh -f
+
+
+
