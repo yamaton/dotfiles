@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
+CMD=joplin
+VER="1.0.173"
 BASEDIR=$(dirname "$(readlink -f "$0")")
 BIN_DIR="${HOME}/bin"
 CONFIG_DIR="${HOME}/.config/nvim"
-CMD=joplin
 FILE="$CMD.appimage"
-VER="1.0.170"
 URL="https://github.com/laurent22/joplin/releases/download/v$VER/Joplin-$VER-x86_64.AppImage"
 
 
