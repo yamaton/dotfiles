@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 CMD=joplin
-VER="1.0.173"
+VER="1.0.174"
 BASEDIR=$(dirname "$(readlink -f "$0")")
 BIN_DIR="${HOME}/bin"
 CONFIG_DIR="${HOME}/.config/nvim"
