@@ -23,5 +23,5 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v $CMD)" ]; then
     fi
 
 else
-    echo "[INFO] skipping; neovim is already available"
+    echo "[INFO] skipping; $CMD is already available"
 fi
