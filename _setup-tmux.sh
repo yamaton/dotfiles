@@ -4,8 +4,8 @@
 # Run `./_setup-tmux.sh`
 # Then it will download source and build tmux under <repo-root>.
 
-VERSION="3.0-rc5"
-VER=$(echo $VERSION | cut -c 1-3)
+VERSION="3.0a"
+VER=$(echo $VERSION | cut -c 1-4)
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v tmux)" ]; then
 
