@@ -9,12 +9,30 @@ if [ -d dotnet ]; then
     fi
 fi
 
-mkdir dotnet && cd dotnet
-URL="https://download.visualstudio.microsoft.com/download/pr/941853c3-98c6-44ff-b11f-3892e4f91814/14e8f22c7a1d95dd6fe9a53296d19073/dotnet-sdk-3.1.100-preview3-014645-linux-x64.tar.gz"
-wget $URL
-FILENAME=$(basename $URL)
-tar xzf "$FILENAME"
-rm -f "$FILENAME"
-cd ..
-rm -rf ~/dotnet
-mv dotnet ~
+# https://docs.microsoft.com/en-us/dotnet/core/install/linux-package-manager-ubuntu-1804
+if [ $(lsb_release -sc) == "bionic" ]; then
+    wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+    sudo dpkg -i packages-microsoft-prod.deb
+    sudo add-apt-repository universe
+    sudo apt-get update
+    sudo apt-get install apt-transport-https
+    sudo apt-get update
+    sudo apt-get install dotnet-sdk-3.1
+
+    rm packages-microsoft-prod.deb
+fi
+
+
+# https://docs.microsoft.com/en-us/dotnet/core/install/linux-package-manager-debian10
+if [ $(lsb_release -sc) == "buster" ]; then
+    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg
+    sudo mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/
+    wget -q https://packages.microsoft.com/config/debian/10/prod.list
+    sudo mv prod.list /etc/apt/sources.list.d/microsoft-prod.list
+    sudo chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg
+    sudo chown root:root /etc/apt/sources.list.d/microsoft-prod.list
+    sudo apt-get update
+    sudo apt-get install apt-transport-https
+    sudo apt-get update
+    sudo apt-get install dotnet-sdk-3.1
+fi
