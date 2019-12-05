@@ -4,7 +4,7 @@
 # Run `./_setup-nnn.sh <repo-root>`
 # Then it will clone nnn under <repo-root> and install it.
 
-VERSION="2.8"
+VERSION="2.8.1"
 
 REPO_DIR="${HOME}/confs"
 [ ! -d "$REPO_DIR" ] && mkdir "$REPO_DIR"
@@ -22,7 +22,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ]; then
             "stretch")
                 OS="debian9";;
             "buster")
-                OS="";;  # to be filled out when available
+                OS="debian10";;
             *)
                 OS="";;
         esac
