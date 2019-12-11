@@ -6,9 +6,16 @@
 
 CMD=nnn
 VERSION=$(curl --silent https://formulae.brew.sh/api/formula-linux/${CMD}.json | jq '.versions.stable' | tr -d \")
+CURRENT=$($CMD -v)
+if [ -x "$(command -v $CMD)" ] && [ $VERSION == $CURRENT ]; then
+    echo "Current version is the latest"
+    exit 1
+else
+    echo "Update available: ${VERSION} (current ${CURRENT})"
+fi
 
 REPO_DIR="${HOME}/confs"
-[ ! -d "$REPO_DIR" ] && mkdir "$REPO_DIR"
+mkdir -p "$REPO_DIR"
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ]; then
     if [ "$(uname -s)" == "Darwin" ]; then

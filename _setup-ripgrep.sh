@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
 
 NAME=ripgrep
+CMD=rg
 VERSION=$(curl --silent https://formulae.brew.sh/api/formula-linux/${NAME}.json | jq '.versions.stable' | tr -d \")
+CURRENT=$("$CMD" --version | head -1 | awk '{ print $NF }')
+if [ -x "$(command -v $CMD)" ] && [ $VERSION == $CURRENT ]; then
+    echo "Current version is the latest"
+    exit 1
+else
+    echo "Update available: ${VERSION} (current ${CURRENT})"
+fi
 
-if [ "$1" = "-f" ] || [ ! -x "$(command -v rg)" ]; then
+if [ "$1" = "-f" ] || [ ! -x "$(command -v $CMD)" ]; then
     if [ "$(uname -s)" == "Darwin" ]; then
         brew install ripgrep
     else
