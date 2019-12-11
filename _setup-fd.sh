@@ -8,7 +8,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
     if [ "$(uname -s)" == "Darwin" ]; then
         brew install "${CMD}"
     elif [ "$(uname -s)" == "Linux" ]; then
-        if [ "$(uname -m)" == "x86_64" ]; then
+        if [ "$(uname -m)" == "x86_64" ] && [ -x "$(command -v apt)" ]; then
             URI="https://github.com/sharkdp/fd/releases/download/v${VERSION}/fd-musl_${VERSION}_amd64.deb"
             wget -N "${URI}"
             sudo apt install "./$(basename ${URI})"

@@ -12,7 +12,7 @@ REPO_DIR="${HOME}/confs"
 if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
     if [ "$(uname -s)" == "Darwin" ]; then
         brew install "${CMD}"
-    elif [ "$(uname -s)" == "Linux" ]; then
+    elif [ "$(uname -s)" == "Linux" ] && [ -x "$(command -v apt)" ]; then
         sudo apt install -y libzip-dev libcurl4-openssl-dev  # tldr needs them
         cd "${REPO_DIR}" || exit
         if [ ! -d tldr-cpp-client ]; then
