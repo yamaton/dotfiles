@@ -15,7 +15,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
         fi
         wget -N "$URI"
         FILE=$(basename "$URI")
-        sudo apt install "$FILE"
-        rm -f "$FILE"
+        sudo apt install ./"$FILE"
+        rm -f ./"$FILE"
     fi
 fi

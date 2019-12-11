@@ -34,8 +34,8 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ]; then
             URI="https://github.com/jarun/nnn/releases/download/v${VERSION}/nnn_${VERSION}-1_${OS}.amd64.deb"
             wget -N "$URI"
             FILE=$(basename "$URI")
-            sudo apt install "$FILE"
-	        rm -f "$FILE"
+            sudo apt install ./"$FILE"
+            rm -f ./"$FILE"
         else
             echo "[INFO] prepare to build nnn"
             sudo apt install -y libncursesw5-dev libreadline-dev
