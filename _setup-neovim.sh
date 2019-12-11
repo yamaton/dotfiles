@@ -9,7 +9,7 @@ BIN_DIR="${HOME}/bin"
 CONFIG_DIR="${HOME}/.config/$CMD"
 
 VERSION=$(curl --silent https://formulae.brew.sh/api/formula-linux/${NAME}.json | jq '.versions.stable' | tr -d \")
-CURRENT=$("$CMD" --version | head -1 | cut -d'v' -f2)
+CURRENT=$("$CMD" --version | head -1 | cut -d ' ' -f2 | cut -d'v' -f2)
 if [ -x "$(command -v $CMD)" ] && [ $VERSION == $CURRENT ]; then
     echo "Current version is the latest"
     exit 1
