@@ -49,6 +49,15 @@ echo "--------------------------"
 cp "${BASEDIR}"/.less_termcap ~
 
 
+# misc essential software
+echo ""
+echo "--------------------------"
+echo "   essential software"
+echo "--------------------------"
+cd "${BASEDIR}" || exit
+./_setup-misc.sh
+
+
 # tmux
 echo ""
 echo "--------------------------"
@@ -74,15 +83,6 @@ echo "        neovim"
 echo "--------------------------"
 cd "${BASEDIR}" || exit
 ./_setup-neovim.sh -f
-
-
-# misc software
-echo ""
-echo "--------------------------"
-echo "        misc software"
-echo "--------------------------"
-cd "${BASEDIR}" || exit
-./_setup-misc.sh
 
 
 # tldr
