@@ -3,7 +3,7 @@
 NAME=ripgrep
 CMD=rg
 VERSION=$(curl --silent https://formulae.brew.sh/api/formula-linux/${NAME}.json | jq '.versions.stable' | tr -d \")
-CURRENT=$("$CMD" --version | head -1 | awk '{ print $NF }')
+CURRENT=$("$CMD" --version | head -1 | cut -d ' ' -f2)
 if [ -x "$(command -v $CMD)" ] && [ $VERSION == $CURRENT ]; then
     echo "Current version is the latest"
     exit 1

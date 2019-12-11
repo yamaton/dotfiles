@@ -1,9 +1,21 @@
 #!/usr/bin/env bash
 
+NAME=neovim
+CMD=nvim
+
 BASEDIR=$(dirname "$(readlink -f "$0")")
 REPO_DIR="${HOME}/confs"
 BIN_DIR="${HOME}/bin"
-CONFIG_DIR="${HOME}/.config/nvim"
+CONFIG_DIR="${HOME}/.config/$CMD"
+
+VERSION=$(curl --silent https://formulae.brew.sh/api/formula-linux/${NAME}.json | jq '.versions.stable' | tr -d \")
+CURRENT=$("$CMD" --version | head -1 | cut -d'v' -f2)
+if [ -x "$(command -v $CMD)" ] && [ $VERSION == $CURRENT ]; then
+    echo "Current version is the latest"
+    exit 1
+else
+    echo "Update available: ${VERSION} (current ${CURRENT})"
+fi
 
 ## [TODO] add appimage version once it works
 if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ]; then

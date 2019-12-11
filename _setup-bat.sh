@@ -2,7 +2,7 @@
 
 CMD=bat
 VERSION=$(curl --silent https://formulae.brew.sh/api/formula-linux/${CMD}.json | jq '.versions.stable' | tr -d \")
-CURRENT=$("$CMD" --version | awk '{ print $NF }')
+CURRENT=$("$CMD" --version | cut -d ' ' -f2)
 if [ -x "$(command -v $CMD)" ] && [ $VERSION == $CURRENT ]; then
     echo "Current version is the latest"
     exit 1
