@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 CMD=joplin
-VER="1.0.174"
+VER=$(curl https://formulae.brew.sh/api/cask/${CMD}.json | jq '.version' | tr -d \")
 BASEDIR=$(dirname "$(readlink -f "$0")")
 BIN_DIR="${HOME}/bin"
 CONFIG_DIR="${HOME}/.config/nvim"
@@ -18,7 +18,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v $CMD)" ]; then
 	mv "$(basename $URL)" "$FILE"
 	chmod +x "$FILE"
         sudo apt install -y fuse
-        [ -L "$CMD" ] && rm -f "$CMD" 
+        [ -L "$CMD" ] && rm -f "$CMD"
         ln -s "$FILE" "$CMD"
     fi
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 CMD="xsv"
-VERSION="0.13.0"
+VERSION=$(curl https://formulae.brew.sh/api/formula-linux/${CMD}.json | jq '.versions.stable' | tr -d \")
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
     if [ "$(uname -s)" == "Darwin" ]; then

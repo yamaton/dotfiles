@@ -4,7 +4,8 @@
 # Run `./_setup-tmux.sh`
 # Then it will download source and build tmux under <repo-root>.
 
-VERSION="3.0a"
+CMD=tmux
+VERSION=$(curl https://formulae.brew.sh/api/formula-linux/${CMD}.json | jq '.versions.stable' | tr -d \")
 VER=$(echo $VERSION | cut -c 1-4)
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v tmux)" ]; then

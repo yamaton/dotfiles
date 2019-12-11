@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-VERSION="0.12.1"
+CMD=bat
+VERSION=$(curl https://formulae.brew.sh/api/formula-linux/${CMD}.json | jq '.versions.stable' | tr -d \")
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v bat)" ]; then
     if [ "$(uname -s)" == "Darwin" ]; then
