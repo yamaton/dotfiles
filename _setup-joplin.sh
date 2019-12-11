@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 CMD=joplin
-VER=$(curl https://formulae.brew.sh/api/cask/${CMD}.json | jq '.version' | tr -d \")
+VER=$(curl --silent https://formulae.brew.sh/api/cask/${CMD}.json | jq '.version' | tr -d \")
 BASEDIR=$(dirname "$(readlink -f "$0")")
 BIN_DIR="${HOME}/bin"
 FILE="$CMD.appimage"

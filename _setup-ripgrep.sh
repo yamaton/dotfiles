@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 NAME=ripgrep
-VERSION=$(curl https://formulae.brew.sh/api/formula-linux/${NAME}.json | jq '.versions.stable' | tr -d \")
+VERSION=$(curl --silent https://formulae.brew.sh/api/formula-linux/${NAME}.json | jq '.versions.stable' | tr -d \")
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v rg)" ]; then
     if [ "$(uname -s)" == "Darwin" ]; then
