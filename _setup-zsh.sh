@@ -7,7 +7,7 @@ REPO_DIR="${HOME}/confs"
 if [ "$1" = "-f" ] || [ ! -x "$(command -v zsh)" ]; then
 
     if [ "$(uname -s)" == "Darwin" ]; then
-        brew install zsh
+        brew install zsh zsh-completions
     elif [ "$(uname -s)" == "Linux" ] && [ -x "$(command -v apt)" ]; then
         sudo apt install -y zsh
     fi

@@ -8,7 +8,7 @@ CMD=nnn
 VERSION=$(curl --silent https://formulae.brew.sh/api/formula-linux/${CMD}.json | jq '.versions.stable' | tr -d \")
 CURRENT=$($CMD -v)
 if [ -x "$(command -v $CMD)" ] && [ $VERSION == $CURRENT ]; then
-    echo "Current version is the latest"
+    echo "Current version is the latest: ${CMD} ${CURRENT}"
     exit 1
 else
     echo "Update available: ${VERSION} (current ${CURRENT})"
