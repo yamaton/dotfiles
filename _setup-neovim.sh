@@ -21,7 +21,7 @@ fi
 if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ]; then
 
     if [ "$(uname -s)" == "Darwin" ]; then
-        brew install neovim
+        brew install "$NAME"
     elif [ "$(uname -m)" == "x86_64" ] && [ -x "$(command -v apt)" ]; then
         URI="https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
 

@@ -19,7 +19,7 @@ mkdir -p "$REPO_DIR"
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ]; then
     if [ "$(uname -s)" == "Darwin" ]; then
-        brew install nnn
+        brew install "$CMD"
     else
         codename=$(lsb_release -s -c)
         case "$codename" in

@@ -22,7 +22,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v tmux)" ]; then
     CONFDIR="${HOME}/confs"
 
     if [ $(uname -s) == "Darwin" ]; then
-        brew install tmux
+        brew install "$CMD"
     elif [ -x $(command -v apt) ] && [ $(uname -s) == "Linux" ]; then
         cd "$CONFDIR"
         sudo apt install -y libevent-dev libncurses5-dev libncursesw5-dev

@@ -13,7 +13,7 @@ fi
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v $CMD)" ]; then
     if [ "$(uname -s)" == "Darwin" ]; then
-        brew install ripgrep
+        brew install "$NAME"
     else
         if [ "$(uname -m)" == "x86_64" ] && [ -x "$(command -v apt)" ]; then
             URI="https://github.com/BurntSushi/ripgrep/releases/download/${VERSION}/ripgrep_${VERSION}_amd64.deb"
