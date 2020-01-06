@@ -1,45 +1,22 @@
 #!/usr/bin/env bash
-
-VERSION="2"
-
-codename=$(lsb_release -c -s)
-if [ "$codename" == "stretch" ]; then
-    echo "[INFO] Adding contrib non-free to /etc/apt/sources.list"
-    # Edit /etc/apt/sources.list
-    sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
-    sudo cat << EOF | sudo tee /etc/apt/sources.list > /dev/null
-deb http://deb.debian.org/debian stretch main contrib non-free
-deb-src http://deb.debian.org/debian stretch main contrib non-free
-
-deb http://deb.debian.org/debian stretch-updates main contrib non-free
-deb-src http://deb.debian.org/debian stretch-updates main contrib non-free
-
-deb http://security.debian.org/debian-security/ stretch/updates main contrib non-free
-deb-src http://security.debian.org/debian-security/ stretch/updates main contrib non-free
-EOF
-elif [ "$codename" == "buster" ]; then
-    echo "[INFO] Adding contrib non-free to /etc/apt/sources.list"
-    # Edit /etc/apt/sources.list
-    sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
-    sudo cat << EOF | sudo tee /etc/apt/sources.list > /dev/null
-deb http://deb.debian.org/debian buster main contrib non-free
-deb-src http://deb.debian.org/debian buster main contrib non-free
-
-deb http://deb.debian.org/debian buster-updates main contrib non-free
-deb-src http://deb.debian.org/debian buster-updates main contrib non-free
-
-deb http://security.debian.org/debian-security/ buster/updates main contrib non-free
-deb-src http://security.debian.org/debian-security/ buster/updates main contrib non-free
-EOF
-fi
-
-
-if [ "$(uname -s)" == "Linux" ] && [ -x "$(command -v apt)" ]; then
-    sudo apt update
-    sudo apt install -y fonts-firacode
+fonts_dir="${HOME}/.local/share/fonts"
+if [ ! -d "${fonts_dir}" ]; then
+    echo "mkdir -p $fonts_dir"
+    mkdir -p "${fonts_dir}"
 else
-    mkdir -p ~/.fonts && cd ~/.fonts
-    URI="https://github.com/tonsky/FiraCode/releases/download/${VERSION}/FiraCode_${VERSION}.zip"
-    wget -N "${URI}"
-    7z x "./FiraCode_${VERSION}.zip"
+    echo "Found fonts dir $fonts_dir"
 fi
+
+for type in Bold Light Medium Regular Retina; do
+    file_path="${HOME}/.local/share/fonts/FiraCode-${type}.ttf"
+    file_url="https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-${type}.ttf?raw=true"
+    if [ ! -e "${file_path}" ]; then
+        echo "wget -O $file_path $file_url"
+        wget -O "${file_path}" "${file_url}"
+    else
+	echo "Found existing file $file_path"
+    fi;
+done
+
+echo "fc-cache -f"
+fc-cache -f

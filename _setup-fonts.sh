@@ -15,7 +15,7 @@ wget -N https://github.com/adobe-fonts/source-code-pro/releases/download/variabl
 echo "-------------------"
 echo "  IBM Plex Mono"
 echo "-------------------"
-wget -N https://github.com/IBM/plex/releases/download/v1.2.3/OpenType.zip
+wget -N https://github.com/IBM/plex/releases/download/v4.0.2/OpenType.zip
 unzip OpenType.zip
 
 echo "-------------------"
