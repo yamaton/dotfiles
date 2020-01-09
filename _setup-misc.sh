@@ -11,4 +11,3 @@ elif [ "$(uname -s)" == "Linux" ] && [ -x "$(command -v apt)" ]; then
         sudo apt install -y "$(printf "%s" "$app")"
     done
 fi
-""

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-$CMD=exa
+CMD=exa
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v exa)" ]; then
     if [ "$(uname -s)" == "Darwin" ]; then

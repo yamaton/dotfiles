@@ -3,7 +3,7 @@
 CMD=fd
 VERSION=$(curl --silent https://formulae.brew.sh/api/formula-linux/${CMD}.json | jq '.versions.stable' | tr -d \")
 CURRENT=$("$CMD" --version | cut -d ' ' -f2)
-if [ -x "$(command -v $CMD)" ] && [ $VERSION == $CURRENT ]; then
+if [ -x "$(command -v $CMD)" ] && [ "$VERSION" == "$CURRENT" ]; then
     echo "Current version is the latest: ${CURRENT}"
     exit 1
 else
@@ -18,12 +18,12 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
         if [ "$(uname -m)" == "x86_64" ] && [ -x "$(command -v apt)" ]; then
             URI="https://github.com/sharkdp/fd/releases/download/v${VERSION}/fd-musl_${VERSION}_amd64.deb"
             wget -N "${URI}"
-            sudo apt install "./$(basename ${URI})"
+            sudo apt install "./$(basename "$URI")"
             rm -f "fd-musl_${VERSION}_amd64.deb"
         elif [ "$(uname -m)" == "armv7l" ]; then
             URI="https://github.com/sharkdp/fd/releases/download/v${VERSION}/fd-v${VERSION}-arm-unknown-linux-musleabihf.tar.gz"
             wget -N "${URI}"
-            NAME=$(basename ${URI})
+            NAME=$(basename "$URI")
             tar xzf "./${NAME}"
             rm "./${NAME}"
             echo "------"

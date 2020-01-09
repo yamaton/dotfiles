@@ -7,7 +7,7 @@
 CMD=nnn
 VERSION=$(curl --silent https://formulae.brew.sh/api/formula-linux/${CMD}.json | jq '.versions.stable' | tr -d \")
 CURRENT=$($CMD -v)
-if [ -x "$(command -v $CMD)" ] && [ $VERSION == $CURRENT ]; then
+if [ -x "$(command -v $CMD)" ] && [ "$VERSION" == "$CURRENT" ]; then
     echo "Current version is the latest: ${CMD} ${CURRENT}"
     exit 1
 else
@@ -36,7 +36,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ]; then
         esac
 
         cd "${REPO_DIR}" || exit
-        if [ ! -z "$OS" ] && [ "$(uname -m)" == "x86_64" ]; then
+        if [ -n "$OS" ] && [ "$(uname -m)" == "x86_64" ]; then
             echo "[INFO] getting deb file for $codename"
             URI="https://github.com/jarun/nnn/releases/download/v${VERSION}/nnn_${VERSION}-1_${OS}.amd64.deb"
             wget -N "$URI"
