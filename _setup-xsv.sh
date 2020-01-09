@@ -21,6 +21,6 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
         [ ! -d ~/bin ] &&  mkdir ~/bin
         mv ${CMD} ~/bin
     else
-	echo "[WARNING] Not installing ${CMD}. Build it oneself."
+    echo "[WARNING] Not installing ${CMD}. Build it oneself."
     fi
 fi

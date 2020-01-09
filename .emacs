@@ -34,7 +34,7 @@
 ;; http://stackoverflow.com/questions/24779041/disable-warning-about-emacs-d-in-load-path
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
-;; Save autosave files (i.e. #foo#) in one place, 
+;; Save autosave files (i.e. #foo#) in one place,
 ;; not to scatter them all over the directories.
 ;; http://snarfed.org/space/gnu%20emacs%20backup%20files
 (defvar autosave-dir
@@ -49,24 +49,24 @@
     (expand-file-name
      (concat "#%" (buffer-name) "#")))))
 
-;; Save backup files (ie "foo~") in one place. 
+;; Save backup files (ie "foo~") in one place.
 (defvar backup-dir (concat "~/.emacs.d/emacs_backups/" (user-login-name) "/"))
 (setq backup-directory-alist (list (cons "." backup-dir)))
 
-;; Set my name and email address (for ChangeLog Memo) 
+;; Set my name and email address (for ChangeLog Memo)
 (setq user-full-name "yamato")
 (setq user-mail-address "yamaton@gmail.com")
 
 ;; clmemo-mode (changelog Memo)
 ;;  Open with new entry:  C-x M
-;;   
+;;
 (autoload 'clmemo "clmemo" "ChangeLog memo mode." t)
 (define-key ctl-x-map "M" 'clmemo)
 (setq clmemo-file-name "~/OneDrive/Personal/dailylog.txt")
 (setq clmemo-time-string-with-weekday t)
 (setq clmemo-title-list
-	  '("research" "office" "python"  "diary" "study" 
-		"emacs" "tennis" "gdgd" "log" "schedule" "todo" "memo"))
+    '("research" "office" "python"  "diary" "study"
+    "emacs" "tennis" "gdgd" "log" "schedule" "todo" "memo"))
 
 ;; use color for selecting region
 (setq transient-mark-mode t)
@@ -78,13 +78,13 @@
 ;; (tool-bar-mode -1)
 
 ;; Yes-or-No to y-or-n
-(fset 'yes-or-no-p 'y-or-n-p) 
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; Customize dired
 (setq dired-listing-switches "-alk")
 
 ;;; bind RET to py-newline-and-indent
-(add-hook 'python-mode-hook '(lambda () 
+(add-hook 'python-mode-hook '(lambda ()
      (define-key python-mode-map "\C-m" 'newline-and-indent)))
 
 
@@ -164,7 +164,7 @@ Note the weekly scope of the command's precision.")
 ;(global-set-key "\C-c\C-d" 'insert-current-date)
 ;(global-set-key "\C-c\C-t" 'insert-current-time)
 
-;; journal 
+;; journal
 ;; http://www.emacswiki.org/emacs/Journal
 ;; (load "journal")
 ;; (if (file-directory-p "~/OneDrive/Personal/diary/")
@@ -175,8 +175,8 @@ Note the weekly scope of the command's precision.")
   (require 'package)
   (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) 
-  (package-initialize)  
+  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+  (package-initialize)
 )
 
 

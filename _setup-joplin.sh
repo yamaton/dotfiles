@@ -14,8 +14,8 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v $CMD)" ]; then
     if [ "$(uname -m)" == "x86_64" ] && [ "$(uname -s)" == "Linux" ]; then
         mkdir -p "$BIN_DIR" && cd "$BIN_DIR"
         wget -N "$URL"
-    	mv "$(basename $URL)" "$FILE"
-	    chmod +x "$FILE"
+        mv "$(basename $URL)" "$FILE"
+        chmod +x "$FILE"
         sudo apt install -y fuse
         [ -L "$CMD" ] && rm -f "$CMD"
         ln -s "$FILE" "$CMD"
