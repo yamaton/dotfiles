@@ -2,7 +2,7 @@
 
 NAME=broot
 CMD=br
-VERSION="0.11.3"
+VERSION="0.11.8"
 if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
     if [ "$(uname -s)" == "Darwin" ]; then
         brew install "$NAME"
