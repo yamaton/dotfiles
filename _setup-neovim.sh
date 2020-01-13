@@ -8,13 +8,16 @@ REPO_DIR="${HOME}/confs"
 BIN_DIR="${HOME}/bin"
 CONFIG_DIR="${HOME}/.config/$CMD"
 
-VERSION=$(curl --silent https://formulae.brew.sh/api/formula-linux/${NAME}.json | jq '.versions.stable' | tr -d \")
-CURRENT=$("$CMD" --version | head -1 | cut -d ' ' -f2 | cut -d'v' -f2)
-if [ -x "$(command -v $CMD)" ] && [ "$VERSION" == "$CURRENT" ]; then
-    echo "Current version is the latest: ${CMD} ${CURRENT}"
-    exit 1
-else
-    echo "Update available: ${VERSION} (current ${CURRENT})"
+
+if [ -x "$(command -v $CMD)" ]; then
+    VERSION=$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")
+    CURRENT=$("$CMD" --version | head -1 | cut -d ' ' -f2 | cut -d'v' -f2)
+    if [ "$VERSION" == "$CURRENT" ]; then
+        echo "Current version is the latest: ${CMD} ${CURRENT}"
+        exit 1
+    else
+        echo "Update available: ${VERSION} (current ${CURRENT})"
+    fi
 fi
 
 ## [TODO] add appimage version once it works

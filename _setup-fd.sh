@@ -1,17 +1,19 @@
 #!/usr/bin/env bash
 
 CMD=fd
-VERSION=$(curl --silent https://formulae.brew.sh/api/formula-linux/${CMD}.json | jq '.versions.stable' | tr -d \")
-CURRENT=$("$CMD" --version | cut -d ' ' -f2)
-if [ -x "$(command -v $CMD)" ] && [ "$VERSION" == "$CURRENT" ]; then
-    echo "Current version is the latest: ${CURRENT}"
-    exit 1
-else
-    echo "Update available: ${VERSION} (current ${CURRENT})"
+
+if [ -x "$(command -v $CMD)" ]; then
+    VERSION=$(curl --silent https://formulae.brew.sh/api/formula/${CMD}.json | jq '.versions.stable' | tr -d \")
+    CURRENT=$("$CMD" --version | cut -d ' ' -f2)
+    if [ "$VERSION" == "$CURRENT" ]; then
+        echo "Current version is the latest: ${CMD} ${CURRENT}"
+        exit 1
+    else
+        echo "Update available: ${VERSION} (current ${CURRENT})"
+    fi
 fi
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
-
     if [ "$(uname -s)" == "Darwin" ]; then
         brew install "${CMD}"
     elif [ "$(uname -s)" == "Linux" ]; then
@@ -33,5 +35,4 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
             cp "${NAME1}/${CMD}" ~/bin
         fi
     fi
-
 fi
