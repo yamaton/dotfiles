@@ -5,7 +5,7 @@ CMD=br
 
 if [ -x "$(command -v ${NAME})" ]; then
     VERSION=$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")
-    CURRENT=$("$CMD" --version | cut -d ' ' -f2)
+    CURRENT=$("$NAME" --version | cut -d ' ' -f2)
     if [ "$VERSION" == "$CURRENT" ]; then
         echo "Current version is the latest: ${CMD} ${CURRENT}"
         exit 1
@@ -14,7 +14,7 @@ if [ -x "$(command -v ${NAME})" ]; then
     fi
 fi
 
-if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
+if [ "$1" = "-f" ] || [ ! -x "$(command -v ${NAME})" ]; then
     if [ "$(uname -s)" == "Darwin" ]; then
         brew install "$NAME"
     elif [ -x "$(command -v apt)" ] && [ "$(uname -m)" == "x86_64" ]; then
