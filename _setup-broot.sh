@@ -2,6 +2,7 @@
 
 NAME=broot
 CMD=br
+ZIPFILE=release.zip
 
 if [ -x "$(command -v ${NAME})" ]; then
     VERSION=$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")
@@ -18,9 +19,12 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v ${NAME})" ]; then
     if [ "$(uname -s)" == "Darwin" ]; then
         brew install "$NAME"
     elif [ -x "$(command -v apt)" ] && [ "$(uname -m)" == "x86_64" ]; then
-        URI="https://github.com/Canop/$NAME/releases/download/v$VERSION/$NAME"
+        URI="https://github.com/Canop/$NAME/releases/download/v$VERSION/$ZIPFILE"
         mkdir -p ~/bin && cd ~/bin
         wget -N "$URI"
+        unzip "$ZIPFILE"
+        rm -f "$ZIPFILE"
+        mv "./build/x86_64-linux/$NAME" .
         chmod +x ./"$NAME"
     fi
     "$NAME" --install
