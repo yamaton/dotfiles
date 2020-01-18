@@ -2,8 +2,9 @@
 
 CMD=exa
 
+VERSION=$(curl --silent https://formulae.brew.sh/api/formula/${CMD}.json | jq '.versions.stable' | tr -d \")
+
 if [ -x "$(command -v $CMD)" ]; then
-    VERSION=$(curl --silent https://formulae.brew.sh/api/formula/${CMD}.json | jq '.versions.stable' | tr -d \")
     CURRENT=$("$CMD" --version | cut -d ' ' -f2 | cut -d 'v' -f2)
     if [ "$VERSION" == "$CURRENT" ]; then
         echo "Current version is the latest: ${CMD} ${CURRENT}"

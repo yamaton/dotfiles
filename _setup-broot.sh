@@ -4,8 +4,9 @@ NAME=broot
 CMD=br
 ZIPFILE=release.zip
 
+VERSION=$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")
+
 if [ -x "$(command -v ${NAME})" ]; then
-    VERSION=$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")
     CURRENT=$("$NAME" --version | cut -d ' ' -f2)
     if [ "$VERSION" == "$CURRENT" ]; then
         echo "Current version is the latest: ${CMD} ${CURRENT}"
