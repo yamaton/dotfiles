@@ -23,10 +23,12 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v ${NAME})" ]; then
         URI="https://github.com/Canop/$NAME/releases/download/v$VERSION/$ZIPFILE"
         mkdir -p ~/bin && cd ~/bin
         wget -N "$URI"
+        rm -rf build
         unzip "$ZIPFILE"
         rm -f "$ZIPFILE"
         mv "./build/x86_64-linux/$NAME" .
         chmod +x ./"$NAME"
+        rm -rf build
     fi
     "$NAME" --install
 fi
