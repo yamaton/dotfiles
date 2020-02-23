@@ -5,7 +5,7 @@ VER=$(curl --silent https://formulae.brew.sh/api/cask/${CMD}.json | jq '.version
 BASEDIR=$(dirname "$(readlink -f "$0")")
 BIN_DIR="${HOME}/bin"
 FILE="$CMD.appimage"
-URL="https://github.com/laurent22/joplin/releases/download/v$VER/Joplin-$VER-x86_64.AppImage"
+URL="https://github.com/laurent22/joplin/releases/download/v$VER/Joplin-$VER.AppImage"
 
 
 ## [TODO] add appimage version once it works
