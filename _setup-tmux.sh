@@ -17,16 +17,16 @@ if [ -x "$(command -v $CMD)" ]; then
     fi
 fi
 
-VER=$(echo $VERSION | cut -c 1-4)
+VER=$(echo "$VERSION" | cut -c 1-4)
 
 if [ "$1" = "-f" ] || [ ! -x "$(command -v tmux)" ]; then
 
-    BASEDIR=$(dirname $(readlink -f "$0"))
+    BASEDIR=$(dirname "$(readlink -f "$0")")
     CONFDIR="${HOME}/confs"
 
-    if [ $(uname -s) == "Darwin" ]; then
+    if [ "$(uname -s)" == "Darwin" ]; then
         brew install "$CMD"
-    elif [ -x $(command -v apt) ] && [ $(uname -s) == "Linux" ]; then
+    elif [ -x "$(command -v apt)" ] && [ "$(uname -s)" == "Linux" ]; then
         cd "$CONFDIR"
         sudo apt install -y libevent-dev libncurses5-dev libncursesw5-dev
         curl -L "https://github.com/tmux/tmux/releases/download/${VER}/tmux-${VERSION}.tar.gz" | tar xzf -
