@@ -2,9 +2,9 @@
 
 NAME=broot
 CMD=br
-ZIPFILE=release.zip
 
 VERSION=$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")
+ZIPFILE="broot_$VERSION.zip"
 
 if [ -x "$(command -v ${NAME})" ]; then
     CURRENT=$("$NAME" --version | cut -d ' ' -f2)
