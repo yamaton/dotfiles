@@ -33,7 +33,8 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ]; then
         chmod +x ./nvim.appimage
         sudo apt install -y fuse
         [ -L ./nvim ] && rm -f ./nvim
-        sudo ln -s ./nvim.appimage /usr/local/bin/nvim
+        sudo rm -f /usr/local/bin/nvim
+        sudo ln -s "$BIN_DIR"/nvim.appimage /usr/local/bin/nvim
     elif [ "$(uname -m)" != "x86_64" ] && [ -x "$(command -v apt)" ]; then
         sudo apt install --no-install-recommends -y neovim
     fi
