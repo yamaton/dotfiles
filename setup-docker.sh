@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 if [ "$1" = "-f" ] || [ ! -x "$(command -v docker)" ]; then
     if [ -x "$(command -v apt)" ]; then
+        echo "---- Install docker ----"
         sudo apt-get install \
             apt-transport-https \
             ca-certificates \
@@ -19,3 +20,10 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v docker)" ]; then
     fi
 fi
 
+
+COMPOSE_VERSION=1.25.0
+if [ "$1" = "-f" ] || [ ! -x "$(command -v docker-compose)" ]; then
+    echo "---- Install docker-compose ----"
+    sudo curl -L "https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+fi

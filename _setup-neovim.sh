@@ -8,9 +8,9 @@ REPO_DIR="${HOME}/confs"
 BIN_DIR="${HOME}/bin"
 CONFIG_DIR="${HOME}/.config/$CMD"
 
+VERSION=$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")
 
 if [ -x "$(command -v $CMD)" ]; then
-    VERSION=$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")
     CURRENT=$("$CMD" --version | head -1 | cut -d ' ' -f2 | cut -d'v' -f2)
     if [ "$VERSION" == "$CURRENT" ]; then
         echo "Current version is the latest: ${CMD} ${CURRENT}"
@@ -35,7 +35,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ]; then
         [ -L ./nvim ] && rm -f ./nvim
         sudo ln -s ./nvim.appimage /usr/local/bin/nvim
     elif [ "$(uname -m)" != "x86_64" ] && [ -x "$(command -v apt)" ]; then
-        sudo apt install -y neovim
+        sudo apt install --no-install-recommends -y neovim
     fi
 
     mkdir -p "$REPO_DIR" && cd "$REPO_DIR"
