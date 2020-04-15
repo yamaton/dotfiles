@@ -12,6 +12,7 @@ echo "-------------------"
 wget -N https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Italic.otf
 wget -N https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Roman.otf
 
+
 echo "-------------------"
 echo "  IBM Plex Mono"
 echo "-------------------"
@@ -24,10 +25,12 @@ echo "-------------------"
 wget -N https://github.com/i-tu/Hasklig/releases/download/1.1/Hasklig-1.1.zip
 unzip Hasklig-1.1.zip
 
+
 echo "-------------------"
 echo "  Inconsolata"
 echo "-------------------"
 wget -N https://www.levien.com/type/myfonts/Inconsolata.otf
+
 
 echo "-------------------"
 echo "  Noto CJK"
@@ -41,5 +44,17 @@ else
     unzip NotoSansCJKjp-hinted.zip
     unzip NotoSerifCJKjp-hinted.zip
 fi
+
+
+echo "-------------------"
+echo "  Cascadia"
+echo "-------------------"
+VERSION=1911.21
+wget -N "https://github.com/microsoft/cascadia-code/releases/download/v${VERSION}/CascadiaMonoPL.ttf"
+wget -N "https://github.com/microsoft/cascadia-code/releases/download/v${VERSION}/CascadiaMono.ttf"
+wget -N "https://github.com/microsoft/cascadia-code/releases/download/v${VERSION}/CascadiaPL.ttf"
+wget -N "https://github.com/microsoft/cascadia-code/releases/download/v${VERSION}/Cascadia.ttf"
+
+
 
 fc-cache -fv
