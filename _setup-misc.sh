@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-APPS="cmake htop autojump wget curl source-highlight jq parallel neofetch p7zip tree trash-cli"
+APPS="cmake pkg-config htop autojump wget curl source-highlight jq parallel neofetch p7zip unzip tree trash-cli"
 
 if [ "$(uname -s)" == "Darwin" ]; then
     for app in ${APPS}; do
