@@ -27,7 +27,7 @@ if [ -x "$(command -v apt)" ] && [ "$(lsb_release -i -s)" == "Ubuntu" ]; then
     echo "--------------------------"
     sudo apt-add-repository ppa:git-core/ppa
     sudo apt update
-    sudo apt install git
+    sudo apt install -y git
 fi
 
 
