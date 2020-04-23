@@ -16,9 +16,9 @@ if [ "$(lsb_release -i -s)" == "Ubuntu" ]; then
     sudo dpkg -i packages-microsoft-prod.deb
     sudo add-apt-repository universe
     sudo apt-get update
-    sudo apt-get install apt-transport-https
+    sudo apt-get install -y apt-transport-https
     sudo apt-get update
-    sudo apt-get install dotnet-sdk-3.1
+    sudo apt-get install -y dotnet-sdk-3.1
     rm packages-microsoft-prod.deb
 
 elif [ "$(lsb_release -sc)" == "buster" ]; then
@@ -30,7 +30,7 @@ elif [ "$(lsb_release -sc)" == "buster" ]; then
     sudo chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg
     sudo chown root:root /etc/apt/sources.list.d/microsoft-prod.list
     sudo apt-get update
-    sudo apt-get install apt-transport-https
+    sudo apt-get install -y apt-transport-https
     sudo apt-get update
-    sudo apt-get install dotnet-sdk-3.1
+    sudo apt-get install -y dotnet-sdk-3.1
 fi
