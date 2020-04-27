@@ -57,4 +57,14 @@ wget -N "https://github.com/microsoft/cascadia-code/releases/download/v${VERSION
 
 
 
+echo "-------------------"
+echo "  Ricty Diminished"
+echo "-------------------"
+VERSION=3.2.3
+wget -N "https://github.com/edihbrandon/RictyDiminished/archive/${VERSION}.zip"
+unzip "${VERSION}.zip"
+rm -f "${VERSION}.zip"
+
+
 fc-cache -fv
+
