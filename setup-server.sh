@@ -130,25 +130,6 @@ cd "${BASEDIR}" || exit
 ./_setup-nnn.sh -f
 
 
-# # xsv ---better csvtools ---
-# echo ""
-# echo "--------------------------"
-# echo "        xsv"
-# echo "--------------------------"
-# cd "${BASEDIR}" || exit
-# ./_setup-xsv.sh -f
-
-
-# # gotop --system monitor ---
-# echo ""
-# echo "--------------------------"
-# echo "        gotop"
-# echo "--------------------------"
-# cd "${BASEDIR}" || exit
-# ./_setup-gotop.sh -f
-
-
-# fd  ---find replacement---
 echo ""
 echo "--------------------------"
 echo "        fd"
