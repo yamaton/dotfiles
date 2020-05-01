@@ -12,3 +12,4 @@ p7zip
 unzip
 tree
 trash-cli
+mosh
