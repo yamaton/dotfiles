@@ -13,3 +13,4 @@ unzip
 tree
 trash-cli
 mosh
+netcat-openbsd
