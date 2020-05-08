@@ -45,7 +45,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ]; then
             URI="https://github.com/jarun/nnn/releases/download/v${VERSION}/nnn_${VERSION}-1_${OS}.amd64.deb"
             wget -N "$URI"
             FILE=$(basename "$URI")
-            sudo apt install ./"$FILE"
+            sudo apt install -y ./"$FILE"
             rm -f ./"$FILE"
         else
             echo "[INFO] prepare to build nnn"
