@@ -2,7 +2,7 @@
 if [ ! -x "$(command -v docker)" ] || [ "$1" = "-f" ]; then
     if [ -x "$(command -v apt)" ]; then
         echo "---- Install docker ----"
-        sudo apt-get install \
+        sudo apt-get install -y \
             apt-transport-https \
             ca-certificates \
             curl \
@@ -16,7 +16,7 @@ if [ ! -x "$(command -v docker)" ] || [ "$1" = "-f" ]; then
         sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/$OS $(lsb_release -cs) stable"
         sudo apt-key fingerprint 0EBFCD88
         sudo apt update
-        sudo apt install docker-ce docker-ce-cli containerd.io
+        sudo apt install -y docker-ce docker-ce-cli containerd.io
         sudo usermod -aG docker "$USER"
 
         echo "================================================"
@@ -38,3 +38,10 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v docker-compose)" ]; then
     echo "Installed docker-compose"
     docker-compose -v
 fi
+
+echo "-------------------------"
+echo "   Running hello world"
+echo "-------------------------"
+sudo docker container run --rm hello-world
+
+
