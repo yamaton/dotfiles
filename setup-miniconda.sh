@@ -22,9 +22,9 @@ if [ "$(uname -m)" == "x86_64" ]; then
     source ~/miniconda3/etc/profile.d/conda.sh
     conda update --all
     if [ -x "$(command -v nvidia-smi)" ]; then
-        conda create -n tf tensorflow-gpu opencv=4.1
+        conda create -n tf tensorflow-gpu opencv
     else
-        conda create -n tf tensorflow opencv=4.1
+        conda create -n tf tensorflow opencv
     fi
     conda activate tf
     conda config --add channels conda-forge --env
