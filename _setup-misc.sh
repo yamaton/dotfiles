@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-APPS=$(cat ./apps.txt)
+APPS=$(cat ./misc_apps.txt)
 
 if [ "$(uname -s)" == "Darwin" ]; then
     for app in ${APPS}; do
