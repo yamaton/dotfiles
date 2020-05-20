@@ -49,7 +49,7 @@ fi
 echo "-------------------"
 echo "  Cascadia"
 echo "-------------------"
-VERSION=1911.21
+VERSION=2005.15
 wget -N "https://github.com/microsoft/cascadia-code/releases/download/v${VERSION}/CascadiaMonoPL.ttf"
 wget -N "https://github.com/microsoft/cascadia-code/releases/download/v${VERSION}/CascadiaMono.ttf"
 wget -N "https://github.com/microsoft/cascadia-code/releases/download/v${VERSION}/CascadiaPL.ttf"
