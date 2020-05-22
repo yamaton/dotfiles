@@ -182,7 +182,7 @@ zstyle ':completion:*' script ~/confs/nnn/scripts/auto-completion/zsh/_nnn
 . /usr/share/autojump/autojump.zsh
 
 ## conda (> 4.4)
-. ~/miniconda3/etc/profile.d/conda.sh
+eval "$($HOME/miniconda3/bin/conda shell.zsh hook)"
 
 ## source-highlight in less
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
@@ -206,6 +206,4 @@ n()
 ## zsh syntax highlighting
 source ~/confs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-## activate conda base with (base) in prompt
-conda activate
 
