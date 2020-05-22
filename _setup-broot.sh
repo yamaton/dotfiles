@@ -19,7 +19,7 @@ fi
 if [ "$1" = "-f" ] || [ ! -x "$(command -v ${NAME})" ]; then
     if [ "$(uname -s)" == "Darwin" ]; then
         brew install "$NAME"
-    elif [ -x "$(command -v apt)" ] && [ "$(uname -m)" == "x86_64" ]; then
+    elif [ "$(uname -s)" == "Linux" ] && [ "$(uname -m)" == "x86_64" ]; then
         URI="https://github.com/Canop/$NAME/releases/download/v$VERSION/$ZIPFILE"
         mkdir -p ~/bin && cd ~/bin
         wget -N "$URI"
@@ -30,5 +30,5 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v ${NAME})" ]; then
         chmod +x ./"$NAME"
         rm -rf build
     fi
-    "$NAME" --install
+    ./"$NAME" --install
 fi

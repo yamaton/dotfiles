@@ -36,5 +36,5 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v zsh)" ]; then
     [ -f ~/.zshenv ] && mv ~/.zshenv ~/.zshenv.backup
     cp "$BASEDIR"/.zshenv ~
 
-    sudo chsh -s $(which zsh) $(whoami)
+    sudo chsh -s "$(which zsh)" "$(whoami)"
 fi

@@ -20,12 +20,12 @@ if [ -x "$(command -v $CMD)" ]; then
     fi
 fi
 
-## [TODO] add appimage version once it works
+
 if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ]; then
 
     if [ "$(uname -s)" == "Darwin" ]; then
         brew install "$NAME"
-    elif [ "$(uname -m)" == "x86_64" ] && [ -x "$(command -v apt)" ]; then
+    elif [ "$(uname -m)" == "x86_64" ] && [ "$(uname -s)" == "Linux" ]; then
         URI="https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
 
         mkdir -p "$BIN_DIR" && cd "$BIN_DIR"
