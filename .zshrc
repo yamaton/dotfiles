@@ -21,7 +21,7 @@ alias ll='ls -alF'
 
 alias mv="mv -i"
 alias cp="cp -i"
-alias rm="rm -i"
+alias rm=trash
 
 alias mkdir="mkdir -p"
 
@@ -38,11 +38,8 @@ alias weather="curl wttr.in"
 ## =======================================
 ##      Run application by Extension
 ## =======================================
-alias -s txt=code
-alias -s cc=code
-alias -s cpp=code
-alias -s tex=code
-alias -s py=code
+alias -s {txt,md,c,cc,cpp,tex,py,hs,fs,go}=code
+
 
 ## =======================================
 ##             ZSH config
@@ -181,7 +178,7 @@ zstyle ':completion:*' script ~/confs/nnn/scripts/auto-completion/zsh/_nnn
 ## autojump
 . /usr/share/autojump/autojump.zsh
 
-## conda (> 4.4)
+## conda
 eval "$($HOME/miniconda3/bin/conda shell.zsh hook)"
 
 ## source-highlight in less
