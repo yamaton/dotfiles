@@ -34,6 +34,7 @@ alias bu="sudo apt update && sudo apt full-upgrade && base && conda update --all
 [ -x $(command -v nvim) ] && alias vim=nvim
 
 alias weather="curl wttr.in"
+alias corona='curl "https://corona-stats.online/states/us?minimal=true&top=15"; echo "\n\n\n"; curl "https://corona-stats.online?minimal=true&top=10"'
 
 ## =======================================
 ##      Run application by Extension
