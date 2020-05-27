@@ -8,10 +8,10 @@ VERSION=$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '
 if [ -x "$(command -v $CMD)" ]; then
     CURRENT=$("$CMD" --version | head -1 | cut -d ' ' -f2)
     if [ "$VERSION" == "$CURRENT" ]; then
-        echo "Current version is the latest: ${CMD} ${CURRENT}"
+        echo "... already the latest: ${CMD} ${CURRENT}"
         exit 1
     else
-        echo "Update available: ${VERSION} (current ${CURRENT})"
+        echo "${CMD} ${VERSION} is available: (current ${CMD} ${CURRENT})"
     fi
 fi
 

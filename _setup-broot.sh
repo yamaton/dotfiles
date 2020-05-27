@@ -9,10 +9,10 @@ ZIPFILE="broot_$VERSION.zip"
 if [ -x "$(command -v ${NAME})" ]; then
     CURRENT=$("$NAME" --version | cut -d ' ' -f2)
     if [ "$VERSION" == "$CURRENT" ]; then
-        echo "Current version is the latest: ${CMD} ${CURRENT}"
+        echo "... already the latest: ${CMD} ${CURRENT}"
         exit 1
     else
-        echo "Update available: ${VERSION} (current ${CURRENT})"
+        echo "${CMD} ${VERSION} is available: (current ${CMD} ${CURRENT})"
     fi
 fi
 
