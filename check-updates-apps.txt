@@ -1,0 +1,6 @@
+bat
+broot
+fd
+ripgrep
+tmux
+neovim
