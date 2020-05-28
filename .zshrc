@@ -147,6 +147,11 @@ esac
 setopt interactivecomments
 
 
+## ctrl+u works like bash/readline
+## https://stackoverflow.com/questions/3483604/which-shortcut-in-zsh-does-the-same-as-ctrl-u-in-bash
+bindkey \^U backward-kill-line
+
+
 ## =======================================
 ##     Prompt Customization
 ## =======================================
