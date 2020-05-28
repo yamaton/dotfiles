@@ -33,6 +33,10 @@ alias bu="sudo apt update && sudo apt full-upgrade && conda update -n base --all
 
 [ -x $(command -v nvim) ] && alias vim=nvim
 
+# for use with cht.h
+# $ cht.sh bash remove color | removecolor | bat -l bash
+alias removecolor="sed $'s,\x1b\\[[0-9;]*[a-zA-Z],,g'"
+
 alias weather="curl wttr.in"
 alias corona='curl "https://corona-stats.online/states/us?minimal=true&top=15"; echo ""; curl "https://corona-stats.online?minimal=true&top=10"'
 
