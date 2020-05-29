@@ -2,5 +2,5 @@
 
 BASEDIR=$(dirname "$(readlink -f "$0")")
 
-parallel "$BASEDIR"/_setup-{}.sh <  "$BASEDIR"/check-updates-apps.txt
+sed '/^\s*$/d' "$BASEDIR"/check-updates-apps.txt | parallel "$BASEDIR"/_setup-{}.sh 
 [ -x "$(command -v joplin)" ] &&  "$BASEDIR"/_setup-joplin.sh
