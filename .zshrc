@@ -21,28 +21,31 @@ alias ll='ls -alF'
 
 alias mv="mv -i"
 alias cp="cp -i"
-alias rm=trash
-
+if [[ -x "$(command -v trash)" ]]; then
+    alias rm=trash
+else
+    alias rm="rm -i"
+fi
 alias mkdir="mkdir -p"
 
-alias base="conda activate"
-alias tf="conda activate tf"
-alias torch="conda activate torch"
+alias base="conda deactivate; conda activate"
+alias tf="conda deactivate; conda activate tf"
+alias torch="conda deactivate; conda activate torch"
 
-if [ "$(uname -s)" == "Darwin" ]; then
+if [[ "$(uname -s)" == "Darwin" ]]; then
     alias bu='brew upgrade && conda update -n base --all -y && conda update -n tf --all -y && conda update -n torch --all -y'
     alias ql='qlmanage -p "$@" >& /dev/null'
 fi
 
-[ -x "$(command -v apt)" ] && alias bu="sudo apt update && sudo apt full-upgrade && conda update -n base --all -y && conda update -n tf --all -y"
-[ -x "$(command -v nvim)" ] && alias vim=nvim
+[[ -x "$(command -v apt)" ]] && alias bu="sudo apt update && sudo apt full-upgrade && conda update -n base --all -y && conda update -n tf --all -y"
+[[ -x "$(command -v nvim)" ]] && alias vim=nvim
 
 # for use with cht.h
 # $ cht.sh bash remove color | removecolor | bat -l bash
 alias removecolor="sed $'s,\x1b\\[[0-9;]*[a-zA-Z],,g'"
 
 alias weather="curl wttr.in"
-alias corona='curl "https://corona-stats.online/states/us?minimal=true&top=15"; echo ""; curl "https://corona-stats.online?minimal=true&top=10"'
+alias corona='parallel curl -s https://corona-stats.online{} ::: "/states/us?minimal=true&top=15" "?minimal=true&top=10"'
 alias btc="curl rate.sx"
 
 
@@ -175,7 +178,7 @@ autoload -U promptinit && promptinit
 source ~/confs/zsh-git-prompt/zshrc.sh
 
 ## zsh syntax highlighting
-if [ "$(uname -s)" == "Darwin" ]; then
+if [[ "$(uname -s)" == "Darwin" ]]; then
     # Use homebrew to install zsh-syntax-highlighting
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     export ZSH_HIGHLIGHT_sHIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
@@ -183,7 +186,7 @@ else
     source ~/confs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
-## an example prompt
+## Custom Prompt
 PROMPT='%{$fg[green]%}%n%{$fg[yellow]%}@%{$fg[green]%}%m%{$reset_color%}$(git_super_status)%{$fg[yellow]%}➤%{$reset_color%} '
 RPROMPT="%{$fg[green]%}[%{$fg[magenta]%}%~%{$fg[green]%}] %{$fg[cyan]%}%T %{$reset_color%}"
 
@@ -193,9 +196,6 @@ source ~/.tldr.complete
 ## Bazel completion
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
-
-## nnn auto completion
-zstyle ':completion:*' script ~/confs/nnn/scripts/auto-completion/zsh/_nnn
 
 ## autojump
 source /usr/share/autojump/autojump.zsh
@@ -210,7 +210,10 @@ export LESS=" -R "
 ## colorful man
 [[ -f ~/.less_termcap ]] && . ~/.less_termcap
 
-## nnn ; cd on exit:
+## nnn: auto completion
+zstyle ':completion:*' script ~/confs/nnn/scripts/auto-completion/zsh/_nnn
+
+## nnn: cd on exit:
 [[ ! -d ~/tmp ]] && mkdir ~/tmp
 export NNN_TMPFILE="~/tmp/nnn"
 n()
@@ -221,6 +224,3 @@ n()
         rm -f $NNN_TMPFILE
     fi
 }
-
-
-
