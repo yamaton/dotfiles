@@ -29,9 +29,13 @@ alias base="conda activate"
 alias tf="conda activate tf"
 alias torch="conda activate torch"
 
-alias bu="sudo apt update && sudo apt full-upgrade && conda update -n base --all -y && conda update -n tf --all -y"
+if [ "$(uname -s)" == "Darwin" ]; then
+    alias bu='brew upgrade && conda update -n base --all -y && conda update -n tf --all -y && conda update -n torch --all -y'
+    alias ql='qlmanage -p "$@" >& /dev/null'
+fi
 
-[ -x $(command -v nvim) ] && alias vim=nvim
+[ -x "$(command -v apt)" ] && alias bu="sudo apt update && sudo apt full-upgrade && conda update -n base --all -y && conda update -n tf --all -y"
+[ -x "$(command -v nvim)" ] && alias vim=nvim
 
 # for use with cht.h
 # $ cht.sh bash remove color | removecolor | bat -l bash
@@ -39,6 +43,8 @@ alias removecolor="sed $'s,\x1b\\[[0-9;]*[a-zA-Z],,g'"
 
 alias weather="curl wttr.in"
 alias corona='curl "https://corona-stats.online/states/us?minimal=true&top=15"; echo ""; curl "https://corona-stats.online?minimal=true&top=10"'
+alias btc="curl rate.sx"
+
 
 ## =======================================
 ##      Run application by Extension
@@ -62,10 +68,10 @@ compinit
 ## Use color [✓]
 setopt prompt_subst
 
-# Do not add duplicates in a row to command history [✓]
+## Do not add duplicates in a row to command history [✓]
 setopt hist_ignore_dups
 
-# Share command history [✓]
+## Share command history [✓]
 setopt share_history
 
 ## Keyboad config ... emacs-like key binding (such as C-f, C-b)
@@ -144,16 +150,13 @@ case "${TERM}" in
     ;;
 esac
 
-
-
 ## Bash-like comment in command line
 ## See https://stackoverflow.com/questions/11670935/comments-in-command-line-zsh
 setopt interactivecomments
 
-
 ## ctrl+u works like bash/readline
 ## https://stackoverflow.com/questions/3483604/which-shortcut-in-zsh-does-the-same-as-ctrl-u-in-bash
-bindkey \^U backward-kill-line
+bindkey "^U" backward-kill-line
 
 
 ## =======================================
@@ -171,7 +174,16 @@ autoload -U promptinit && promptinit
 ## https://github.com/olivierverdier/zsh-git-prompt
 source ~/confs/zsh-git-prompt/zshrc.sh
 
-# an example prompt
+## zsh syntax highlighting
+if [ "$(uname -s)" == "Darwin" ]; then
+    # Use homebrew to install zsh-syntax-highlighting
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    export ZSH_HIGHLIGHT_sHIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+else
+    source ~/confs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+## an example prompt
 PROMPT='%{$fg[green]%}%n%{$fg[yellow]%}@%{$fg[green]%}%m%{$reset_color%}$(git_super_status)%{$fg[yellow]%}➤%{$reset_color%} '
 RPROMPT="%{$fg[green]%}[%{$fg[magenta]%}%~%{$fg[green]%}] %{$fg[cyan]%}%T %{$reset_color%}"
 
@@ -186,7 +198,7 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*' script ~/confs/nnn/scripts/auto-completion/zsh/_nnn
 
 ## autojump
-. /usr/share/autojump/autojump.zsh
+source /usr/share/autojump/autojump.zsh
 
 ## conda
 eval "$($HOME/miniconda3/bin/conda shell.zsh hook)"
@@ -210,7 +222,5 @@ n()
     fi
 }
 
-## zsh syntax highlighting
-source ~/confs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
