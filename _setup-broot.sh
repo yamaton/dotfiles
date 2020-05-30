@@ -13,14 +13,15 @@ if [ -x "$(command -v ${NAME})" ]; then
         exit 1
     else
         echo "${CMD} ${VERSION} is available: (current ${CMD} ${CURRENT})"
+        read -p "Upgrade to ${CMD} ${VERSION}? (y/N): " confirm
     fi
 fi
 
-if [ "$1" = "-f" ] || [ ! -x "$(command -v ${NAME})" ]; then
+if [ "$1" = "-f" ] || [ ! -x "$(command -v ${NAME})" ] || [[ "$confirm" == [yY] ]]; then
     if [ "$(uname -s)" == "Darwin" ]; then
         brew install "$NAME"
     elif [ "$(uname -s)" == "Linux" ] && [ "$(uname -m)" == "x86_64" ]; then
-        URI="https://github.com/Canop/$NAME/releases/download/v$VERSION/$ZIPFILE"
+        URI="https://github.com/Canop/$NAME/releases/download/$VERSION/$ZIPFILE"
         mkdir -p ~/bin && cd ~/bin
         wget -N "$URI"
         rm -rf build
