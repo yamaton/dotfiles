@@ -27,6 +27,7 @@ else
     alias rm="rm -i"
 fi
 alias mkdir="mkdir -p"
+alias cht="cht.sh"
 
 alias base="conda deactivate; conda activate"
 alias tf="conda deactivate; conda activate tf"
