@@ -27,6 +27,8 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ]; then
     else
         codename=$(lsb_release -s -c)
         case "$codename" in
+            "focal")
+                OS="ubuntu20.04";;
             "bionic")
                 OS="ubuntu18.04";;
             "xenial")
