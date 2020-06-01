@@ -17,12 +17,12 @@ if [ -x "$(command -v $CMD)" ]; then
         exit 1
     else
         echo "${CMD} ${VERSION} is available: (current ${CMD} ${CURRENT})"
+        read -p "Upgrade to ${CMD} ${VERSION}? (y/N): " confirm
     fi
 fi
 
 
-if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ]; then
-
+if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ] || [[ "$confirm" == [yY] ]]; then
     if [ "$(uname -s)" == "Darwin" ]; then
         brew install "$NAME"
     elif [ "$(uname -m)" == "x86_64" ] && [ "$(uname -s)" == "Linux" ]; then

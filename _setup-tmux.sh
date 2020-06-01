@@ -14,13 +14,13 @@ if [ -x "$(command -v $CMD)" ]; then
         exit 1
     else
         echo "${CMD} ${VERSION} is available: (current ${CMD} ${CURRENT})"
+        read -p "Upgrade to ${CMD} ${VERSION}? (y/N): " confirm
     fi
 fi
 
 VER=$(echo "$VERSION" | cut -c 1-4)
 
-if [ "$1" = "-f" ] || [ ! -x "$(command -v tmux)" ]; then
-
+if [ "$1" = "-f" ] || [ ! -x "$(command -v tmux)" ] || [[ "$confirm" == [yY] ]]; then
     BASEDIR=$(dirname "$(readlink -f "$0")")
     CONFDIR="${HOME}/confs"
 
