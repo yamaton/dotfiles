@@ -21,7 +21,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v ${NAME})" ] || [[ "$confirm" == [yY] 
     if [ "$(uname -s)" == "Darwin" ]; then
         brew install "$NAME"
     elif [ "$(uname -s)" == "Linux" ] && [ "$(uname -m)" == "x86_64" ]; then
-        URI="https://github.com/Canop/$NAME/releases/download/$VERSION/$ZIPFILE"
+        URI="https://github.com/Canop/$NAME/releases/download/v$VERSION/$ZIPFILE"
         mkdir -p ~/bin && cd ~/bin
         wget -N "$URI"
         rm -rf build
