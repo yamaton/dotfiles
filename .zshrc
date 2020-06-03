@@ -45,7 +45,6 @@ fi
 # $ cht.sh bash remove color | removecolor | bat -l bash
 alias removecolor="sed $'s,\x1b\\[[0-9;]*[a-zA-Z],,g'"
 
-alias weather="curl wttr.in"
 alias corona='parallel curl -s https://corona-stats.online{} ::: "/states/us?minimal=true&top=15" "?minimal=true&top=10"'
 alias btc="curl rate.sx"
 
@@ -224,4 +223,16 @@ n()
         . $NNN_TMPFILE
         rm -f $NNN_TMPFILE
     fi
+}
+
+## Weather from wttr.in/:bash.function
+## Examples:
+##     wttr
+##     wttr "New York"
+##     wttr :help
+wttr()
+{
+    local request="wttr.in/${1}"
+    [ "$(tput cols)" -lt 125 ] && request+='?n'
+    curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
 }
