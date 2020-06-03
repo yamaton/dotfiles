@@ -11,3 +11,4 @@ create_default_packages:
   - black
   - rope
 
+always_yes: True
