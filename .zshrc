@@ -41,11 +41,16 @@ fi
 [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]] && alias bu="sudo apt update && sudo apt full-upgrade && conda update -n base --all -y && conda update -n tf --all -y"
 [[ -x "$(command -v nvim)" ]] && alias vim=nvim
 
-# for use with cht.h
-# $ cht.sh bash remove color | removecolor | bat -l bash
+## for use with cht.h
+## $ cht.sh bash remove color | removecolor | bat -l bash
 alias removecolor="sed $'s,\x1b\\[[0-9;]*[a-zA-Z],,g'"
 
-alias corona='parallel curl -s https://corona-stats.online{} ::: "/states/us?minimal=true&top=15" "?minimal=true&top=10"'
+
+## covid-19 cases. First argument is the number of top countries shown.
+function corona {
+    TOPNUM="${1:-20}"
+    parallel curl -s https://corona-stats.online{} ::: "/states/us?minimal=true&top=15" "?minimal=true&top=${TOPNUM}"    
+}
 alias btc="curl rate.sx"
 
 
