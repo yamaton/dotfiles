@@ -18,11 +18,12 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ] || [[ "$confirm" == [yY] ]
         brew install "${CMD}"
         "$(brew --prefix)"/opt/fzf/install
     elif [ "$(uname -s)" == "Linux" ]; then
-        if [ -d ~/.fzf ]; then
-            cd ~/.fzf && git pull && ./install
-        else
-            git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-            ~/.fzf/install
-        fi
+        URI="https://github.com/junegunn/fzf/archive/${VERSION}.tar.gz"
+        rm -rf _tmp
+        mkdir _tmp && cd _tmp
+        wget -N "$URI"
+        tar xvzf ./"$(basename $URI)"
+        cd */
+        ./install
     fi
 fi
