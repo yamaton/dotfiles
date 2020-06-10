@@ -241,3 +241,9 @@ wttr()
     [ "$(tput cols)" -lt 125 ] && request+='?n'
     curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
 }
+
+## fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+## broot
+[ -x "$(command -v broot)" ] && source ~/.config/broot/launcher/bash/br
