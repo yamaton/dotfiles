@@ -32,9 +32,9 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v zsh)" ]; then
     fi
 
     [ -f ~/.zshrc ] && mv ~/.zshrc ~/.zshrc.backup
-    cp "$BASEDIR"/.zshrc ~
+    ln -s "$BASEDIR"/.zshrc ~
     [ -f ~/.zshenv ] && mv ~/.zshenv ~/.zshenv.backup
-    cp "$BASEDIR"/.zshenv ~
+    ln -s "$BASEDIR"/.zshenv ~
 
     sudo chsh -s "$(which zsh)" "$(whoami)"
 fi
