@@ -19,11 +19,11 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ] || [[ "$confirm" == [yY] ]
         "$(brew --prefix)"/opt/fzf/install
     elif [ "$(uname -s)" == "Linux" ]; then
         URI="https://github.com/junegunn/fzf/archive/${VERSION}.tar.gz"
-        rm -rf _tmp
-        mkdir _tmp && cd _tmp
+        rm -rf ~/.fzf && mkdir ~/.fzf
         wget -N "$URI"
-        tar xvzf ./"$(basename $URI)"
-        cd */
-        ./install
+        FILE="$(basename $URI)"
+        tar xvzf ./"$FILE" -C ~/.fzf
+        rm -f "$FILE"
+        ~/.fzf/"fzf-${VERSION}"/install
     fi
 fi
