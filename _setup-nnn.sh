@@ -43,7 +43,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nnn)" ] || [[ "$confirm" == [yY] ]]; 
         esac
 
         cd "${REPO_DIR}" || exit
-        if [ -n "$OS" ] && [ "$(uname -m)" == "x86_64" ]; then
+        if [[ "$(uname -s)" == "Linux" ]] && [ -x "$(command -v apt)" ] && [[ "$(uname -m)" == "x86_64" ]]; then
             echo "[INFO] getting deb file for $codename"
             URI="https://github.com/jarun/nnn/releases/download/v${VERSION}/nnn_${VERSION}-1_${OS}.amd64.deb"
             wget -N "$URI"
