@@ -1,6 +1,9 @@
-bat
-broot
-fd
-ripgrep
 tmux
 neovim
+bat
+fd
+ripgrep
+parallel
+broot
+fzf
+nnn
