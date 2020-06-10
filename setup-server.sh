@@ -52,98 +52,22 @@ cp "${BASEDIR}"/.less_termcap ~
 # misc essential software
 echo ""
 echo "--------------------------"
-echo "   essential software"
+echo "    software via apt"
 echo "--------------------------"
 cd "${BASEDIR}" || exit
 ./_setup-misc.sh
 
 
-# tmux
-echo ""
-echo "--------------------------"
-echo "        tmux"
-echo "--------------------------"
-cd "${BASEDIR}" || exit
-./_setup-tmux.sh -f
-
-
-# emacs
-echo ""
-echo "--------------------------"
-echo "        emacs"
-echo "--------------------------"
-cd "${BASEDIR}" || exit
-./_setup-emacs.sh -f
-
-
-# neovim
-echo ""
-echo "--------------------------"
-echo "        neovim"
-echo "--------------------------"
-cd "${BASEDIR}" || exit
-./_setup-neovim.sh -f
-
-
-# tldr
-echo ""
-echo "--------------------------"
-echo "        tldr client"
-echo "--------------------------"
-cd "${BASEDIR}" || exit
-./_setup-tldr.sh -f
-
-
-# cht.sh
-echo ""
-echo "--------------------------"
-echo "        cht.sh"
-echo "--------------------------"
-cd "${BASEDIR}" || exit
-./_setup-cheatsheet.sh
-
-
-# ripgrep ---better grep---
-echo ""
-echo "--------------------------"
-echo "        ripgrep"
-echo "--------------------------"
-cd "${BASEDIR}" || exit
-./_setup-ripgrep.sh -f
-
-
-# bat ---quick look file---
-echo ""
-echo "--------------------------"
-echo "        bat"
-echo "--------------------------"
-cd "${BASEDIR}" || exit
-./_setup-bat.sh -f
-
-
-# nnn
-echo ""
-echo "--------------------------"
-echo "        nnn"
-echo "--------------------------"
-cd "${BASEDIR}" || exit
-./_setup-nnn.sh -f
-
-
-echo ""
-echo "--------------------------"
-echo "        fd"
-echo "--------------------------"
-cd "${BASEDIR}" || exit
-./_setup-fd.sh -f
-
-
-# echo ""
-# echo "--------------------------"
-# echo "        fzf"
-# echo "--------------------------"
-# cd "${BASEDIR}" || exit
-# ./_setup-fzf.sh -f
+# custom installations
+APPS=(tmux emacs neovim tldr cheatsheet ripgrep bat fd parallel nnn fzf broot)
+for app in ${APPS[*]}; do
+    echo ""
+    echo "--------------------------"
+    echo "        ${app}"
+    echo "--------------------------"
+    cd "${BASEDIR}" || exit
+    "./_setup-${app}.sh" -f
+done
 
 
 echo ""
@@ -151,6 +75,7 @@ echo "--------------------------"
 echo "        Cleaning up"
 echo "--------------------------"
 cd "${BASEDIR}" || exit
+rm -rf ./_tmp
 rm -f ./*.deb
 rm -f ../*.deb
 
