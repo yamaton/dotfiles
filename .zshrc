@@ -49,7 +49,7 @@ alias removecolor="sed $'s,\x1b\\[[0-9;]*[a-zA-Z],,g'"
 ## covid-19 cases. First argument is the number of top countries shown.
 function corona {
     TOPNUM="${1:-20}"
-    parallel curl -s https://corona-stats.online{} ::: "/states/us?minimal=true&top=15" "?minimal=true&top=${TOPNUM}"    
+    parallel curl -s https://corona-stats.online{} ::: "/states/us?minimal=true&top=15" "?minimal=true&top=${TOPNUM}"
 }
 alias btc="curl rate.sx"
 
@@ -206,7 +206,7 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 source /usr/share/autojump/autojump.zsh
 
 ## conda
-eval "$($HOME/miniconda3/bin/conda shell.zsh hook)"
+[[ -x "$HOME/miniconda3/bin/conda" ]] && eval "$($HOME/miniconda3/bin/conda shell.zsh hook)"
 
 ## source-highlight in less
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
