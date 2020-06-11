@@ -39,7 +39,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v tmux)" ] || [[ "$confirm" == [yY] ]];
     fi
 
     [ -f ~/.tmux.conf ] && mv ~/.tmux.conf ~/.tmux.conf.backup
-    cp "${BASEDIR}"/.tmux.conf ~
+    ln -s "${BASEDIR}"/.tmux.conf ~
     if [ ! -d ~/.tmux/plugins/tpm ]; then
         git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     else

@@ -12,5 +12,5 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
     fi
 
     [ -f ~/.emacs ] && mv ~/.emacs ~/.emacs.backup
-    cp "${BASEDIR}/.emacs" ~
+    ln -s "${BASEDIR}/.emacs" ~
 fi
