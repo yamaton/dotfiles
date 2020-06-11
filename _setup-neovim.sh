@@ -47,6 +47,4 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ] || [[ "$confirm" == [yY] ]];
 
     [ -f ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.backup
     ln -s "$BASEDIR"/.vimrc ~
-else
-    echo "[INFO] skipping; neovim is already available"
 fi
