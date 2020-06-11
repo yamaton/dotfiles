@@ -10,7 +10,6 @@ if [ -x "$(command -v ${NAME})" ]; then
     CURRENT=$("$NAME" --version | cut -d ' ' -f2)
     if [ "$VERSION" == "$CURRENT" ]; then
         echo "... already the latest: ${CMD} ${CURRENT}"
-        exit 1
     else
         echo "${CMD} ${VERSION} is available: (current ${CMD} ${CURRENT})"
         read -p "Upgrade to ${CMD} ${VERSION}? (y/N): " confirm
