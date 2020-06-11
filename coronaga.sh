@@ -3,7 +3,7 @@
 function f {
     URL="https://ga-covid19.ondemand.sas.com/static/js/main.js"
     kwd=$1
-    if [ -x $(command -v rg) ]; then
+    if [ -x "$(command -v rg)" ]; then
         search=rg
     else
         search=grep
