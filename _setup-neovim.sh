@@ -14,7 +14,6 @@ if [ -x "$(command -v $CMD)" ]; then
     CURRENT=$("$CMD" --version | head -1 | cut -d ' ' -f2 | cut -d'v' -f2)
     if [ "$VERSION" == "$CURRENT" ]; then
         echo "... already the latest: ${CMD} ${CURRENT}"
-        exit 1
     else
         echo "${CMD} ${VERSION} is available: (current ${CMD} ${CURRENT})"
         read -p "Upgrade to ${CMD} ${VERSION}? (y/N): " confirm
@@ -43,7 +42,11 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ] || [[ "$confirm" == [yY] ]];
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     mkdir -p "$CONFIG_DIR"
-    cp "$BASEDIR"/init.vim "$CONFIG_DIR"
+    [ -f "$CONFIG_DIR"/init.vim ] && mv "$CONFIG_DIR"/init.vim "$CONFIG_DIR"/init.vim.backup
+    ln -s "$BASEDIR"/init.vim "$CONFIG_DIR"
+
+    [ -f ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.backup
+    ln -s "$BASEDIR"/.vimrc ~
 else
     echo "[INFO] skipping; neovim is already available"
 fi
