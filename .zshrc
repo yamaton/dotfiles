@@ -247,3 +247,4 @@ wttr()
 
 ## broot
 [ -x "$(command -v broot)" ] && source ~/.config/broot/launcher/bash/br
+
