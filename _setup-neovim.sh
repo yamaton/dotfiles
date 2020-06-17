@@ -42,9 +42,9 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v nvim)" ] || [[ "$confirm" == [yY] ]];
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     mkdir -p "$CONFIG_DIR"
-    [ -f "$CONFIG_DIR"/init.vim ] && mv "$CONFIG_DIR"/init.vim "$CONFIG_DIR"/init.vim.backup
+    [ -e "$CONFIG_DIR"/init.vim ] && mv "$CONFIG_DIR"/init.vim "$CONFIG_DIR"/init.vim.backup
     ln -s "$BASEDIR"/init.vim "$CONFIG_DIR"
 
-    [ -f ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.backup
+    [ -e ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.backup
     ln -s "$BASEDIR"/.vimrc ~
 fi

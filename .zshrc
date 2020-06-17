@@ -213,7 +213,7 @@ export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=" -R "
 
 ## colorful man
-[[ -f ~/.less_termcap ]] && . ~/.less_termcap
+[[ -e ~/.less_termcap ]] && source ~/.less_termcap
 
 ## nnn: auto completion
 zstyle ':completion:*' script ~/confs/nnn/scripts/auto-completion/zsh/_nnn

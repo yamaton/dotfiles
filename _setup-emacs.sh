@@ -11,6 +11,6 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ]; then
         sudo apt install -y emacs-nox
     fi
 
-    [ -f ~/.emacs ] && mv ~/.emacs ~/.emacs.backup
+    [ -e ~/.emacs ] && mv ~/.emacs ~/.emacs.backup
     ln -s "${BASEDIR}/.emacs" ~
 fi

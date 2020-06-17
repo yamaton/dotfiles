@@ -31,9 +31,9 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v zsh)" ]; then
         git clone https://github.com/starcraftman/zsh-git-prompt.git
     fi
 
-    [ -f ~/.zshrc ] && mv ~/.zshrc ~/.zshrc.backup
+    [ -e ~/.zshrc ] && mv ~/.zshrc ~/.zshrc.backup
     ln -s "$BASEDIR"/.zshrc ~
-    [ -f ~/.zshenv ] && mv ~/.zshenv ~/.zshenv.backup
+    [ -e ~/.zshenv ] && mv ~/.zshenv ~/.zshenv.backup
     ln -s "$BASEDIR"/.zshenv ~
 
     sudo chsh -s "$(which zsh)" "$(whoami)"
