@@ -7,7 +7,7 @@ curl
 source-highlight
 jq
 neofetch
-p7zip
+p7zip-full
 unzip
 tree
 trash-cli
