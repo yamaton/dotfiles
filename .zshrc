@@ -17,7 +17,7 @@ alias repos='~/repos'
 ## =======================================
 alias ls="ls --color"
 alias la='ls -A'
-alias ll='ls -alF'
+alias ll='ls -alFh'
 
 alias mv="mv -i"
 alias cp="cp -i"
