@@ -7,3 +7,4 @@ parallel
 broot
 fzf
 nnn
+syncthing
