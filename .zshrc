@@ -38,7 +38,10 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
     alias ql='qlmanage -p "$@" >& /dev/null'
 fi
 
-[[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]] && alias bu="sudo apt update && sudo apt full-upgrade && conda update -n base --all -y && conda update -n tf --all -y"
+if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
+    alias bu="sudo apt update && sudo apt full-upgrade && conda update -n base --all -y && conda update -n tf --all -y && check-updates-utils && tldr --update"
+fi
+
 [[ -x "$(command -v nvim)" ]] && alias vim=nvim
 
 ## for use with cht.h
