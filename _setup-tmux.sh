@@ -13,7 +13,7 @@ if [ -x "$(command -v $CMD)" ]; then
         echo "... already the latest: ${CMD} ${CURRENT}"
     else
         echo "${CMD} ${VERSION} is available: (current ${CMD} ${CURRENT})"
-        read -p "Upgrade to ${CMD} ${VERSION}? (y/N): " confirm
+        read -rp "Upgrade to ${CMD} ${VERSION}? (y/N): " confirm
     fi
 fi
 

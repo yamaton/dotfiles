@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 BASEDIR=$(dirname "$(readlink -f "$0")")
-APPS=$(sed '/^\s*$/d' $BASEDIR/misc_apps.txt)
+APPS=$(sed '/^\s*$/d' "${BASEDIR}/misc_apps.txt")
 
 if [ "$(uname -s)" == "Darwin" ]; then
     for app in ${APPS}; do

@@ -8,7 +8,7 @@ if [ -x "$(command -v $CMD)" ]; then
         echo "... already the latest: ${CMD} ${CURRENT}"
     else
         echo "${CMD} ${VERSION} is available: (current ${CMD} ${CURRENT})"
-        read -p "Upgrade to ${CMD} ${VERSION}? (y/N): " confirm
+        read -rp "Upgrade to ${CMD} ${VERSION}? (y/N): " confirm
     fi
 fi
 
@@ -20,7 +20,7 @@ if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ] || [[ "$confirm" == [yY] ]
         URI="https://github.com/junegunn/fzf/archive/${VERSION}.tar.gz"
         rm -rf ~/.fzf && mkdir ~/.fzf
         wget -N "$URI"
-        FILE="$(basename $URI)"
+        FILE="$(basename "$URI")"
         tar xvzf ./"$FILE" -C ~/.fzf
         rm -f "$FILE"
         ~/.fzf/"fzf-${VERSION}"/install
