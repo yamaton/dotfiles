@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR=$(dirname "$(readlink -f "$0")")
+BASEDIR="$(dirname "$(readlink -f "$0")")"
+readonly BASEDIR
 echo "BASEDIR: ${BASEDIR}"
 
 
@@ -16,13 +17,13 @@ cd "${BASEDIR}" || exit
 echo "-------------------------"
 echo "   terminator"
 echo "-------------------------"
-[ -x "$(command -v apt)" ] && sudo apt install -y terminator --no-install-recommends
+[[ -x "$(command -v apt)" ]] && sudo apt install -y terminator --no-install-recommends
 
 
 echo "-------------------------"
 echo "   meld"
 echo "-------------------------"
-[ -x "$(command -v apt)" ] && sudo apt install -y meld --no-install-recommends
+[[ -x "$(command -v apt)" ]] && sudo apt install -y meld --no-install-recommends
 
 
 # fonts-firacode

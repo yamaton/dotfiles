@@ -18,24 +18,24 @@ echo ""
 echo "-------------------"
 echo "  IBM Plex Mono"
 echo "-------------------"
-VERSION=4.0.2
-URI="https://github.com/IBM/plex/releases/download/v${VERSION}/OpenType.zip"
-FILENAME=$(basename "$URI")
-wget -N "$URI"
-unzip "$FILENAME" -d "IBM-Plex-${VERSION}"
-rm -f "$FILENAME"
+version=4.0.2
+uri="https://github.com/IBM/plex/releases/download/v${version}/OpenType.zip"
+filename="$(basename "$uri")"
+wget -N "$uri"
+unzip "$filename" -d "IBM-Plex-${version}"
+rm -f "$filename"
 
 
 echo ""
 echo "-------------------"
 echo "  Hasklig"
 echo "-------------------"
-VERSION=1.1
-URI="https://github.com/i-tu/Hasklig/releases/download/${VERSION}/Hasklig-${VERSION}.zip"
-FILENAME=$(basename "$URI")
-wget -N "$URI"
-unzip "$FILENAME" -d "${FILENAME%.*}"
-rm -f "$FILENAME"
+version=1.1
+uri="https://github.com/i-tu/Hasklig/releases/download/${version}/Hasklig-${version}.zip"
+filename="$(basename "$uri")"
+wget -N "$uri"
+unzip "$filename" -d "${filename%.*}"
+rm -f "$filename"
 
 
 echo ""
@@ -49,7 +49,7 @@ echo ""
 echo "-------------------"
 echo "  Noto CJK"
 echo "-------------------"
-if [ -x "$(command -v apt)" ]; then
+if [[ -x "$(command -v apt)" ]]; then
     sudo apt update
     sudo apt install -y fonts-noto-cjk
 else
@@ -64,14 +64,14 @@ echo ""
 echo "-------------------"
 echo "  Cascadia"
 echo "-------------------"
-VERSION=2005.15
-URI="https://github.com/microsoft/cascadia-code/releases/download/v${VERSION}/CascadiaCode_${VERSION}.zip"
-FILENAME=$(basename "$URI")
-wget -N "$URI"
-unzip "$FILENAME" -d "${FILENAME%.*}"
-rm -f "$FILENAME"
-rm -rf "${FILENAME%.*}/ttf"
-rm -rf "${FILENAME%.*}/woff2"
+version=2005.15
+uri="https://github.com/microsoft/cascadia-code/releases/download/v${version}/CascadiaCode_${version}.zip"
+filename="$(basename "$uri")"
+wget -N "$uri"
+unzip "$filename" -d "${filename%.*}"
+rm -f "$filename"
+rm -rf "${filename%.*}/ttf"
+rm -rf "${filename%.*}/woff2"
 
 
 
@@ -79,28 +79,28 @@ echo ""
 echo "-------------------"
 echo "  Fira Code"
 echo "-------------------"
-VERSION=4
-URI="https://github.com/tonsky/FiraCode/releases/download/${VERSION}/Fira_Code_v${VERSION}.zip"
-FILENAME=$(basename "$URI")
-wget -N "$URI"
-unzip "$FILENAME" -d "${FILENAME%.*}"
-rm -f "$FILENAME"
-rm -rf "${FILENAME%.*}/${DIR}/ttf"
-rm -rf "${FILENAME%.*}/${DIR}/variable_ttf"
-rm -rf "${FILENAME%.*}/${DIR}/woff"
-rm -rf "${FILENAME%.*}/${DIR}/woff2"
+version=4
+uri="https://github.com/tonsky/FiraCode/releases/download/${version}/Fira_Code_v${version}.zip"
+filename="$(basename "$uri")"
+wget -N "$uri"
+unzip "$filename" -d "${filename%.*}"
+rm -f "$filename"
+rm -rf "${filename%.*}/${DIR}/ttf"
+rm -rf "${filename%.*}/${DIR}/variable_ttf"
+rm -rf "${filename%.*}/${DIR}/woff"
+rm -rf "${filename%.*}/${DIR}/woff2"
 
 
 echo ""
 echo "-------------------"
 echo "  Ricty Diminished"
 echo "-------------------"
-VERSION=3.2.3
-URI="https://github.com/edihbrandon/RictyDiminished/archive/${VERSION}.zip"
-FILENAME=$(basename "$URI")
-wget -N "$URI"
-unzip "$FILENAME"
-rm -f "$FILENAME"
+version=3.2.3
+uri="https://github.com/edihbrandon/RictyDiminished/archive/${version}.zip"
+filename="$(basename "$uri")"
+wget -N "$uri"
+unzip "$filename"
+rm -f "$filename"
 
 
 fc-cache -fv

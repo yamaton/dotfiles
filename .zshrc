@@ -1,3 +1,6 @@
+# shellcheck disable=SC2148
+# shellcheck disable=SC2034
+
 ## =======================================
 ##            Command History
 ## =======================================
@@ -33,26 +36,52 @@ alias base="conda deactivate; conda activate"
 alias tf="conda deactivate; conda activate tf"
 alias torch="conda deactivate; conda activate torch"
 
-if [[ "$(uname -s)" == "Darwin" ]]; then
-    alias bu='brew upgrade && conda update -n base --all -y && conda update -n tf --all -y && conda update -n torch --all -y'
-    alias ql='qlmanage -p "$@" >& /dev/null'
-fi
-
-if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
-    alias bu="sudo apt update && sudo apt full-upgrade && conda update -n base --all -y && conda update -n tf --all -y && check-updates-utils && tldr --update"
-fi
-
 [[ -x "$(command -v nvim)" ]] && alias vim=nvim
 
-## for use with cht.h
-## $ cht.sh bash remove color | removecolor | bat -l bash
+if [[ "$(uname -s)" == "Darwin" ]]; then
+    alias bu='
+    brew upgrade;
+    conda update -n base --all -y;
+    conda update -n tf --all -y;
+    conda update -n torch --all -y;
+    tldr --update'
+    function ql {
+        qlmanage -p "$@" >& /dev/null
+    }
+fi
+
+[[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]] &&
+    alias bu='
+    sudo apt update;
+    sudo apt full-upgrade;
+    conda update -n base --all -y;
+    conda update -n tf --all -y;
+    tldr --update'
+
+##-------------------------------------------------------------
+## Removes color from stdin, and writes to stdout
+##
+## Example:
+##   cht.sh bash remove color | removecolor | bat -l bash
+##-------------------------------------------------------------
 alias removecolor="sed $'s,\x1b\\[[0-9;]*[a-zA-Z],,g'"
 
 
-## covid-19 cases. First argument is the number of top countries shown.
+##-------------------------------------------------------------
+## Shows ranking of countries and US states by COVID-19 cases
+##
+## Arguments:
+##   Number of top countries (default: 20)
+##   Number of top US states (default: 15)
+## Outputs:
+##   Writes ranks to stdout
+##-------------------------------------------------------------
 function corona {
-    TOPNUM="${1:-20}"
-    parallel curl -s https://corona-stats.online{} ::: "/states/us?minimal=true&top=15" "?minimal=true&top=${TOPNUM}"
+    local n_countries="${1:-20}"
+    local n_us_states="${2:-15}"
+    parallel curl -s https://corona-stats.online{} ::: \
+    "/states/us?minimal=true&top=${n_us_states}" \
+    "?minimal=true&top=${n_countries}"
 }
 alias btc="curl rate.sx"
 
@@ -60,7 +89,7 @@ alias btc="curl rate.sx"
 ## =======================================
 ##      Run application by Extension
 ## =======================================
-alias -s {txt,md,c,cc,cpp,tex,py,hs,fs,go}=code
+alias -s "{txt,md,c,cc,cpp,tex,py,hs,fs,go}"=code
 
 
 ## =======================================
@@ -171,7 +200,7 @@ bindkey "^U" backward-kill-line
 
 
 ## =======================================
-##     Prompt Customization
+##     Prompt Configurations
 ## =======================================
 
 ## Use colors in prompt
@@ -187,16 +216,16 @@ source ~/confs/zsh-git-prompt/zshrc.sh
 
 ## zsh syntax highlighting
 if [[ "$(uname -s)" == "Darwin" ]]; then
-    # Use homebrew to install zsh-syntax-highlighting
-    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    export ZSH_HIGHLIGHT_sHIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+    # following homebrew package instruction
+    # https://formulae.brew.sh/formula/zsh-syntax-highlighting
+    source "$(brew --prefix)"/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else
     source ~/confs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
 ## Custom Prompt
 PROMPT='%{$fg[green]%}%n%{$fg[yellow]%}@%{$fg[green]%}%m%{$reset_color%}$(git_super_status)%{$fg[yellow]%}➤%{$reset_color%} '
-RPROMPT="%{$fg[green]%}[%{$fg[magenta]%}%~%{$fg[green]%}] %{$fg[cyan]%}%T %{$reset_color%}"
+RPROMPT='%{$fg[green]%}[%{$fg[magenta]%}%~%{$fg[green]%}] %{$fg[cyan]%}%T %{$reset_color%}'
 
 ## TLDR completion
 source ~/.tldr.complete
@@ -209,45 +238,53 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 source /usr/share/autojump/autojump.zsh
 
 ## conda
-[[ -x "$HOME/miniconda3/bin/conda" ]] && eval "$($HOME/miniconda3/bin/conda shell.zsh hook)"
+[[ -x "$HOME/miniconda3/bin/conda" ]] &&
+    eval "$("$HOME"/miniconda3/bin/conda shell.zsh hook)"
 
 ## source-highlight in less
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=" -R "
 
 ## colorful man
+# shellcheck source=~/.less_termcap
 [[ -e ~/.less_termcap ]] && source ~/.less_termcap
 
+
+##-------------------------------------------------------------
 ## nnn: auto completion
 zstyle ':completion:*' script ~/confs/nnn/scripts/auto-completion/zsh/_nnn
 
 ## nnn: cd on exit:
 [[ ! -d ~/tmp ]] && mkdir ~/tmp
-export NNN_TMPFILE="~/tmp/nnn"
+export NNN_TMPFILE="$HOME/tmp/nnn"
 n()
 {
     nnn -l "$@"
-    if [ -f $NNN_TMPFILE ]; then
-        . $NNN_TMPFILE
-        rm -f $NNN_TMPFILE
+    if [[ -f "$NNN_TMPFILE" ]]; then
+        . "$NNN_TMPFILE"
+        rm -f "$NNN_TMPFILE"
     fi
 }
 
+##-------------------------------------------------------------
 ## Weather from wttr.in/:bash.function
 ## Examples:
 ##     wttr
 ##     wttr "New York"
 ##     wttr :help
+##-------------------------------------------------------------
 wttr()
 {
     local request="wttr.in/${1}"
-    [ "$(tput cols)" -lt 125 ] && request+='?n'
+    [[ "$(tput cols)" -lt 125 ]] && request+='?n'
     curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
 }
 
 ## fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# shellcheck source=~/.fzf.zsh
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
 ## broot
-[ -x "$(command -v broot)" ] && source ~/.config/broot/launcher/bash/br
+# shellcheck source=~/.config/broot/launcher/bash/br
+[[ -x "$(command -v broot)" ]] && source ~/.config/broot/launcher/bash/br
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR=$(dirname "$(readlink -f "$0")")
+BASEDIR="$(dirname "$(readlink -f "$0")")"
+readonly BASEDIR
 CONFDIR="${HOME}/confs"
 
 echo ""
@@ -9,18 +10,18 @@ echo "CONFDIR: ${CONFDIR}"
 echo ""
 
 # configurations are in ~/confs
-[ ! -d "${CONFDIR}" ] &&  mkdir "${CONFDIR}"
+[[ ! -d "${CONFDIR}" ]] &&  mkdir "${CONFDIR}"
 
 
 # update the system and install essential
-if [ "$(uname -s)" == "Linux" ] && [ -x "$(command -v apt)" ]; then
+if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
     sudo apt update && sudo apt full-upgrade
     sudo apt install -y curl openssh-server
 fi
 
 
 # latest git (ubuntu only)
-if [ -x "$(command -v apt)" ] && [ "$(lsb_release -i -s)" == "Ubuntu" ]; then
+if [[ -x "$(command -v apt)" ]] && [[ "$(lsb_release -i -s)" == "Ubuntu" ]]; then
     echo ""
     echo "--------------------------"
     echo "       git from ppa"
@@ -45,7 +46,7 @@ echo ""
 echo "--------------------------"
 echo "        colored man"
 echo "--------------------------"
-[ -e ~/.less_termcap ] && mv ~/.less_termcap ~/.less_termcap.backup
+[[ -e ~/.less_termcap ]] && mv ~/.less_termcap ~/.less_termcap.backup
 ln -s "${BASEDIR}"/.less_termcap ~
 
 

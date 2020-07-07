@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
-CMD=parallel
+readonly CMD=parallel
 
-VERSION=$(curl --silent https://formulae.brew.sh/api/formula/${CMD}.json | jq '.versions.stable' | tr -d \")
+VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${CMD}.json | jq '.versions.stable' | tr -d \")"
+readonly VERSION
 
-if [ -x "$(command -v $CMD)" ]; then
-    CURRENT=$("$CMD" --version | head -1 | cut -d ' ' -f3)
-    if [ "$VERSION" == "$CURRENT" ]; then
+if [[ -x "$(command -v $CMD)" ]]; then
+    CURRENT="$("$CMD" --version | head -1 | cut -d ' ' -f3)"
+    readonly CURRENT
+    if [[ "$VERSION" == "$CURRENT" ]]; then
         echo "... already the latest: ${CMD} ${CURRENT}"
     else
         echo "${CMD} ${VERSION} is available: (current ${CMD} ${CURRENT})"
@@ -14,19 +16,21 @@ if [ -x "$(command -v $CMD)" ]; then
     fi
 fi
 
-if [ "$1" = "-f" ] || [ ! -x "$(command -v ${CMD})" ] || [[ "$confirm" == [yY] ]]; then
-    if [ "$(uname -s)" == "Darwin" ]; then
+if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
+    if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
     else
-        URI="http://ftp.gnu.org/gnu/parallel/parallel-latest.tar.bz2"
+        readonly URI="http://ftp.gnu.org/gnu/parallel/parallel-latest.tar.bz2"
         wget -N "$URI"
-        FILE=$(basename "$URI")
+        FILE="$(basename "$URI")"
+        readonly FILE
         tar xvf ./"$FILE"
+        (
         cd parallel-*/
         ./configure
         make -j4
         sudo make install
-        cd ..
+        )
         rm -f ./"$FILE"
         rm -rf parallel-*/
     fi
