@@ -44,19 +44,23 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
     conda update -n base --all -y;
     conda update -n tf --all -y;
     conda update -n torch --all -y;
-    tldr --update'
+    tldr --update;
+    '
     function ql {
         qlmanage -p "$@" >& /dev/null
     }
 fi
 
-[[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]] &&
+if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
     alias bu='
     sudo apt update;
     sudo apt full-upgrade;
     conda update -n base --all -y;
     conda update -n tf --all -y;
-    tldr --update'
+    check-updates-utils;
+    tldr --update;
+    '
+fi
 
 ##-------------------------------------------------------------
 ## Removes color from stdin, and writes to stdout
