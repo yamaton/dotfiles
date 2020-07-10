@@ -38,6 +38,7 @@ alias torch="conda deactivate; conda activate torch"
 
 [[ -x "$(command -v nvim)" ]] && alias vim=nvim
 
+# Updates in MacOS
 if [[ "$(uname -s)" == "Darwin" ]]; then
     alias bu='
     brew upgrade;
@@ -51,6 +52,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
     }
 fi
 
+# Updates in Linux
 if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
     alias bu='
     sudo apt update;
@@ -60,6 +62,12 @@ if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
     check-updates-utils;
     tldr --update;
     '
+fi
+
+# Open in WSL2
+if [[ "$(uname -r)" == *'-microsoft-'* ]]; then
+    alias firefox='/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe'
+    alias typora='/mnt/c/Program\ Files/Typora/Typora.exe'
 fi
 
 ##-------------------------------------------------------------
