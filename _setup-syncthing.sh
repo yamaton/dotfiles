@@ -2,7 +2,7 @@
 
 readonly CMD=syncthing
 
-VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${CMD}.json | jq '.versions.stable' | tr -d \")"
+VERSION="$(curl curl --silent https://formulae.brew.sh/api/cask/syncthing.json | jq '.version' | tr -d \" | cut -d '-' -f1)"
 readonly VERSION
 
 if [[ -x "$(command -v $CMD)" ]]; then
