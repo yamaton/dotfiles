@@ -32,6 +32,8 @@ fi
 alias mkdir="mkdir -p"
 alias cht="cht.sh"
 
+alias ncdu="ncdu --color dark"
+
 alias base="conda deactivate; conda activate"
 alias tf="conda deactivate; conda activate tf"
 alias torch="conda deactivate; conda activate torch"
@@ -299,6 +301,9 @@ wttr()
 ## fzf
 # shellcheck source=~/.fzf.zsh
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+
+## starship
+# eval "$(starship init zsh)"
 
 ## broot
 # shellcheck source=~/.config/broot/launcher/bash/br
