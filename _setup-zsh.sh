@@ -53,10 +53,10 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v zsh)" ]]; then
         git clone https://github.com/zsh-git-prompt/zsh-git-prompt ~/.zsh/zsh-git-prompt
     fi
 
-    [[ -e ~/.zshrc ]] && mv ~/.zshrc ~/.zshrc.backup
-    ln -s "$BASEDIR"/.zshrc ~
-    [[ -e ~/.zshenv ]] && mv ~/.zshenv ~/.zshenv.backup
-    ln -s "$BASEDIR"/.zshenv ~
+    [[ -f ~/.zshrc ]] && mv -f ~/.zshrc ~/.zshrc.backup
+    ln -sf "$BASEDIR"/.zshrc ~
+    [[ -f ~/.zshenv ]] && mv -f ~/.zshenv ~/.zshenv.backup
+    ln -sf "$BASEDIR"/.zshenv ~
 
     sudo chsh -s "$(which zsh)" "$(whoami)"
 fi

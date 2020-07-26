@@ -12,8 +12,8 @@ else
 fi
 
 if [[ "$(uname -m)" == "x86_64" ]]; then
-    [[ -e ~/.condarc ]] && mv ~/.condarc ~/.condarc.backup
-    ln -s "${BASEDIR}/.condarc" ~
+    [[ -f ~/.condarc ]] && mv -f ~/.condarc ~/.condarc.backup
+    ln -sf "${BASEDIR}/.condarc" ~
 
     readonly URI="https://repo.anaconda.com/miniconda/Miniconda3-latest-${OS}-x86_64.sh"
     wget -N "$URI"

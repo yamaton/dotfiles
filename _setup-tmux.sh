@@ -41,8 +41,8 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v tmux)" ]] || [[ "$confirm" == [yY
         sudo apt install -y xclip
     fi
 
-    [[ -e "${HOME}/.tmux.conf" ]] && mv "${HOME}/.tmux.conf" "${HOME}/.tmux.conf.backup"
-    ln -s "${BASEDIR}/.tmux.conf" ~
+    [[ -f "${HOME}/.tmux.conf" ]] && mv -f "${HOME}/.tmux.conf" "${HOME}/.tmux.conf.backup"
+    ln -sf "${BASEDIR}/.tmux.conf" ~
     if [[ ! -d ~/.tmux/plugins/tpm ]]; then
         git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     else

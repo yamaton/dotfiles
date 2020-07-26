@@ -34,9 +34,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v nvim)" ]] || [[ "$confirm" == [yY
         wget -N "$URI"
         chmod +x ./nvim.appimage
         sudo apt install -y fuse
-        [[ -L ./nvim ]] && rm -f ./nvim
-        sudo rm -f /usr/local/bin/nvim
-        sudo ln -s "${BIN_DIR}/nvim.appimage" /usr/local/bin/nvim
+        sudo ln -sf "${BIN_DIR}/nvim.appimage" /usr/local/bin/nvim
     elif [[ "$(uname -m)" != "x86_64" ]] && [[ -x "$(command -v apt)" ]]; then
         sudo apt install --no-install-recommends -y neovim
     fi
@@ -45,9 +43,9 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v nvim)" ]] || [[ "$confirm" == [yY
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     mkdir -p "$CONFIG_DIR"
-    [[ -e "$CONFIG_DIR/init.vim" ]] && mv -f "$CONFIG_DIR"/init.vim "$CONFIG_DIR"/init.vim.backup
-    ln -s "$BASEDIR"/.config/nvim/init.vim "$CONFIG_DIR"
+    [[ -f "$CONFIG_DIR/init.vim" ]] && mv -f "$CONFIG_DIR"/init.vim "$CONFIG_DIR"/init.vim.backup
+    ln -sf "$BASEDIR"/.config/nvim/init.vim "$CONFIG_DIR"
 
-    [[ -e "$HOME/.vimrc" ]] && mv -f "$HOME/.vimrc" "$HOME/.vimrc.backup"
-    ln -s "$BASEDIR"/.vimrc ~/.vimrc
+    [[ -f "$HOME/.vimrc" ]] && mv -f "$HOME/.vimrc" "$HOME/.vimrc.backup"
+    ln -sf "$BASEDIR"/.vimrc ~/.vimrc
 fi

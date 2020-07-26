@@ -46,8 +46,8 @@ echo ""
 echo "--------------------------"
 echo "        colored man"
 echo "--------------------------"
-[[ -e ~/.less_termcap ]] && mv ~/.less_termcap ~/.less_termcap.backup
-ln -s "${BASEDIR}"/.less_termcap ~
+[[ -f ~/.less_termcap ]] && mv -f ~/.less_termcap ~/.less_termcap.backup
+ln -sf "${BASEDIR}/.less_termcap" ~
 
 
 # misc essential software
