@@ -262,6 +262,10 @@ export LESS=" -R "
 [[ -e ~/.less_termcap ]] && source ~/.less_termcap
 
 
+## gcloud autocompletion
+source /usr/share/google-cloud-sdk/completion.zsh.inc
+
+
 ##-------------------------------------------------------------
 ## nnn: auto completion
 zstyle ':completion:*' script ~/confs/nnn/scripts/auto-completion/zsh/_nnn
@@ -299,4 +303,3 @@ wttr()
 ## broot
 # shellcheck source=~/.config/broot/launcher/bash/br
 [[ -x "$(command -v broot)" ]] && source ~/.config/broot/launcher/bash/br
-
