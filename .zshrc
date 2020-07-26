@@ -224,18 +224,28 @@ autoload colors && colors
 ## Type command "prompt -p adam1" for example.
 autoload -U promptinit && promptinit
 
-## Zsh Git Prompt
-## https://github.com/olivierverdier/zsh-git-prompt
-source ~/confs/zsh-git-prompt/zshrc.sh
-
-## zsh syntax highlighting
+## zsh-syntax-highlighting
 if [[ "$(uname -s)" == "Darwin" ]]; then
     # following homebrew package instruction
     # https://formulae.brew.sh/formula/zsh-syntax-highlighting
     source "$(brew --prefix)"/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else
-    source ~/confs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+
+## zsh-autosuggestions
+if [[ "$(uname -s)" == "Darwin" ]]; then
+    # following homebrew package instruction
+    # https://formulae.brew.sh/formula/zsh-autosuggestions
+    source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+else
+    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+## zsh-git-prompt
+## https://github.com/zsh-git-prompt/zsh-git-prompt
+source ~/.zsh/zsh-git-prompt/zshrc.sh
+
 
 ## Custom Prompt
 PROMPT='%{$fg[green]%}%n%{$fg[yellow]%}@%{$fg[green]%}%m%{$reset_color%}$(git_super_status)%{$fg[yellow]%}➤%{$reset_color%} '
