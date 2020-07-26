@@ -8,3 +8,4 @@ broot
 fzf
 nnn
 syncthing
+delta
