@@ -5,8 +5,9 @@ APPLIST=("$(cat "$BASEDIR"/check-updates-apps.txt)")
 
 for app in ${APPLIST[*]}; do
     case "$app" in
-        "neovim") cmd=nvim ;;
-        "ripgrep") cmd=rg ;;
+        "neovim"   ) cmd=nvim ;;
+        "ripgrep"  ) cmd=rg ;;
+        "tealdeer" ) cmd=tldr ;;
         *) cmd="$app" ;;
     esac
     [[ -x "$(command -v "$cmd")" ]] && "${BASEDIR}/_setup-${app}.sh"
