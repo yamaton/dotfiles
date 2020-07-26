@@ -9,3 +9,4 @@ fzf
 nnn
 syncthing
 delta
+tealdeer
