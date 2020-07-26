@@ -11,6 +11,10 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
     done
 elif [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
     for app in ${APPS[*]}; do
+        echo ""
+        echo "---------------"
+        echo " $app"
+        echo "---------------"
         sudo apt install -y "$(printf "%s" "$app")"
     done
 fi
