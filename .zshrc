@@ -252,7 +252,7 @@ PROMPT='%{$fg[green]%}%n%{$fg[yellow]%}@%{$fg[green]%}%m%{$reset_color%}$(git_su
 RPROMPT='%{$fg[green]%}[%{$fg[magenta]%}%~%{$fg[green]%}] %{$fg[cyan]%}%T %{$reset_color%}'
 
 ## TLDR completion
-source ~/.tldr.complete
+# source ~/.tldr.complete
 
 ## Bazel completion
 zstyle ':completion:*' use-cache on
