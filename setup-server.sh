@@ -60,7 +60,7 @@ cd "${BASEDIR}" || exit
 
 
 # custom installations
-APPS=(tmux emacs neovim tldr cheatsheet ripgrep bat fd parallel nnn fzf broot)
+APPS=(tmux emacs neovim tldr cheatsheet ripgrep bat fd parallel nnn fzf broot delta)
 for app in ${APPS[*]}; do
     echo ""
     echo "--------------------------"
