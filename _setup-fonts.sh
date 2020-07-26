@@ -18,7 +18,7 @@ echo ""
 echo "-------------------"
 echo "  IBM Plex Mono"
 echo "-------------------"
-version=4.0.2
+version=5.0.0
 uri="https://github.com/IBM/plex/releases/download/v${version}/OpenType.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
@@ -64,8 +64,8 @@ echo ""
 echo "-------------------"
 echo "  Cascadia"
 echo "-------------------"
-version=2005.15
-uri="https://github.com/microsoft/cascadia-code/releases/download/v${version}/CascadiaCode_${version}.zip"
+version=2007.01
+uri="https://github.com/microsoft/cascadia-code/releases/download/v${version}/CascadiaCode-${version}.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
 unzip "$filename" -d "${filename%.*}"
@@ -79,7 +79,7 @@ echo ""
 echo "-------------------"
 echo "  Fira Code"
 echo "-------------------"
-version=4
+version=5.2
 uri="https://github.com/tonsky/FiraCode/releases/download/${version}/Fira_Code_v${version}.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
