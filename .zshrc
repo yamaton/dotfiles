@@ -258,6 +258,8 @@ source /usr/share/autojump/autojump.zsh
 ## conda
 [[ -x "$HOME/miniconda3/bin/conda" ]] &&
     eval "$("$HOME"/miniconda3/bin/conda shell.zsh hook)"
+# Hide (base) when base is active
+PS1="$(echo "$PS1" | sed 's/(base) //')"
 
 ## source-highlight in less
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
