@@ -4,9 +4,6 @@
 ## =======================================
 ##            Command History
 ## =======================================
-HISTFILE=~/.zsh_history
-HISTSIZE=80000
-SAVEHIST=80000
 
 
 ## =======================================
@@ -116,17 +113,21 @@ alias -s "{txt,md,c,cc,cpp,tex,py,hs,fs,go}"=code
 ## Completion
 ##  Examples: Type "ls -" then press TAB
 ##            Type "tar " then press TAB
-autoload -U compinit
-compinit
+autoload -Uz compinit; compinit
 
 ## Use color [✓]
 setopt prompt_subst
 
-## Do not add duplicates in a row to command history [✓]
-setopt hist_ignore_dups
-
-## Share command history [✓]
-setopt share_history
+## copied from https://github.com/Phantas0s/.dotfiles/blob/master/zsh/zshrc
+setopt extended_history          # Write the history file in the ':start:elapsed;command' format.
+setopt share_history             # Share history between all sessions.
+setopt hist_expire_dups_first    # Expire a duplicate event first when trimming history.
+setopt hist_ignore_dups          # Do not record an event that was just recorded again.
+setopt hist_ignore_all_dups      # Delete an old recorded event if a new event is a duplicate.
+setopt hist_find_no_dups         # Do not display a previously found event.
+setopt hist_ignore_space         # Do not record an event starting with a space.
+setopt hist_save_no_dups         # Do not write a duplicate event to the history file.
+setopt hist_verify               # Do not execute immediately upon history expansion.
 
 ## Keyboad config ... emacs-like key binding (such as C-f, C-b)
 bindkey -e
@@ -163,10 +164,10 @@ setopt extended_glob
 setopt auto_menu
 
 ## Enable zmv (a command for renaming files)
-autoload zmv
+# autoload zmv
 
 ## Enable zargs
-autoload zargs
+# autoload zargs
 
 ## Change directory without typing cd [✓]
 setopt auto_cd
@@ -176,11 +177,6 @@ setopt auto_param_keys
 
 ## Add / (slash) automatically after a directory name [✓]
 setopt auto_param_slash
-
-## If a line starts with a space, don't save it.
-## https://stackoverflow.com/questions/171563/whats-in-your-zshrc/171564#171564
-setopt hist_ignore_space
-setopt hist_no_store
 
 ## Predict entry
 # autoload predict-on

@@ -7,6 +7,16 @@ export PAGER=less
 export SHELL=zsh
 export LC_NUMERIC=en_US.UTF-8
 
+# XDG
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
+export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
+
+# zsh history
+export HISTFILE=~/.zsh_history
+export HISTSIZE=80000
+export SAVEHIST=80000
+
 ## local bin
 export PATH="$HOME/bin:$PATH"
 
