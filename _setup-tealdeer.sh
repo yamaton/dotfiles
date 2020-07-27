@@ -3,6 +3,8 @@
 readonly NAME=tealdeer
 readonly CMD=tldr
 
+BASEDIR="$(dirname "$(readlink -f "$0")")"
+readonly BASEDIR
 VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")"
 readonly VERSION
 
@@ -36,4 +38,6 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         wget -cO _tldr "$URI"
         sudo mv _tldr /usr/share/zsh/vendor-completions/_tldr
     fi
+
+    ln -sf "${BASEDIR}/.config/${NAME}" "${HOME}/.config/${NAME}"
 fi
