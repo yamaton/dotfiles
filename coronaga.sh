@@ -61,7 +61,7 @@ function f {
 function main {
     readonly URI="https://ga-covid19.ondemand.sas.com/static/js/main.js"
     local chunk
-    chunk="$(curl -s "$URI" | tr '()' '\n\n')"
+    chunk="$(curl -s "$URI" | tr '()' '\n')"
     local out1
     out1="$(f \"currdate\" "$chunk")"
     local out2

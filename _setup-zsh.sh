@@ -58,5 +58,5 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v zsh)" ]]; then
     [[ -f ~/.zshenv ]] && mv -f ~/.zshenv ~/.zshenv.backup
     ln -sf "$BASEDIR"/.zshenv ~
 
-    sudo chsh -s "$(which zsh)" "$(whoami)"
+    sudo chsh -s "$(command -v zsh)" "$(whoami)"
 fi

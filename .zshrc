@@ -237,7 +237,7 @@ fi
 if [[ "$(uname -s)" == "Darwin" ]]; then
     # following homebrew package instruction
     # https://formulae.brew.sh/formula/zsh-autosuggestions
-    source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source "$(brew --prefix)"/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 else
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
