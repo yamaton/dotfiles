@@ -11,4 +11,5 @@ create_default_packages:
   - black
   - rope
 
-always_yes: True
+always_yes: true
+env_prompt: '({default_env}) '

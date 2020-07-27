@@ -232,14 +232,17 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
 else
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#666666"
 
 ## zsh-git-prompt
 ## https://github.com/zsh-git-prompt/zsh-git-prompt
 source ~/.zsh/zsh-git-prompt/zshrc.sh
-
+ZSH_THEME_GIT_PROMPT_PREFIX="%F{246}[%F"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%F{246}]%F "
+ZSH_THEME_GIT_PROMPT_SEPARATOR="%F{246}|%F"
 
 ## Custom Prompt
-PROMPT='${SSH_TTY:+"%F{green}%n%F{yellow}@%F{green}%m%F"}$(git_super_status)%F{yellow}$%F '
+PROMPT='${SSH_TTY:+"%F{green}%n%F{yellow}@%F{green}%m%F "}$(git_super_status)%F{yellow}$%F '
 RPROMPT='%F{green}[%F{magenta}%~%F{green}] %F{cyan}%T%F'
 
 ## TLDR completion
