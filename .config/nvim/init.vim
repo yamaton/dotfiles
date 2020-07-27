@@ -25,7 +25,7 @@ Plug 'fatih/vim-go', { 'tag': '*' }
 Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 " Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " gruvbox colorscheme
 Plug 'morhetz/gruvbox'
@@ -33,5 +33,8 @@ Plug 'morhetz/gruvbox'
 " Initialize plugin system
 call plug#end()
 
+"----------------------------------------------------------------
+
+colorscheme gruvbox
 
 source ~/.vimrc
