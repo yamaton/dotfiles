@@ -1,3 +1,7 @@
+" Set color scheme
+colorscheme gruvbox
+
+
 " Remove trailing whitespaces
 " https://vi.stackexchange.com/questions/454/whats-the-simplest-way-to-strip-trailing-whitespace-from-all-lines-in-a-file
 "
