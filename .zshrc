@@ -2,11 +2,6 @@
 # shellcheck disable=SC2034
 
 ## =======================================
-##            Command History
-## =======================================
-
-
-## =======================================
 ##        Jump to Directories
 ## =======================================
 alias repos='~/repos'
@@ -244,8 +239,8 @@ source ~/.zsh/zsh-git-prompt/zshrc.sh
 
 
 ## Custom Prompt
-PROMPT='%{$fg[green]%}%n%{$fg[yellow]%}@%{$fg[green]%}%m%{$reset_color%}$(git_super_status)%{$fg[yellow]%}➤%{$reset_color%} '
-RPROMPT='%{$fg[green]%}[%{$fg[magenta]%}%~%{$fg[green]%}] %{$fg[cyan]%}%T %{$reset_color%}'
+PROMPT='${SSH_TTY:+"%F{green}%n%F{yellow}@%F{green}%m%F"}$(git_super_status)%F{yellow}$%F '
+RPROMPT='%F{green}[%F{magenta}%~%F{green}] %F{cyan}%T%F'
 
 ## TLDR completion
 # source ~/.tldr.complete
