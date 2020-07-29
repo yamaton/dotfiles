@@ -232,7 +232,8 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
 else
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#666666"
+## color sheme: https://coderwall.com/p/pb1uzq/z-shell-colors
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=241'
 
 ## zsh-git-prompt
 ## https://github.com/zsh-git-prompt/zsh-git-prompt
