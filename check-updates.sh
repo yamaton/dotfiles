@@ -3,6 +3,8 @@
 BASEDIR="$(dirname "$(readlink -f "$0")")"
 APPLIST=("$(cat "$BASEDIR"/check-updates-apps.txt)")
 
+echo ""
+echo "―― "$(date +"%H:%M:%S")" - Utils ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
 for app in ${APPLIST[*]}; do
     case "$app" in
         "neovim"   ) cmd=nvim ;;
