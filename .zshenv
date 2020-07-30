@@ -8,7 +8,7 @@ export SHELL=zsh
 export LC_NUMERIC=en_US.UTF-8
 
 # XDG
-export XDG_CONFIG_HOME="$HOME/.config"
+[[ "$(uname -s)" == "Linux" ]] && export XDG_CONFIG_HOME="$HOME/.config"
 
 # zsh history
 export HISTFILE=~/.zsh_history
@@ -27,3 +27,18 @@ export RUST_BACKTRACE=1
 
 ## dotnet optout
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+
+if [[ "$(uname -s)" == "Darwin" ]]; then
+
+    # homebrew
+    export PATH="/usr/local/bin:/usr/local/lib:/usr/local/sbin:${PATH}"
+
+    # add user's bin folder
+    export PATH="${HOME}/bin:${HOME}/.local/bin:${PATH}"
+
+    # GNU coreutils
+    export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:${PATH}"
+    export MANPATH="$(brew --prefix)/opt/coreutils/libexec/gnuman:${MANPATH}"
+
+fi

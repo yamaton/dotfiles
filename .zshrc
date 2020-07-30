@@ -231,7 +231,12 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
 ## autojump
-source /usr/share/autojump/autojump.zsh
+if [[ "$(uname -s)" == "Darwin" ]]; then
+    [[ -f "$(brew --prefix)/etc/profile.d/autojump.sh" ]] &&
+        source "$(brew --prefix)/etc/profile.d/autojump.sh"
+else
+    source /usr/share/autojump/autojump.zsh
+fi
 
 ## conda
 [[ -x "$HOME/miniconda3/bin/conda" ]] &&
@@ -249,7 +254,7 @@ export LESS=" -R "
 
 
 ## gcloud autocompletion
-source /usr/share/google-cloud-sdk/completion.zsh.inc
+[[ "$(uname -s)" != "Darwin" ]] && source /usr/share/google-cloud-sdk/completion.zsh.inc
 
 
 ## Tilix
@@ -295,4 +300,10 @@ wttr()
 
 ## broot
 # shellcheck source=~/.config/broot/launcher/bash/br
-[[ -x "$(command -v broot)" ]] && source ~/.config/broot/launcher/bash/br
+if [[ -x "$(command -v broot)" ]]; then
+    if [[ "$(uname -s)" == "Darwin" ]]; then
+        source ~/Library/Preferences/org.dystroy.broot/launcher/bash/br
+    else
+        source ~/.config/broot/launcher/bash/br
+    fi
+fi
