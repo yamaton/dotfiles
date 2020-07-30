@@ -158,12 +158,6 @@ setopt extended_glob
 ## Switch options by TAB [✓]
 setopt auto_menu
 
-## Enable zmv (a command for renaming files)
-# autoload zmv
-
-## Enable zargs
-# autoload zargs
-
 ## Change directory without typing cd [✓]
 setopt auto_cd
 
@@ -179,21 +173,6 @@ setopt auto_param_slash
 
 ## Expand aliases before completing
 setopt complete_aliases # aliased ls needs if file/dir completions work
-
-## colors used in auto complections
-case "${TERM}" in
-    kterm*|xterm*)
-        export LSCOLORS=exfxcxdxbxegedabagacad
-        export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-        zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-    ;;
-    cons25)
-        unset LANG
-        export LSCOLORS=ExFxCxdxBxegedabagacad
-        export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-        zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
-    ;;
-esac
 
 ## Bash-like comment in command line
 ## See https://stackoverflow.com/questions/11670935/comments-in-command-line-zsh
@@ -246,8 +225,6 @@ ZSH_THEME_GIT_PROMPT_SEPARATOR="%F{246}|%F"
 PROMPT='${SSH_TTY:+"%F{green}%n%F{yellow}@%F{green}%m%F{reset_color} "}$(git_super_status)%F{yellow}$%F{reset_color} '
 RPROMPT='%F{green}[%F{magenta}%~%F{green}] %F{cyan}%T%F{reset_color}'
 
-## TLDR completion
-# source ~/.tldr.complete
 
 ## Bazel completion
 zstyle ':completion:*' use-cache on
@@ -308,9 +285,6 @@ wttr()
 ## fzf
 # shellcheck source=~/.fzf.zsh
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-
-## starship
-# eval "$(starship init zsh)"
 
 ## broot
 # shellcheck source=~/.config/broot/launcher/bash/br
