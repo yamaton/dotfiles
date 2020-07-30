@@ -243,8 +243,8 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%F{246}]%F "
 ZSH_THEME_GIT_PROMPT_SEPARATOR="%F{246}|%F"
 
 ## Custom Prompt
-PROMPT='${SSH_TTY:+"%F{green}%n%F{yellow}@%F{green}%m%F "}$(git_super_status)%F{yellow}$%F '
-RPROMPT='%F{green}[%F{magenta}%~%F{green}] %F{cyan}%T%F'
+PROMPT='${SSH_TTY:+"%F{green}%n%F{yellow}@%F{green}%m%F{reset_color} "}$(git_super_status)%F{yellow}$%F{reset_color} '
+RPROMPT='%F{green}[%F{magenta}%~%F{green}] %F{cyan}%T%F{reset_color}'
 
 ## TLDR completion
 # source ~/.tldr.complete
