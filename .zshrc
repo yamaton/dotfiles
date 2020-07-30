@@ -252,6 +252,13 @@ export LESS=" -R "
 source /usr/share/google-cloud-sdk/completion.zsh.inc
 
 
+## Tilix
+## https://gnunn1.github.io/tilix-web/manual/vteconfig/
+## Run following if /etc/profile.d/vte.sh is absent,
+## sudo ln -s /etc/profile.d/vte-2.19.sh /etc/profile.d/vte.sh
+[[ $TILIX_ID ]] && source /etc/profile.d/vte.sh
+
+
 ##-------------------------------------------------------------
 ## nnn: auto completion
 zstyle ':completion:*' script ~/confs/nnn/scripts/auto-completion/zsh/_nnn
