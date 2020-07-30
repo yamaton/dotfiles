@@ -217,9 +217,9 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=241'
 ## zsh-git-prompt
 ## https://github.com/zsh-git-prompt/zsh-git-prompt
 source ~/.zsh/zsh-git-prompt/zshrc.sh
-ZSH_THEME_GIT_PROMPT_PREFIX="%F{246}[%F"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%F{246}]%F "
-ZSH_THEME_GIT_PROMPT_SEPARATOR="%F{246}|%F"
+ZSH_THEME_GIT_PROMPT_PREFIX="%F{246}[%F{reset_color}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%F{246}]%F{reset_color} "
+ZSH_THEME_GIT_PROMPT_SEPARATOR="%F{246}|%F{reset_color}"
 
 ## Custom Prompt
 PROMPT='${SSH_TTY:+"%F{green}%n%F{yellow}@%F{green}%m%F{reset_color} "}$(git_super_status)%F{yellow}$%F{reset_color} '
