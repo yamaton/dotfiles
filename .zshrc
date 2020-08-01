@@ -49,12 +49,10 @@ fi
 # Updates in Linux
 if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
     alias bu='
-    sudo apt update;
-    sudo apt full-upgrade;
+    topgrade;
     conda update -n base --all -y;
     conda update -n tf --all -y;
     check-updates-utils;
-    tldr --update;
     '
 fi
 
