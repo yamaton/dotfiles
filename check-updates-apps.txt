@@ -10,3 +10,4 @@ nnn
 syncthing
 delta
 tealdeer
+topgrade
