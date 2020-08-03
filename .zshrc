@@ -35,11 +35,11 @@ alias torch="conda deactivate; conda activate torch"
 # Updates in MacOS
 if [[ "$(uname -s)" == "Darwin" ]]; then
     alias bu='
-    brew upgrade;
+    topgrade;
     conda update -n base --all -y;
     conda update -n tf --all -y;
     conda update -n torch --all -y;
-    tldr --update;
+    source ~/.zshrc;
     '
     function ql {
         qlmanage -p "$@" >& /dev/null
@@ -52,6 +52,7 @@ if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
     topgrade;
     conda update -n base --all -y;
     conda update -n tf --all -y;
+    source ~/.zshrc;
     check-updates-utils;
     '
 fi
