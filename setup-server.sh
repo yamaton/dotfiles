@@ -21,7 +21,7 @@ fi
 
 
 # latest git (ubuntu only)
-if [[ -x "$(command -v apt)" ]] && [[ "$(lsb_release -i -s)" == "Ubuntu" ]]; then
+if [[ "$(lsb_release -i -s)" == "Ubuntu" ]] || [[ "$(lsb_release -i -s)" == "Pop" ]]; then
     echo ""
     echo "--------------------------"
     echo "       git from ppa"
