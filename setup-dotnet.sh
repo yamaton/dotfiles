@@ -9,8 +9,8 @@ if [[ -d dotnet ]]; then
     fi
 fi
 
-if [[ "$(lsb_release -i -s)" == "Ubuntu" ]]; then
-    # https://docs.microsoft.com/en-us/dotnet/core/install/linux-package-manager-ubuntu-1804
+if [[ "$(lsb_release -i -s)" == "Ubuntu" ]] || [[ "$(lsb_release -i -s)" == "Pop" ]]; then
+    # https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu
     OS_VERSION="$(lsb_release -r -s)"
     readonly OS_VERSION
     wget -q "https://packages.microsoft.com/config/ubuntu/$OS_VERSION/packages-microsoft-prod.deb"
