@@ -94,7 +94,7 @@ alias btc="curl rate.sx"
 ## =======================================
 ##      Run application by Extension
 ## =======================================
-alias -s "{txt,md,c,cc,cpp,tex,py,hs,fs,go}"=code
+alias -s {txt,md,c,cc,cpp,tex,py,hs,fs,go,js,ts,css,htm,html}=code
 alias -s git="git clone"
 
 
