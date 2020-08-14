@@ -42,6 +42,18 @@
     "clang-format.fallbackStyle": "WebKit",
     "clang-format.style": "{BreakBeforeBraces: Allman, Standard: Cpp11, IndentWidth: 4, UseTab: Never}",
 
+    // ------- javascript -------
+    "[javascript]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+    },
+
+    // ------- typescript -------
+    "[typescript]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+    },
+
     // ------- Insert DateTime -------
     "insertDateString.formatDate": "YYYY-MM-DD (DDD)",
 
