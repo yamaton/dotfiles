@@ -23,6 +23,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
     if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
         curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
         mkdir ~/
+        ln -sf ~/.local/kitty.app/bin/kitty ~/bin/kitty
         git clone --depth 1 git@github.com:dexpota/kitty-themes.git "${KITTY_CONF_DIR}/kitty-themes"
         ln -sf "${BASEDIR}/.config/kitty/kitty.conf" "$KITTY_CONF_DIR"
         mkdir -p ~/.terminfo/x/
