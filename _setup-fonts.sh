@@ -10,16 +10,16 @@ echo ""
 echo "-------------------"
 echo "  Source Code Pro"
 echo "-------------------"
-wget -N https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Italic.otf
-wget -N https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Roman.otf
+wget -N https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Italic.ttf
+wget -N https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Roman.ttf
 
 
 echo ""
 echo "-------------------"
 echo "  IBM Plex Mono"
 echo "-------------------"
-version=5.0.0
-uri="https://github.com/IBM/plex/releases/download/v${version}/OpenType.zip"
+version=5.1.0
+uri="https://github.com/IBM/plex/releases/download/v${version}/TrueType.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
 unzip "$filename" -d "IBM-Plex-${version}"
