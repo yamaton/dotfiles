@@ -28,6 +28,8 @@ export RUST_BACKTRACE=1
 ## dotnet optout
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
+## cht.sh
+export CHTSH="$HOME"/.config/cht.sh
 
 if [[ "$(uname -s)" == "Darwin" ]]; then
 
