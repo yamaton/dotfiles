@@ -34,7 +34,11 @@ export CHTSH="$HOME"/.config/cht.sh
 ## npm
 export PATH="$PATH:$HOME/bin/node/bin"
 
+## pipx
+export PATH="$HOME/.local/bin:$PATH"
 
+
+## MacOS
 if [[ "$(uname -s)" == "Darwin" ]]; then
 
     # homebrew
