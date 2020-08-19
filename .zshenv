@@ -31,6 +31,10 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 ## cht.sh
 export CHTSH="$HOME"/.config/cht.sh
 
+## npm
+export PATH="$PATH:$HOME/bin/node/bin"
+
+
 if [[ "$(uname -s)" == "Darwin" ]]; then
 
     # homebrew
