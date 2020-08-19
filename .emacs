@@ -95,7 +95,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (gruvbox-theme clmemo org-journal)))
+ '(package-selected-packages (quote (paradox gruvbox-theme clmemo org-journal)))
  '(rst-block-face (quote font-lock-keyword-face))
  '(rst-emphasis1-face
    (if
@@ -187,3 +187,7 @@ Note the weekly scope of the command's precision.")
 
 ;; gruvbox theme
 (load-theme 'gruvbox t)
+
+;; paradox
+(require 'paradox)
+(paradox-enable)
