@@ -6,4 +6,4 @@ chmod +x ~/bin/cht.sh
 
 chthome="${CHTSH:-"$HOME"/.config/cht.sh}"
 mkdir -p "$chthome"
-echo "CHTSH_QUERY_OPTIONS="style=rrt"" > "$chthome"/cht.sh.config
+echo "CHTSH_QUERY_OPTIONS=\"style=rrt\"" > "$chthome"/cht.sh.conf
