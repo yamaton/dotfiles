@@ -18,9 +18,6 @@ export SAVEHIST=80000
 ## local bin
 export PATH="$HOME/bin:$PATH"
 
-## julia
-export PATH="$HOME/bin/julia-1.5.0/bin:$PATH"
-
 ## rust
 export PATH="$HOME/.cargo/bin:$PATH"
 export RUST_BACKTRACE=1
