@@ -62,10 +62,13 @@ if [[ "$(uname -r)" == *'-microsoft-'* ]]; then
     alias firefox='/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe'
     alias typora='/mnt/c/Program\ Files/Typora/Typora.exe'
     function vivaldi {
-        local filepath="file://///wsl\$/Ubuntu/$(readlink -f "$1")"
+        local filepath="file:////wsl\$/Ubuntu/$(readlink -f "$1")"
         local cmd='/mnt/c/Users/warp_/AppData/Local/Vivaldi/Application/vivaldi.exe'
-        ## fails to resolve the following path. why?
-        # local cmd='/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe'
+        "$cmd" "$filepath"
+    }
+    function chrome {
+        local filepath="file:////wsl\$/Ubuntu/$(readlink -f "$1")"
+        local cmd=/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome\.exe
         "$cmd" "$filepath"
     }
 fi
@@ -114,7 +117,6 @@ alias -s git="git clone"
 ## =======================================
 
 ## Checkmarked [✓] settings are from .zshrc by naoya@Hatena.
-##  http://bloghackers.net/~naoya/webdb40/files/dot.zshrc
 
 ## Completion
 ##  Examples: Type "ls -" then press TAB
