@@ -20,7 +20,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
     else
-        readonly URI="http://ftp.gnu.org/gnu/parallel/parallel-latest.tar.bz2"
+        readonly URI="https://ftpmirror.gnu.org/parallel/parallel-latest.tar.bz22"
         wget -N "$URI"
         FILE="$(basename "$URI")"
         readonly FILE

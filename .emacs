@@ -31,12 +31,12 @@
 ; (global-linum-mode nil)
 
 ;; Emacs Load Path
-;; http://stackoverflow.com/questions/24779041/disable-warning-about-emacs-d-in-load-path
+;; https://stackoverflow.com/questions/24779041/disable-warning-about-emacs-d-in-load-path
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
 ;; Save autosave files (i.e. #foo#) in one place,
 ;; not to scatter them all over the directories.
-;; http://snarfed.org/space/gnu%20emacs%20backup%20files
+;; https://snarfed.org/space/gnu%20emacs%20backup%20files
 (defvar autosave-dir
  (concat "~/.emacs.d/emacs_autosaves/" (user-login-name) "/"))
 (make-directory autosave-dir t)
@@ -124,7 +124,6 @@
 ;(autopair-global-mode)
 
 ;; Set size and position of emacs frame
-;; http://ilovett.com/blog/emacs/emacs-frame-size-position
 (defun arrange-frame (w h x y)
   "Set the width, height, and x/y position of the current frame"
   (let ((frame (selected-frame)))
@@ -165,7 +164,7 @@ Note the weekly scope of the command's precision.")
 ;(global-set-key "\C-c\C-t" 'insert-current-time)
 
 ;; journal
-;; http://www.emacswiki.org/emacs/Journal
+;; https://www.emacswiki.org/emacs/Journal
 ;; (load "journal")
 ;; (if (file-directory-p "~/OneDrive/Personal/diary/")
 ;;     (setq-default journal-dir "~/OneDrive/Personal/diary/"))
@@ -173,9 +172,9 @@ Note the weekly scope of the command's precision.")
 ;; package already included in 25.1??
 (when (>= emacs-major-version 24)
   (require 'package)
-  (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+  (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
   (package-initialize)
 )
 
