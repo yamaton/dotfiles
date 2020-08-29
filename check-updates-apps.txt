@@ -11,3 +11,5 @@ syncthing
 delta
 tealdeer
 topgrade
+julia
+
