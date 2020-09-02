@@ -37,6 +37,9 @@ export PATH="$PATH:$HOME/bin/node/bin"
 ## pipx
 export PATH="$HOME/.local/bin:$PATH"
 
+## ruby gems
+export GEM_HOME="$HOME/.gems"
+export PATH="$PATH:$HOME/.gems/bin"
 
 ## MacOS
 if [[ "$(uname -s)" == "Darwin" ]]; then
