@@ -13,3 +13,4 @@ tealdeer
 topgrade
 julia
 node
+go
