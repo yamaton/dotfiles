@@ -14,3 +14,4 @@ topgrade
 julia
 node
 go
+kitty
