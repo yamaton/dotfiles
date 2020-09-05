@@ -41,11 +41,12 @@ cd "${BASEDIR}" || exit
 ./_setup-fonts.sh
 
 
-echo "-------------------------"
-echo "   Joplin"
-echo "-------------------------"
-cd "${BASEDIR}" || exit
-./_setup-joplin.sh -f
-
-
+apps=("joplin" "kitty")
+for app in ${apps[*]}; do
+    echo "-------------------------"
+    echo "   $app"
+    echo "-------------------------"
+    cd "${BASEDIR}" || exit
+    "./_setup-$app.sh" -f
+done
 
