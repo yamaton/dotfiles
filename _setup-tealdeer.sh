@@ -39,7 +39,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_zsh"
         wget -cO _tldr "$URI"
         sudo mv _tldr /usr/share/zsh/vendor-completions/_tldr
-        ln -sf "${BASEDIR}/.config/${NAME}" "${HOME}/.config/${NAME}"
+        ln -sf "${BASEDIR}/.config/${NAME}" "${HOME}/.config/"
     fi
 
 fi
