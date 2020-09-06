@@ -25,6 +25,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         wget -N "$URI"
         FILE="$(basename "$URI")"
         readonly FILE
+        rm -rf go golang
         tar xvf ./"$FILE"
         rm -f ./"$FILE"
         mv go golang
