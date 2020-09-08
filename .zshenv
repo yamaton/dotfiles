@@ -23,7 +23,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export RUST_BACKTRACE=1
 
 ## go
-export PATH="$PATH:$(go env GOPATH)/bin"
+[[ -x "$(command -v go)" ]] && export PATH="$PATH:$(go env GOPATH)/bin"
 
 ## dotnet optout
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
