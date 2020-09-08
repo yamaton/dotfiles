@@ -16,3 +16,4 @@ tig
 netcat-openbsd
 lsb-release
 ncdu
+shellcheck
