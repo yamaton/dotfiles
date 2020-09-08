@@ -26,9 +26,11 @@ alias cht="cht.sh"
 
 alias ncdu="ncdu --color dark"
 
-alias base="conda deactivate; conda activate"
-alias tf="conda deactivate; conda activate tf"
-alias torch="conda deactivate; conda activate torch"
+if [[ -x "$(command -v conda)" ]]; then
+    alias base="conda deactivate; conda activate"
+    alias tf="conda deactivate; conda activate tf"
+    alias torch="conda deactivate; conda activate torch"
+fi
 
 [[ -x "$(command -v nvim)" ]] && alias vim=nvim
 
