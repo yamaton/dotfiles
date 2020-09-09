@@ -36,7 +36,8 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
             readonly NAME1="${NAME%.*.*}"
             echo "$NAME1"
             [[ ! -d ~/bin ]] &&  mkdir ~/bin
-            cp "${NAME1}/${CMD}" ~/bin
+            cp -f "${NAME1}/${CMD}" ~/bin/
+            rm -rf "$NAME1"
         fi
     fi
 fi
