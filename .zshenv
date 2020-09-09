@@ -41,6 +41,10 @@ export PATH="$HOME/.local/bin:$PATH"
 export GEM_HOME="$HOME/.gems"
 export PATH="$PATH:$HOME/.gems/bin"
 
+## deno
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 ## MacOS
 if [[ "$(uname -s)" == "Darwin" ]]; then
 

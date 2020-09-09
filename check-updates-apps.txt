@@ -15,3 +15,4 @@ julia
 node
 go
 kitty
+deno
