@@ -270,7 +270,7 @@ export LESS=" -R "
 
 
 ## gcloud autocompletion
-[[ "$(uname -s)" != "Darwin" ]] && source /usr/share/google-cloud-sdk/completion.zsh.inc
+[[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v gcloud)" ]] && source /usr/share/google-cloud-sdk/completion.zsh.inc
 
 
 ## Tilix
