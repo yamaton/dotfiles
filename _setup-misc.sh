@@ -15,6 +15,6 @@ elif [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
         echo "---------------"
         echo " $app"
         echo "---------------"
-        sudo apt install -y "$(printf "%s" "$app")"
+        sudo apt install -y "$(printf "%s" "$app")" --no-install-recommends
     done
 fi
