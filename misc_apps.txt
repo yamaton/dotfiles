@@ -17,3 +17,5 @@ netcat-openbsd
 lsb-release
 ncdu
 shellcheck
+imagemagick
+kitty
