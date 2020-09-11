@@ -76,7 +76,7 @@ if [[ "$(uname -r)" == *'-microsoft-'* ]]; then
 fi
 
 # kitty
-[[ -x "$(command -v kitty)" ]] && alias icat="kitty +kitten icat"
+[[ "$TERM" == "xterm-kitty" ]] && alias icat="kitty +kitten icat"
 
 ##-------------------------------------------------------------
 ## Removes color from stdin, and writes to stdout
@@ -111,7 +111,7 @@ alias btc="curl rate.sx"
 ## =======================================
 alias -s {txt,md,c,cc,cpp,tex,py,hs,fs,go,js,ts,css,htm,html}=code
 alias -s git="git clone"
-[[ -x "$(command -v kitty)" ]] && alias -s {jpg,jpeg,png,gif,svg}="kitty +kitten icat"
+[[ "$TERM" == "xterm-kitty" ]] && alias -s {jpg,jpeg,png,gif,svg}="kitty +kitten icat"
 
 
 ## =======================================
@@ -124,7 +124,7 @@ alias -s git="git clone"
 ##  Examples: Type "ls -" then press TAB
 ##            Type "tar " then press TAB
 autoload -Uz compinit; compinit
-[[ -x "$(command -v kitty)" ]] && kitty + complete setup zsh | source /dev/stdin
+[[ "$TERM" == "xterm-kitty" ]] && kitty + complete setup zsh | source /dev/stdin
 
 ## Use color [✓]
 setopt prompt_subst
