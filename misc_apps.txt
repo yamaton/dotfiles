@@ -18,4 +18,3 @@ lsb-release
 ncdu
 shellcheck
 imagemagick
-kitty
