@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [[ "$USER" != "root" ]]; then
+    echo "Run with sudo. Exiting..."
+    exit 1
+fi
+
 readonly MYDIR="$HOME"/dotnet_install
 readonly FILE="install-dotnet-preview.sh"
 
