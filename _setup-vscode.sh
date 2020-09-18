@@ -21,4 +21,4 @@ fi
 
 echo "[INFO] copying vscode settings.json to ${CONFIG_DIR}"
 [[ ! -d "${CONFIG_DIR}" ]] && mkdir -p "${CONFIG_DIR}"
-cp "${BASEDIR}/vscode/settings.json" "${CONFIG_DIR}/settings.json"
+cp "${BASEDIR}/.config/vscode/settings.json" "${CONFIG_DIR}/settings.json"
