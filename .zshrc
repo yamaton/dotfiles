@@ -64,12 +64,14 @@ if [[ "$(uname -r)" == *'-microsoft-'* ]]; then
     alias firefox='/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe'
     alias typora='/mnt/c/Program\ Files/Typora/Typora.exe'
     function vivaldi {
-        local filepath="file:////wsl\$/Ubuntu/$(readlink -f "$1")"
-        local cmd='/mnt/c/Users/warp_/AppData/Local/Vivaldi/Application/vivaldi.exe'
+        local filepath
+        filepath="file:////wsl\$/Ubuntu/$(readlink -f "$1")"
+        local cmd="/mnt/c/Users/$(powershell.exe '$env:UserName' | tr -d '\n\r')/AppData/Local/Vivaldi/Application/vivaldi.exe"
         "$cmd" "$filepath"
     }
     function chrome {
-        local filepath="file:////wsl\$/Ubuntu/$(readlink -f "$1")"
+        local filepath
+        filepath="file:////wsl\$/Ubuntu/$(readlink -f "$1")"
         local cmd=/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome\.exe
         "$cmd" "$filepath"
     }
