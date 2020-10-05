@@ -28,6 +28,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
         wget -N "$URI"
         FILE="$(basename "$URI")"
         readonly FILE
+        chmod +x ./"$FILE"
         rm -rf ~/bin/zoxide
         mv ./"$FILE" ~/bin/zoxide
     fi
