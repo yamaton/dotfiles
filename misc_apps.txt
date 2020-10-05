@@ -1,7 +1,6 @@
 cmake
 pkg-config
 htop
-autojump
 wget
 curl
 source-highlight

@@ -26,6 +26,9 @@ alias cht="cht.sh"
 
 alias ncdu="ncdu --color dark"
 
+# zoxide as replacement to autojump
+alias j=z
+
 if [[ -x "$(command -v conda)" ]]; then
     alias base="conda deactivate; conda activate"
     alias tf="conda deactivate; conda activate tf"
@@ -254,11 +257,13 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
 ## autojump
-if [[ "$(uname -s)" == "Darwin" ]]; then
-    [[ -f "$(brew --prefix)/etc/profile.d/autojump.sh" ]] &&
-        source "$(brew --prefix)/etc/profile.d/autojump.sh"
-else
-    source /usr/share/autojump/autojump.zsh
+if [[ ! -x "$(command -v zoxide)" ]]; then
+    if [[ "$(uname -s)" == "Darwin" ]]; then
+        [[ -f "$(brew --prefix)/etc/profile.d/autojump.sh" ]] &&
+            source "$(brew --prefix)/etc/profile.d/autojump.sh"
+    else
+        source /usr/share/autojump/autojump.zsh
+    fi
 fi
 
 ## conda
@@ -330,3 +335,6 @@ if [[ -x "$(command -v broot)" ]]; then
         source ~/.config/broot/launcher/bash/br
     fi
 fi
+
+# zoxide
+eval "$(zoxide init zsh)"
