@@ -27,7 +27,7 @@ alias cht="cht.sh"
 alias ncdu="ncdu --color dark"
 
 # zoxide as replacement to autojump
-alias j=z
+[[ -x "$(command -v zoxide)" ]] && alias j=z
 
 if [[ -x "$(command -v conda)" ]]; then
     alias base="conda deactivate; conda activate"
@@ -337,4 +337,4 @@ if [[ -x "$(command -v broot)" ]]; then
 fi
 
 # zoxide
-eval "$(zoxide init zsh)"
+[[ -x "$(command -v zoxide)" ]] && eval "$(zoxide init zsh)"
