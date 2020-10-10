@@ -18,7 +18,7 @@ echo ""
 echo "-------------------"
 echo "  IBM Plex Mono"
 echo "-------------------"
-version=5.1.0
+version=5.1.3
 uri="https://github.com/IBM/plex/releases/download/v${version}/TrueType.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
@@ -62,9 +62,9 @@ fi
 
 echo ""
 echo "-------------------"
-echo "  Cascadia"
+echo "  Cascadia Code"
 echo "-------------------"
-version=2007.01
+version=2009.22
 uri="https://github.com/microsoft/cascadia-code/releases/download/v${version}/CascadiaCode-${version}.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
@@ -102,5 +102,5 @@ unzip "$filename"
 rm -f "$filename"
 
 
-fc-cache -fv
+fc-cache -f -v
 
