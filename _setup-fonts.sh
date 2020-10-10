@@ -90,6 +90,39 @@ rm -rf "${filename%.*}/${DIR}/woff"
 rm -rf "${filename%.*}/${DIR}/woff2"
 
 
+
+echo ""
+echo "-------------------"
+echo "  Jetbrain Mono"
+echo "-------------------"
+version=2.002
+dirname=jetbrainmono
+uri="https://github.com/JetBrains/JetBrainsMono/releases/download/v${version}/JetBrainsMono-${version}.zip"
+filename="$(basename "$uri")"
+wget -N "$uri"
+rm -rf "$dirname"
+unzip "$filename" -d "$dirname"
+rm -rf "${dirname}/web"
+rm -f "$filename"
+
+
+
+echo ""
+echo "-------------------"
+echo "  JuliaMono"
+echo "-------------------"
+version=0.018
+dirname=juliamono
+uri="https://github.com/cormullion/juliamono/releases/download/v${version}/JuliaMono.tar.gz"
+filename="$(basename "$uri")"
+rm -rf "$dirname" && mkdir "$dirname" && cd "$dirname" || exit
+wget -N "$uri"
+tar xvf "$filename"
+rm -f "$filename"
+cd ..
+
+
+
 echo ""
 echo "-------------------"
 echo "  Ricty Diminished"
