@@ -19,11 +19,25 @@ fi
 if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$NAME"
-    elif [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
+    elif [[ "$(uname -s)" == "Linux" ]]; then
         if [[ "$(uname -m)" == "x86_64" ]]; then
             readonly URI="https://github.com/ajeetdsouza/zoxide/releases/download/v${VERSION}/${NAME}-x86_64-unknown-linux-musl"
         elif [[ "$(uname -m)" == "armv7l" ]]; then
             readonly URI="https://github.com/ajeetdsouza/zoxide/releases/download/v${VERSION}/${NAME}-armv7-unknown-linux-musleabihf"
+        else
+            if [[ ! -x "$(command -v cargo)" ]]; then
+                read -rp "Install cargo and rust? (y/N): " confirm
+                if [[ "$confirm" == [yY] ]]; then
+                    BASEDIR="$(dirname "$(readlink -f "$0")")"
+                    readonly BASEDIR
+                    source "${BASEDIR}/setup-rust-and-cargo.sh"
+                else
+                    echo "Exit without installing ${NAME}"
+                    exit 0
+                fi
+            fi
+            cargo install "$NAME"
+            exit 0
         fi
         wget -N "$URI"
         FILE="$(basename "$URI")"
