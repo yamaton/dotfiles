@@ -38,7 +38,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v tmux)" ]] || [[ "$confirm" == [yY
         mv tmux ~/bin
 
         # clipboard integration
-        sudo apt install -y xclip
+        sudo apt install -y xsel wl-clipboard
     fi
 
     [[ -f "${HOME}/.tmux.conf" ]] && mv -f "${HOME}/.tmux.conf" "${HOME}/.tmux.conf.backup"
