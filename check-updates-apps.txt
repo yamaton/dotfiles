@@ -10,10 +10,8 @@ nnn
 syncthing
 delta
 tealdeer
-topgrade
 julia
 node
 go
 kitty
-deno
 zoxide
