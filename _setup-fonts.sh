@@ -93,10 +93,10 @@ rm -rf "${filename%.*}/${DIR}/woff2"
 
 echo ""
 echo "-------------------"
-echo "  Jetbrain Mono"
+echo "  Jetbrains Mono"
 echo "-------------------"
 version=2.210
-dirname=jetbrainmono
+dirname=jetbrainsmono
 uri="https://github.com/JetBrains/JetBrainsMono/releases/download/v${version}/JetBrainsMono-${version}.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
