@@ -95,7 +95,7 @@ echo ""
 echo "-------------------"
 echo "  Jetbrain Mono"
 echo "-------------------"
-version=2.002
+version=2.210
 dirname=jetbrainmono
 uri="https://github.com/JetBrains/JetBrainsMono/releases/download/v${version}/JetBrainsMono-${version}.zip"
 filename="$(basename "$uri")"
@@ -111,7 +111,7 @@ echo ""
 echo "-------------------"
 echo "  JuliaMono"
 echo "-------------------"
-version=0.018
+version=0.027
 dirname=juliamono
 uri="https://github.com/cormullion/juliamono/releases/download/v${version}/JuliaMono.tar.gz"
 filename="$(basename "$uri")"
