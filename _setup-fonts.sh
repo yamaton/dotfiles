@@ -4,6 +4,18 @@
 # Per-user font installation
 #
 
+function getVersion {
+    local owner_repo="$1"
+    local url="https://api.github.com/repos/${owner_repo}/releases"
+    local version
+    version="$(curl --silent "$url" | jq -M '.[0].tag_name' | tr -d \" | tr '[:upper:]' '[:lower:]')"
+    if [[ $(echo "$version" | cut -c 1) == "v" ]]; then
+        echo "$version" | cut -c 2-
+        else
+        echo "$version"
+    fi
+}
+
 mkdir -p ~/.fonts && cd ~/.fonts
 
 echo ""
@@ -18,7 +30,8 @@ echo ""
 echo "-------------------"
 echo "  IBM Plex Mono"
 echo "-------------------"
-version=5.1.3
+ownerrepo="IBM/plex"
+version="$(getVersion "$ownerrepo")"
 uri="https://github.com/IBM/plex/releases/download/v${version}/TrueType.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
@@ -30,7 +43,8 @@ echo ""
 echo "-------------------"
 echo "  Hasklig"
 echo "-------------------"
-version=1.1
+ownerrepo="i-tu/Hasklig"
+version="$(getVersion "$ownerrepo")"
 uri="https://github.com/i-tu/Hasklig/releases/download/${version}/Hasklig-${version}.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
@@ -64,7 +78,8 @@ echo ""
 echo "-------------------"
 echo "  Cascadia Code"
 echo "-------------------"
-version=2009.22
+ownerrepo="microsoft/cascadia-code"
+version="$(getVersion "$ownerrepo")"
 uri="https://github.com/microsoft/cascadia-code/releases/download/v${version}/CascadiaCode-${version}.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
@@ -79,7 +94,8 @@ echo ""
 echo "-------------------"
 echo "  Fira Code"
 echo "-------------------"
-version=5.2
+ownerrepo="tonsky/FiraCode"
+version="$(getVersion "$ownerrepo")"
 uri="https://github.com/tonsky/FiraCode/releases/download/${version}/Fira_Code_v${version}.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
@@ -95,7 +111,8 @@ echo ""
 echo "-------------------"
 echo "  Jetbrains Mono"
 echo "-------------------"
-version=2.210
+ownerrepo="JetBrains/JetBrainsMono"
+version="$(getVersion "$ownerrepo")"
 dirname=jetbrainsmono
 uri="https://github.com/JetBrains/JetBrainsMono/releases/download/v${version}/JetBrainsMono-${version}.zip"
 filename="$(basename "$uri")"
@@ -111,7 +128,8 @@ echo ""
 echo "-------------------"
 echo "  JuliaMono"
 echo "-------------------"
-version=0.027
+ownerrepo="cormullion/juliamono"
+version="$(getVersion "$ownerrepo")"
 dirname=juliamono
 uri="https://github.com/cormullion/juliamono/releases/download/v${version}/JuliaMono.tar.gz"
 filename="$(basename "$uri")"
@@ -127,7 +145,8 @@ echo ""
 echo "-------------------"
 echo "  Ricty Diminished"
 echo "-------------------"
-version=3.2.3
+ownerrepo="edihbrandon/RictyDiminished"
+version="$(getVersion "$ownerrepo")"
 uri="https://github.com/edihbrandon/RictyDiminished/archive/${version}.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
