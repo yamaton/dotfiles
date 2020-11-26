@@ -21,14 +21,15 @@ if [[ "$(uname -m)" == "x86_64" ]]; then
 
     # shellcheck source=/dev/null
     source ~/miniconda3/etc/profile.d/conda.sh
-    conda update --all
+    conda install -c conda-forge mamba
+    mamba update --all
     if [[ -x "$(command -v nvidia-smi)" ]]; then
-        conda create -n tf tensorflow-gpu opencv
+        mamba create -n tf tensorflow-gpu opencv
     else
-        conda create -n tf tensorflow opencv
+        mamba create -n tf tensorflow opencv
     fi
-    conda activate tf
-    conda config --add channels conda-forge --env
+    mamba activate tf
+    mamba config --add channels conda-forge --env
 else
     echo "Miniconda does not seem to support $(uname -m). Exiting."
 fi

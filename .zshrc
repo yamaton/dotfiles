@@ -41,9 +41,9 @@ fi
 if [[ "$(uname -s)" == "Darwin" ]]; then
     alias bu='
     topgrade;
-    conda update -n base --all -y;
-    conda update -n tf --all -y;
-    conda update -n torch --all -y;
+    mamba update -n base --all -y;
+    mamba update -n tf --all -y;
+    mamba update -n torch --all -y;
     source ~/.zshrc;
     '
     function ql {
@@ -55,8 +55,8 @@ fi
 if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
     alias bu='
     topgrade;
-    conda update -n base --all -y;
-    conda update -n tf --all -y;
+    mamba update -n base --all -y;
+    mamba update -n tf --all -y;
     source ~/.zshrc;
     check-updates-utils;
     '
