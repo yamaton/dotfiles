@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 if [[ ! -x "$(command -v docker)" ]] || [[ "$1" == "-f" ]]; then
     if [[ "$(lsb_release -c -s)" == "focal" ]]; then
         sudo apt install docker.io
@@ -36,9 +37,13 @@ else
 fi
 
 
-COMPOSE_VERSION=1.26.0
+BASEDIR="$(dirname "$(readlink -f "$0")")"
+readonly BASEDIR
+COMPOSE_VERSION="$("$BASEDIR"/get-version-github.sh docker/compose)"
 if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v docker-compose)" ]]; then
-    echo "---- Install docker-compose ----"
+    echo "--------------------------------"
+    echo "     Install docker-compose     "
+    echo "--------------------------------"
     sudo curl -L "https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
     echo "Installed docker-compose"
