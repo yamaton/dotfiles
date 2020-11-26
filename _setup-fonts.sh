@@ -4,18 +4,8 @@
 # Per-user font installation
 #
 
-function getVersion {
-    local owner_repo="$1"
-    local url="https://api.github.com/repos/${owner_repo}/releases"
-    local version
-    version="$(curl --silent "$url" | jq -M '.[0].tag_name' | tr -d \" | tr '[:upper:]' '[:lower:]')"
-    if [[ $(echo "$version" | cut -c 1) == "v" ]]; then
-        echo "$version" | cut -c 2-
-        else
-        echo "$version"
-    fi
-}
-
+BASEDIR="$(dirname "$(readlink -f "$0")")"
+readonly BASEDIR
 mkdir -p ~/.fonts && cd ~/.fonts
 
 echo ""
@@ -31,7 +21,7 @@ echo "-------------------"
 echo "  IBM Plex Mono"
 echo "-------------------"
 ownerrepo="IBM/plex"
-version="$(getVersion "$ownerrepo")"
+version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
 uri="https://github.com/IBM/plex/releases/download/v${version}/TrueType.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
@@ -44,7 +34,7 @@ echo "-------------------"
 echo "  Hasklig"
 echo "-------------------"
 ownerrepo="i-tu/Hasklig"
-version="$(getVersion "$ownerrepo")"
+version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
 uri="https://github.com/i-tu/Hasklig/releases/download/${version}/Hasklig-${version}.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
@@ -79,7 +69,7 @@ echo "-------------------"
 echo "  Cascadia Code"
 echo "-------------------"
 ownerrepo="microsoft/cascadia-code"
-version="$(getVersion "$ownerrepo")"
+version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
 uri="https://github.com/microsoft/cascadia-code/releases/download/v${version}/CascadiaCode-${version}.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
@@ -95,7 +85,7 @@ echo "-------------------"
 echo "  Fira Code"
 echo "-------------------"
 ownerrepo="tonsky/FiraCode"
-version="$(getVersion "$ownerrepo")"
+version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
 uri="https://github.com/tonsky/FiraCode/releases/download/${version}/Fira_Code_v${version}.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
@@ -112,7 +102,7 @@ echo "-------------------"
 echo "  Jetbrains Mono"
 echo "-------------------"
 ownerrepo="JetBrains/JetBrainsMono"
-version="$(getVersion "$ownerrepo")"
+version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
 dirname=jetbrainsmono
 uri="https://github.com/JetBrains/JetBrainsMono/releases/download/v${version}/JetBrainsMono-${version}.zip"
 filename="$(basename "$uri")"
@@ -129,7 +119,7 @@ echo "-------------------"
 echo "  JuliaMono"
 echo "-------------------"
 ownerrepo="cormullion/juliamono"
-version="$(getVersion "$ownerrepo")"
+version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
 dirname=juliamono
 uri="https://github.com/cormullion/juliamono/releases/download/v${version}/JuliaMono.tar.gz"
 filename="$(basename "$uri")"
@@ -146,7 +136,7 @@ echo "-------------------"
 echo "  Ricty Diminished"
 echo "-------------------"
 ownerrepo="edihbrandon/RictyDiminished"
-version="$(getVersion "$ownerrepo")"
+version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
 uri="https://github.com/edihbrandon/RictyDiminished/archive/${version}.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
