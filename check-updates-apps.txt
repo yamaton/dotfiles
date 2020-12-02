@@ -3,6 +3,7 @@ neovim
 bat
 fd
 ripgrep
+rga
 parallel
 broot
 fzf
