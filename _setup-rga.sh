@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-readonly REPO="phiresky/ripgrep-all"
 readonly CMD=rga
+readonly NAME="ripgrep-all"
 
-VERSION="$(./get-version-github.sh "$REPO")"
+VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")"
 readonly VERSION
 
 if [[ -x "$(command -v $CMD)" ]]; then
