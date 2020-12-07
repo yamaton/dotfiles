@@ -45,6 +45,12 @@ export PATH="$PATH:$HOME/.gems/bin"
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
+## WSL2
+if [[ "$(uname -r)" == *microsoft* ]]; then
+    ## VcXsrv
+    export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+fi
+
 ## MacOS
 if [[ "$(uname -s)" == "Darwin" ]]; then
 
