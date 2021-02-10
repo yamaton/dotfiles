@@ -16,4 +16,5 @@ node
 go
 kitty
 zoxide
+grex
 anki
