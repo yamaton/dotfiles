@@ -17,4 +17,5 @@ go
 kitty
 zoxide
 grex
+dust
 anki
