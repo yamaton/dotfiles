@@ -18,4 +18,5 @@ kitty
 zoxide
 grex
 dust
+gitui
 anki
