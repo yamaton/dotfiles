@@ -31,8 +31,9 @@ export RUST_BACKTRACE=1
 ## go
 [[ -x "$(command -v go)" ]] && export PATH="$PATH:$(go env GOPATH)/bin"
 
-## dotnet optout
+## dotnet and powershell optout
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export POWERSHELL_TELEMETRY_OPTOUT=1
 
 ## cht.sh
 export CHTSH="$HOME"/.config/cht.sh
