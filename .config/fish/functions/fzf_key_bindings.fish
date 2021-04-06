@@ -1,0 +1,1 @@
+/home/vierbein/.fzf/fzf-0.26.0/shell/key-bindings.fish
