@@ -38,4 +38,4 @@ SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR fish_user_paths:/home/vierbein/\x2efzf/fzf\x2d0\x2e21\x2e1/bin\x1e/home/vierbein/\x2efzf/fzf\x2d0\x2e22\x2e0/bin\x1e/home/vierbein/\x2efzf/fzf\x2d0\x2e23\x2e0/bin\x1e/home/vierbein/\x2efzf/fzf\x2d0\x2e23\x2e1/bin\x1e/home/vierbein/\x2efzf/fzf\x2d0\x2e24\x2e0/bin\x1e/home/vierbein/\x2efzf/fzf\x2d0\x2e24\x2e1/bin\x1e/home/vierbein/\x2efzf/fzf\x2d0\x2e24\x2e2/bin\x1e/home/vierbein/\x2efzf/fzf\x2d0\x2e24\x2e3/bin\x1e/home/vierbein/\x2efzf/fzf\x2d0\x2e24\x2e4/bin\x1e/home/vierbein/\x2efzf/fzf\x2d0\x2e25\x2e0/bin\x1e/home/vierbein/\x2efzf/fzf\x2d0\x2e25\x2e1/bin\x1e/home/vierbein/\x2efzf/fzf\x2d0\x2e26\x2e0/bin
+SETUVAR fish_user_paths:/home/vierbein/\x2efzf/fzf\x2d0\x2e27\x2e0/bin
