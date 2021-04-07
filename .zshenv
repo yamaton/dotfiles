@@ -10,6 +10,9 @@ export LC_NUMERIC=en_US.UTF-8
 # XDG
 [[ "$(uname -s)" == "Linux" ]] && export XDG_CONFIG_HOME="$HOME/.config"
 
+# zsh fpath
+fpath=( ~/.zsh.d "${fpath[@]}" )
+
 # zsh history
 export HISTFILE=~/.zsh_history
 export HISTSIZE=80000
