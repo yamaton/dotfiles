@@ -11,7 +11,7 @@ export LC_NUMERIC=en_US.UTF-8
 [[ "$(uname -s)" == "Linux" ]] && export XDG_CONFIG_HOME="$HOME/.config"
 
 # zsh fpath
-fpath=( ~/.zsh.d "${fpath[@]}" )
+fpath=( ~/.zfunc "${fpath[@]}" )
 
 # zsh history
 export HISTFILE=~/.zsh_history
@@ -23,6 +23,9 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[alias]='fg=yellow,bold'
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+
+# conda-zsh-completion
+fpath+=( $HOME/miniconda3/share/zsh/conda-zsh-completion "${fpath[@]}" )
 
 ## local bin
 export PATH="$HOME/bin:$PATH"
@@ -58,7 +61,9 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 ## WSL2
 if [[ "$(uname -r)" == *microsoft* ]]; then
     ## VcXsrv
-    export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+    export DISPLAY="$(ip route | grep default | cut -d　' ' -f 3):0"
+    ## Vagrant
+    export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
 fi
 
 ## MacOS
