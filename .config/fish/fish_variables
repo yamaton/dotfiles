@@ -1,5 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export LESS:\x20\x2dR\x20
+SETUVAR --export LESSOPEN:\x7c\x20/usr/share/source\x2dhighlight/src\x2dhilite\x2dlesspipe\x2esh\x20\x25s
 SETUVAR __fish_initialized:3100
 SETUVAR _fish_abbr_btc:curl\x20rate\x2esx
 SETUVAR _fish_abbr_cht:cht\x2esh
@@ -38,4 +40,4 @@ SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR fish_user_paths:/home/vierbein/\x2efzf/fzf\x2d0\x2e27\x2e0/bin
+SETUVAR fish_user_paths:/home/vierbein/\x2egems/bin\x1e/home/vierbein/\x2elocal/bin\x1e/home/vierbein/\x2ecargo/bin\x1e/home/vierbein/bin\x1e/home/vierbein/\x2efzf/fzf\x2d0\x2e27\x2e0/bin
