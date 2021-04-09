@@ -5,6 +5,16 @@ set -gx EDITOR nvim
 set -gx PAGER less
 set -gx XDG_CONFIG_HOME ~/.config
 
+# abbriviation
+abbr -a -U -- rm trash
+abbr -a -U -- mv 'mv -i'
+abbr -a -U -- mkdir 'mkdir -p'
+abbr -a -U -- vim nvim
+abbr -a -U -- j z
+abbr -a -U -- cht cht.sh
+abbr -a -U -- ncdu 'ncdu --color dark'
+abbr -a -U -- btc 'curl rate.sx'
+
 # local bin
 fish_add_path ~/bin
 
