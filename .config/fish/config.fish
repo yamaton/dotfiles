@@ -55,11 +55,12 @@ fish_add_path ~/.local/bin
 set -gx GEM_HOME ~/.gems
 fish_add_path ~/.gems/bin
 
+# npm
+fish_add_path ~/bin/node/bin
+
 # deno
-if type -q deno
-    set -gx DENO_INSTALL ~/.deno
-    fish_add_path $DENO_INSTALL/bin
-end
+fish_add_path $DENO_INSTALL/bin
+set -gx DENO_INSTALL ~/.deno
 
 # source-highlight in less
 set -gx LESSOPEN '| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
