@@ -119,7 +119,7 @@ alias btc="curl rate.sx"
 alias -s {txt,md,c,cc,cpp,tex,hs,fs,go,js,ts,css,htm,html}=code
 alias -s git="git clone"
 [[ "$TERM" == "xterm-kitty" ]] && [[ -x "$(command -v kitty)" ]] &&
-    alias -s {jpg,jpeg,png,gif,svg}="kitty +kitten icat"
+    alias -s {jpg,jpeg,png,gif,svg,webp}="kitty +kitten icat"
 
 
 ## =======================================
