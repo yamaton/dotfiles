@@ -34,6 +34,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v nnn)" ]] || [[ "$confirm" == [yY]
         "stretch") OS="debian9" ;;
         "buster") OS="debian10" ;;
         "bullseye") OS="ubuntu20.04" ;; # works so far
+        "groovy") OS="ubuntu20.04" ;; # works so far
         *) OS="" ;;
         esac
         readonly OS
