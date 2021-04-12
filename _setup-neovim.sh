@@ -45,6 +45,8 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v nvim)" ]] || [[ "$confirm" == [yY
     mkdir -p "$CONFIG_DIR"
     [[ -f "$CONFIG_DIR/init.vim" ]] && mv -f "$CONFIG_DIR"/init.vim "$CONFIG_DIR"/init.vim.backup
     ln -sf "$BASEDIR"/.config/nvim/init.vim "$CONFIG_DIR"
+    # call :PlugInstall from the shell
+    nvim --headless +PlugInstall +qa
 
     [[ -f "$HOME/.vimrc" ]] && mv -f "$HOME/.vimrc" "$HOME/.vimrc.backup"
     ln -sf "$BASEDIR"/.vimrc ~/.vimrc
