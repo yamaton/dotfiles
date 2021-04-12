@@ -32,4 +32,14 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         sudo apt install ./"$FILE"
         rm -f ./"$FILE"
     fi
+
+    if [[ -f ~/.gitconfig ]]; then
+        echo "―― $(date +"%H:%M:%S") - Delta setup ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+        echo "[INFO] Detected ~/.gitconfig --- add some lines from _delta.gitconfig if needed."
+        echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+    else
+        BASEDIR="$(dirname "$(readlink -f "$0")")"
+        readonly BASEDIR
+        cp "$BASEDIR"/_delta.gitconfig ~/.gitconfig
+    fi
 fi
