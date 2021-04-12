@@ -8,6 +8,7 @@ set -gx XDG_CONFIG_HOME ~/.config
 # abbriviation
 abbr -a -U -- rm trash
 abbr -a -U -- mv 'mv -i'
+abbr -a -U -- cp 'cp -i'
 abbr -a -U -- mkdir 'mkdir -p'
 abbr -a -U -- vim nvim
 abbr -a -U -- j z
