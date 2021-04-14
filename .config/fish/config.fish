@@ -49,7 +49,7 @@ if type -q zoxide
     zoxide init fish | source
 end
 
-# pipx
+# pipx, kitty, and other
 fish_add_path ~/.local/bin
 
 # ruby gems
