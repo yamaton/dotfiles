@@ -8,6 +8,8 @@ if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
     sudo apt-get update
     sudo apt-get install -y fish
 
+    mkdir -p ~/.config/fish/functions
+    mkdir -p ~/.config/fish/completions
     readonly fishconfig=~/.config/fish/config.fish
     [[ -f $fishconfig ]] && mv $fishconfig $fishconfig.backup
     ln -sf "${BASEDIR}/.config/fish/config.fish" $fishconfig
