@@ -39,7 +39,10 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_zsh"
         wget -cO _tldr "$URI"
         sudo mv _tldr /usr/share/zsh/vendor-completions/_tldr
+
+        URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_fish"
+        wget -c -O ~/.config/fish/completions/tealdeer.fish "$URI"
+
         ln -sf "${BASEDIR}/.config/${NAME}" "${HOME}/.config/"
     fi
-
 fi
