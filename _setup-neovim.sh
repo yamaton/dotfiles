@@ -9,11 +9,14 @@ readonly REPO_DIR="${HOME}/confs"
 readonly BIN_DIR="${HOME}/bin"
 readonly CONFIG_DIR="${HOME}/.config/$CMD"
 
-VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")"
+# VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")"
+
+url="https://api.github.com/repos/neovim/neovim/releases"
+VERSION="$(curl --silent ${url} | jq '.[0].name' | tr -d \" | cut -d ' ' -f 2 | cut -c 2-)"
 readonly VERSION
 
 if [[ -x "$(command -v $CMD)" ]]; then
-    CURRENT="$("$CMD" --version | head -1 | cut -d ' ' -f2 | cut -d'v' -f2)"
+    CURRENT="$("$CMD" --version | head -1 | cut -d ' ' -f2 | cut -c 2-)"
     readonly CURRENT
     if [[ "$VERSION" == "$CURRENT" ]]; then
         echo "... already the latest: ${CMD} ${CURRENT}"

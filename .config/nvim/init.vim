@@ -30,6 +30,13 @@ Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 " gruvbox colorscheme
 Plug 'morhetz/gruvbox'
 
+" nvim-lspconfig
+Plug 'neovim/nvim-lspconfig'
+
+" bash-language-server
+"   separate lua installation needed?
+" lua require'lspconfig'.bashls.setup{}
+
 " Initialize plugin system
 call plug#end()
 
