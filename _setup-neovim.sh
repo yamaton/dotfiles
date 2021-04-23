@@ -31,7 +31,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v nvim)" ]] || [[ "$confirm" == [yY
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$NAME"
     elif [[ "$(uname -m)" == "x86_64" ]] && [[ "$(uname -s)" == "Linux" ]]; then
-        readonly URI="https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
+        readonly URI="https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage"
 
         mkdir -p "$BIN_DIR" && cd "$BIN_DIR"
         wget -N "$URI"
