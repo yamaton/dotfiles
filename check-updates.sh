@@ -14,4 +14,8 @@ for app in ${APPLIST[*]}; do
     esac
     [[ -x "$(command -v "$cmd")" ]] && "${BASEDIR}/_setup-${app}.sh"
 done
-[[ -x "$(command -v joplin)" ]] &&  "$BASEDIR"/_setup-joplin.sh
+
+if [[ -x "$(command -v joplin)" ]];
+    then "$BASEDIR"/_setup-joplin.sh
+fi
+
