@@ -87,34 +87,8 @@
 (add-hook 'python-mode-hook '(lambda ()
      (define-key python-mode-map "\C-m" 'newline-and-indent)))
 
-
 ;;; PYTHONPATH
 (setenv "PYTHONPATH" "~/miniconda3/bin")
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (paradox gruvbox-theme clmemo org-journal)))
- '(rst-block-face (quote font-lock-keyword-face))
- '(rst-emphasis1-face
-   (if
-       (facep
-        (quote italic))
-       (quote
-        (quote italic))
-     (quote italic)))
- '(rst-emphasis2-face (if (facep (quote bold)) (quote (quote bold)) (quote bold)))
- '(rst-level-face-base-color "grey18")
- '(show-paren-mode t)
- '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
 
 ;;; Disable beep
 (setq visible-bell t)
@@ -172,7 +146,7 @@ Note the weekly scope of the command's precision.")
 ;; package already included in 25.1??
 (when (>= emacs-major-version 24)
   (require 'package)
-  (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
+  ;; (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
   (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
   (package-initialize)
@@ -187,6 +161,15 @@ Note the weekly scope of the command's precision.")
 ;; gruvbox theme
 (load-theme 'gruvbox t)
 
-;; paradox
-(require 'paradox)
-(paradox-enable)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (gruvbox-theme))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
