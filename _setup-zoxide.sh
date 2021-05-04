@@ -21,9 +21,9 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
         brew install "$NAME"
     elif [[ "$(uname -s)" == "Linux" ]]; then
         if [[ "$(uname -m)" == "x86_64" ]]; then
-            readonly URI="https://github.com/ajeetdsouza/zoxide/releases/download/v${VERSION}/${NAME}-x86_64-unknown-linux-musl"
+            readonly URI="https://github.com/ajeetdsouza/zoxide/releases/download/v${VERSION}/${NAME}-x86_64-unknown-linux-musl.tar.gz"
         elif [[ "$(uname -m)" == "armv7l" ]]; then
-            readonly URI="https://github.com/ajeetdsouza/zoxide/releases/download/v${VERSION}/${NAME}-armv7-unknown-linux-musleabihf"
+            readonly URI="https://github.com/ajeetdsouza/zoxide/releases/download/v${VERSION}/${NAME}-armv7-unknown-linux-musleabihf.tar.gz"
         else
             if [[ ! -x "$(command -v cargo)" ]]; then
                 read -rp "Install cargo and rust? (y/N): " confirm
@@ -41,9 +41,16 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
         fi
         wget -N "$URI"
         FILE="$(basename "$URI")"
-        readonly FILE
-        chmod +x ./"$FILE"
-        rm -rf ~/bin/zoxide
-        mv ./"$FILE" ~/bin/zoxide
+        tar -xvf "$FILE"
+        rm -f "$FILE"
+        readonly DIRNAME="${FILE%.*.*}"
+        mkdir -p ~/bin
+        mv "${DIRNAME}/${NAME}" ~/bin/
+
+        # save man files
+        mkdir -p ~/.local/share/man/man1
+        mv "${DIRNAME}"/man/*.1 ~/.local/share/man/man1
+        mandb ~/.local/share/man
+
     fi
 fi
