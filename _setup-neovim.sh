@@ -38,6 +38,12 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v nvim)" ]] || [[ "$confirm" == [yY
         chmod +x ./nvim.appimage
         sudo apt install -y fuse
         sudo ln -sf "${BIN_DIR}/nvim.appimage" /usr/local/bin/nvim
+
+        mkdir -p ~/.local/share/man/man1
+        readonly MANURL="https://raw.githubusercontent.com/neovim/neovim/nightly/man/nvim.1"
+        wget --output-document ~/.local/share/man/man1/nvim.1 -N "$MANURL"
+        mandb ~/.local/share/man
+
     elif [[ "$(uname -m)" != "x86_64" ]] && [[ -x "$(command -v apt)" ]]; then
         sudo apt install --no-install-recommends -y neovim
     fi
@@ -48,6 +54,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v nvim)" ]] || [[ "$confirm" == [yY
     mkdir -p "$CONFIG_DIR"
     [[ -f "$CONFIG_DIR/init.vim" ]] && mv -f "$CONFIG_DIR"/init.vim "$CONFIG_DIR"/init.vim.backup
     ln -sf "$BASEDIR"/.config/nvim/init.vim "$CONFIG_DIR"
+
     # call :PlugInstall from the shell
     nvim --headless +PlugInstall +qa
 
