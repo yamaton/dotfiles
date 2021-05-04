@@ -29,13 +29,20 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v tmux)" ]] || [[ "$confirm" == [yY
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
     elif [[ -x "$(command -v apt)" ]] && [[ "$(uname -s)" == "Linux" ]]; then
-        cd "$CONFDIR"
+        cd "$CONFDIR" || (echo "$CONFDIR not found" && exit)
         sudo apt install -y libevent-dev libncurses5-dev libncursesw5-dev
         curl -L "https://github.com/tmux/tmux/releases/download/${VER}/tmux-${VERSION}.tar.gz" | tar xzf -
-        cd "tmux-${VERSION}"
-        ./configure && make -j4
-        [[ ! -d ~/bin ]] && mkdir ~/bin
-        mv tmux ~/bin
+        (
+            cd "tmux-${VERSION}" || (echo "tmux-${VERSION} not found" && exit)
+            ./configure && make -j4
+            [[ ! -d ~/bin ]] && mkdir ~/bin
+            mv tmux ~/bin
+
+            mkdir -p ~/.local/share/man/man1
+            mv tmux.1 ~/.local/share/man/man1
+            mandb ~/.local/share/man
+        )
+        rm -rf "tmux-${VERSION}"
 
         # clipboard integration
         sudo apt install -y xsel wl-clipboard
