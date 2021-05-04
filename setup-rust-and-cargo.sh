@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-# https://doc.rust-lang.org/cargo/getting-started/installation.html
-curl https://sh.rustup.rs -sSf | sh
+# https://www.rust-lang.org/learn/get-started
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
