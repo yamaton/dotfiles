@@ -29,8 +29,9 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
         rm -f "$ZIPFILE"
         chmod +x "./build/x86_64-linux/$NAME"
         "./build/x86_64-linux/$NAME" --install
+        cp "./build/x86_64-linux/$NAME"
         mkdir -p ~/.local/share/man/man1
-        cp ./build/broot.1 ~/.local/share/man/man1
+        cp -f ./build/broot.1 ~/.local/share/man/man1
         mandb ~/.local/share/man
         rm -rf build
     fi
