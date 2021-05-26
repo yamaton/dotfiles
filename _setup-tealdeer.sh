@@ -32,16 +32,16 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
             *) FILE="" ;;
         esac
         URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/${FILE}"
-        wget -cO tldr "$URI"
+        wget -c -O tldr "$URI"
         chmod +x tldr
         mv tldr ~/bin/
 
         URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_zsh"
-        wget -cO _tldr "$URI"
+        wget -c -O _tldr "$URI"
         sudo mv _tldr /usr/share/zsh/vendor-completions/_tldr
 
         URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_fish"
-        wget -c -O ~/.config/fish/completions/tealdeer.fish "$URI"
+        wget -c -O ~/.config/fish/completions/tldr.fish "$URI"
 
         ln -sf "${BASEDIR}/.config/${NAME}" "${HOME}/.config/"
     fi
