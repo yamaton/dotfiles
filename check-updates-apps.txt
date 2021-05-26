@@ -19,4 +19,5 @@ zoxide
 grex
 dust
 gitui
+yq
 anki
