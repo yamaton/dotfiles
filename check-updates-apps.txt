@@ -20,4 +20,5 @@ grex
 dust
 gitui
 yq
+hyperfine
 anki
