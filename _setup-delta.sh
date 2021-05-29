@@ -33,6 +33,12 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         rm -f ./"$FILE"
     fi
 
+    wget -N "https://raw.githubusercontent.com/dandavison/delta/master/etc/completion/completion.bash"
+    mkdir -p ~/.bash_completion.d && mv -f completion.bash ~/.bash_completion.d/delta
+
+    wget -N "https://raw.githubusercontent.com/dandavison/delta/master/etc/completion/completion.zsh"
+    mkdir -p ~/.zfunc && mv -f completion.zsh ~/.zfunc/_delta
+
     if [[ -f ~/.gitconfig ]]; then
         echo "―― $(date +"%H:%M:%S") - Delta setup ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
         echo "[INFO] Detected ~/.gitconfig --- add some lines from _delta.gitconfig if needed."
