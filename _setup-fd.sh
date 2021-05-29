@@ -5,6 +5,10 @@ readonly CMD=fd
 VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${CMD}.json | jq '.versions.stable' | tr -d \")"
 readonly VERSION
 
+mkdircp () {
+    mkdir -p "$2" && cp -f "$1" "$2"
+}
+
 if [[ -x "$(command -v $CMD)" ]]; then
     CURRENT="$("$CMD" --version | cut -d ' ' -f2)"
     readonly CURRENT
@@ -20,24 +24,25 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "${CMD}"
     elif [[ "$(uname -s)" == "Linux" ]]; then
-        if [[ "$(uname -m)" == "x86_64" ]] && [[ -x "$(command -v apt)" ]]; then
-            readonly URI="https://github.com/sharkdp/fd/releases/download/v${VERSION}/fd-musl_${VERSION}_amd64.deb"
-            wget -N "${URI}"
-            sudo apt install "./$(basename "$URI")"
-            rm -f "fd-musl_${VERSION}_amd64.deb"
+        if [[ "$(uname -m)" == "x86_64" ]]; then
+            readonly URL="https://github.com/sharkdp/fd/releases/download/v${VERSION}/fd-v${VERSION}-x86_64-unknown-linux-musl.tar.gz"
         elif [[ "$(uname -m)" == "armv7l" ]]; then
-            readonly URI="https://github.com/sharkdp/fd/releases/download/v${VERSION}/fd-v${VERSION}-arm-unknown-linux-musleabihf.tar.gz"
-            wget -N "${URI}"
-            NAME="$(basename "$URI")"
-            readonly NAME
-            tar xzf "./${NAME}"
-            rm "./${NAME}"
-            echo "------"
-            readonly NAME1="${NAME%.*.*}"
-            echo "$NAME1"
-            [[ ! -d ~/bin ]] &&  mkdir ~/bin
-            cp -f "${NAME1}/${CMD}" ~/bin/
-            rm -rf "$NAME1"
+            readonly URL="https://github.com/sharkdp/fd/releases/download/v${VERSION}/fd-v${VERSION}-arm-unknown-linux-musleabihf.tar.gz"
         fi
+        wget -N "$URL"
+        FILE="$(basename "$URL")"
+        readonly FILE
+        tar -xvf "$FILE"
+        DIR="${FILE%.*.*}"
+        (
+            cd "$DIR" || exit
+            mkdircp autocomplete/"${CMD}.bash-completion" ~/.bash_completion.d/
+            mkdircp autocomplete/"_${CMD}" ~/.zfunc
+            mkdircp autocomplete/"${CMD}.fish" ~/.config/fish/completions/
+            mkdircp "${CMD}" ~/bin/
+            mkdircp "${CMD}.1" ~/.local/share/man/man1/
+        )
+        mandb ~/.local/share/man/
+        rm -rf "$DIR" "$FILE"
     fi
 fi
