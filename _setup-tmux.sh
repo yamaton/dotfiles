@@ -35,8 +35,8 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v tmux)" ]] || [[ "$confirm" == [yY
         (
             cd "tmux-${VERSION}" || (echo "tmux-${VERSION} not found" && exit)
             ./configure && make -j4
-            [[ ! -d ~/bin ]] && mkdir ~/bin
-            mv tmux ~/bin
+            mkdir -p ~/.local/bin
+            mv tmux ~/.local/bin
 
             mkdir -p ~/.local/share/man/man1
             mv tmux.1 ~/.local/share/man/man1

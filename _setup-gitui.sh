@@ -26,6 +26,6 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         readonly FILE
         tar xvf "$FILE"
         rm -f "$FILE"
-        mv ./gitui ~/bin
+        mv ./gitui ~/.local/bin
     fi
 fi

@@ -36,8 +36,8 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v $CMD)" ]] || [[ "$confirm" == [yY
         filename="$(basename "$uri")"
         dir="${filename%.tar.gz}"
         tar xvf ./"$filename"
-        cp -f "${dir}/rga" ~/bin/
-        cp -f "${dir}/rga-preproc" ~/bin/
+        cp -f "${dir}/rga" ~/.local/bin/
+        cp -f "${dir}/rga-preproc" ~/.local/bin/
         rm -f ./"$filename"
         rm -rf "${dir}"
     fi

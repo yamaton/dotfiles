@@ -26,8 +26,8 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
             readonly NAME
             tar xvf "./${NAME}"
             rm "./${NAME}"
-            [[ ! -d ~/bin ]] && mkdir ~/bin
-            mv -f "./${CMD}" ~/bin/
+            [[ ! -d ~/.local/bin ]] && mkdir ~/.local/bin
+            mv -f "./${CMD}" ~/.local/bin/
     else
         echo "Unsupported. Exiting..."
         exit 0

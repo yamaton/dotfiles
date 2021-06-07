@@ -44,8 +44,8 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
         tar -xvf "$FILE"
         rm -f "$FILE"
         readonly DIRNAME="${FILE%.*.*}"
-        mkdir -p ~/bin
-        mv "${DIRNAME}/${NAME}" ~/bin/
+        mkdir -p ~/.local/bin
+        mv "${DIRNAME}/${NAME}" ~/.local/bin/
 
         # save man files
         mkdir -p ~/.local/share/man/man1

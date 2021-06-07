@@ -32,10 +32,10 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         readonly DIR="${FILE%.tar.gz}"
         tar xf ./"$FILE"
         rm "$FILE"
-        mkdir -p ~/bin
-        rm -rf ~/bin/"$DIR"
-        mv -f ./"$DIR" ~/bin/"$DIR"
-        [[ -f ~/bin/"$CMD" ]] && mv -f "~/bin/${CMD}" "~/bin/${CMD}.backup"
-        ln -sf "$HOME/bin/$DIR/$CMD" ~/bin
+        mkdir -p ~/.local/bin
+        rm -rf ~/.local/bin/"$DIR"
+        mv -f ./"$DIR" ~/.local/bin/"$DIR"
+        [[ -f ~/.local/bin/"$CMD" ]] && mv -f "~/.local/bin/${CMD}" "~/.local/bin/${CMD}.backup"
+        ln -sf "$HOME/bin/$DIR/$CMD" ~/.local/bin
     fi
 fi

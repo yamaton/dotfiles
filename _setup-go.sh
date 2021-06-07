@@ -21,7 +21,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         brew install "$CMD"
     elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(uname -m)" == "x86_64" ]]; then
         readonly URI="https://golang.org/dl/go${VERSION}.linux-amd64.tar.gz"
-        cd ~/bin || exit
+        cd ~/.local/bin || exit
         wget -N "$URI"
         FILE="$(basename "$URI")"
         readonly FILE
@@ -29,7 +29,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         tar xvf ./"$FILE"
         rm -f ./"$FILE"
         mv go golang
-        ln -sf ~/bin/golang/bin/go ~/bin/go
-        ln -sf ~/bin/golang/bin/gofmt ~/bin/gofmt
+        ln -sf ~/.local/bin/golang/bin/go ~/.local/bin/go
+        ln -sf ~/.local/bin/golang/bin/gofmt ~/.local/bin/gofmt
     fi
 fi

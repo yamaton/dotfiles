@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-mkdir -p ~/bin
-curl https://cht.sh/:cht.sh > ~/bin/cht.sh
-chmod +x ~/bin/cht.sh
+mkdir -p ~/.local/bin
+curl https://cht.sh/:cht.sh > ~/.local/bin/cht.sh
+chmod +x ~/.local/bin/cht.sh
 
 chthome="${CHTSH:-"$HOME"/.config/cht.sh}"
 mkdir -p "$chthome"

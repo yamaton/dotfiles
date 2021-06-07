@@ -22,7 +22,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
         brew install "$NAME"
     elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(uname -m)" == "x86_64" ]]; then
         readonly URI="https://github.com/Canop/$NAME/releases/download/v$VERSION/$ZIPFILE"
-        mkdir -p ~/bin && cd ~/bin
+        mkdir -p ~/.local/bin && cd ~/.local/bin
         wget -N "$URI"
         rm -rf build
         unzip "$ZIPFILE"

@@ -17,6 +17,7 @@ abbr -a -U -- ncdu 'ncdu --color dark'
 abbr -a -U -- btc 'curl rate.sx'
 
 # local bin
+fish_add_path ~/.local/bin
 fish_add_path ~/bin
 
 # disable welcome message
@@ -57,7 +58,7 @@ set -gx GEM_HOME ~/.gems
 fish_add_path ~/.gems/bin
 
 # npm
-fish_add_path ~/bin/node/bin
+fish_add_path ~/.local/bin/node/bin
 
 # deno
 fish_add_path $DENO_INSTALL/bin

@@ -29,7 +29,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v $CMD)" ]] || [[ "$confirm" == [yY
         elif [[ "$(uname -m)" == "armv7l" ]]; then
             readonly URI="https://github.com/BurntSushi/ripgrep/releases/download/${VERSION}/ripgrep-${VERSION}-arm-unknown-linux-gnueabihf.tar.gz"
             curl -L "${URI}" | tar xzf -
-            cp -f "ripgrep-${VERSION}-arm-unknown-linux-gnueabihf/rg" ~/bin/
+            cp -f "ripgrep-${VERSION}-arm-unknown-linux-gnueabihf/rg" ~/.local/bin/
             rm -rf "ripgrep-${VERSION}-arm-unknown-linux-gnueabihf"
         fi
     fi

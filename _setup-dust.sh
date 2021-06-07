@@ -28,8 +28,8 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
             rm "./${NAME}"
             readonly NAME1="${NAME%.*.*}"
             echo "$NAME1"
-            [[ ! -d ~/bin ]] &&  mkdir ~/bin
-            cp -f "${NAME1}/${CMD}" ~/bin/
+            mkdir -p ~/.local/bin
+            cp -f "${NAME1}/${CMD}" ~/.local/bin
             rm -rf "$NAME1"
     else
         echo "Unsupported. Exiting..."

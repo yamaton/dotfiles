@@ -21,7 +21,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         brew cask install "$CMD"
     elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(uname -m)" == "x86_64" ]]; then
         readonly URI="https://julialang-s3.julialang.org/bin/musl/x64/${VERSION%.*}/julia-${VERSION}-musl-x86_64.tar.gz"
-        cd ~/bin || exit
+        mkdir -p ~/.local/bin && cd ~/.local/bin || exit
         wget -N "$URI"
         FILE="$(basename "$URI")"
         readonly FILE
