@@ -28,13 +28,9 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v nnn)" ]] || [[ "$confirm" == [yY]
     else
         codename="$(lsb_release -s -c)"
         case "$codename" in
-        "focal") OS="ubuntu20.04" ;;
-        "bionic") OS="ubuntu18.04" ;;
-        "xenial") OS="ubuntu16.04" ;;
-        "stretch") OS="debian9" ;;
-        "buster") OS="debian10" ;;
-        "bullseye") OS="ubuntu20.04" ;; # works so far
-        "groovy") OS="ubuntu20.04" ;; # works so far
+        "focal") OS="xUbuntu_20.04" ;;
+        "buster") OS="Debian_10" ;;
+        "groovy") OS="xUbuntu_20.04" ;; # works so far
         *) OS="" ;;
         esac
         readonly OS
@@ -42,13 +38,10 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v nnn)" ]] || [[ "$confirm" == [yY]
         cd "${REPO_DIR}" || exit
         if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]] &&
             [[ "$(uname -m)" == "x86_64" ]]; then
-            echo "[INFO] getting deb file for $codename"
-            readonly URI="https://github.com/jarun/nnn/releases/download/v${VERSION}/nnn_${VERSION}-1_${OS}.amd64.deb"
-            wget -N "$URI"
-            FILE="$(basename "$URI")"
-            readonly FILE
-            sudo apt install -y ./"$FILE"
-            rm -f ./"$FILE"
+            echo "deb http://download.opensuse.org/repositories/home:/stig124:/nnn/${OS}/ /" | sudo tee /etc/apt/sources.list.d/home:stig124:nnn.list
+            curl -fsSL "https://download.opensuse.org/repositories/home:stig124:nnn/${OS}/Release.key" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_stig124_nnn.gpg > /dev/null
+            sudo apt update
+            sudo apt install -y nnn
         else
             echo "[INFO] prepare building nnn"
             sudo apt install -y libncursesw5-dev libreadline-dev
