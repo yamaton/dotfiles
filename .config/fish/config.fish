@@ -5,6 +5,14 @@ set -gx EDITOR nvim
 set -gx PAGER less
 set -gx XDG_CONFIG_HOME ~/.config
 
+# telemetry optout
+set -gx DO_NOT_TRACK 1  # https://consoledonottrack.com/
+set -gx DOTNET_CLI_TELEMETRY_OPTOUT 1
+set -gx POWERSHELL_TELEMETRY_OPTOUT 1
+set -gx HOMEBREW_NO_ANALYTICS 1
+set -gx STNOUPGRADE 1   # syncthing
+set -gx AZURE_CORE_COLLECT_TELEMETRY 0
+
 # abbriviation
 abbr -a -U -- rm trash
 abbr -a -U -- mv 'mv -i'
@@ -32,9 +40,7 @@ if type -q go
     fish_add_path (go env GOPATH)/bin
 end
 
-# dotnet and powershell optout
-set -gx DOTNET_CLI_TELEMETRY_OPTOUT 1
-set -gx POWERSHELL_TELEMETRY_OPTOUT 1
+
 fish_add_path ~/.dotnet/tools
 
 # cht.sh
