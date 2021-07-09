@@ -6,7 +6,7 @@ readonly CMD=nvim
 BASEDIR="$(dirname "$(readlink -f "$0")")"
 readonly BASEDIR
 readonly REPO_DIR="${HOME}/confs"
-readonly BIN_DIR="${HOME}/bin"
+readonly BIN_DIR="${HOME}/.local/bin/"
 readonly CONFIG_DIR="${HOME}/.config/$CMD"
 
 # VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")"

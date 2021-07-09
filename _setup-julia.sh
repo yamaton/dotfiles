@@ -27,10 +27,10 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         readonly FILE
         tar xvf ./"$FILE"
         rm -f ./"$FILE"
-        ln -sf "${HOME}/bin/julia-${VERSION}/bin/julia" "${HOME}/bin/julia"
+        ln -sf "${HOME}/.local/bin/julia-${VERSION}/bin/julia" "${HOME}/.local/bin/julia"
 
         mkdir -p ~/.local/share/man/man1
-        cp -r "${HOME}"/bin/julia-"${VERSION}"/share/man/man1/*.1 ~/.local/share/man/man1
+        cp -r "${HOME}"/.local/bin/julia-"${VERSION}"/share/man/man1/*.1 ~/.local/share/man/man1
         mandb ~/.local/share/man
     fi
 fi

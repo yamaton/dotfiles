@@ -36,6 +36,6 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         rm -rf ~/.local/bin/"$DIR"
         mv -f ./"$DIR" ~/.local/bin/"$DIR"
         [[ -f ~/.local/bin/"$CMD" ]] && mv -f "~/.local/bin/${CMD}" "~/.local/bin/${CMD}.backup"
-        ln -sf "$HOME/bin/$DIR/$CMD" ~/.local/bin
+        ln -sf "$HOME/.local/bin/$DIR/$CMD" ~/.local/bin
     fi
 fi

@@ -35,8 +35,8 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${cmd})" ]] || [[ "$confirm" == [
         readonly file
         tar xvf "$file"
         dir="${file%.*.*}"
-        rm -rf "$HOME"/bin/node
-        mv "$dir" "$HOME"/bin/node
+        rm -rf "$HOME"/.local/bin/node
+        mv "$dir" "$HOME"/.local/bin/node
         rm -f ./"$file"
         npm install -g npm
     fi
