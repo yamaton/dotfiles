@@ -34,7 +34,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v tmux)" ]] || [[ "$confirm" == [yY
         curl -L "https://github.com/tmux/tmux/releases/download/${VER}/tmux-${VERSION}.tar.gz" | tar xzf -
         (
             cd "tmux-${VERSION}" || (echo "tmux-${VERSION} not found" && exit)
-            ./configure && make -j4
+            ./configure && make -j "$(nproc)"
             mkdir -p ~/.local/bin
             mv tmux ~/.local/bin
 

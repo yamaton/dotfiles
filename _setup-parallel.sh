@@ -28,7 +28,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         (
         cd parallel-*/
         ./configure
-        make -j4
+        make -j "$(nproc)"
         sudo make install
         )
         rm -f ./"$FILE"

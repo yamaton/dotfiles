@@ -51,7 +51,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v nnn)" ]] || [[ "$confirm" == [yY]
             [[ ! -d nnn ]] && git clone https://github.com/jarun/nnn.git
             cd nnn
             git pull
-            make
+            make -j "$(nproc)"
             sudo make install
         fi
     fi
