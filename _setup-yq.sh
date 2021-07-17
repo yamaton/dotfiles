@@ -28,7 +28,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         wget -N "$URI"
         FILE="$(basename "$URI")"
         readonly FILE
-        mkdir -p "$HOME"/bin && mv -f ./"$FILE" "$HOME"/bin/yq
-        chmod +x "$HOME"/bin/yq
+        mkdir -p "$HOME"/.local/bin && mv -f ./"$FILE" "$HOME"/.local/bin/yq
+        chmod +x "$HOME"/.local/bin/yq
     fi
 fi
