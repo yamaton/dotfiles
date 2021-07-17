@@ -28,7 +28,7 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 fpath+=( $HOME/miniconda3/share/zsh/conda-zsh-completion "${fpath[@]}" )
 
 ## local bin
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 ## rust
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -45,7 +45,7 @@ export POWERSHELL_TELEMETRY_OPTOUT=1
 export CHTSH="$HOME"/.config/cht.sh
 
 ## npm
-export PATH="$PATH:$HOME/bin/node/bin"
+export PATH="$PATH:$HOME/.local/bin/node/bin"
 
 ## pipx
 export PATH="$HOME/.local/bin:$PATH"
