@@ -3,7 +3,7 @@
 readonly CMD=kitty
 VERSION="$(curl --silent https://formulae.brew.sh/api/cask/${CMD}.json | jq .version | tr -d \")"
 readonly VERSION
-BASEDIR="$(dirname "$(readlink -f "$0")")"
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 readonly BASEDIR
 readonly KITTY_CONF_DIR=~/.config/kitty
 readonly KITTY_HOME=~/.local/kitty.app

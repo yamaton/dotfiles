@@ -36,7 +36,7 @@ else
 fi
 
 
-BASEDIR="$(dirname "$(readlink -f "$0")")"
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 readonly BASEDIR
 COMPOSE_VERSION="$("$BASEDIR"/get-version-github.sh docker/compose)"
 if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v docker-compose)" ]]; then

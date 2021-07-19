@@ -22,7 +22,7 @@ fi
 VER="$(echo "$VERSION" | cut -c 1-4)"
 
 if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v tmux)" ]] || [[ "$confirm" == [yY] ]]; then
-    BASEDIR="$(dirname "$(readlink -f "$0")")"
+    BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
     readonly BASEDIR
     readonly CONFDIR="${HOME}/confs"
 

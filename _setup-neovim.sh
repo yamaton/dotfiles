@@ -3,7 +3,7 @@
 readonly NAME=neovim
 readonly CMD=nvim
 
-BASEDIR="$(dirname "$(readlink -f "$0")")"
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 readonly BASEDIR
 readonly REPO_DIR="${HOME}/confs"
 readonly BIN_DIR="${HOME}/.local/bin/"

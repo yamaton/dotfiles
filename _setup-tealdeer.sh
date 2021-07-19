@@ -3,7 +3,7 @@
 readonly NAME=tealdeer
 readonly CMD=tldr
 
-BASEDIR="$(dirname "$(readlink -f "$0")")"
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 readonly BASEDIR
 VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")"
 readonly VERSION

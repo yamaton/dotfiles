@@ -28,7 +28,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
             if [[ ! -x "$(command -v cargo)" ]]; then
                 read -rp "Install cargo and rust? (y/N): " confirm
                 if [[ "$confirm" == [yY] ]]; then
-                    BASEDIR="$(dirname "$(readlink -f "$0")")"
+                    BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
                     readonly BASEDIR
                     source "${BASEDIR}/setup-rust-and-cargo.sh"
                 else

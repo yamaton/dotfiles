@@ -44,7 +44,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         echo "[INFO] Detected ~/.gitconfig --- add some lines from _delta.gitconfig if needed."
         echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
     else
-        BASEDIR="$(dirname "$(readlink -f "$0")")"
+        BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
         readonly BASEDIR
         cp "$BASEDIR"/_delta.gitconfig ~/.gitconfig
     fi

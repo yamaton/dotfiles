@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname "$(readlink -f "$0")")"
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 readonly BASEDIR
 readonly CONFDIR="${HOME}/confs"
 
