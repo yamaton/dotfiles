@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+BASEDIR="$(dirname "$(readlink -f "$0")")"
 APPLIST=("$(cat "$BASEDIR"/check-updates-apps.txt)")
 
 echo ""
