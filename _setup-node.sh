@@ -38,6 +38,5 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${cmd})" ]] || [[ "$confirm" == [
         rm -rf "$HOME"/.local/bin/node
         mv "$dir" "$HOME"/.local/bin/node
         rm -f ./"$file"
-        npm install -g npm
     fi
 fi
