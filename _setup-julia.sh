@@ -20,6 +20,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew cask install "$CMD"
     elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(uname -m)" == "x86_64" ]]; then
+        sudo apt install musl
         readonly URI="https://julialang-s3.julialang.org/bin/musl/x64/${VERSION%.*}/julia-${VERSION}-musl-x86_64.tar.gz"
         mkdir -p ~/.local/bin && cd ~/.local/bin || exit
         wget -N "$URI"
