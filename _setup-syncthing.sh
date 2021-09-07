@@ -33,7 +33,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         tar xf ./"$FILE"
         rm "$FILE"
         mkdir -p ~/.local/bin
-        rm -rf ~/.local/bin/"$DIR"
+        rm -rf ~/.local/bin/syncthing*
         mv -f ./"$DIR" ~/.local/bin/"$DIR"
         [[ -f ~/.local/bin/"$CMD" ]] && mv -f "~/.local/bin/${CMD}" "~/.local/bin/${CMD}.backup"
         ln -sf "$HOME/.local/bin/$DIR/$CMD" ~/.local/bin
