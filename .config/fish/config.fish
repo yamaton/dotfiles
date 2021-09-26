@@ -27,6 +27,7 @@ abbr -a -U -- btc 'curl rate.sx'
 # local bin
 fish_add_path ~/.local/bin
 fish_add_path ~/bin
+fish_add_path ~/.dotnet
 
 # disable welcome message
 set -g fish_greeting
