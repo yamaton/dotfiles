@@ -21,9 +21,9 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
         brew install "$NAME"
     elif [[ "$(uname -s)" == "Linux" ]]; then
         if [[ "$(uname -m)" == "x86_64" ]]; then
-            readonly URI="https://github.com/ajeetdsouza/zoxide/releases/download/v${VERSION}/${NAME}-x86_64-unknown-linux-musl.tar.gz"
+            readonly URI="https://github.com/ajeetdsouza/zoxide/releases/download/v${VERSION}/${NAME}-v${VERSION}-x86_64-unknown-linux-musl.tar.gz"
         elif [[ "$(uname -m)" == "armv7l" ]]; then
-            readonly URI="https://github.com/ajeetdsouza/zoxide/releases/download/v${VERSION}/${NAME}-armv7-unknown-linux-musleabihf.tar.gz"
+            readonly URI="https://github.com/ajeetdsouza/zoxide/releases/download/v${VERSION}/${NAME}-v${VERSION}-armv7-unknown-linux-musleabihf.tar.gz"
         else
             if [[ ! -x "$(command -v cargo)" ]]; then
                 read -rp "Install cargo and rust? (y/N): " confirm
@@ -40,7 +40,12 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
             exit 0
         fi
         wget -N "$URI"
-        FILE="$(basename "$URI")"
+        i
+        if [[ "$(uname -m)" == "x86_64" ]]; then
+            readonly FILE="${NAME}-x86_64-unknown-linux-musl.tar.gz"
+        elif [[ "$(uname -m)" == "armv7l" ]]; then
+            readonly FILE="${NAME}-armv7-unknown-linux-musleabihf.tar.gz"
+        fi
         tar -xvf "$FILE"
         rm -f "$FILE"
         readonly DIRNAME="${FILE%.*.*}"
