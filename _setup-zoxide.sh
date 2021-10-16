@@ -41,11 +41,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
         fi
         wget -N "$URI"
         i
-        if [[ "$(uname -m)" == "x86_64" ]]; then
-            readonly FILE="${NAME}-x86_64-unknown-linux-musl.tar.gz"
-        elif [[ "$(uname -m)" == "armv7l" ]]; then
-            readonly FILE="${NAME}-armv7-unknown-linux-musleabihf.tar.gz"
-        fi
+        readonly FILE="$(basename "$URI")"
         tar -xvf "$FILE"
         rm -f "$FILE"
         readonly DIRNAME="${FILE%.*.*}"
