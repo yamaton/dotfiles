@@ -53,5 +53,6 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
         mv "${DIRNAME}"/man/*.1 ~/.local/share/man/man1
         mandb ~/.local/share/man
 
+        rm -rf "$DIRNAME"
     fi
 fi
