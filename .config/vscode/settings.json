@@ -1,12 +1,14 @@
 // Place your settings in this file to overwrite the default settings
 {
-    // Controls the font family.
-    "editor.fontFamily": "Fira Code",
-    // Controls the font size.
+    // telemetry
+    "telemetry.telemetryLevel": "off",
+    "redhat.telemetry.enabled": false,
+
+    // fonts
+    "editor.fontFamily": "Cascadia Code",
     "editor.fontSize": 15,
-    // For Ligature for Fira Code
     "editor.fontLigatures": true,
-    // Controls the line height.
+    "editor.fontWeight": "400",
     "editor.lineHeight": 21,
     // Disable minimap
     "editor.minimap.enabled": false,
@@ -18,25 +20,27 @@
     },
     // Disable preview mode
     "workbench.editor.enablePreview": false,
-    // Disable telemetry reporting
-    "telemetry.enableTelemetry": false,
-    // Disable crash reporting
-    "telemetry.enableCrashReporter": false,
-    //
-    // ----- Extension and editor preferences -----
+    // git
+    "git.autofetch": true,
+
     "editor.roundedSelection": false,
     "editor.formatOnSave": false,
     "explorer.openEditors.visible": 0,
     "editor.renderWhitespace": "none",
-    "editor.wordWrap": "on",
+    "editor.suggestSelection": "first",
     "files.trimTrailingWhitespace": true,
     "window.menuBarVisibility": "toggle",
-    "workbench.colorTheme": "Monokai++",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
     // ------- Python -------
+    "python.languageServer": "Pylance",
     "python.linting.pylintEnabled": true,
     "python.formatting.provider": "black",
     "python.unitTest.pyTestEnabled": true,
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.linting.mypyCategorySeverity.error": "Warning",
+    "python.terminal.activateEnvInCurrentTerminal": true,
 
     // ------- C++ / Clang ------
     "clang-format.fallbackStyle": "WebKit",
@@ -46,12 +50,13 @@
     "[javascript]": {
         "editor.insertSpaces": true,
         "editor.tabSize": 2,
+        "editor.defaultFormatter": "vscode.typescript-language-features",
     },
-
     // ------- typescript -------
     "[typescript]": {
         "editor.insertSpaces": true,
         "editor.tabSize": 2,
+        "editor.defaultFormatter": "vscode.typescript-language-features",
     },
 
     // ------- Insert DateTime -------
