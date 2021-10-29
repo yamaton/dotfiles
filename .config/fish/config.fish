@@ -104,8 +104,8 @@ end
 if string match -i -q '*microsoft*' (uname -r)
     alias firefox='/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe'
     alias typora='/mnt/c/Program\ Files/Typora/Typora.exe'
-    # VcXsrv
-    set -gx DISPLAY (ip route | grep default | cut -d ' ' -f 3):0
+    # VcXsrv ... now switching to WSLg
+    # set -gx DISPLAY (ip route | grep default | cut -d ' ' -f 3):0
     # vagrant
     set -gx VAGRANT_WSL_ENABLE_WINDOWS_ACCESS 1
 end

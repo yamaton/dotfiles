@@ -60,8 +60,8 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 
 ## WSL2
 if [[ "$(uname -r)" == *microsoft* ]]; then
-    ## VcXsrv
-    export DISPLAY="$(ip route | grep default | cut -d ' ' -f 3):0"
+    # VcXsrv ... now switching to WSLg
+    # export DISPLAY="$(ip route | grep default | cut -d ' ' -f 3):0"
     ## Vagrant
     export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
 fi
