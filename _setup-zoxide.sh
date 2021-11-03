@@ -40,11 +40,11 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
             exit 0
         fi
         wget -N "$URI"
-        i
         readonly FILE="$(basename "$URI")"
-        tar -xvf "$FILE"
-        rm -f "$FILE"
         readonly DIRNAME="${FILE%.*.*}"
+        mkdir -p "$DIRNAME"
+        tar -xvf "$FILE" --directory "$DIRNAME"
+        rm -f "$FILE"
         mkdir -p ~/.local/bin
         mv "${DIRNAME}/${NAME}" ~/.local/bin/
 
