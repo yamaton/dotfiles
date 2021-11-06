@@ -9,10 +9,7 @@ readonly REPO_DIR="${HOME}/confs"
 readonly BIN_DIR="${HOME}/.local/bin/"
 readonly CONFIG_DIR="${HOME}/.config/$CMD"
 
-# VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")"
-
-url="https://api.github.com/repos/neovim/neovim/releases"
-VERSION="$(curl --silent ${url} | jq '.[0].name' | tr -d \" | cut -d ' ' -f 2 | cut -c 2-)"
+VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")"
 readonly VERSION
 
 if [[ -x "$(command -v $CMD)" ]]; then
@@ -31,8 +28,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v nvim)" ]] || [[ "$confirm" == [yY
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$NAME"
     elif [[ "$(uname -m)" == "x86_64" ]] && [[ "$(uname -s)" == "Linux" ]]; then
-        readonly URI="https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage"
-
+        readonly URI="https://github.com/neovim/neovim/releases/download/v${VERSION}/nvim.appimage"
         mkdir -p "$BIN_DIR" && cd "$BIN_DIR"
         wget -N "$URI"
         chmod +x ./nvim.appimage
@@ -40,7 +36,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v nvim)" ]] || [[ "$confirm" == [yY
         sudo ln -sf "${BIN_DIR}/nvim.appimage" /usr/local/bin/nvim
 
         mkdir -p ~/.local/share/man/man1
-        readonly MANURL="https://raw.githubusercontent.com/neovim/neovim/nightly/man/nvim.1"
+        readonly MANURL="https://raw.githubusercontent.com/neovim/neovim/v${VERSION}/man/nvim.1"
         wget --output-document ~/.local/share/man/man1/nvim.1 -N "$MANURL"
         mandb ~/.local/share/man
 
