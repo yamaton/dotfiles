@@ -24,7 +24,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         wget -N "$URI"
         FILE="$(basename "$URI")"
         readonly FILE
-        tar xvf ./"$FILE"
+        tar -xvf ./"$FILE"
         DIR="${FILE%.*.*}"
         readonly DIR
         cd "$DIR"
