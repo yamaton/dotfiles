@@ -41,8 +41,8 @@ if type -q go
     fish_add_path (go env GOPATH)/bin
 end
 
-
-fish_add_path ~/.dotnet/tools
+# nim
+fish_add_path ~/.nimble/bin
 
 # cht.sh
 set -gx CHTSH $XDG_CONFIG_HOME/cht.sh
