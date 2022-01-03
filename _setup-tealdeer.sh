@@ -26,9 +26,9 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
 
     elif [[ "$(uname -s)" == "Linux" ]]; then
         case "$(uname -m)" in
-            "x86_64") FILE="tldr-linux-x86_64-musl" ;;
-            "armv6l") FILE="tldr-linux-arm-musleabi" ;;
-            "armv7l") FILE="tldr-linux-armv7-musleabihf" ;;
+            "x86_64") FILE="tealdeer-linux-x86_64-musl" ;;
+            "armv6l") FILE="tealdeer-linux-arm-musleabi" ;;
+            "armv7l") FILE="tealdeer-linux-armv7-musleabihf" ;;
             *) FILE="" ;;
         esac
         URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/${FILE}"
@@ -37,8 +37,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         mv tldr ~/.local/bin/
 
         URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_zsh"
-        wget -c -O _tldr "$URI"
-        sudo mv _tldr /usr/share/zsh/vendor-completions/_tldr
+        wget -c -O ~/.zfunc/_tldr "$URI"
 
         URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_fish"
         wget -c -O ~/.config/fish/completions/tldr.fish "$URI"
