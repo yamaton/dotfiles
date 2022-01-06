@@ -36,7 +36,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         DIR="${FILE%.*.*}"
         (
             cd "$DIR" || exit
-            mkdircp autocomplete/"${CMD}.bash-completion" ~/.bash_completion.d/
+            mkdircp autocomplete/"${CMD}.bash" ~/.bash_completion.d/
             mkdircp autocomplete/"_${CMD}" ~/.zfunc
             mkdircp autocomplete/"${CMD}.fish" ~/.config/fish/completions/
             mkdircp "${CMD}" ~/.local/bin/
