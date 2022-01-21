@@ -6,7 +6,7 @@
 
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 readonly BASEDIR
-mkdir -p ~/.fonts && cd ~/.fonts
+mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
 
 echo ""
 echo "-------------------"
