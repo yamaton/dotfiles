@@ -65,6 +65,9 @@ fish_add_path ~/.local/bin
 set -gx GEM_HOME ~/.gems
 fish_add_path ~/.gems/bin
 
+# yarn
+fish_add_path ~/.yarn/bin
+
 # npm
 fish_add_path ~/.local/bin/node/bin
 
