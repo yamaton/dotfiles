@@ -23,3 +23,5 @@ yq
 hyperfine
 anki
 croc
+navi
+tre
