@@ -51,7 +51,7 @@ set -gx CHTSH $XDG_CONFIG_HOME/cht.sh
 eval "$HOME/miniconda3/bin/conda" "shell.fish" "hook" $argv | source
 
 # system update
-alias bu="topgrade; sudo apt update && sudo apt full-upgrade; mamba update --all -y; check-updates-utils"
+alias bu="topgrade; sudo apt update && sudo apt full-upgrade; mamba update -c conda-forge --all -y; check-updates-utils"
 
 # zoxide
 if type -q zoxide
