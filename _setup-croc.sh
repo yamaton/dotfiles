@@ -24,14 +24,13 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
     elif [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
-        if [[ "$(uname -m)" == "x86_64" ]]; then
-            readonly URL="https://github.com/schollz/croc/releases/download/v${VERSION}/croc_${VERSION}_Linux-64bit.deb"
-        elif [[ "$(uname -m)" == "armv7l" ]]; then
-            readonly URL="https://github.com/schollz/croc/releases/download/v${VERSION}/croc_${VERSION}_Linux-ARM.deb"
-        fi
+        case "$(uname -m)" in
+            "x86_64") readonly FILE="croc_${VERSION}_Linux-64bit.deb" ;;
+            "armv7l") readonly FILE="croc_${VERSION}_Linux-ARM.deb" ;;
+            "aarch64") readonly FILE="croc_${VERSION}_Linux-ARM64.deb" ;;
+        esac
+        readonly URL="https://github.com/schollz/croc/releases/download/v${VERSION}/${FILE}"
         wget -N "$URL"
-        FILE="$(basename "$URL")"
-        readonly FILE
         sudo apt install ./"$FILE"
         rm -rf "$FILE"
     fi

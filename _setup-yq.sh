@@ -20,10 +20,18 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
     elif [[ "$(uname -s)" == "Linux" ]]; then
+        case "$(uname -m)" in
+            "x86_64") FILE="yq_linux_amd64" ;;
+            "armv6l") FILE="yq_linux_arm" ;;
+            "armv7l") FILE="tealdeer-linux-armv7-musleabihf" ;;
+            *) FILE="" ;;
+        esac
         if [[ "$(uname -m)" == "x86_64" ]]; then
-            readonly URI="https://github.com/mikefarah/yq/releases/download/v${VERSION}/yq_linux_amd64"
+            readonly URI="https://github.com/mikefarah/yq/releases/download/v${VERSION}/${FILE}"
         elif [[ "$(uname -m)" == "armv7l" ]]; then
-            readonly URI="https://github.com/mikefarah/yq/releases/download/v${VERSION}/yq_linux_arm"
+            readonly URI="https://github.com/mikefarah/yq/releases/download/v${VERSION}/${FILE}"
+        elif [[ "$(uname -m)" == "aarch64" ]]; then
+            readonly URI="https://github.com/mikefarah/yq/releases/download/v${VERSION}/${FILE}"
         fi
         wget -N "$URI"
         FILE="$(basename "$URI")"

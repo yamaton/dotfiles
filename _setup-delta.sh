@@ -21,14 +21,14 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
     elif [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
-        if [[ "$(uname -m)" == "x86_64" ]]; then
-            readonly URI="https://github.com/dandavison/delta/releases/download/${VERSION}/git-delta-musl_${VERSION}_amd64.deb"
-        elif [[ "$(uname -m)" == "armv7l" ]]; then
-            readonly URI="https://github.com/dandavison/delta/releases/download/${VERSION}/git-delta_${VERSION}_armhf.deb"
-        fi
+        case "$(uname -m)" in
+            "x86_64") readonly FILE="git-delta-musl_${VERSION}_amd64.deb" ;;
+            "armv7l") readonly FILE="git-delta_${VERSION}_armhf.deb" ;;
+            "aarch64") readonly FILE="git-delta_${VERSION}_arm64.deb" ;;
+            *) echo "Binary for arch not found. Exiting..." && exit 1
+        esac
+        readonly URI="https://github.com/dandavison/delta/releases/download/${VERSION}/${FILE}"
         wget -N "$URI"
-        FILE="$(basename "$URI")"
-        readonly FILE
         sudo apt install ./"$FILE"
         rm -f ./"$FILE"
     fi

@@ -24,14 +24,13 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
     elif [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
-        if [[ "$(uname -m)" == "x86_64" ]]; then
-            readonly URL="https://github.com/sharkdp/hyperfine/releases/download/v${VERSION}/hyperfine-v${VERSION}-x86_64-unknown-linux-musl.tar.gz"
-        elif [[ "$(uname -m)" == "armv7l" ]]; then
-            readonly URL="https://github.com/sharkdp/hyperfine/releases/download/v${VERSION}/hyperfine-v${VERSION}-arm-unknown-linux-musleabihf.tar.gz"
-        fi
+        case "$(uname -m)" in
+            "x86_64") readonly FILE="hyperfine-v${VERSION}-x86_64-unknown-linux-musl.tar.gz" ;;
+            "armv7l") readonly FILE="hyperfine-v${VERSION}-arm-unknown-linux-gnueabihf.tar.gz" ;;
+            "aarch64") readonly FILE="hyperfine-v${VERSION}-aarch64-unknown-linux-gnu.tar.gz" ;;
+        esac
+        readonly URL="https://github.com/sharkdp/hyperfine/releases/download/v${VERSION}/${FILE}"
         wget -N "$URL"
-        FILE="$(basename "$URL")"
-        readonly FILE
         tar -xvf "$FILE"
         DIR="${FILE%.*.*}"
         (

@@ -24,14 +24,13 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "${CMD}"
     elif [[ "$(uname -s)" == "Linux" ]]; then
-        if [[ "$(uname -m)" == "x86_64" ]]; then
-            readonly URL="https://github.com/sharkdp/fd/releases/download/v${VERSION}/fd-v${VERSION}-x86_64-unknown-linux-musl.tar.gz"
-        elif [[ "$(uname -m)" == "armv7l" ]]; then
-            readonly URL="https://github.com/sharkdp/fd/releases/download/v${VERSION}/fd-v${VERSION}-arm-unknown-linux-musleabihf.tar.gz"
-        fi
+        case "$(uname -m)" in
+            "x86_64") readonly FILE="fd-v${VERSION}-x86_64-unknown-linux-musl.tar.gz" ;;
+            "armv7l") readonly FILE="fd-v${VERSION}-arm-unknown-linux-gnueabihf.tar.gz" ;;
+            "aarch64") readonly FILE="fd-v${VERSION}-aarch64-unknown-linux-gnu.tar.gz" ;;
+        esac
+        readonly URL="https://github.com/sharkdp/fd/releases/download/v${VERSION}/${FILE}"
         wget -N "$URL"
-        FILE="$(basename "$URL")"
-        readonly FILE
         tar -xvf "$FILE"
         DIR="${FILE%.*.*}"
         (

@@ -40,7 +40,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v nvim)" ]] || [[ "$confirm" == [yY
         wget --output-document ~/.local/share/man/man1/nvim.1 -N "$MANURL"
         mandb ~/.local/share/man
 
-    elif [[ "$(uname -m)" != "x86_64" ]] && [[ -x "$(command -v apt)" ]]; then
+    elif [[ -x "$(command -v apt)" ]]; then
         sudo apt install --no-install-recommends -y neovim
     fi
 
