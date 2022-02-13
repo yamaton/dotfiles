@@ -24,6 +24,8 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
             readonly URI="https://github.com/ajeetdsouza/zoxide/releases/download/v${VERSION}/${NAME}-v${VERSION}-x86_64-unknown-linux-musl.tar.gz"
         elif [[ "$(uname -m)" == "armv7l" ]]; then
             readonly URI="https://github.com/ajeetdsouza/zoxide/releases/download/v${VERSION}/${NAME}-v${VERSION}-armv7-unknown-linux-musleabihf.tar.gz"
+        elif [[ "$(uname -m)" == "aarch64" ]]; then
+            readonly URI="https://github.com/ajeetdsouza/zoxide/releases/download/v${VERSION}/${NAME}-v${VERSION}-aarch64-unknown-linux-musl.tar.gz"
         else
             if [[ ! -x "$(command -v cargo)" ]]; then
                 read -rp "Install cargo and rust? (y/N): " confirm
