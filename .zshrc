@@ -23,8 +23,11 @@ else
 fi
 alias mkdir="mkdir -p"
 alias cht="cht.sh"
-
 alias ncdu="ncdu --color dark"
+
+if [[ "$TERM" == "xterm-kitty" ]] && [[ -x "$(command -v kitty)" ]]; then
+    alias ssh="kitty +kitten ssh"
+fi
 
 # zoxide as replacement to autojump
 [[ -x "$(command -v zoxide)" ]] && alias j=z

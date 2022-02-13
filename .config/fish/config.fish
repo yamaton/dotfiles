@@ -32,6 +32,11 @@ fish_add_path ~/.dotnet
 # disable welcome message
 set -g fish_greeting
 
+# replace ssh with 'kitty +kitten ssh'
+if test $TERM = "xterm-kitty" && type -q kitty
+    alias ssh="kitty +kitten ssh"
+end
+
 # rust
 fish_add_path ~/.cargo/bin
 set -gx RUST_BACKTRACE 1
