@@ -28,8 +28,6 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         esac
         readonly URI="https://github.com/mikefarah/yq/releases/download/v${VERSION}/${FILE}"
         wget -N "$URI"
-        FILE="$(basename "$URI")"
-        readonly FILE
         mkdir -p "$HOME"/.local/bin && mv -f ./"$FILE" "$HOME"/.local/bin/yq
         chmod +x "$HOME"/.local/bin/yq
     fi

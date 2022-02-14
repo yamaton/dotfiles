@@ -21,17 +21,16 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v $CMD)" ]] || [[ "$confirm" == [yY
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
     elif [[ "$(uname -s)" == "Linux" ]]; then
-        if [[ "$(uname -m)" == "x86_64" ]]; then
-            arch="x86_64"
-            uri="https://github.com/phiresky/ripgrep-all/releases/download/v${VERSION}/ripgrep_all-v${VERSION}-x86_64-unknown-linux-musl.tar.gz"
-        elif [[ "$(uname -m)" == "armv7l" ]] || [[ "$(uname -m)" == "armv8" ]]; then
-            arch="arm"
-            uri="https://github.com/phiresky/ripgrep-all/releases/download/v${VERSION}/ripgrep_all-v${VERSION}-arm-unknown-linux-gnueabihf.tar.gz"
-        else
+        case "$(uname -m)" in
+            "x86_64")  readonly file="ripgrep_all-v${VERSION}-x86_64-unknown-linux-musl.tar.gz"    ;;
+            "armv7l")  readonly file="ripgrep_all-v${VERSION}-arm-unknown-linux-gnueabihf.tar.gz"  ;;
+        esac
+        if [[ -z "${file+x}" ]]; then
             echo "Unsupported architecture? $(uname -s)"
             echo "    Exiting..."
             exit 0
         fi
+        uri="https://github.com/phiresky/ripgrep-all/releases/download/v${VERSION}/${file}"
         wget -N "$uri"
         filename="$(basename "$uri")"
         dir="${filename%.tar.gz}"

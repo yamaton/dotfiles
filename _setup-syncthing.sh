@@ -20,17 +20,16 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
     elif [[ "$(uname -s)" == "Linux" ]]; then
-        if [[ "$(uname -m)" == "x86_64" ]]; then
-            readonly ARCH="amd64"
-        elif [[ "$(uname -m)" == "armv7l" ]]; then
-            readonly ARCH="arm"
-        fi
+        case "$(uname -m)" in
+            "x86_64")   readonly ARCH="amd64" ;;
+            "armv7l")   readonly ARCH="arm"   ;;
+            "aarch64")  readonly ARCH="arm64" ;;
+        esac
         readonly URI="https://github.com/syncthing/syncthing/releases/download/v${VERSION}/syncthing-linux-${ARCH}-v${VERSION}.tar.gz"
         wget -N "$URI"
-        FILE="$(basename "$URI")"
-        readonly FILE
+        readonly FILE="$(basename "$URI")"
         readonly DIR="${FILE%.tar.gz}"
-        tar xf ./"$FILE"
+        tar -xf ./"$FILE"
         rm "$FILE"
         mkdir -p ~/.local/bin
         rm -rf ~/.local/bin/syncthing*

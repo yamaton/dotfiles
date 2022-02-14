@@ -32,8 +32,8 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v $CMD)" ]] || [[ "$confirm" == [yY
             readonly DIR="$(basename ${URI})"
             mv -f "${DIR}/rg" ~/.local/bin/
             rm -rf "ripgrep-${VERSION}-arm-unknown-linux-gnueabihf"
-        else
-            sudo apt install ripgrep
+        elif [[ -x "$(command -v apt)" ]]; then
+            sudo apt install ripgrep -y
         fi
     fi
 fi

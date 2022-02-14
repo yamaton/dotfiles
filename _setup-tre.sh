@@ -26,14 +26,11 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
     elif [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
-        if [[ "$(uname -m)" == "x86_64" ]]; then
-            readonly URL="https://github.com/${AUTHOR}/${CMD}/releases/download/v${VERSION}/${CMD}-v${VERSION}-x86_64-unknown-linux-musl.tar.gz"
-        elif [[ "$(uname -m)" == "armv7l" ]]; then
-            readonly URL="https://github.com/${AUTHOR}/${CMD}/releases/download/v${VERSION}/${CMD}-v${VERSION}-arm-unknown-linux-gnueabihf.tar.gz"
-        fi
+        case "$(uname -m)" in
+            "x86_64")  readonly FILE="${CMD}-v${VERSION}-x86_64-unknown-linux-musl.tar.gz" ;;
+            "armv7l")  readonly FILE="${CMD}-v${VERSION}-arm-unknown-linux-gnueabihf.tar.gz" ;;
+        esac
         wget -N "$URL"
-        FILE="$(basename "$URL")"
-        readonly FILE
         tar -xvf "$FILE"
         mkdirmv "${CMD}" ~/.local/bin
         mkdirmv "${CMD}.1" ~/.local/bin
