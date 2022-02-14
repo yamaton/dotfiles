@@ -25,6 +25,23 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
             "armv7l")  readonly FILE="${NAME}-v${VERSION}-armv7-unknown-linux-musleabihf.tar.gz" ;;
             "aarch64") readonly FILE="${NAME}-v${VERSION}-aarch64-unknown-linux-musl.tar.gz" ;;
         esac
+
+        if [[ -z "${FILE+x}" ]]; then
+            if [[ ! -x "$(command -v cargo)" ]]; then
+                read -rp "Install cargo and rust? (y/N): " confirm
+                if [[ "$confirm" == [yY] ]]; then
+                    BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+                    readonly BASEDIR
+                    source "${BASEDIR}/setup-rust-and-cargo.sh"
+                else
+                    echo "Exit without installing ${NAME}"
+                    exit 0
+                fi
+            fi
+            cargo install "$NAME"
+            exit 0
+        fi
+
         readonly URI="https://github.com/ajeetdsouza/zoxide/releases/download/v${VERSION}/${FILE}"
         wget -N "$URI"
         readonly DIRNAME="${FILE%.*.*}"
@@ -39,19 +56,5 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
         mv "${DIRNAME}"/man/*.1 ~/.local/share/man/man1
         mandb ~/.local/share/man
         rm -rf "$DIRNAME"
-    else
-        if [[ ! -x "$(command -v cargo)" ]]; then
-            read -rp "Install cargo and rust? (y/N): " confirm
-            if [[ "$confirm" == [yY] ]]; then
-                BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-                readonly BASEDIR
-                source "${BASEDIR}/setup-rust-and-cargo.sh"
-            else
-                echo "Exit without installing ${NAME}"
-                exit 0
-            fi
-        fi
-        cargo install "$NAME"
-        exit 0
     fi
 fi

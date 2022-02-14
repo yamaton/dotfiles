@@ -20,11 +20,13 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$NAME"
     elif [[ "$(uname -s)" == "Linux" ]]; then
-        if [[ "$(uname -m)" == "x86_64" ]]; then
-            readonly URL="https://github.com/r-darwish/topgrade/releases/download/v${VERSION}/topgrade-v${VERSION}-x86_64-unknown-linux-musl.tar.gz"
-        elif [[ "$(uname -m)" == "armv7l" ]]; then
-            readonly URL="https://github.com/r-darwish/topgrade/releases/download/v${VERSION}/topgrade-v${VERSION}-armv7-unknown-linux-gnueabihf.tar.gz"
-        else
+        case "$(uname -m)" in
+            "x86_64")  readonly FILE="topgrade-v${VERSION}-x86_64-unknown-linux-musl.tar.gz" ;;
+            "armv7l")  readonly FILE="topgrade-v${VERSION}-armv7-unknown-linux-gnueabihf.tar.gz" ;;
+            "aarch64") readonly FILE="topgrade-v${VERSION}-aarch64-unknown-linux-gnu.tar.gz" ;;
+        esac
+
+        if [[ -z "${FILE+x}" ]]; then
             if [[ ! -x "$(command -v cargo)" ]]; then
                 read -rp "Install cargo and rust? (y/N): " confirm
                 if [[ "$confirm" == [yY] ]]; then
@@ -40,9 +42,9 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
             exit 0
         fi
 
+        readonly URL="https://github.com/r-darwish/topgrade/releases/download/v${VERSION}/${FILE}"
+
         wget -N "$URL"
-        FILE="$(basename "$URL")"
-        readonly FILE
         tar xvf "$FILE"
         rm -f "$FILE"
         mv -f ./topgrade "${HOME}/bin/"
