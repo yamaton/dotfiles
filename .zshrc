@@ -259,6 +259,27 @@ RPROMPT='%F{green}[%F{magenta}%~%F{green}] %F{cyan}%T%F{reset_color}'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
+## Colors on completion suggestions
+## https://stackoverflow.com/questions/23152157/how-does-the-zsh-list-colors-syntax-work
+##
+## 256 color palette
+## 1;38;5;142  ... 256 color palette (142 )  # https://www.ditig.com/256-colors-cheat-sheet
+##
+## CLI_COLOR
+##  0 ... default
+## 30 ... black
+## 31 ... red      91 ... light red
+## 32 ... green    92 ... light green
+## 33 ... yellow   93 ... light yellow
+## 34 ... blue     94 ... light blue
+## 35 ... magenta  95 ... light magenta
+## 36 ... cyan     96 ... light cyan
+## 37 ... white
+## 41   ... red (background)
+## 1;31 ... red (bold)
+##
+zstyle ':completion:*' list-colors '=(#b)*(--)( *)=37=1;38;5;103=1;38;5;142' '=*=0'
+
 ## autojump
 if [[ ! -x "$(command -v zoxide)" ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
