@@ -3,11 +3,11 @@
 readonly CMD=delta
 readonly HOMEBREW_NAME=git-delta
 
-VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${HOMEBREW_NAME}.json | jq '.versions.stable' | tr -d \")"
+VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${HOMEBREW_NAME}.json | jq '.versions.stable' | tr -d '\" \n')"
 readonly VERSION
 
 if [[ -x "$(command -v $CMD)" ]]; then
-    CURRENT="$("$CMD" --version | cut -d ' ' -f2)"
+    CURRENT="$("$CMD" --version | ./removecolor | cut -d ' ' -f2)"
     readonly CURRENT
     if [[ "$VERSION" == "$CURRENT" ]]; then
         echo "... already the latest: ${CMD} ${CURRENT}"
