@@ -53,7 +53,7 @@ echo ""
 echo "-------------------"
 echo "  Noto CJK"
 echo "-------------------"
-if [[ -x "$(command -v apt)" ]]; then
+if [[ "$(command -v apt)" ]]; then
     sudo apt update
     sudo apt install -y fonts-noto-cjk
 else

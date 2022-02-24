@@ -5,7 +5,7 @@ readonly NAME=zoxide
 VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")"
 readonly VERSION
 
-if [[ -x "$(command -v $NAME)" ]]; then
+if [[ "$(command -v $NAME)" ]]; then
     CURRENT="$("$NAME" --version | cut -d ' ' -f2 | cut -c 2-)"
     readonly CURRENT
     if [[ "$VERSION" == "$CURRENT" ]]; then
@@ -16,7 +16,7 @@ if [[ -x "$(command -v $NAME)" ]]; then
     fi
 fi
 
-if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == [yY] ]]; then
+if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${NAME})" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$NAME"
     elif [[ "$(uname -s)" == "Linux" ]]; then
@@ -27,7 +27,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${NAME})" ]] || [[ "$confirm" == 
         esac
 
         if [[ -z "${FILE+x}" ]]; then
-            if [[ ! -x "$(command -v cargo)" ]]; then
+            if [[ ! "$(command -v cargo)" ]]; then
                 read -rp "Install cargo and rust? (y/N): " confirm
                 if [[ "$confirm" == [yY] ]]; then
                     BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"

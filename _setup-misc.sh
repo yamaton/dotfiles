@@ -9,7 +9,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
     for app in ${APPS[*]}; do
         brew install "$(printf "%s" "$app")"
     done
-elif [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
+elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
     for app in ${APPS[*]}; do
         echo ""
         echo "---------------"

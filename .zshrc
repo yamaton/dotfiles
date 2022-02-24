@@ -16,7 +16,7 @@ alias ll='ls -alFh'
 
 alias mv="mv -i"
 alias cp="cp -i"
-if [[ -x "$(command -v trash)" ]]; then
+if [[ "$(command -v trash)" ]]; then
     alias rm=trash
 else
     alias rm="rm -i"
@@ -25,20 +25,20 @@ alias mkdir="mkdir -p"
 alias cht="cht.sh"
 alias ncdu="ncdu --color dark"
 
-if [[ "$TERM" == "xterm-kitty" ]] && [[ -x "$(command -v kitty)" ]]; then
+if [[ "$TERM" == "xterm-kitty" ]] && [[ "$(command -v kitty)" ]]; then
     alias ssh="kitty +kitten ssh"
 fi
 
 # zoxide as replacement to autojump
-[[ -x "$(command -v zoxide)" ]] && alias j=z
+[[ "$(command -v zoxide)" ]] && alias j=z
 
-if [[ -x "$(command -v conda)" ]]; then
+if [[ "$(command -v conda)" ]]; then
     alias base="conda deactivate; conda activate"
     alias tf="conda deactivate; conda activate tf"
     alias torch="conda deactivate; conda activate torch"
 fi
 
-[[ -x "$(command -v nvim)" ]] && alias vim=nvim
+[[ "$(command -v nvim)" ]] && alias vim=nvim
 
 # Updates in MacOS
 if [[ "$(uname -s)" == "Darwin" ]]; then
@@ -55,7 +55,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
 fi
 
 # Updates in Linux
-if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
+if [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
     alias bu='
     topgrade;
     mamba update -n base --all -y;
@@ -84,7 +84,7 @@ if [[ "$(uname -r)" == *'-microsoft-'* ]]; then
 fi
 
 # kitty
-[[ "$TERM" == "xterm-kitty" ]] && [[ -x "$(command -v kitty)" ]] &&
+[[ "$TERM" == "xterm-kitty" ]] && [[ "$(command -v kitty)" ]] &&
     alias icat="kitty +kitten icat"
 
 
@@ -121,7 +121,7 @@ alias btc="curl rate.sx"
 ## =======================================
 alias -s {txt,md,c,cc,cpp,tex,hs,fs,go,js,ts,css,htm,html}=code
 alias -s git="git clone"
-[[ "$TERM" == "xterm-kitty" ]] && [[ -x "$(command -v kitty)" ]] &&
+[[ "$TERM" == "xterm-kitty" ]] && [[ "$(command -v kitty)" ]] &&
     alias -s {jpg,jpeg,png,gif,svg,webp}="kitty +kitten icat"
 
 
@@ -135,7 +135,7 @@ alias -s git="git clone"
 ##  Examples: Type "ls -" then press TAB
 ##            Type "tar " then press TAB
 autoload -Uz compinit; compinit
-[[ "$TERM" == "xterm-kitty" ]] && [[ -x "$(command -v kitty)" ]] &&
+[[ "$TERM" == "xterm-kitty" ]] && [[ "$(command -v kitty)" ]] &&
     kitty + complete setup zsh | source /dev/stdin
 
 
@@ -281,7 +281,7 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*' list-colors '=(#b)*(--)( *)=37=1;38;5;103=1;38;5;142' '=*=0'
 
 ## autojump
-if [[ ! -x "$(command -v zoxide)" ]]; then
+if [[ ! "$(command -v zoxide)" ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         [[ -f "$(brew --prefix)/etc/profile.d/autojump.sh" ]] &&
             source "$(brew --prefix)/etc/profile.d/autojump.sh"
@@ -306,7 +306,7 @@ export LESS=" -R "
 
 
 ## gcloud autocompletion
-[[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v gcloud)" ]] && source /usr/share/google-cloud-sdk/completion.zsh.inc
+[[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v gcloud)" ]] && source /usr/share/google-cloud-sdk/completion.zsh.inc
 
 
 ## Tilix
@@ -352,7 +352,7 @@ wttr()
 
 ## broot
 # shellcheck source=~/.config/broot/launcher/bash/br
-if [[ -x "$(command -v broot)" ]]; then
+if [[ "$(command -v broot)" ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         source ~/Library/Preferences/org.dystroy.broot/launcher/bash/br
     else
@@ -361,7 +361,7 @@ if [[ -x "$(command -v broot)" ]]; then
 fi
 
 # zoxide
-[[ -x "$(command -v zoxide)" ]] && eval "$(zoxide init zsh)"
+[[ "$(command -v zoxide)" ]] && eval "$(zoxide init zsh)"
 
 
 # rga

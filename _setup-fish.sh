@@ -3,7 +3,7 @@
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 readonly BASEDIR
 
-if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
+if [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
     sudo apt-add-repository ppa:fish-shell/release-3
     sudo apt-get update
     sudo apt-get install -y fish

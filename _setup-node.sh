@@ -4,7 +4,7 @@ readonly cmd=node
 version="$(curl --silent https://formulae.brew.sh/api/formula/${cmd}.json | jq '.versions.stable' | tr -d \")"
 readonly version
 
-if [[ -x "$(command -v $cmd)" ]]; then
+if [[ "$(command -v $CMD)" ]]; then
     current="$("$cmd" --version | cut -c 2-)"
     readonly current
     if [[ "$version" == "$current" ]]; then
@@ -16,7 +16,7 @@ if [[ -x "$(command -v $cmd)" ]]; then
 fi
 
 
-if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${cmd})" ]] || [[ "$confirm" == [yY] ]]; then
+if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${cmd})" ]] || [[ "$confirm" == [yY] ]]; then
 
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$cmd"

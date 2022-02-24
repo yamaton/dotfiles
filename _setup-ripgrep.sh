@@ -6,7 +6,7 @@ readonly CMD=rg
 VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")"
 readonly VERSION
 
-if [[ -x "$(command -v $CMD)" ]]; then
+if [[ "$(command -v $CMD)" ]]; then
     CURRENT="$("$CMD" --version | head -1 | cut -d ' ' -f2)"
     readonly CURRENT
     if [[ "$VERSION" == "$CURRENT" ]]; then
@@ -17,11 +17,11 @@ if [[ -x "$(command -v $CMD)" ]]; then
     fi
 fi
 
-if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v $CMD)" ]] || [[ "$confirm" == [yY] ]]; then
+if [[ "$1" == "-f" ]] || [[ ! "$(command -v $CMD)" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$NAME"
     elif [[ "$(uname -s)" == "Linux" ]]; then
-        if [[ "$(uname -m)" == "x86_64" ]] && [[ -x "$(command -v apt)" ]]; then
+        if [[ "$(uname -m)" == "x86_64" ]] && [[ "$(command -v apt)" ]]; then
             readonly URI="https://github.com/BurntSushi/ripgrep/releases/download/${VERSION}/ripgrep_${VERSION}_amd64.deb"
             wget -N "${URI}"
             sudo apt install "./ripgrep_${VERSION}_amd64.deb"
@@ -32,7 +32,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v $CMD)" ]] || [[ "$confirm" == [yY
             readonly DIR="$(basename ${URI})"
             mv -f "${DIR}/rg" ~/.local/bin/
             rm -rf "ripgrep-${VERSION}-arm-unknown-linux-gnueabihf"
-        elif [[ -x "$(command -v apt)" ]]; then
+        elif [[ "$(command -v apt)" ]]; then
             sudo apt install ripgrep -y
         fi
     fi

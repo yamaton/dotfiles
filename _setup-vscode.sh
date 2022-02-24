@@ -5,8 +5,8 @@ readonly BASEDIR
 CONFIG_DIR="${HOME}/.config/Code/User"
 readonly CONFIG_DIR
 
-if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v code)" ]]; then
-    if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
+if [[ "$1" == "-f" ]] || [[ ! "$(command -v code)" ]]; then
+    if [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
         curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
         sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
         sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'

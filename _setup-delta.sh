@@ -6,7 +6,7 @@ readonly HOMEBREW_NAME=git-delta
 VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${HOMEBREW_NAME}.json | jq '.versions.stable' | tr -d '\" \n')"
 readonly VERSION
 
-if [[ -x "$(command -v $CMD)" ]]; then
+if [[ "$(command -v $CMD)" ]]; then
     CURRENT="$("$CMD" --version | ./removecolor | cut -d ' ' -f2)"
     readonly CURRENT
     if [[ "$VERSION" == "$CURRENT" ]]; then
@@ -17,10 +17,10 @@ if [[ -x "$(command -v $CMD)" ]]; then
     fi
 fi
 
-if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
+if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
-    elif [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
+    elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
         case "$(uname -m)" in
             "x86_64") readonly FILE="git-delta-musl_${VERSION}_amd64.deb" ;;
             "armv7l") readonly FILE="git-delta_${VERSION}_armhf.deb" ;;

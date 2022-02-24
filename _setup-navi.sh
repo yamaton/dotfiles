@@ -9,7 +9,7 @@ mkdircp () {
     mkdir -p "$2" && cp -f "$1" "$2"
 }
 
-if [[ -x "$(command -v $CMD)" ]]; then
+if [[ "$(command -v $CMD)" ]]; then
     CURRENT="$("$CMD" --version | cut -d ' ' -f 2)"
     readonly CURRENT
     if [[ "$VERSION" == "$CURRENT" ]]; then
@@ -20,10 +20,10 @@ if [[ -x "$(command -v $CMD)" ]]; then
     fi
 fi
 
-if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
+if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
-    elif [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
+    elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
         if [[ "$(uname -m)" == "x86_64" ]]; then
             readonly URL="https://github.com/denisidoro/navi/releases/download/v${VERSION}/navi-v${VERSION}-x86_64-unknown-linux-musl.tar.gz"
         elif [[ "$(uname -m)" == "armv7l" ]]; then

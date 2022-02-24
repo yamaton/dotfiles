@@ -24,7 +24,7 @@ if [[ "$(uname -m)" == "x86_64" ]]; then
     conda install -c conda-forge mamba
     mamba update --all
     mamba install pipx
-    if [[ -x "$(command -v nvidia-smi)" ]]; then
+    if [[ "$(command -v nvidia-smi)" ]]; then
         mamba create -n tf tensorflow-gpu opencv
     else
         mamba create -n tf tensorflow opencv

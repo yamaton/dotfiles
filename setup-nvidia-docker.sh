@@ -2,7 +2,7 @@
 
 ./setup-docker.sh
 
-if [[ "$(uname -s)" == 'Linux' ]] && [[ -x "$(command -v apt)" ]]; then
+if [[ "$(uname -s)" == 'Linux' ]] && [[ "$(command -v apt)" ]]; then
     # https://github.com/NVIDIA/nvidia-docker
     distribution="$(. /etc/os-release;echo "$ID""$VERSION_ID")"
     curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -

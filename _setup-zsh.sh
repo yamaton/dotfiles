@@ -5,11 +5,11 @@ readonly BASEDIR
 readonly REPO_DIR="${HOME}/.zsh"
 
 
-if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v zsh)" ]]; then
+if [[ "$1" == "-f" ]] || [[ ! "$(command -v zsh)" ]]; then
 
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions
-    elif [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
+    elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
         sudo apt install -y zsh
 
         echo "---------------------------------"
@@ -38,6 +38,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v zsh)" ]]; then
             git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
         fi
     fi
+
 
     # homebrew's olivierverdier/zsh-git-prompt is unmaintained.
     echo "---------------------------------"

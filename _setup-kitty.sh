@@ -9,7 +9,7 @@ readonly KITTY_CONF_DIR=~/.config/kitty
 readonly KITTY_HOME=~/.local/kitty.app
 
 
-if [[ -x "$(command -v $CMD)" ]]; then
+if [[ "$(command -v $CMD)" ]]; then
     CURRENT="$("$CMD" --version | cut -d ' ' -f2)"
     readonly CURRENT
     if [[ "$VERSION" == "$CURRENT" ]]; then
@@ -20,8 +20,8 @@ if [[ -x "$(command -v $CMD)" ]]; then
     fi
 fi
 
-if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
-    if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
+if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
+    if [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
         curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
         mkdir -p ~/.local/bin
         ln -sf "${KITTY_HOME}/bin/kitty" ~/.local/bin/

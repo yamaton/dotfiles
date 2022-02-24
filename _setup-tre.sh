@@ -11,7 +11,7 @@ mkdirmv () {
     mkdir -p "$2" && mv -f "$1" "$2"
 }
 
-if [[ -x "$(command -v $CMD)" ]]; then
+if [[ "$(command -v $CMD)" ]]; then
     CURRENT="$("$CMD" --version)"
     readonly CURRENT
     if [[ "$VERSION" == "$CURRENT" ]]; then
@@ -22,10 +22,10 @@ if [[ -x "$(command -v $CMD)" ]]; then
     fi
 fi
 
-if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
+if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
-    elif [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
+    elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
         case "$(uname -m)" in
             "x86_64")  readonly FILE="${CMD}-v${VERSION}-x86_64-unknown-linux-musl.tar.gz" ;;
             "armv7l")  readonly FILE="${CMD}-v${VERSION}-arm-unknown-linux-gnueabihf.tar.gz" ;;

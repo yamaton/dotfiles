@@ -12,10 +12,10 @@ for app in ${APPLIST[*]}; do
         "tealdeer" ) cmd=tldr ;;
         *) cmd="$app" ;;
     esac
-    [[ -x "$(command -v "$cmd")" ]] && "${BASEDIR}/_setup-${app}.sh"
+    [[ "$(command -v "$cmd")" ]] && "${BASEDIR}/_setup-${app}.sh"
 done
 
-if [[ -x "$(command -v joplin)" ]];
+if [[ "$(command -v joplin)" ]];
     then "$BASEDIR"/_setup-joplin.sh
 fi
 

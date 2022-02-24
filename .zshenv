@@ -35,7 +35,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export RUST_BACKTRACE=1
 
 ## go
-[[ -x "$(command -v go)" ]] && export PATH="$PATH:$(go env GOPATH)/bin"
+[[ "$(command -v go)" ]] && export PATH="$PATH:$(go env GOPATH)/bin"
 
 ## dotnet and powershell optout
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
@@ -76,7 +76,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
     export PATH="${HOME}/bin:${HOME}/.local/bin:${PATH}"
 
     # GNU coreutils
-    if [[ -x "$(command -v brew)" ]]; then
+    if [[ "$(command -v brew)" ]]; then
         export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:${PATH}"
         export MANPATH="$(brew --prefix)/opt/coreutils/libexec/gnuman:${MANPATH}"
     fi

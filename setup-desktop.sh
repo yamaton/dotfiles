@@ -17,13 +17,13 @@ cd "${BASEDIR}" || exit
 echo "-------------------------"
 echo "   terminator"
 echo "-------------------------"
-[[ -x "$(command -v apt)" ]] && sudo apt install -y terminator --no-install-recommends
+[[ "$(command -v apt)" ]] && sudo apt install -y terminator --no-install-recommends
 
 
 echo "-------------------------"
 echo "   meld"
 echo "-------------------------"
-[[ -x "$(command -v apt)" ]] && sudo apt install -y meld --no-install-recommends
+[[ "$(command -v apt)" ]] && sudo apt install -y meld --no-install-recommends
 
 
 # fonts-firacode

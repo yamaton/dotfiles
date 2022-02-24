@@ -8,7 +8,7 @@ readonly CMD=nnn
 VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${CMD}.json | jq '.versions.stable' | tr -d \")"
 readonly VERSION
 
-if [[ -x "$(command -v $CMD)" ]]; then
+if [[ "$(command -v $CMD)" ]]; then
     CURRENT="$($CMD -V)"
     readonly CURRENT
     if [[ "$VERSION" == "$CURRENT" ]]; then
@@ -22,7 +22,7 @@ fi
 readonly REPO_DIR="${HOME}/confs"
 mkdir -p "$REPO_DIR"
 
-if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v nnn)" ]] || [[ "$confirm" == [yY] ]]; then
+if [[ "$1" == "-f" ]] || [[ ! "$(command -v nnn)" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
     else
@@ -36,7 +36,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v nnn)" ]] || [[ "$confirm" == [yY]
         readonly OS
 
         cd "${REPO_DIR}" || exit
-        if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]] &&
+        if [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]] &&
             [[ "$(uname -m)" == "x86_64" ]]; then
             echo "deb http://download.opensuse.org/repositories/home:/stig124:/nnn/${OS}/ /" | sudo tee /etc/apt/sources.list.d/home:stig124:nnn.list
             curl -fsSL "https://download.opensuse.org/repositories/home:stig124:nnn/${OS}/Release.key" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_stig124_nnn.gpg > /dev/null

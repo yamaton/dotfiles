@@ -12,7 +12,7 @@ readonly CONFIG_DIR="${HOME}/.config/$CMD"
 VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")"
 readonly VERSION
 
-if [[ -x "$(command -v $CMD)" ]]; then
+if [[ "$(command -v $CMD)" ]]; then
     CURRENT="$("$CMD" --version | head -1 | cut -d ' ' -f2 | cut -c 2-)"
     readonly CURRENT
     if [[ "$VERSION" == "$CURRENT" ]]; then
@@ -24,7 +24,7 @@ if [[ -x "$(command -v $CMD)" ]]; then
 fi
 
 
-if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v nvim)" ]] || [[ "$confirm" == [yY] ]]; then
+if [[ "$1" == "-f" ]] || [[ ! "$(command -v nvim)" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$NAME"
     elif [[ "$(uname -m)" == "x86_64" ]] && [[ "$(uname -s)" == "Linux" ]]; then
@@ -40,7 +40,7 @@ if [[ "$1" == "-f" ]] || [[ ! -x "$(command -v nvim)" ]] || [[ "$confirm" == [yY
         wget --output-document ~/.local/share/man/man1/nvim.1 -N "$MANURL"
         mandb ~/.local/share/man
 
-    elif [[ -x "$(command -v apt)" ]]; then
+    elif [[ "$(command -v apt)" ]]; then
         sudo apt install --no-install-recommends -y neovim
     fi
 

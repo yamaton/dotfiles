@@ -14,7 +14,7 @@ echo ""
 
 
 # update the system and install essential
-if [[ "$(uname -s)" == "Linux" ]] && [[ -x "$(command -v apt)" ]]; then
+if [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
     sudo apt update && sudo apt full-upgrade
     sudo apt install -y curl openssh-server
 fi
