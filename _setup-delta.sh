@@ -6,8 +6,11 @@ readonly HOMEBREW_NAME=git-delta
 VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${HOMEBREW_NAME}.json | jq '.versions.stable' | tr -d '\" \n')"
 readonly VERSION
 
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+readonly BASEDIR
+
 if [[ "$(command -v $CMD)" ]]; then
-    CURRENT="$("$CMD" --version | ./removecolor | cut -d ' ' -f2)"
+    CURRENT="$("$CMD" --version | "$BASEDIR"/removecolor | cut -d ' ' -f2)"
     readonly CURRENT
     if [[ "$VERSION" == "$CURRENT" ]]; then
         echo "... already the latest: ${CMD} ${CURRENT}"
@@ -44,8 +47,6 @@ if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY]
         echo "[INFO] Detected ~/.gitconfig --- add some lines from _delta.gitconfig if needed."
         echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
     else
-        BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-        readonly BASEDIR
         cp "$BASEDIR"/_delta.gitconfig ~/.gitconfig
     fi
 fi

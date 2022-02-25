@@ -4,7 +4,7 @@ readonly AUTHOR=dduan
 readonly CMD=tre
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-VERSION="$(./get-version-github.sh "${AUTHOR}/${CMD}")"
+VERSION="$("$BASEDIR"/get-version-github.sh "${AUTHOR}/${CMD}")"
 readonly VERSION
 
 mkdirmv () {
