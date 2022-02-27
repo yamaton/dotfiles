@@ -11,7 +11,7 @@ export LC_NUMERIC=en_US.UTF-8
 [[ "$(uname -s)" == "Linux" ]] && export XDG_CONFIG_HOME="$HOME/.config"
 
 # zsh fpath
-fpath=( ~/.zsh/zsh-completions-bio/completions "${fpath[@]}" )
+fpath=( ~/.config/zsh/zsh-completions-bio/completions "${fpath[@]}" )
 
 # zsh history
 export HISTFILE=~/.zsh_history

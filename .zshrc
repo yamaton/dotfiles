@@ -229,7 +229,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
     # https://formulae.brew.sh/formula/zsh-syntax-highlighting
     source "$(brew --prefix)"/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else
-    source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
 ## zsh-autosuggestions
@@ -238,14 +238,14 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
     # https://formulae.brew.sh/formula/zsh-autosuggestions
     source "$(brew --prefix)"/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 else
-    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 ## color sheme: https://coderwall.com/p/pb1uzq/z-shell-colors
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=241'
 
 ## zsh-git-prompt
 ## https://github.com/zsh-git-prompt/zsh-git-prompt
-source ~/.zsh/zsh-git-prompt/zshrc.sh
+source ~/.config/zsh/zsh-git-prompt/zshrc.sh
 ZSH_THEME_GIT_PROMPT_PREFIX="%F{246}[%F{reset_color}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%F{246}]%F{reset_color} "
 ZSH_THEME_GIT_PROMPT_SEPARATOR="%F{246}|%F{reset_color}"
@@ -257,7 +257,7 @@ RPROMPT='%F{green}[%F{magenta}%~%F{green}] %F{cyan}%T%F{reset_color}'
 
 ## Bazel completion
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle ':completion:*' cache-path ~/.config/zsh/cache
 
 ## Colors on completion suggestions
 ## https://stackoverflow.com/questions/23152157/how-does-the-zsh-list-colors-syntax-work
