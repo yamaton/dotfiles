@@ -116,7 +116,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
 for bcfile in ~/.bash_completion.d/* ; do
-    . "$bcfile"
+    if [[ -d "$bcfile" ]]; then
+        for subbcfile in "$bcfile"/*; do
+            . "$subbcfile"
+        done
+    else
+        . "$bcfile"
+    fi
 done
 
