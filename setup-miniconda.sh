@@ -24,12 +24,14 @@ if [[ "$(uname -m)" == "x86_64" ]]; then
     conda install -c conda-forge mamba
     mamba update --all
     mamba install pipx
-    if [[ "$(command -v nvidia-smi)" ]]; then
-        mamba create -n tf tensorflow-gpu opencv
-    else
-        mamba create -n tf tensorflow opencv
-    fi
-    mamba activate tf
+
+    # if [[ "$(command -v nvidia-smi)" ]]; then
+    #     mamba create -n tf tensorflow-gpu opencv
+    # else
+    #     mamba create -n tf tensorflow opencv
+    # fi
+    # mamba activate tf
+
     mamba config --add channels conda-forge --env
 else
     echo "Miniconda does not seem to support $(uname -m). Exiting."
