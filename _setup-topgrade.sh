@@ -47,7 +47,7 @@ if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${NAME})" ]] || [[ "$confirm" == [yY
         wget -N "$URL"
         tar xvf "$FILE"
         rm -f "$FILE"
-        mv -f ./topgrade "${HOME}/bin/"
+        mv -f ./topgrade "${HOME}/.local/bin/"
 
         readonly MANURL="https://raw.githubusercontent.com/r-darwish/topgrade/v${VERSION}/topgrade.8"
         mkdir -p ~/.local/share/man/man8
