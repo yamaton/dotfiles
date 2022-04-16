@@ -2,8 +2,9 @@
 
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 readonly BASEDIR
-readonly REPO_DIR="${HOME}/.zsh"
+readonly REPO_DIR="${HOME}/.config/zsh"
 
+mkdir -p "$REPO_DIR"
 
 if [[ "$1" == "-f" ]] || [[ ! "$(command -v zsh)" ]]; then
 
@@ -22,7 +23,7 @@ if [[ "$1" == "-f" ]] || [[ ! "$(command -v zsh)" ]]; then
             git pull
             )
         else
-            git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+            git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${REPO_DIR}/zsh-syntax-highlighting"
         fi
 
         echo "---------------------------------"
@@ -35,7 +36,7 @@ if [[ "$1" == "-f" ]] || [[ ! "$(command -v zsh)" ]]; then
             git pull
             )
         else
-            git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+            git clone https://github.com/zsh-users/zsh-autosuggestions "${REPO_DIR}/zsh-autosuggestions"
         fi
     fi
 
@@ -51,7 +52,7 @@ if [[ "$1" == "-f" ]] || [[ ! "$(command -v zsh)" ]]; then
         git pull
         )
     else
-        git clone https://github.com/zsh-git-prompt/zsh-git-prompt ~/.zsh/zsh-git-prompt
+        git clone https://github.com/zsh-git-prompt/zsh-git-prompt "${REPO_DIR}/zsh-git-prompt"
     fi
 
     [[ -f ~/.zshrc ]] && mv -f ~/.zshrc ~/.zshrc.backup
