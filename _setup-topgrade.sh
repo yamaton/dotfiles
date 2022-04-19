@@ -2,6 +2,9 @@
 
 readonly NAME=topgrade
 
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+readonly BASEDIR
+
 VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")"
 readonly VERSION
 
@@ -53,5 +56,7 @@ if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${NAME})" ]] || [[ "$confirm" == [yY
         mkdir -p ~/.local/share/man/man8
         wget -N "$MANURL" --output-document ~/.local/share/man/man8/"$(basename "$MANURL")"
         mandb ~/.local/share/man
+
+        cp -f "$BASEDIR"/.config/topgrade.toml ~/.config/topgrade.toml
     fi
 fi
