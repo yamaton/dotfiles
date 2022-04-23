@@ -53,7 +53,7 @@ if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${NAME})" ]] || [[ "$confirm" == [yY
 
         # save man files
         mkdir -p ~/.local/share/man/man1
-        mv "${DIRNAME}"/man/*.1 ~/.local/share/man/man1
+        mv "${DIRNAME}"/man/man1/*.1 ~/.local/share/man/man1
         mandb ~/.local/share/man
         rm -rf "$DIRNAME"
     fi
