@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ ! "$(command -v docker)" ]] || [[ "$1" == "-f" ]]; then
-    if [[ "$(lsb_release -c -s)" == "focal" ]]; then
+    if [[ "$(lsb_release -c -s)" == "focal" ]] || [[ "$(lsb_release -c -s)" == "jammy" ]]; then
         sudo apt install docker.io
         sudo systemctl enable --now docker
         sudo usermod -aG docker "$USER"
