@@ -22,17 +22,19 @@ if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${NAME})" ]] || [[ "$confirm" == [yY
         brew install "$NAME"
     elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(uname -m)" == "x86_64" ]]; then
         readonly URI="https://github.com/Canop/$NAME/releases/download/v$VERSION/$ZIPFILE"
-        mkdir -p ~/.local/bin && cd ~/.local/bin
+        mkdir -p ~/.local/bin/"$NAME"_"$VERSION" && cd ~/.local/bin/"$NAME"_"$VERSION"
         wget -N "$URI"
-        rm -rf build
+        rm -rf build/*
         unzip "$ZIPFILE"
         rm -f "$ZIPFILE"
-        chmod +x "./build/x86_64-linux/$NAME"
-        "./build/x86_64-linux/$NAME" --install
-        cp -f "./build/x86_64-linux/$NAME" .
+        thisdir="x86_64-unknown-linux-musl"
+        echo "thisdir=$thisdir"
+        chmod +x "$thisdir/$NAME"
+        cp -f "$thisdir/$NAME" ..
         mkdir -p ~/.local/share/man/man1
-        cp -f ./build/broot.1 ~/.local/share/man/man1
+        cp -f "./broot.1" ~/.local/share/man/man1
         mandb ~/.local/share/man
-        rm -rf build
+        cd ..
+        rm -rf "$NAME"_"$VERSION"
     fi
 fi
