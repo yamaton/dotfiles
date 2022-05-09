@@ -8,7 +8,7 @@
 # Returns version like 12.1.1 as standard output
 #
 
-owner_repo="$1"
+owner_repo="$1"/"$2"
 url="https://api.github.com/repos/${owner_repo}/releases"
 version="$(curl --silent "$url" | jq -M '.[0].tag_name' | tr -d \" | tr '[:upper:]' '[:lower:]')"
 if [[ $(echo "$version" | cut -c 1) == "v" ]]; then
