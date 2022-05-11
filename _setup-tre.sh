@@ -6,7 +6,6 @@ BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 VERSION="$("$BASEDIR"/get-version-github.sh "${AUTHOR}/${CMD}")"
 readonly VERSION
-echo $VERSION
 
 mkdirmv () {
     mkdir -p "$2" && mv -f "$1" "$2"
