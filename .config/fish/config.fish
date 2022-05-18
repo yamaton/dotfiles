@@ -77,8 +77,8 @@ fish_add_path ~/.yarn/bin
 fish_add_path ~/.local/bin/node/bin
 
 # deno
+set -gx DENO_INSTALL ~/.local/bin/deno
 fish_add_path $DENO_INSTALL/bin
-set -gx DENO_INSTALL ~/.deno
 
 # source-highlight in less
 set -gx LESSOPEN '| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
