@@ -80,6 +80,10 @@ fish_add_path ~/.local/bin/node/bin
 set -gx DENO_INSTALL ~/.local/bin/deno
 fish_add_path $DENO_INSTALL/bin
 
+# ghcup
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
+set -gx PATH $HOME/.cabal/bin $PATH $HOME/.ghcup/bin # ghcup-env
+
 # source-highlight in less
 set -gx LESSOPEN '| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
 set -gx LESS ' -R '
@@ -117,3 +121,4 @@ if string match -i -q '*microsoft*' (uname -r)
     # vagrant
     set -gx VAGRANT_WSL_ENABLE_WINDOWS_ACCESS 1
 end
+
