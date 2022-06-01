@@ -12,9 +12,12 @@ echo ""
 echo "-------------------"
 echo "  Source Code Pro"
 echo "-------------------"
-wget -N https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Italic.ttf
-wget -N https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Roman.ttf
-
+(
+    mkdir -p source-code-pro
+    cd source-code-pro
+    wget -N https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Italic.ttf
+    wget -N https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Roman.ttf
+)
 
 echo ""
 echo "-------------------"
@@ -67,10 +70,16 @@ if [[ "$(command -v apt)" ]]; then
     sudo apt update
     sudo apt install -y fonts-noto-cjk
 else
+(
+    mkdir -p noto-cjk && cd noto-cjk
     wget -N https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip
     wget -N https://noto-website-2.storage.googleapis.com/pkgs/NotoSerifCJKjp-hinted.zip
     unzip NotoSansCJKjp-hinted.zip -d NotoSansCJKjp-hinted
     unzip NotoSerifCJKjp-hinted.zip -d NotoSerifCJKjp-hinted
+    rm -f NotoSansCJKjp-hinted.zip
+    rm -f NotoSerifCJKjp-hinted.zip
+)
+
 fi
 
 
@@ -100,7 +109,7 @@ echo "  Fira Code"
 echo "-------------------"
 if [[ "$(command -v apt)" ]]; then
     sudo apt update
-    sudo apt install -y fonts-fira-code
+    sudo apt install -y fonts-firacode
 else
     ownerrepo="tonsky/FiraCode"
     version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
@@ -119,7 +128,7 @@ echo ""
 echo "-------------------"
 echo "  Jetbrains Mono"
 echo "-------------------"
-if [[ "$(command -v apt)" ]]; then
+if [[ "$(command -v apt)" ]] && [[ "$(lsb_release -c -s)" == "jammy" ]]; then
     sudo apt update
     sudo apt install -y fonts-jetbrains-mono
 else
@@ -200,6 +209,15 @@ else
     rm -f "$filename"
 fi
 
+
+echo ""
+echo "-------------------"
+echo "  Kosugi Maru"
+echo "-------------------"
+filename="kosugi-maru.zip"
+wget -N "https://fonts.google.com/download?family=Kosugi%20Maru" -O "$filename"
+unzip "$filename" -d "${filename%.*}"
+rm -f "$filename"
 
 
 ## ----------------
