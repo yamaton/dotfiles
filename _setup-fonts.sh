@@ -20,13 +20,18 @@ echo ""
 echo "-------------------"
 echo "  IBM Plex Mono"
 echo "-------------------"
-ownerrepo="IBM/plex"
-version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
-uri="https://github.com/IBM/plex/releases/download/v${version}/TrueType.zip"
-filename="$(basename "$uri")"
-wget -N "$uri"
-unzip "$filename" -d "IBM-Plex-${version}"
-rm -f "$filename"
+if [[ "$(command -v apt)" ]]; then
+    sudo apt update
+    sudo apt install -y fonts-ibm-plex
+else
+    ownerrepo="IBM/plex"
+    version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
+    uri="https://github.com/IBM/plex/releases/download/v${version}/TrueType.zip"
+    filename="$(basename "$uri")"
+    wget -N "$uri"
+    unzip "$filename" -d "IBM-Plex-${version}"
+    rm -f "$filename"
+fi
 
 
 echo ""
@@ -46,7 +51,12 @@ echo ""
 echo "-------------------"
 echo "  Inconsolata"
 echo "-------------------"
-wget -N https://www.levien.com/type/myfonts/Inconsolata.otf
+if [[ "$(command -v apt)" ]]; then
+    sudo apt update
+    sudo apt install -y fonts-inconsolata
+else
+    wget -N https://www.levien.com/type/myfonts/Inconsolata.otf
+fi
 
 
 echo ""
@@ -68,50 +78,62 @@ echo ""
 echo "-------------------"
 echo "  Cascadia Code"
 echo "-------------------"
-ownerrepo="microsoft/cascadia-code"
-version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
-uri="https://github.com/microsoft/cascadia-code/releases/download/v${version}/CascadiaCode-${version}.zip"
-filename="$(basename "$uri")"
-wget -N "$uri"
-unzip "$filename" -d "${filename%.*}"
-rm -f "$filename"
-rm -rf "${filename%.*}/otf"
-rm -rf "${filename%.*}/woff2"
-
+if [[ "$(command -v apt)" ]]; then
+    sudo apt update
+    sudo apt install -y fonts-cascadia-code
+else
+    ownerrepo="microsoft/cascadia-code"
+    version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
+    uri="https://github.com/microsoft/cascadia-code/releases/download/v${version}/CascadiaCode-${version}.zip"
+    filename="$(basename "$uri")"
+    wget -N "$uri"
+    unzip "$filename" -d "${filename%.*}"
+    rm -f "$filename"
+    rm -rf "${filename%.*}/otf"
+    rm -rf "${filename%.*}/woff2"
+fi
 
 
 echo ""
 echo "-------------------"
 echo "  Fira Code"
 echo "-------------------"
-ownerrepo="tonsky/FiraCode"
-version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
-uri="https://github.com/tonsky/FiraCode/releases/download/${version}/Fira_Code_v${version}.zip"
-filename="$(basename "$uri")"
-wget -N "$uri"
-unzip "$filename" -d "${filename%.*}"
-rm -f "$filename"
-rm -rf "${filename%.*}/${DIR}/variable_ttf"
-rm -rf "${filename%.*}/${DIR}/woff"
-rm -rf "${filename%.*}/${DIR}/woff2"
-
+if [[ "$(command -v apt)" ]]; then
+    sudo apt update
+    sudo apt install -y fonts-fira-code
+else
+    ownerrepo="tonsky/FiraCode"
+    version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
+    uri="https://github.com/tonsky/FiraCode/releases/download/${version}/Fira_Code_v${version}.zip"
+    filename="$(basename "$uri")"
+    wget -N "$uri"
+    unzip "$filename" -d "${filename%.*}"
+    rm -f "$filename"
+    rm -rf "${filename%.*}/${DIR}/variable_ttf"
+    rm -rf "${filename%.*}/${DIR}/woff"
+    rm -rf "${filename%.*}/${DIR}/woff2"
+fi
 
 
 echo ""
 echo "-------------------"
 echo "  Jetbrains Mono"
 echo "-------------------"
-ownerrepo="JetBrains/JetBrainsMono"
-version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
-dirname=jetbrainsmono
-uri="https://github.com/JetBrains/JetBrainsMono/releases/download/v${version}/JetBrainsMono-${version}.zip"
-filename="$(basename "$uri")"
-wget -N "$uri"
-rm -rf "$dirname"
-unzip "$filename" -d "$dirname"
-rm -rf "${dirname}/web"
-rm -f "$filename"
-
+if [[ "$(command -v apt)" ]]; then
+    sudo apt update
+    sudo apt install -y fonts-jetbrains-mono
+else
+    ownerrepo="JetBrains/JetBrainsMono"
+    version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
+    dirname=jetbrainsmono
+    uri="https://github.com/JetBrains/JetBrainsMono/releases/download/v${version}/JetBrainsMono-${version}.zip"
+    filename="$(basename "$uri")"
+    wget -N "$uri"
+    rm -rf "$dirname"
+    unzip "$filename" -d "$dirname"
+    rm -rf "${dirname}/web"
+    rm -f "$filename"
+fi
 
 
 echo ""
@@ -125,7 +147,7 @@ uri="https://github.com/cormullion/juliamono/releases/download/v${version}/Julia
 filename="$(basename "$uri")"
 rm -rf "$dirname" && mkdir "$dirname" && cd "$dirname" || exit
 wget -N "$uri"
-tar xvf "$filename"
+tar -xvf "$filename"
 rm -f "$filename"
 cd ..
 
@@ -135,14 +157,52 @@ echo ""
 echo "-------------------"
 echo "  Ricty Diminished"
 echo "-------------------"
-ownerrepo="edihbrandon/RictyDiminished"
-version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
-uri="https://github.com/edihbrandon/RictyDiminished/archive/refs/tags/${version}.zip"
-filename="$(basename "$uri")"
-wget -N "$uri"
-unzip "$filename"
-rm -f "$filename"
+if [[ "$(command -v apt)" ]]; then
+    sudo apt update
+    sudo apt install -y fonts-ricty-diminished
+else
+    ownerrepo="edihbrandon/RictyDiminished"
+    version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
+    uri="https://github.com/edihbrandon/RictyDiminished/archive/refs/tags/${version}.zip"
+    filename="$(basename "$uri")"
+    wget -N "$uri"
+    unzip "$filename"
+    rm -f "$filename"
+fi
 
 
+echo ""
+echo "-------------------"
+echo "  Open Sans"
+echo "-------------------"
+if [[ "$(command -v apt)" ]]; then
+    sudo apt update
+    sudo apt install -y fonts-open-sans
+else
+    filename="open-sans.zip"
+    wget -N "https://fonts.google.com/download?family=Open%20Sans" -O "$filename"
+    unzip "$filename" -d "${filename%.*}"
+    rm -f "$filename"
+fi
+
+
+echo ""
+echo "-------------------"
+echo "  Lato"
+echo "-------------------"
+if [[ "$(command -v apt)" ]]; then
+    sudo apt update
+    sudo apt install -y fonts-lato
+else
+    filename="lato.zip"
+    wget -N "https://fonts.google.com/download?family=Lato" -O "$filename"
+    unzip "$filename" -d "${filename%.*}"
+    rm -f "$filename"
+fi
+
+
+
+## ----------------
+##   Update DB
+## ----------------
 fc-cache -f -v
-
