@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-readonly AUTHOR=dduan
 readonly CMD=tre
+readonly NAME=tre-command
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-VERSION="$("$BASEDIR"/get-version-github.sh "${AUTHOR}/${CMD}")"
+VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")"
 readonly VERSION
 
 mkdirmv () {
@@ -12,7 +12,7 @@ mkdirmv () {
 }
 
 if [[ "$(command -v $CMD)" ]]; then
-    CURRENT="$("$CMD" --version)"
+    CURRENT="$("$CMD" --version | cut -d ' ' -f 2)"
     readonly CURRENT
     if [[ "$VERSION" == "$CURRENT" ]]; then
         echo "... already the latest: ${CMD} ${CURRENT}"
