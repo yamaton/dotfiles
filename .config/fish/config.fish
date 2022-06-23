@@ -21,8 +21,10 @@ abbr -a -U -- mkdir 'mkdir -p'
 abbr -a -U -- vim nvim
 abbr -a -U -- j z
 abbr -a -U -- cht cht.sh
+abbr -a -U -- tree tre
 abbr -a -U -- ncdu 'ncdu --color dark'
 abbr -a -U -- btc 'curl rate.sx'
+
 
 # local bin
 fish_add_path ~/.local/bin
