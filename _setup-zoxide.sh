@@ -21,9 +21,9 @@ if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${NAME})" ]] || [[ "$confirm" == [yY
         brew install "$NAME"
     elif [[ "$(uname -s)" == "Linux" ]]; then
         case "$(uname -m)" in
-            "x86_64")  readonly FILE="${NAME}-v${VERSION}-x86_64-unknown-linux-musl.tar.gz" ;;
-            "armv7l")  readonly FILE="${NAME}-v${VERSION}-armv7-unknown-linux-musleabihf.tar.gz" ;;
-            "aarch64") readonly FILE="${NAME}-v${VERSION}-aarch64-unknown-linux-musl.tar.gz" ;;
+            "x86_64")  readonly FILE="${NAME}-${VERSION}-x86_64-unknown-linux-musl.tar.gz" ;;
+            "armv7l")  readonly FILE="${NAME}-${VERSION}-armv7-unknown-linux-musleabihf.tar.gz" ;;
+            "aarch64") readonly FILE="${NAME}-${VERSION}-aarch64-unknown-linux-musl.tar.gz" ;;
         esac
 
         if [[ -z "${FILE+x}" ]]; then
