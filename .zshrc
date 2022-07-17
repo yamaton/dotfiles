@@ -281,7 +281,7 @@ zstyle ':completion:*' cache-path ~/.config/zsh/cache
 zstyle ':completion:*' list-colors '=(#b)*(--)( *)=37=1;38;5;103=1;38;5;142' '=*=0'
 
 ## autojump
-if [[ ! "$(command -v zoxide)" ]]; then
+if [[ ! "$(command -v zoxide)" ]] && [[ "$(command -v autojump)" ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         [[ -f "$(brew --prefix)/etc/profile.d/autojump.sh" ]] &&
             source "$(brew --prefix)/etc/profile.d/autojump.sh"
@@ -293,6 +293,8 @@ fi
 ## conda
 [[ -x "$HOME/miniconda3/bin/conda" ]] &&
     eval "$("$HOME"/miniconda3/bin/conda shell.zsh hook)"
+[[ -x "$HOME/mambaforge/bin/conda" ]] &&
+    eval "$("$HOME"/mambaforge/bin/conda shell.zsh hook)"
 # Hide (base) when base is active
 PS1="$(echo "$PS1" | sed 's/(base) //')"
 

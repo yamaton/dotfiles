@@ -35,7 +35,7 @@ fish_add_path ~/.dotnet
 set -g fish_greeting
 
 # replace ssh with 'kitty +kitten ssh'
-if test $TERM = "xterm-kitty" && type -q kitty
+if test $TERM = xterm-kitty && type -q kitty
     alias ssh="kitty +kitten ssh"
 end
 
@@ -55,7 +55,13 @@ fish_add_path ~/.nimble/bin
 set -gx CHTSH $XDG_CONFIG_HOME/cht.sh
 
 # conda initialize
-eval "$HOME/miniconda3/bin/conda" "shell.fish" "hook" $argv | source
+if test -x "$HOME/miniconda3/bin/conda"
+    eval "$HOME/miniconda3/bin/conda" "shell.fish" hook $argv | source
+end
+
+if test -x "$HOME/mambaforge/bin/conda"
+    eval "$HOME/mambaforge/bin/conda" "shell.fish" hook $argv | source
+end
 
 # system update
 alias bu="topgrade; sudo apt update && sudo apt full-upgrade; mamba update -c conda-forge --all -y; check-updates-utils"
@@ -105,11 +111,11 @@ set -x LESS_TERMCAP_ZN (tput ssubm)
 set -x LESS_TERMCAP_ZV (tput rsubm)
 set -x LESS_TERMCAP_ZO (tput ssupm)
 set -x LESS_TERMCAP_ZW (tput rsupm)
-set -x GROFF_NO_SGR 1         # For Konsole and Gnome-terminal
+set -x GROFF_NO_SGR 1    # For Konsole and Gnome-terminal
 
 
 # kitty
-if [ "$TERM" = "xterm-kitty" ] && type -q kitty
+if [ "$TERM" = xterm-kitty ] && type -q kitty
     alias icat="kitty +kitten icat"
 end
 
@@ -123,4 +129,3 @@ if string match -i -q '*microsoft*' (uname -r)
     # vagrant
     set -gx VAGRANT_WSL_ENABLE_WINDOWS_ACCESS 1
 end
-

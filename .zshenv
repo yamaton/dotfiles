@@ -31,9 +31,11 @@ fpath+=( $HOME/miniconda3/share/zsh/conda-zsh-completion "${fpath[@]}" )
 export PATH="$HOME/.local/bin:$PATH"
 
 ## rust and cargo
-export PATH="$HOME/.cargo/bin:$PATH"
-export RUST_BACKTRACE=1
-. "$HOME/.cargo/env"
+if [[ "$(command -v cargo)" ]]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+    export RUST_BACKTRACE=1
+    . "$HOME/.cargo/env"
+fi
 
 ## go
 [[ "$(command -v go)" ]] && export PATH="$PATH:$(go env GOPATH)/bin"
