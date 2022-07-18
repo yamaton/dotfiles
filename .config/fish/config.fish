@@ -55,12 +55,10 @@ fish_add_path ~/.nimble/bin
 set -gx CHTSH $XDG_CONFIG_HOME/cht.sh
 
 # conda initialize
-if test -x "$HOME/miniconda3/bin/conda"
-    eval "$HOME/miniconda3/bin/conda" "shell.fish" hook $argv | source
-end
-
 if test -x "$HOME/mambaforge/bin/conda"
     eval "$HOME/mambaforge/bin/conda" "shell.fish" hook $argv | source
+else if test -x "$HOME/miniconda3/bin/conda"
+    eval "$HOME/miniconda3/bin/conda" "shell.fish" hook $argv | source
 end
 
 # system update
