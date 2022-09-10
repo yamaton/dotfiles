@@ -37,11 +37,14 @@ if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY]
         mv tldr ~/.local/bin/
 
         URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_zsh"
+        mkdir -p ~/.zfunc
         wget -c -O ~/.zfunc/_tldr "$URI"
 
         URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_fish"
+        mkdir -p ~/.config/fish/completions
         wget -c -O ~/.config/fish/completions/tldr.fish "$URI"
 
-        ln -sf "${BASEDIR}/.config/${NAME}" "${HOME}/.config/"
+        mkdir -p "${HOME}/.config/tealdeer" && cd "${HOME}/.config/tealdeer"
+        wget "https://raw.githubusercontent.com/yamaton/dotfiles/master/.config/tealdeer/config.toml"
     fi
 fi
