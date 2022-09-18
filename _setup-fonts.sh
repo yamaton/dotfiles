@@ -6,15 +6,14 @@
 
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 readonly BASEDIR
-mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
+mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts || exit
 
 echo ""
 echo "-------------------"
 echo "  Source Code Pro"
 echo "-------------------"
 (
-    mkdir -p source-code-pro
-    cd source-code-pro
+    mkdir -p source-code-pro && cd source-code-pro || exit
     wget -N https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Italic.ttf
     wget -N https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Roman.ttf
 )
@@ -43,7 +42,7 @@ echo "  Hasklig"
 echo "-------------------"
 ownerrepo="i-tu/Hasklig"
 version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
-uri="https://github.com/i-tu/Hasklig/releases/download/${version}/Hasklig-${version}.zip"
+uri="https://github.com/i-tu/Hasklig/releases/download/v${version}/Hasklig-${version}.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
 unzip "$filename" -d "${filename%.*}"
@@ -70,16 +69,24 @@ if [[ "$(command -v apt)" ]]; then
     sudo apt update
     sudo apt install -y fonts-noto-cjk
 else
-(
-    mkdir -p noto-cjk && cd noto-cjk
-    wget -N https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip
-    wget -N https://noto-website-2.storage.googleapis.com/pkgs/NotoSerifCJKjp-hinted.zip
-    unzip NotoSansCJKjp-hinted.zip -d NotoSansCJKjp-hinted
-    unzip NotoSerifCJKjp-hinted.zip -d NotoSerifCJKjp-hinted
-    rm -f NotoSansCJKjp-hinted.zip
-    rm -f NotoSerifCJKjp-hinted.zip
-)
+    (
+        mkdir -p noto-cjk && cd noto-cjk || exit
+        wget -N https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip
+        wget -N https://noto-website-2.storage.googleapis.com/pkgs/NotoSerifCJKjp-hinted.zip
+        unzip NotoSansCJKjp-hinted.zip -d NotoSansCJKjp-hinted
+        unzip NotoSerifCJKjp-hinted.zip -d NotoSerifCJKjp-hinted
+        rm -f NotoSansCJKjp-hinted.zip
+        rm -f NotoSerifCJKjp-hinted.zip
+    )
+fi
 
+
+echo ""
+echo "-------------------"
+echo "  Roboto"
+echo "-------------------"
+if [[ "$(command -v apt)" ]]; then
+    sudo apt update && sudo apt install -y fonts-roboto
 fi
 
 
@@ -88,8 +95,7 @@ echo "-------------------"
 echo "  Cascadia Code"
 echo "-------------------"
 if [[ "$(command -v apt)" ]]; then
-    sudo apt update
-    sudo apt install -y fonts-cascadia-code
+    sudo apt update && sudo apt install -y fonts-cascadia-code
 else
     ownerrepo="microsoft/cascadia-code"
     version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
