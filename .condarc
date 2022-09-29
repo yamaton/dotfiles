@@ -1,15 +1,5 @@
 channels:
-  - defaults
   - conda-forge
-
-create_default_packages:
-  - ipython
-  - notebook
-  - jupyter
-  - pylint
-  - pytest
-  - black
-  - rope
+  - nodefaults
 
 always_yes: true
-env_prompt: '({default_env}) '
