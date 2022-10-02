@@ -13,7 +13,7 @@ VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq 
 readonly VERSION
 
 if [[ "$(command -v $CMD)" ]]; then
-    CURRENT="$("$CMD" --version | head -1 | cut -d ' ' -f2 | cut -c 2-)"
+    CURRENT="$("$CMD" --version | head -1 | cut -d ' ' -f2 | cut -c 2- | cut -d '-' -f 1)"
     readonly CURRENT
     if [[ "$VERSION" == "$CURRENT" ]]; then
         echo "... already the latest: ${CMD} ${CURRENT}"
