@@ -1,0 +1,4 @@
+# single-tab completion
+# https://github.com/scop/bash-completion
+set show-all-if-ambiguous on
+
