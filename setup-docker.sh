@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+set -o errexit
+set -o nounset
+set -o pipefail
+if [[ "${TRACE-0}" == "1" ]]; then
+    set -o xtrace
+fi
+
 if [[ ! "$(command -v docker)" ]] || [[ "$1" == "-f" ]]; then
     if [[ "$(lsb_release -c -s)" == "focal" ]] || [[ "$(lsb_release -c -s)" == "jammy" ]]; then
         sudo apt install docker.io
