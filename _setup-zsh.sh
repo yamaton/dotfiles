@@ -13,7 +13,7 @@ readonly REPO_DIR="${HOME}/.config/zsh"
 
 mkdir -p "$REPO_DIR"
 
-if [[ "$1" == "-f" ]] || [[ ! "$(command -v zsh)" ]]; then
+if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v zsh)" ]]; then
 
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions

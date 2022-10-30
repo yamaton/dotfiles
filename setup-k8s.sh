@@ -9,7 +9,7 @@ fi
 # https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux
 
 # kubectl
-if [[ "$1" == "-f" ]] || [[ ! "$(command -v kubectl)" ]]; then
+if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v kubectl)" ]]; then
     if [[ "$(command -v apt)" ]]; then
         sudo apt update && sudo apt install -y apt-transport-https
         curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -

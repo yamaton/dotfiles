@@ -16,15 +16,15 @@ readonly ZIPFILE="broot_$VERSION.zip"
 if [[ "$(command -v ${NAME})" ]]; then
     CURRENT="$("$NAME" --version | cut -d ' ' -f2)"
     readonly CURRENT
-    if [[ "$VERSION" == "$CURRENT" ]]; then
-        echo "... already the latest: ${CMD} ${CURRENT}"
+    confirm=N
+    if [[ "$VERSION" == "$CURRENT" ]]; then        echo "... already the latest: ${CMD} ${CURRENT}"
     else
         echo "${CMD} ${VERSION} is available: (current ${CMD} ${CURRENT})"
         read -rp "Upgrade to ${CMD} ${VERSION}? (y/N): " confirm
     fi
 fi
 
-if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${NAME})" ]] || [[ "$confirm" == [yY] ]]; then
+if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${NAME})" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$NAME"
     elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(uname -m)" == "x86_64" ]]; then

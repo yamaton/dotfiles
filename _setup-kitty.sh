@@ -19,15 +19,15 @@ readonly KITTY_HOME=~/.local/kitty.app
 if [[ "$(command -v $CMD)" ]]; then
     CURRENT="$("$CMD" --version | cut -d ' ' -f2)"
     readonly CURRENT
-    if [[ "$VERSION" == "$CURRENT" ]]; then
-        echo "... already the latest: ${CMD} ${CURRENT}"
+    confirm=N
+    if [[ "$VERSION" == "$CURRENT" ]]; then        echo "... already the latest: ${CMD} ${CURRENT}"
     else
         echo "${CMD} ${VERSION} is available: (current ${CMD} ${CURRENT})"
         read -rp "Upgrade to ${CMD} ${VERSION}? (y/N): " confirm
     fi
 fi
 
-if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
+if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
         curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
         mkdir -p ~/.local/bin

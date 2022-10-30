@@ -18,8 +18,8 @@ readonly VERSION
 if [[ "$(command -v $CMD)" ]]; then
     CURRENT="$($CMD -V | cut -d ' ' -f2)"
     readonly CURRENT
-    if [[ "$VERSION" == "$CURRENT" ]]; then
-        echo "... already the latest: ${CMD} ${CURRENT}"
+    confirm=N
+    if [[ "$VERSION" == "$CURRENT" ]]; then        echo "... already the latest: ${CMD} ${CURRENT}"
     else
         echo "${CMD} ${VERSION} is available: (current ${CMD} ${CURRENT})"
         read -rp "Upgrade to ${CMD} ${VERSION}? (y/N): " confirm
@@ -28,7 +28,7 @@ fi
 
 VER="$(echo "$VERSION" | cut -c 1-4)"
 
-if [[ "$1" == "-f" ]] || [[ ! "$(command -v tmux)" ]] || [[ "$confirm" == [yY] ]]; then
+if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v tmux)" ]] || [[ "$confirm" == [yY] ]]; then
     BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
     readonly BASEDIR
     readonly CONFDIR="${HOME}/confs"

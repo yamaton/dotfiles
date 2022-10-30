@@ -18,15 +18,15 @@ readonly VERSION
 if [[ "$(command -v $CMD)" ]]; then
     CURRENT="$("$CMD" --version | cut -d ' ' -f2 | cut -d 'v' -f2)"
     readonly CURRENT
-    if [[ "$VERSION" == "$CURRENT" ]]; then
-        echo "... already the latest: ${NAME} ${CURRENT}"
+    confirm=N
+    if [[ "$VERSION" == "$CURRENT" ]]; then        echo "... already the latest: ${NAME} ${CURRENT}"
     else
         echo "${NAME} ${VERSION} is available: (current ${NAME} ${CURRENT})"
         read -rp "Upgrade to ${NAME} ${VERSION}? (y/N): " confirm
     fi
 fi
 
-if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
+if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$NAME"
         ln -sf "${BASEDIR}/.config/${NAME}" "${HOME}/Library/Application Support/${NAME}"

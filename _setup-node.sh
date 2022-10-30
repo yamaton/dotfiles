@@ -13,9 +13,9 @@ readonly version
 
 if [[ "$(command -v $CMD)" ]]; then
     current="$("$cmd" --version | cut -c 2-)"
-    readonly current
-    if [[ "$version" == "$current" ]]; then
-        echo "... already the latest: ${cmd} ${current}"
+    readonly CURRENT
+    confirm=N
+    if [[ "$VERSION" == "$CURRENT" ]]; then        echo "... already the latest: ${cmd} ${current}"
     else
         echo "${cmd} ${version} is available: (current ${cmd} ${current})"
         read -rp "Upgrade to ${cmd} ${version}? (y/N): " confirm
@@ -23,7 +23,7 @@ if [[ "$(command -v $CMD)" ]]; then
 fi
 
 
-if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${cmd})" ]] || [[ "$confirm" == [yY] ]]; then
+if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
 
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$cmd"

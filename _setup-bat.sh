@@ -19,6 +19,7 @@ mkdircp () {
 if [[ "$(command -v $CMD)" ]]; then
     CURRENT="$("$CMD" --version | cut -d ' ' -f2)"
     readonly CURRENT
+    confirm=N
     if [[ "$VERSION" == "$CURRENT" ]]; then
         echo "... already the latest: ${CMD} ${CURRENT}"
     else
@@ -27,7 +28,7 @@ if [[ "$(command -v $CMD)" ]]; then
     fi
 fi
 
-if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
+if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
     elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then

@@ -7,7 +7,7 @@ if [[ "${TRACE-0}" == "1" ]]; then
     set -o xtrace
 fi
 
-if [[ ! "$(command -v docker)" ]] || [[ "$1" == "-f" ]]; then
+if [[ ! "$(command -v docker)" ]] || [[ "${1-}" == "-f" ]]; then
     if [[ "$(lsb_release -c -s)" == "focal" ]] || [[ "$(lsb_release -c -s)" == "jammy" ]]; then
         sudo apt install docker.io
         sudo systemctl enable --now docker
@@ -46,7 +46,7 @@ fi
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 readonly BASEDIR
 COMPOSE_VERSION="$("$BASEDIR"/get-version-github.sh docker/compose)"
-if [[ "$1" == "-f" ]] || [[ ! "$(command -v docker-compose)" ]]; then
+if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v docker-compose)" ]]; then
     echo "--------------------------------"
     echo "     Install docker-compose     "
     echo "--------------------------------"

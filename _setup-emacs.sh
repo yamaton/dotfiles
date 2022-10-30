@@ -11,7 +11,7 @@ BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 readonly BASEDIR
 readonly CMD="emacs"
 
-if [[ "$1" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]]; then
+if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]]; then
 
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
