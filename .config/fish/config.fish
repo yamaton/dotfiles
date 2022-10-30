@@ -88,7 +88,8 @@ fish_add_path $DENO_INSTALL/bin
 
 # ghcup
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
-set -gx PATH $HOME/.cabal/bin $PATH $HOME/.ghcup/bin # ghcup-env
+fish_add_path $HOME/.cabal/bin
+fish_add_path $HOME/.ghcup/bin # ghcup-env
 
 # source-highlight in less
 set -gx LESSOPEN '| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
