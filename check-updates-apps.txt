@@ -12,7 +12,6 @@ syncthing
 delta
 tealdeer
 julia
-node
 go
 kitty
 zoxide
