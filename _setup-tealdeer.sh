@@ -44,8 +44,8 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         mv tldr ~/.local/bin/
 
         URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_zsh"
-        mkdir -p ~/.zfunc
-        wget -c -O ~/.zfunc/_tldr "$URI"
+        mkdir -p ~/.config/zsh/completions
+        wget -c -O ~/.config/zsh/completions/_tldr "$URI"
 
         URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_fish"
         mkdir -p ~/.config/fish/completions

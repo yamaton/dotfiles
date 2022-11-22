@@ -43,7 +43,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         DIR="${FILE%.*.*}"
         (
             cd "$DIR" || exit
-            mkdir -p ~/.zfunc && cp -f autocomplete/bat.zsh ~/.zfunc/_bat
+            mkdir -p ~/.config/zsh/completions && cp -f autocomplete/bat.zsh ~/.config/zsh/completions/_bat
             mkdircp autocomplete/"${CMD}.fish" ~/.config/fish/completions/
             mkdircp "${CMD}" ~/.local/bin/
             mkdircp "${CMD}.1" ~/.local/share/man/man1/

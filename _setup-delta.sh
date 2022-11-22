@@ -47,7 +47,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
     mkdir -p ~/.bash_completion.d && mv -f completion.bash ~/.bash_completion.d/delta
 
     wget -N "https://raw.githubusercontent.com/dandavison/delta/master/etc/completion/completion.zsh"
-    mkdir -p ~/.zfunc && mv -f completion.zsh ~/.zfunc/_delta
+    mkdir -p ~/.config/zsh/completions && mv -f completion.zsh ~/.config/zsh/completions/_delta
 
     if [[ -f ~/.gitconfig ]]; then
         echo "―― $(date +"%H:%M:%S") - Delta setup ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
