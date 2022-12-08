@@ -10,7 +10,7 @@ fi
 readonly CMD=rga
 readonly NAME="ripgrep-all"
 
-VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")"
+VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq -r '.versions.stable')"
 readonly VERSION
 
 if [[ "$(command -v $CMD)" ]]; then

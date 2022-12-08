@@ -9,7 +9,7 @@ fi
 
 readonly CMD=anki
 
-VERSION="$(curl --silent https://formulae.brew.sh/api/cask/${CMD}.json | jq '.version' | tr -d \")"
+VERSION="$(curl --silent https://formulae.brew.sh/api/cask/${CMD}.json | jq -r '.version')"
 readonly VERSION
 
 if [[ "$(command -v $CMD)" ]]; then

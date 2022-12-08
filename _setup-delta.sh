@@ -10,7 +10,7 @@ fi
 readonly CMD=delta
 readonly HOMEBREW_NAME=git-delta
 
-VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${HOMEBREW_NAME}.json | jq '.versions.stable' | tr -d '\" \n')"
+VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${HOMEBREW_NAME}.json | jq -r '.versions.stable')"
 readonly VERSION
 
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"

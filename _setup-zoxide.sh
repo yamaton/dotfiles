@@ -9,7 +9,7 @@ fi
 
 readonly NAME=zoxide
 
-VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")"
+VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq -r '.versions.stable')"
 readonly VERSION
 
 if [[ "$(command -v $NAME)" ]]; then

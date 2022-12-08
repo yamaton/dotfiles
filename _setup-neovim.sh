@@ -16,7 +16,7 @@ readonly REPO_DIR="${HOME}/confs"
 readonly BIN_DIR="${HOME}/.local/bin/"
 readonly CONFIG_DIR="${HOME}/.config/$CMD"
 
-VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")"
+VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq -r '.versions.stable')"
 readonly VERSION
 
 if [[ "$(command -v $CMD)" ]]; then

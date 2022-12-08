@@ -8,7 +8,7 @@ if [[ "${TRACE-0}" == "1" ]]; then
 fi
 
 readonly cmd=node
-version="$(curl --silent https://formulae.brew.sh/api/formula/${cmd}.json | jq '.versions.stable' | tr -d \")"
+version="$(curl --silent https://formulae.brew.sh/api/formula/${cmd}.json | jq -r '.versions.stable')"
 readonly version
 
 if [[ "$(command -v $CMD)" ]]; then

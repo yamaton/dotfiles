@@ -9,7 +9,7 @@ fi
 
 readonly NAME=broot
 readonly CMD=br
-VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq '.versions.stable' | tr -d \")"
+VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq -r '.versions.stable')"
 readonly VERSION
 readonly ZIPFILE="broot_$VERSION.zip"
 

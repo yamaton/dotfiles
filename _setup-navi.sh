@@ -9,7 +9,7 @@ fi
 
 readonly CMD=navi
 
-VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${CMD}.json | jq '.versions.stable' | tr -d \")"
+VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${CMD}.json | jq -r '.versions.stable')"
 readonly VERSION
 
 mkdircp () {

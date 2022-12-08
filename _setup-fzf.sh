@@ -7,7 +7,7 @@ if [[ "${TRACE-0}" == "1" ]]; then
     set -o xtrace
 fi
 readonly CMD=fzf
-VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${CMD}.json | jq '.versions.stable' | tr -d \")"
+VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${CMD}.json | jq -r '.versions.stable')"
 readonly VERSION
 
 if [[ "$(command -v $CMD)" ]]; then

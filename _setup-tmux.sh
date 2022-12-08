@@ -12,7 +12,7 @@ fi
 # Then it will download source and build tmux under <repo-root>.
 
 readonly CMD=tmux
-VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${CMD}.json | jq '.versions.stable' | tr -d \")"
+VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${CMD}.json | jq -r '.versions.stable')"
 readonly VERSION
 
 if [[ "$(command -v $CMD)" ]]; then

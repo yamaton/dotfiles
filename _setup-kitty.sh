@@ -8,7 +8,7 @@ if [[ "${TRACE-0}" == "1" ]]; then
 fi
 
 readonly CMD=kitty
-VERSION="$(curl --silent https://formulae.brew.sh/api/cask/${CMD}.json | jq .version | tr -d \")"
+VERSION="$(curl --silent https://formulae.brew.sh/api/cask/${CMD}.json | jq -r '.version')"
 readonly VERSION
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 readonly BASEDIR
