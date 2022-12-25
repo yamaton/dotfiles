@@ -43,7 +43,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v nvim)" ]] || [[ "$confirm" == [yY
         sudo ln -sf "${BIN_DIR}/nvim.appimage" /usr/local/bin/nvim
 
         mkdir -p ~/.local/share/man/man1
-        readonly MANURL="https://raw.githubusercontent.com/neovim/neovim/v${VERSION}/man/nvim.1"
+        readonly MANURL="https://raw.githubusercontent.com/neovim/neovim/v${VERSION}/src/man/nvim.1"
         wget --output-document ~/.local/share/man/man1/nvim.1 -N "$MANURL"
         mandb ~/.local/share/man
 
