@@ -25,6 +25,8 @@ abbr -a -U -- tree tre
 abbr -a -U -- ncdu 'ncdu --color dark'
 abbr -a -U -- btc 'curl rate.sx'
 
+# set fish_complete_path
+set -a fish_complete_path ~/.config/fish/completions/bio
 
 # local bin
 fish_add_path ~/.local/bin
@@ -48,6 +50,9 @@ if type -q go
     fish_add_path (go env GOPATH)/bin
 end
 
+# dotnet tools
+fish_add_path ~/.dotnet/tools
+
 # nim
 fish_add_path ~/.nimble/bin
 
@@ -56,9 +61,9 @@ set -gx CHTSH $XDG_CONFIG_HOME/cht.sh
 
 # conda initialize
 if test -x "$HOME/mambaforge/bin/conda"
-    eval "$HOME/mambaforge/bin/conda" "shell.fish" hook $argv | source
+    eval "$HOME/mambaforge/bin/conda" "shell.fish" "hook" $argv | source
 else if test -x "$HOME/miniconda3/bin/conda"
-    eval "$HOME/miniconda3/bin/conda" "shell.fish" hook $argv | source
+    eval "$HOME/miniconda3/bin/conda" "shell.fish" "hook" $argv | source
 end
 
 # system update
@@ -83,7 +88,7 @@ fish_add_path ~/.yarn/bin
 fish_add_path ~/.local/bin/node/bin
 
 # deno
-set -gx DENO_INSTALL ~/.local/bin/deno
+set -gx DENO_INSTALL ~/.deno
 fish_add_path $DENO_INSTALL/bin
 
 # ghcup
@@ -112,12 +117,10 @@ set -x LESS_TERMCAP_ZO (tput ssupm)
 set -x LESS_TERMCAP_ZW (tput rsupm)
 set -x GROFF_NO_SGR 1    # For Konsole and Gnome-terminal
 
-
 # kitty
-if [ "$TERM" = xterm-kitty ] && type -q kitty
+if [ "$TERM" = "xterm-kitty" ] && type -q kitty
     alias icat="kitty +kitten icat"
 end
-
 
 # WSL
 if string match -i -q '*microsoft*' (uname -r)
