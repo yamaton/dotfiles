@@ -14,16 +14,16 @@ set -gx STNOUPGRADE 1   # syncthing
 set -gx AZURE_CORE_COLLECT_TELEMETRY 0
 
 # abbriviation
-abbr -a -U -- rm trash
-abbr -a -U -- mv 'mv -i'
-abbr -a -U -- cp 'cp -i'
-abbr -a -U -- mkdir 'mkdir -p'
-abbr -a -U -- vim nvim
-abbr -a -U -- j z
-abbr -a -U -- cht cht.sh
-abbr -a -U -- tree tre
-abbr -a -U -- ncdu 'ncdu --color dark'
-abbr -a -U -- btc 'curl rate.sx'
+abbr -a -- rm trash
+abbr -a -- mv 'mv -i'
+abbr -a -- cp 'cp -i'
+abbr -a -- mkdir 'mkdir -p'
+abbr -a -- vim nvim
+abbr -a -- j z
+abbr -a -- cht cht.sh
+abbr -a -- tree tre
+abbr -a -- du 'ncdu --color dark'
+abbr -a -- btc 'curl rate.sx'
 
 # set fish_complete_path
 set -a fish_complete_path ~/.config/fish/completions/bio
@@ -138,3 +138,6 @@ if string match -i -q '*microsoft*' (uname -r)
     # vagrant
     set -gx VAGRANT_WSL_ENABLE_WINDOWS_ACCESS 1
 end
+
+# ghcup
+fish_add_path ~/.ghcup/bin
