@@ -52,17 +52,12 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${NAME})" ]] || [[ "$confirm" == 
             exit 0
         fi
 
-        readonly URL="https://github.com/r-darwish/topgrade/releases/download/v${VERSION}/${FILE}"
+        readonly URL="https://github.com/topgrade-rs/topgrade/releases/download/v${VERSION}/${FILE}"
 
         wget -N "$URL"
         tar xvf "$FILE"
         rm -f "$FILE"
         mv -f ./topgrade "${HOME}/.local/bin/"
-
-        readonly MANURL="https://raw.githubusercontent.com/r-darwish/topgrade/v${VERSION}/topgrade.8"
-        mkdir -p ~/.local/share/man/man8
-        wget -N "$MANURL" --output-document ~/.local/share/man/man8/"$(basename "$MANURL")"
-        mandb ~/.local/share/man
 
         cp -f "$BASEDIR"/.config/topgrade.toml ~/.config/topgrade.toml
     fi
