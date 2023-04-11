@@ -41,6 +41,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/${FILE}"
         wget -c -O tldr "$URI"
         chmod +x tldr
+        mkdir -p ~/.local/bin/
         mv tldr ~/.local/bin/
 
         URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_zsh"
