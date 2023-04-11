@@ -32,13 +32,16 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         brew install "$CMD"
     elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
         case "$(uname -m)" in
-            "x86_64") readonly FILE="croc_${VERSION}_Linux-64bit.deb" ;;
-            "armv7l") readonly FILE="croc_${VERSION}_Linux-ARM.deb" ;;
-            "aarch64") readonly FILE="croc_${VERSION}_Linux-ARM64.deb" ;;
+            "x86_64") readonly FILE="${CMD}_${VERSION}_Linux-64bit.tar.gz" ;;
         esac
         readonly URL="https://github.com/schollz/croc/releases/download/v${VERSION}/${FILE}"
         wget -N "$URL"
-        sudo apt install ./"$FILE"
+        tar -xvf "$FILE"
+        mv croc ~/.local/bin
+        mkdir -p "$HOME/.config/bash_completion"
+        mkdir -p "$HOME/.config/zsh/completions"
+        mv bash_autocomplete "$HOME/.config/bash_completion"
+        mv zsh_autocomplete "$HOME/.config/zsh/completions"
         rm -rf "$FILE"
     fi
 fi
