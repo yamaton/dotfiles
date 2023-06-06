@@ -26,7 +26,7 @@ abbr -a -- du 'ncdu --color dark'
 abbr -a -- btc 'curl rate.sx'
 
 # set fish_complete_path
-set -a fish_complete_path ~/.config/fish/completions/bio
+set -a fish_complete_path ~/.config/fish/fish-completions-bio/completions
 
 # local bin
 fish_add_path ~/.local/bin
