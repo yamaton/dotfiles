@@ -38,10 +38,11 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         wget -N "$URL"
         tar -xvf "$FILE"
         mv croc ~/.local/bin
+        rm -rf "$FILE"
+        rm -f README.md LICENSE
         mkdir -p "$HOME/.config/bash_completion"
         mkdir -p "$HOME/.config/zsh/completions"
         mv bash_autocomplete "$HOME/.config/bash_completion"
         mv zsh_autocomplete "$HOME/.config/zsh/completions"
-        rm -rf "$FILE"
     fi
 fi

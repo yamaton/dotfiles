@@ -39,20 +39,20 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
             *) FILE="" ;;
         esac
         URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/${FILE}"
-        wget -c -O tldr "$URI"
+        wget -cN -O tldr "$URI"
         chmod +x tldr
         mkdir -p ~/.local/bin/
         mv tldr ~/.local/bin/
 
         URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_zsh"
         mkdir -p ~/.config/zsh/completions
-        wget -c -O ~/.config/zsh/completions/_tldr "$URI"
+        wget -cN -O ~/.config/zsh/completions/_tldr "$URI"
 
         URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_fish"
         mkdir -p ~/.config/fish/completions
-        wget -c -O ~/.config/fish/completions/tldr.fish "$URI"
+        wget -cN -O ~/.config/fish/completions/tldr.fish "$URI"
 
         mkdir -p "${HOME}/.config/tealdeer" && cd "${HOME}/.config/tealdeer"
-        wget "https://raw.githubusercontent.com/yamaton/dotfiles/master/.config/tealdeer/config.toml"
+        wget -cN "https://raw.githubusercontent.com/yamaton/dotfiles/master/.config/tealdeer/config.toml"
     fi
 fi
