@@ -33,7 +33,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         FILE="$(basename "$URI")"
         readonly FILE
         rm -rf go golang
-        tar xvf ./"$FILE"
+        tar -xvf ./"$FILE"
         rm -f ./"$FILE"
         mv go golang
         ln -sf ~/.local/bin/golang/bin/go ~/.local/bin/go

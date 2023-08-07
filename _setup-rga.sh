@@ -41,7 +41,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v $CMD)" ]] || [[ "$confirm" == [yY
         wget -N "$uri"
         filename="$(basename "$uri")"
         dir="${filename%.tar.gz}"
-        tar xvf ./"$filename"
+        tar -xvf ./"$filename"
         cp -f "${dir}/rga" ~/.local/bin/
         cp -f "${dir}/rga-preproc" ~/.local/bin/
         rm -f ./"$filename"

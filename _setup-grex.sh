@@ -31,7 +31,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
             wget -N "${URI}"
             NAME="$(basename "$URI")"
             readonly NAME
-            tar xvf "./${NAME}"
+            tar -xvf "./${NAME}"
             rm "./${NAME}"
             [[ ! -d ~/.local/bin ]] && mkdir ~/.local/bin
             mv -f "./${CMD}" ~/.local/bin/

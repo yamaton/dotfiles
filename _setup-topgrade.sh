@@ -55,7 +55,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${NAME})" ]] || [[ "$confirm" == 
         readonly URL="https://github.com/topgrade-rs/topgrade/releases/download/v${VERSION}/${FILE}"
 
         wget -N "$URL"
-        tar xvf "$FILE"
+        tar -xvf "$FILE"
         rm -f "$FILE"
         mv -f ./topgrade "${HOME}/.local/bin/"
 

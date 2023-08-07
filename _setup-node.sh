@@ -40,7 +40,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         wget -N "$uri"
         file="$(basename "$uri")"
         readonly file
-        tar xvf "$file"
+        tar -xvf "$file"
         dir="${file%.*.*}"
         rm -rf "$HOME"/.local/bin/node
         mv "$dir" "$HOME"/.local/bin/node

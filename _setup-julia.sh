@@ -33,7 +33,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         wget -N "$URI"
         FILE="$(basename "$URI")"
         readonly FILE
-        tar xvf ./"$FILE"
+        tar -xvf ./"$FILE"
         rm -f ./"$FILE"
         ln -sf "${HOME}/.local/bin/julia-${VERSION}/bin/julia" "${HOME}/.local/bin/julia"
 

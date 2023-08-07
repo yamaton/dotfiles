@@ -31,7 +31,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         wget -N "$URI"
         FILE="$(basename "$URI")"
         readonly FILE
-        tar xvf ./"$FILE"
+        tar -xvf ./"$FILE"
         (
         cd parallel-*/
         ./configure
