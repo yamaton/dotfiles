@@ -22,24 +22,13 @@ abbr -a -- vim nvim
 abbr -a -- j z
 abbr -a -- cht cht.sh
 abbr -a -- tree tre
-abbr -a -- du 'ncdu --color dark'
 abbr -a -- btc 'curl rate.sx'
 
 # set fish_complete_path
 set -a fish_complete_path ~/.config/fish/completions/extra  ~/.config/fish/completions/bio
 
-# local bin
-fish_add_path ~/.local/bin
-fish_add_path ~/bin
-fish_add_path ~/.dotnet
-
 # disable welcome message
 set -g fish_greeting
-
-# replace ssh with 'kitty +kitten ssh'
-if test $TERM = xterm-kitty && type -q kitty
-    alias ssh="kitty +kitten ssh"
-end
 
 # rust
 fish_add_path ~/.cargo/bin
@@ -81,7 +70,7 @@ if type -q zoxide
     zoxide init fish | source
 end
 
-# pipx, kitty, and other
+# local bin
 fish_add_path ~/.local/bin
 
 # ruby gems
@@ -101,7 +90,7 @@ fish_add_path $DENO_INSTALL/bin
 # ghcup
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
 fish_add_path $HOME/.cabal/bin
-fish_add_path $HOME/.ghcup/bin # ghcup-env
+fish_add_path $HOME/.ghcup/bin
 
 # source-highlight in less
 set -gx LESSOPEN '| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
@@ -125,8 +114,9 @@ set -x LESS_TERMCAP_ZW (tput rsupm)
 set -x GROFF_NO_SGR 1    # For Konsole and Gnome-terminal
 
 # kitty
-if [ "$TERM" = "xterm-kitty" ] && type -q kitty
+if test $TERM = xterm-kitty && type -q kitty
     alias icat="kitty +kitten icat"
+    alias ssh="kitty +kitten ssh"
 end
 
 # WSL
@@ -139,5 +129,3 @@ if string match -i -q '*microsoft*' (uname -r)
     set -gx VAGRANT_WSL_ENABLE_WINDOWS_ACCESS 1
 end
 
-# ghcup
-fish_add_path ~/.ghcup/bin
