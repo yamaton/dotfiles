@@ -65,9 +65,10 @@ EOF
 # 1. Limit fields to channels and dependencies
 # 2. Remove blacklisted packages
 # 3. Add bash-kernel to the conda dependencies
+# [NOTE] bash_kernel 0.9.1 is unavailable on conda-forge as of 2023-08-22
 yq '{channels: .channels, dependencies: .dependencies}' < env_orig.yml \
   | rg -v -f blacklist.txt \
-  | yq '.dependencies = ["bash-kernel==0.9.1"] + .dependencies' > env.yml
+  | yq '.dependencies = ["bash_kernel==0.9.0"] + .dependencies' > env.yml
 
 # Export condax package info
 condax export
