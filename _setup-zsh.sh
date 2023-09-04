@@ -62,6 +62,32 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v zsh)" ]]; then
         git clone https://github.com/zsh-git-prompt/zsh-git-prompt "${REPO_DIR}/zsh-git-prompt"
     fi
 
+    echo "---------------------------------"
+    echo "     zsh-completions-bio"
+    echo "---------------------------------"
+    mkdir -p "$REPO_DIR" && cd "$REPO_DIR"
+    if [[ -d zsh-completions-bio ]]; then
+        (
+        cd zsh-completions-bio || exit
+        git pull
+        )
+    else
+        git clone https://github.com/yamaton/zsh-completions-bio "${REPO_DIR}/zsh-completions-bio"
+    fi
+
+    echo "---------------------------------"
+    echo "     zsh-completions-extra"
+    echo "---------------------------------"
+    mkdir -p "$REPO_DIR" && cd "$REPO_DIR"
+    if [[ -d zsh-completions-extra ]]; then
+        (
+        cd zsh-completions-extra || exit
+        git pull
+        )
+    else
+        git clone https://github.com/yamaton/zsh-completions-extra "${REPO_DIR}/zsh-completions-extra"
+    fi
+
     [[ -f ~/.zshrc ]] && mv -f ~/.zshrc ~/.zshrc.backup
     ln -sf "$BASEDIR"/.zshrc ~
     [[ -f ~/.zshenv ]] && mv -f ~/.zshenv ~/.zshenv.backup
