@@ -30,6 +30,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         sudo apt install musl
         readonly URI="https://julialang-s3.julialang.org/bin/musl/x64/${VERSION%.*}/julia-${VERSION}-musl-x86_64.tar.gz"
         mkdir -p ~/.local/bin && cd ~/.local/bin || exit
+        rm -rf ~/.local/bin/julia-*
         wget -N "$URI"
         FILE="$(basename "$URI")"
         readonly FILE
