@@ -32,7 +32,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${NAME})" ]] || [[ "$confirm" == 
         mkdir -p ~/.local/bin/"$NAME"_"$VERSION" && cd ~/.local/bin/"$NAME"_"$VERSION"
         wget -N "$URI"
         rm -rf build/*
-        unzip "$ZIPFILE"
+        unzip -o "$ZIPFILE"
         rm -f "$ZIPFILE"
         thisdir="x86_64-unknown-linux-musl"
         echo "thisdir=$thisdir"

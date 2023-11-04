@@ -38,7 +38,7 @@ else
     uri="https://github.com/IBM/plex/releases/download/v${version}/TrueType.zip"
     filename="$(basename "$uri")"
     wget -N "$uri"
-    unzip "$filename" -d "IBM-Plex-${version}"
+    unzip -o "$filename" -d "IBM-Plex-${version}"
     rm -f "$filename"
 fi
 
@@ -52,7 +52,7 @@ version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
 uri="https://github.com/i-tu/Hasklig/releases/download/v${version}/Hasklig-${version}.zip"
 filename="$(basename "$uri")"
 wget -N "$uri"
-unzip "$filename" -d "${filename%.*}"
+unzip -o "$filename" -d "${filename%.*}"
 rm -f "$filename"
 
 
@@ -80,8 +80,8 @@ else
         mkdir -p noto-cjk && cd noto-cjk || exit
         wget -N https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip
         wget -N https://noto-website-2.storage.googleapis.com/pkgs/NotoSerifCJKjp-hinted.zip
-        unzip NotoSansCJKjp-hinted.zip -d NotoSansCJKjp-hinted
-        unzip NotoSerifCJKjp-hinted.zip -d NotoSerifCJKjp-hinted
+        unzip -o NotoSansCJKjp-hinted.zip -d NotoSansCJKjp-hinted
+        unzip -o NotoSerifCJKjp-hinted.zip -d NotoSerifCJKjp-hinted
         rm -f NotoSansCJKjp-hinted.zip
         rm -f NotoSerifCJKjp-hinted.zip
     )
@@ -109,7 +109,7 @@ else
     uri="https://github.com/microsoft/cascadia-code/releases/download/v${version}/CascadiaCode-${version}.zip"
     filename="$(basename "$uri")"
     wget -N "$uri"
-    unzip "$filename" -d "${filename%.*}"
+    unzip -o "$filename" -d "${filename%.*}"
     rm -f "$filename"
     rm -rf "${filename%.*}/otf"
     rm -rf "${filename%.*}/woff2"
@@ -129,7 +129,7 @@ else
     uri="https://github.com/tonsky/FiraCode/releases/download/${version}/Fira_Code_v${version}.zip"
     filename="$(basename "$uri")"
     wget -N "$uri"
-    unzip "$filename" -d "${filename%.*}"
+    unzip -o "$filename" -d "${filename%.*}"
     rm -f "$filename"
     rm -rf "${filename%.*}/${DIR}/variable_ttf"
     rm -rf "${filename%.*}/${DIR}/woff"
@@ -152,7 +152,7 @@ else
     filename="$(basename "$uri")"
     wget -N "$uri"
     rm -rf "$dirname"
-    unzip "$filename" -d "$dirname"
+    unzip -o "$filename" -d "$dirname"
     rm -rf "${dirname}/web"
     rm -f "$filename"
 fi
@@ -188,7 +188,7 @@ else
     uri="https://github.com/edihbrandon/RictyDiminished/archive/refs/tags/${version}.zip"
     filename="$(basename "$uri")"
     wget -N "$uri"
-    unzip "$filename"
+    unzip -o "$filename"
     rm -f "$filename"
 fi
 
@@ -203,7 +203,7 @@ if [[ "$(command -v apt)" ]]; then
 else
     filename="open-sans.zip"
     wget -N "https://fonts.google.com/download?family=Open%20Sans" -O "$filename"
-    unzip "$filename" -d "${filename%.*}"
+    unzip -o "$filename" -d "${filename%.*}"
     rm -f "$filename"
 fi
 
@@ -218,7 +218,7 @@ if [[ "$(command -v apt)" ]]; then
 else
     filename="lato.zip"
     wget -N "https://fonts.google.com/download?family=Lato" -O "$filename"
-    unzip "$filename" -d "${filename%.*}"
+    unzip -o "$filename" -d "${filename%.*}"
     rm -f "$filename"
 fi
 
@@ -229,7 +229,7 @@ echo "  Kosugi Maru"
 echo "-------------------"
 filename="kosugi-maru.zip"
 wget -N "https://fonts.google.com/download?family=Kosugi%20Maru" -O "$filename"
-unzip "$filename" -d "${filename%.*}"
+unzip -o "$filename" -d "${filename%.*}"
 rm -f "$filename"
 
 

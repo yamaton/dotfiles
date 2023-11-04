@@ -54,6 +54,6 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         echo "[INFO] Detected ~/.gitconfig --- add some lines from _delta.gitconfig if needed."
         echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
     else
-        cp "$BASEDIR"/_delta.gitconfig ~/.gitconfig
+        cp -f "$BASEDIR"/_delta.gitconfig ~/.gitconfig
     fi
 fi

@@ -74,10 +74,10 @@ yq '{channels: .channels, dependencies: .dependencies}' < env_orig.yml \
 condax export
 
 # Copy pipx package info
-cp ~/binder/_tools_pipx.txt pipx.txt
+cp -f ~/binder/_tools_pipx.txt pipx.txt
 
 # Copy apt package info
-cp ~/binder/apt.txt .
+cp -f ~/binder/apt.txt .
 
 # Archive all the files
 tar -czf "dump.tar.gz" env.yml name.txt pipx.txt apt.txt condax_exported/

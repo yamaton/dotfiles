@@ -35,7 +35,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
             *) FILE="" ;;
         esac
         URI="https://github.com/${REPO}/${NAME}/releases/download/v${VERSION}/${FILE}"
-        wget -c -O "$NAME" "$URI"
+        wget -cN -O "$NAME" "$URI"
         chmod +x "$NAME"
         mkdir -p ~/.local/bin/
         mv "$NAME" ~/.local/bin/

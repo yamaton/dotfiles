@@ -39,7 +39,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         ln -sf "${HOME}/.local/bin/julia-${VERSION}/bin/julia" "${HOME}/.local/bin/julia"
 
         mkdir -p ~/.local/share/man/man1
-        cp -r "${HOME}"/.local/bin/julia-"${VERSION}"/share/man/man1/*.1 ~/.local/share/man/man1
+        cp -f "${HOME}"/.local/bin/julia-"${VERSION}"/share/man/man1/*.1 ~/.local/share/man/man1
         mandb ~/.local/share/man
     fi
 fi

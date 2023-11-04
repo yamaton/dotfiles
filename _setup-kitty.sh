@@ -34,9 +34,9 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         ln -sf "${KITTY_HOME}/bin/kitty" ~/.local/bin/
         [[ ! -d "${KITTY_CONF_DIR}/kitty-themes" ]] && git clone --depth 1 git@github.com:dexpota/kitty-themes.git "${KITTY_CONF_DIR}/kitty-themes"
         ln -sf "${BASEDIR}/.config/kitty/kitty.conf" "$KITTY_CONF_DIR"
-        cp "$KITTY_HOME/share/applications/kitty.desktop" ~/.local/share/applications
+        cp -f "$KITTY_HOME/share/applications/kitty.desktop" ~/.local/share/applications
         sed -i "s|Icon=kitty|Icon=$KITTY_HOME/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty.desktop
         mkdir -p ~/.terminfo/x/
-        cp "${KITTY_HOME}/share/terminfo/x/xterm-kitty" ~/.terminfo/x/
+        cp -f "${KITTY_HOME}/share/terminfo/x/xterm-kitty" ~/.terminfo/x/
     fi
 fi
