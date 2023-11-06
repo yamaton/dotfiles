@@ -9,7 +9,6 @@ fi
 
 readonly CMD=tre
 readonly NAME=tre-command
-BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq -r '.versions.stable')"
 readonly VERSION
@@ -32,7 +31,7 @@ fi
 if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
-    elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
+    elif [[ "$(uname -s)" == "Linux" ]]; then
         case "$(uname -m)" in
             "x86_64")  readonly URL="https://github.com/dduan/tre/releases/download/v${VERSION}/tre-v${VERSION}-x86_64-unknown-linux-musl.tar.gz" ;;
             "armv7l")  readonly FILE="${CMD}-v${VERSION}-arm-unknown-linux-gnueabihf.tar.gz" ;;

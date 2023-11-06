@@ -30,7 +30,7 @@ fi
 if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
-    elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
+    elif [[ "$(uname -s)" == "Linux" ]]; then
         case "$(uname -m)" in
             "x86_64") readonly FILE="${CMD}_${VERSION}_Linux-64bit.tar.gz" ;;
         esac
@@ -42,7 +42,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         rm -f README.md LICENSE
         mkdir -p "$HOME/.config/bash_completion"
         mkdir -p "$HOME/.config/zsh/completions"
-        mv bash_autocomplete "$HOME/.config/bash_completion"
-        mv zsh_autocomplete "$HOME/.config/zsh/completions"
+        mv -f bash_autocomplete "$HOME/.config/bash_completion/croc"
+        mv -f zsh_autocomplete "$HOME/.config/zsh/completions/_croc"
     fi
 fi

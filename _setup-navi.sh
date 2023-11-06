@@ -30,7 +30,7 @@ fi
 if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
-    elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
+    elif [[ "$(uname -s)" == "Linux" ]]; then
         if [[ "$(uname -m)" == "x86_64" ]]; then
             readonly URL="https://github.com/denisidoro/navi/releases/download/v${VERSION}/navi-v${VERSION}-x86_64-unknown-linux-musl.tar.gz"
         elif [[ "$(uname -m)" == "armv7l" ]]; then
