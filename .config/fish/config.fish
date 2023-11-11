@@ -25,7 +25,7 @@ abbr -a -- tree tre
 abbr -a -- btc 'curl rate.sx'
 
 # set fish_complete_path
-set -a fish_complete_path ~/.config/fish/completions/extra  ~/.config/fish/completions/bio
+set -a fish_complete_path ~/.config/fish/completions/extra/completions  ~/.config/fish/completions/bio/completions
 
 # disable welcome message
 set -g fish_greeting
@@ -129,3 +129,7 @@ if string match -i -q '*microsoft*' (uname -r)
     set -gx VAGRANT_WSL_ENABLE_WINDOWS_ACCESS 1
 end
 
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
