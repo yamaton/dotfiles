@@ -15,6 +15,7 @@ BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 readonly BASEDIR
 mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts || exit
 
+
 echo ""
 echo "-------------------"
 echo "  Source Code Pro"
@@ -106,7 +107,7 @@ if [[ "$(command -v apt)" ]]; then
 else
     ownerrepo="microsoft/cascadia-code"
     version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
-    uri="https://github.com/microsoft/cascadia-code/releases/download/v${version}/CascadiaCode-${version}.zip"
+    uri="https://github.com/${ownerrepo}/releases/download/v${version}/CascadiaCode-${version}.zip"
     filename="$(basename "$uri")"
     wget -N "$uri"
     unzip -o "$filename" -d "${filename%.*}"
@@ -114,6 +115,23 @@ else
     rm -rf "${filename%.*}/otf"
     rm -rf "${filename%.*}/woff2"
 fi
+
+
+echo ""
+echo "-------------------"
+echo "  Monaspace"
+echo "-------------------"
+ownerrepo="githubnext/monaspace"
+version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
+uri="https://github.com/${ownerrepo}/releases/download/v${version}/monaspace-v${version}.zip"
+filename="$(basename "$uri")"
+wget -cN "$uri"
+unzip -o "$filename"
+rm -f "$filename"
+mkdir -p monaspace
+mv -f "${filename%.*}/fonts/variable" monaspace
+mv -f "${filename%.*}/fonts/otf" monaspace
+rm -rf "${filename%.*}"
 
 
 echo ""
@@ -126,7 +144,7 @@ if [[ "$(command -v apt)" ]]; then
 else
     ownerrepo="tonsky/FiraCode"
     version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
-    uri="https://github.com/tonsky/FiraCode/releases/download/${version}/Fira_Code_v${version}.zip"
+    uri="https://github.com/${ownerrepo}/releases/download/${version}/Fira_Code_v${version}.zip"
     filename="$(basename "$uri")"
     wget -N "$uri"
     unzip -o "$filename" -d "${filename%.*}"
@@ -148,7 +166,7 @@ else
     ownerrepo="JetBrains/JetBrainsMono"
     version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
     dirname=jetbrainsmono
-    uri="https://github.com/JetBrains/JetBrainsMono/releases/download/v${version}/JetBrainsMono-${version}.zip"
+    uri="https://github.com/${ownerrepo}/releases/download/v${version}/JetBrainsMono-${version}.zip"
     filename="$(basename "$uri")"
     wget -N "$uri"
     rm -rf "$dirname"
@@ -165,7 +183,7 @@ echo "-------------------"
 ownerrepo="cormullion/juliamono"
 version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
 dirname=juliamono
-uri="https://github.com/cormullion/juliamono/releases/download/v${version}/JuliaMono.tar.gz"
+uri="https://github.com/${ownerrepo}/releases/download/v${version}/JuliaMono.tar.gz"
 filename="$(basename "$uri")"
 rm -rf "$dirname" && mkdir "$dirname" && cd "$dirname" || exit
 wget -N "$uri"
@@ -185,7 +203,7 @@ if [[ "$(command -v apt)" ]]; then
 else
     ownerrepo="edihbrandon/RictyDiminished"
     version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
-    uri="https://github.com/edihbrandon/RictyDiminished/archive/refs/tags/${version}.zip"
+    uri="https://github.com/${ownerrepo}/archive/refs/tags/${version}.zip"
     filename="$(basename "$uri")"
     wget -N "$uri"
     unzip -o "$filename"
