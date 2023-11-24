@@ -100,6 +100,9 @@ fish_add_path $HOME/.ghcup/bin
 set -gx LESSOPEN '| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
 set -gx LESS ' -R '
 
+# syntax highlighting
+set fish_color_command green
+
 # colorful man
 # ported from ~/.less_termcap
 set -x LESS_TERMCAP_mb (tput bold; tput setaf 2) # green
