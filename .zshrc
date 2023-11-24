@@ -240,18 +240,22 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
 else
     source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
+
 ## color sheme: https://coderwall.com/p/pb1uzq/z-shell-colors
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=241'
 
-## zsh-git-prompt
-## https://github.com/zsh-git-prompt/zsh-git-prompt
-source ~/.config/zsh/zsh-git-prompt/zshrc.sh
+## git-prompt.zsh
+## https://github.com/woefe/git-prompt.zsh
+source ~/.config/zsh/git-prompt.zsh/git-prompt.zsh
 ZSH_THEME_GIT_PROMPT_PREFIX="%F{246}[%F{reset_color}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%F{246}]%F{reset_color} "
 ZSH_THEME_GIT_PROMPT_SEPARATOR="%F{246}|%F{reset_color}"
+ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg[blue]%}✚"
+ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[yellow]%}●"
+ZSH_THEME_GIT_PROMPT_STASHED="%{$fg[cyan]%}⚑"
 
 ## Custom Prompt
-PROMPT='${SSH_TTY:+"%F{green}%n%F{yellow}@%F{green}%m%F{reset_color} "}%F{green}%~%{$(es=$?; if [[ $es != '0' ]]; then echo "%F{red} [$es]%F{reset_color}"; fi; unset es)%} $(git_super_status)%F{yellow}$%F{reset_color} '
+PROMPT='${SSH_TTY:+"%F{green}%n%F{yellow}@%F{green}%m%F{reset_color} "}%F{green}%~%{$(es=$?; if [[ $es != '0' ]]; then echo "%F{red} [$es]%F{reset_color}"; fi; unset es)%} $(gitprompt)%F{yellow}$%F{reset_color} '
 
 ## Bazel completion
 zstyle ':completion:*' use-cache on
