@@ -14,11 +14,7 @@ fi
 
 # Updates in MacOS
 if [[ "$(uname -s)" == "Darwin" ]]; then
-    alias bu='
-    topgrade;
-    mamba update -n base --all -y;
-    source ~/.zshrc;
-    '
+    alias bu="topgrade; mamba update -n base --all -y"
     function ql {
         qlmanage -p "$@" >& /dev/null
     }
@@ -26,12 +22,7 @@ fi
 
 # Updates in Linux
 if [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
-    alias bu='
-    topgrade;
-    mamba update -n base --all -y;
-    source ~/.zshrc;
-    check-updates-utils;
-    '
+    alias bu="topgrade; mamba update -n base --all -y; check-updates-utils"
 fi
 
 # Open in WSL2
