@@ -14,39 +14,15 @@ alias ls="ls --color"
 alias la='ls -A'
 alias ll='ls -alFh'
 
-alias mv="mv -i"
-alias cp="cp -i"
-if [[ "$(command -v trash)" ]]; then
-    alias rm=trash
-else
-    alias rm="rm -i"
-fi
-alias mkdir="mkdir -p"
-alias cht="cht.sh"
-alias ncdu="ncdu --color dark"
-
 if [[ "$TERM" == "xterm-kitty" ]] && [[ "$(command -v kitty)" ]]; then
     alias ssh="kitty +kitten ssh"
 fi
-
-# zoxide as replacement to autojump
-[[ "$(command -v zoxide)" ]] && alias j=z
-
-if [[ "$(command -v conda)" ]]; then
-    alias base="conda deactivate; conda activate"
-    alias tf="conda deactivate; conda activate tf"
-    alias torch="conda deactivate; conda activate torch"
-fi
-
-[[ "$(command -v nvim)" ]] && alias vim=nvim
 
 # Updates in MacOS
 if [[ "$(uname -s)" == "Darwin" ]]; then
     alias bu='
     topgrade;
     mamba update -n base --all -y;
-    mamba update -n tf --all -y;
-    mamba update -n torch --all -y;
     source ~/.zshrc;
     '
     function ql {
@@ -59,7 +35,6 @@ if [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
     alias bu='
     topgrade;
     mamba update -n base --all -y;
-    mamba update -n tf --all -y;
     source ~/.zshrc;
     check-updates-utils;
     '
@@ -113,7 +88,6 @@ function corona {
     "/states/us?minimal=true&top=${n_us_states}" \
     "?minimal=true&top=${n_countries}"
 }
-alias btc="curl rate.sx"
 
 
 ## =======================================
@@ -256,6 +230,39 @@ ZSH_THEME_GIT_PROMPT_STASHED="%{$fg[cyan]%}⚑"
 
 ## Custom Prompt
 PROMPT='${SSH_TTY:+"%F{green}%n%F{yellow}@%F{green}%m%F{reset_color} "}%F{green}%~%{$(es=$?; if [[ $es != '0' ]]; then echo "%F{red} [$es]%F{reset_color}"; fi; unset es)%} $(gitprompt)%F{yellow}$%F{reset_color} '
+
+## zsh-abbr
+## https://github.com/olets/zsh-abbr
+if [[ "$(uname -s)" == "Darwin" ]]; then
+    source "$(brew --prefix)"/share/zsh-abbr/zsh-abbr.zsh
+else
+    source ~/.config/zsh/zsh-abbr/zsh-abbr.zsh
+fi
+
+if [[ "$(command -v abbr)" ]]; then
+    abbr -S -q mv="mv -i"
+    abbr -S -q cp="cp -i"
+    abbr -S -q mkdir="mkdir -p"
+    if [[ "$(command -v trash)" ]]; then
+        abbr -S -q rm=trash
+    else
+        abbr -S -q rm="rm -i"
+    fi
+    # zoxide as replacement to autojump
+    [[ "$(command -v zoxide)" ]] && abbr -S -q j=z
+    [[ "$(command -v conda)" ]] && abbr -S -q base="conda deactivate; conda activate"
+    [[ "$(command -v nvim)" ]] && abbr -S -q vim=nvim
+    [[ "$(command -v ncdu)" ]] && abbr -S -f -qq du="ncdu --color dark"
+    abbr -S -q btc="curl rate.sx"
+    abbr -S -q cht="cht.sh"
+
+    if [[ "$(command -v gh)" ]]; then
+        abbr -S -q sugg="gh copilot suggest -t shell"
+        abbr -S -q suggest="gh copilot suggest -t shell"
+        abbr -S -q expl="gh copilot explain"
+        abbr -S -q explain="gh copilot explain"
+    fi
+fi
 
 ## Bazel completion
 zstyle ':completion:*' use-cache on
