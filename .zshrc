@@ -66,24 +66,6 @@ fi
 alias removecolor="sed $'s,\x1b\\[[0-9;]*[a-zA-Z],,g'"
 
 
-##-------------------------------------------------------------
-## Shows ranking of countries and US states by COVID-19 cases
-##
-## Arguments:
-##   Number of top countries (default: 20)
-##   Number of top US states (default: 15)
-## Outputs:
-##   Writes ranks to stdout
-##-------------------------------------------------------------
-function corona {
-    local n_countries="${1:-20}"
-    local n_us_states="${2:-15}"
-    parallel curl -s https://corona-stats.online{} ::: \
-    "/states/us?minimal=true&top=${n_us_states}" \
-    "?minimal=true&top=${n_countries}"
-}
-
-
 ## =======================================
 ##      Run application by Extension
 ## =======================================
