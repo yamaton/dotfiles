@@ -23,6 +23,10 @@ abbr -a -- j z
 abbr -a -- cht cht.sh
 abbr -a -- tree tre
 abbr -a -- btc 'curl rate.sx'
+abbr -a -- expl 'gh copilot explain'
+abbr -a -- sugg 'gh copilot suggest -t shell'
+abbr -a -- explain 'gh copilot explain'
+abbr -a -- suggest 'gh copilot suggest -t shell'
 
 # set fish_complete_path
 set -a fish_complete_path ~/.config/fish/completions/extra/completions  ~/.config/fish/completions/bio/completions
