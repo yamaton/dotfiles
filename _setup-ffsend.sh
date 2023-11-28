@@ -10,12 +10,10 @@ fi
 readonly NAME=ffsend
 readonly REPO=timvisee
 
-BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-readonly BASEDIR
 VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${NAME}.json | jq -r '.versions.stable')"
 readonly VERSION
 
-if [[ "$(command -v $CMD)" ]]; then
+if [[ "$(command -v "$CMD")" ]]; then
     CURRENT="$("$CMD" --version | cut -d ' ' -f2 | cut -d 'v' -f2)"
     readonly CURRENT
     confirm=N
@@ -26,7 +24,7 @@ if [[ "$(command -v $CMD)" ]]; then
     fi
 fi
 
-if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
+if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v "$CMD")" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$NAME"
     elif [[ "$(uname -s)" == "Linux" ]]; then

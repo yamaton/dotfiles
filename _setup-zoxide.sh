@@ -39,7 +39,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${NAME})" ]] || [[ "$confirm" == 
                 if [[ "$confirm" == [yY] ]]; then
                     BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
                     readonly BASEDIR
-                    source "${BASEDIR}/setup-rust-and-cargo.sh"
+                    source "$BASEDIR/setup-rust-and-cargo.sh"
                 else
                     echo "Exit without installing ${NAME}"
                     exit 0

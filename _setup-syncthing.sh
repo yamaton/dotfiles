@@ -34,14 +34,15 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         esac
         readonly URI="https://github.com/syncthing/syncthing/releases/download/v${VERSION}/syncthing-linux-${ARCH}-v${VERSION}.tar.gz"
         wget -N "$URI"
-        readonly FILE="$(basename "$URI")"
+        FILE="$(basename "$URI")"
+        readonly FILE
         readonly DIR="${FILE%.tar.gz}"
         tar -xf ./"$FILE"
         rm "$FILE"
         mkdir -p ~/.local/bin
         rm -rf ~/.local/bin/syncthing*
         mv -f ./"$DIR" ~/.local/bin/"$DIR"
-        [[ -f ~/.local/bin/"$CMD" ]] && mv -f "~/.local/bin/${CMD}" "~/.local/bin/${CMD}.backup"
+        [[ -f ~/.local/bin/"$CMD" ]] && mv -f "$HOME/.local/bin/${CMD}" "$HOME/.local/bin/${CMD}.backup"
         ln -sf "$HOME/.local/bin/$DIR/$CMD" ~/.local/bin
     fi
 fi

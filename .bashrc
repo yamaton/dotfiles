@@ -129,20 +129,19 @@ done
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/vierbein/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
+if $HOME/mambaforge/bin/conda shell.bash hook; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/vierbein/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/home/vierbein/mambaforge/etc/profile.d/conda.sh"
+    if [ -f "$HOME/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "$HOME/mambaforge/etc/profile.d/conda.sh"
     else
-        export PATH="/home/vierbein/mambaforge/bin:$PATH"
+        export PATH="$HOME/mambaforge/bin:$PATH"
     fi
 fi
 unset __conda_setup
 
-if [ -f "/home/vierbein/mambaforge/etc/profile.d/mamba.sh" ]; then
-    . "/home/vierbein/mambaforge/etc/profile.d/mamba.sh"
+if [ -f "$HOME/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "$HOME/mambaforge/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
 

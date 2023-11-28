@@ -29,15 +29,17 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v $CMD)" ]] || [[ "$confirm" == [yY
         brew install "$NAME"
     elif [[ "$(uname -s)" == "Linux" ]]; then
         if [[ "$(uname -m)" == "x86_64" ]] && [[ "$(command -v apt)" ]]; then
-            readonly URI="https://github.com/BurntSushi/ripgrep/releases/download/${VERSION}/ripgrep_${VERSION}-1_amd64.deb"
-            wget -N "${URI}"
-            file="$(basename $URI)"
+            URI="https://github.com/BurntSushi/ripgrep/releases/download/${VERSION}/ripgrep_${VERSION}-1_amd64.deb"
+            readonly URI
+            wget -N "$URI"
+            file="$(basename "$URI")"
             sudo apt install "./$file" -y
             rm -f "./$file"
         elif [[ "$(uname -m)" == "armv7l" ]]; then
             readonly URI="https://github.com/BurntSushi/ripgrep/releases/download/${VERSION}/ripgrep-${VERSION}-arm-unknown-linux-gnueabihf.tar.gz"
-            curl -L "${URI}" | tar -xzf -
-            readonly DIR="$(basename ${URI})"
+            curl -L "$URI" | tar -xzf -
+            DIR="$(basename "$URI")"
+            readonly DIR
             mv -f "${DIR}/rg" ~/.local/bin/
             rm -rf "ripgrep-${VERSION}-arm-unknown-linux-gnueabihf"
         elif [[ "$(command -v apt)" ]]; then

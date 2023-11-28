@@ -31,15 +31,15 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v $CMD)" ]] || [[ "$confirm" == [yY
         if [[ "$(uname -m)" == "x86_64" ]] && [[ "$(command -v apt)" ]]; then
             readonly URI="https://github.com/BurntSushi/${NAME}/releases/download/${VERSION}/${NAME}-${VERSION}-x86_64-unknown-linux-musl.tar.gz"
             wget -N "$URI"
-            readonly FILE="$(basename ${URI})"
-            readonly DIR="${FILE%.*.*}"
+            FILE="$(basename "$URI")"
+            readonly FILE
             mv -f "$CMD" ~/.local/bin/
             rm -rf "$FILE"
         elif [[ "$(uname -m)" == "armv7l" ]]; then
             readonly URI="https://github.com/BurntSushi/${NAME}/releases/download/${VERSION}/${NAME}-${VERSION}-arm-unknown-linux-gnueabihf.tar.gz"
             wget -N "$URI"
-            readonly FILE="$(basename ${URI})"
-            readonly DIR="${FILE%.*.*}"
+            FILE="$(basename "$URI")"
+            readonly FILE
             mv -f "$CMD" ~/.local/bin/
             rm -rf "$FILE"
         elif [[ "$(command -v apt)" ]]; then
