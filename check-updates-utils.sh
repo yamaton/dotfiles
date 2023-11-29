@@ -8,11 +8,11 @@ if [[ "${TRACE-0}" == "1" ]]; then
 fi
 
 BASEDIR="$(dirname "$(readlink -f "$0")")"
-APPLIST=("$(cat "$BASEDIR"/check-updates-apps.txt)")
-
+# -t strips newline
+readarray -t APPLIST < "$BASEDIR/check-updates-apps.txt"
 echo ""
 echo "―― $(date +"%H:%M:%S") - Utils ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
-for app in ${APPLIST[*]}; do
+for app in "${APPLIST[@]}"; do
     case "$app" in
         "neovim"   ) cmd=nvim ;;
         "ripgrep"  ) cmd=rg ;;

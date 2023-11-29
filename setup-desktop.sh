@@ -49,7 +49,7 @@ cd "${BASEDIR}" || exit
 
 
 apps=("joplin" "kitty")
-for app in ${apps[*]}; do
+for app in "${apps[@]}"; do
     echo "-------------------------"
     echo "   $app"
     echo "-------------------------"

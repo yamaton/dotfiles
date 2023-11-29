@@ -8,16 +8,16 @@ if [[ "${TRACE-0}" == "1" ]]; then
 fi
 
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-APPS=("$(cat "${BASEDIR}/misc_apps.txt")")
+readarray -t APPS < "${BASEDIR}/misc_apps.txt"
 readonly BASEDIR
 readonly APPS
 
 if [[ "$(uname -s)" == "Darwin" ]]; then
-    for app in ${APPS[*]}; do
+    for app in "${APPS[@]}"; do
         brew install "$(printf "%s" "$app")"
     done
 elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
-    for app in ${APPS[*]}; do
+    for app in "${APPS[@]}"; do
         echo ""
         echo "---------------"
         echo " $app"
