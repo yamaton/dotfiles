@@ -31,6 +31,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v zsh)" ]]; then
             )
         else
             git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${REPO_DIR}/zsh-syntax-highlighting"
+            chmod -R 755 "${REPO_DIR}/zsh-syntax-highlighting"
         fi
 
         echo "---------------------------------"
@@ -44,23 +45,40 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v zsh)" ]]; then
             )
         else
             git clone https://github.com/zsh-users/zsh-autosuggestions "${REPO_DIR}/zsh-autosuggestions"
+            chmod -R 755 "${REPO_DIR}/zsh-autosuggestions"
         fi
     fi
 
 
-    # homebrew's olivierverdier/zsh-git-prompt is unmaintained.
     echo "---------------------------------"
-    echo "     zsh-git-prompt"
+    echo "     git-prompt.zsh"
     echo "---------------------------------"
     mkdir -p "$REPO_DIR" && cd "$REPO_DIR"
-    if [[ -d zsh-git-prompt ]]; then
+    if [[ -d git-prompt.zsh ]]; then
         (
-        cd zsh-git-prompt || exit
+        cd git-prompt.zsh || exit
         git pull
         )
     else
-        git clone https://github.com/zsh-git-prompt/zsh-git-prompt "${REPO_DIR}/zsh-git-prompt"
+        git clone https://github.com/woefe/git-prompt.zsh "${REPO_DIR}/git-prompt.zsh"
+        chmod -R 755 "${REPO_DIR}/git-prompt.zsh"
     fi
+
+
+    echo "---------------------------------"
+    echo "     zsh-abbr"
+    echo "---------------------------------"
+    mkdir -p "$REPO_DIR" && cd "$REPO_DIR"
+    if [[ -d zsh-abbr ]]; then
+        (
+        cd zsh-abbr || exit
+        git pull
+        )
+    else
+        git clone https://github.com/olets/zsh-abbr "${REPO_DIR}/zsh-abbr"
+        chmod -R 755 "${REPO_DIR}/zsh-abbr"
+    fi
+
 
     echo "---------------------------------"
     echo "     zsh-completions-bio"
@@ -73,6 +91,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v zsh)" ]]; then
         )
     else
         git clone https://github.com/yamaton/zsh-completions-bio "${REPO_DIR}/zsh-completions-bio"
+        chmod -R 755 "${REPO_DIR}/zsh-completions-bio"
     fi
 
     echo "---------------------------------"
@@ -86,6 +105,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v zsh)" ]]; then
         )
     else
         git clone https://github.com/yamaton/zsh-completions-extra "${REPO_DIR}/zsh-completions-extra"
+        chmod -R 755 "${REPO_DIR}/zsh-completions-extra"
     fi
 
     [[ -f ~/.zshrc ]] && mv -f ~/.zshrc ~/.zshrc.backup
