@@ -60,5 +60,17 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${NAME})" ]] || [[ "$confirm" == 
         mv -f ./topgrade "${HOME}/.local/bin/"
 
         cp -f "$BASEDIR"/.config/topgrade.toml ~/.config/topgrade.toml
+
+        # check if nala is installed in debian systems
+        if [[ "$(command -v apt)" ]] && [[ ! "$(command -v nala)" ]]; then
+            echo "--------------------------------------------"
+            echo "Installing nala"
+            echo "--------------------------------------------"
+            wget https://gitlab.com/volian/volian-archive/uploads/b20bd8237a9b20f5a82f461ed0704ad4/volian-archive-keyring_0.1.0_all.deb
+            wget https://gitlab.com/volian/volian-archive/uploads/d6b3a118de5384a0be2462905f7e4301/volian-archive-nala_0.1.0_all.deb
+            sudo apt install ./volian-archive-keyring_0.1.0_all.deb
+            sudo apt install ./volian-archive-nala_0.1.0_all.deb
+            sudo apt update && sudo apt install nala
+        fi
     fi
 fi
