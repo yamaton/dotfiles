@@ -32,7 +32,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         brew install "$CMD"
     elif [[ "$(uname -s)" == "Linux" ]]; then
         case "$(uname -m)" in
-            "x86_64") readonly FILE="${CMD}_${VERSION}_Linux-64bit.tar.gz" ;;
+            "x86_64") readonly FILE="${CMD}_v${VERSION}_Linux-64bit.tar.gz" ;;
         esac
         readonly URL="https://github.com/schollz/croc/releases/download/v${VERSION}/${FILE}"
         wget -N "$URL"
