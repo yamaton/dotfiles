@@ -16,7 +16,8 @@ if [[ "$(command -v $CMD)" ]]; then
     CURRENT="$("$CMD" --version | cut -d ' ' -f2)"
     readonly CURRENT
     confirm=N
-    if [[ "$VERSION" == "$CURRENT" ]]; then        echo "... already the latest: ${CMD} ${CURRENT}"
+    if [[ "$VERSION" == "$CURRENT" ]]; then
+        echo "... already the latest: ${CMD} ${CURRENT}"
     else
         echo "${CMD} ${VERSION} is available: (current ${CMD} ${CURRENT})"
         read -rp "Upgrade to ${CMD} ${VERSION}? (y/N): " confirm
@@ -27,7 +28,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "${CMD}"
     elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(uname -m)" == "x86_64" ]]; then
-        readonly URI="https://github.com/extrawurst/gitui/releases/download/v${VERSION}/gitui-linux-musl.tar.gz"
+        readonly URI="https://github.com/extrawurst/gitui/releases/download/v${VERSION}/gitui-linux-x86_64.tar.gz"
         wget -N "${URI}"
         FILE="$(basename "$URI")"
         readonly FILE
