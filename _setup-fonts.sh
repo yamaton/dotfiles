@@ -128,11 +128,12 @@ filename="$(basename "$uri")"
 wget -cN "$uri"
 unzip -o "$filename"
 rm -f "$filename"
-mkdir -p monaspace
-mv -f "${filename%.*}/fonts/variable" monaspace
-mv -f "${filename%.*}/fonts/otf" monaspace
-rm -rf "${filename%.*}"
-
+(
+    mkdir -p monaspace
+    mv -f "${filename%.*}/fonts/variable" monaspace
+    mv -f "${filename%.*}/fonts/otf" monaspace
+    rm -rf "${filename%.*}"
+)
 
 echo ""
 echo "-------------------"
@@ -185,12 +186,21 @@ version="$("$BASEDIR"/get-version-github.sh "$ownerrepo")"
 dirname=juliamono
 uri="https://github.com/${ownerrepo}/releases/download/v${version}/JuliaMono.tar.gz"
 filename="$(basename "$uri")"
-rm -rf "$dirname" && mkdir "$dirname" && cd "$dirname" || exit
-wget -N "$uri"
-tar -xvf "$filename"
-rm -f "$filename"
-cd ..
+rm -rf "$dirname"
+(
+    mkdir "$dirname" && cd "$dirname" || exit
+    wget -N "$uri"
+    tar -xvf "$filename"
+    rm -f "$filename"
+)
 
+
+echo ""
+echo "-------------------"
+echo "  Comic Mono"
+echo "-------------------"
+wget -N "https://dtinth.github.io/comic-mono-font/ComicMono.ttf"
+wget -N "https://dtinth.github.io/comic-mono-font/ComicMono-Bold.ttf"
 
 
 echo ""
