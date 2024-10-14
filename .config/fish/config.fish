@@ -67,7 +67,7 @@ else if test -f "$HOME/miniconda3/etc/fish/conf.d/mamba.fish"
 end
 
 # system update
-alias bu="topgrade; sudo apt update && sudo apt full-upgrade; mamba update -c conda-forge --all -y; check-updates-utils"
+alias bu="topgrade; check-updates-utils"
 
 # zoxide
 if type -q zoxide
