@@ -129,6 +129,7 @@ wget -cN "$uri"
 unzip -o "$filename"
 rm -f "$filename"
 (
+    rm -rf monaspace
     mkdir -p monaspace
     mv -f "${filename%.*}/fonts/variable" monaspace
     mv -f "${filename%.*}/fonts/otf" monaspace
