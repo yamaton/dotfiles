@@ -272,10 +272,14 @@ if [ $? -eq 0 ] && [[ -x "$HOME/mambaforge/bin/conda" ]]; then
     eval "$("$HOME/mambaforge/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
 elif [ $? -eq 0 ] && [[ -x "$HOME/miniconda3/bin/conda" ]]; then
     eval "$("$HOME/miniconda3/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
+elif [ $? -eq 0 ] && [[ -x "$HOME/miniforge3/bin/conda" ]]; then
+    eval "$("$HOME/miniforge3/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
 elif [ -f "$HOME/mambaforge/etc/profile.d/conda.sh" ]; then
     . "$HOME/mambaforge/etc/profile.d/conda.sh"
 elif [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
     . "$HOME/miniconda3/etc/profile.d/conda.sh"
+elif [ -f "$HOME/miniforge3/etc/profile.d/conda.sh" ]; then
+    . "$HOME/miniforge3/etc/profile.d/conda.sh"
 else
     export PATH="$HOME/mambaforge/bin:$PATH"
 fi
@@ -285,6 +289,8 @@ if [ -f "$HOME/mambaforge/etc/profile.d/mamba.sh" ]; then
     . "$HOME/mambaforge/etc/profile.d/mamba.sh"
 elif [ -f "$HOME/miniconda3/etc/profile.d/mamba.sh" ]; then
     . "$HOME/miniconda3/etc/profile.d/mamba.sh"
+elif [ -f "$HOME/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "$HOME/miniforge3/etc/profile.d/mamba.sh"
 fi
 
 

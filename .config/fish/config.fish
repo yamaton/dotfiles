@@ -57,6 +57,8 @@ if test -x "$HOME/mambaforge/bin/conda"
     eval "$HOME/mambaforge/bin/conda" "shell.fish" "hook" $argv | source
 else if test -x "$HOME/miniconda3/bin/conda"
     eval "$HOME/miniconda3/bin/conda" "shell.fish" "hook" $argv | source
+else if test -x "$HOME/miniforge3/bin/conda"
+    eval "$HOME/miniforge3/bin/conda" "shell.fish" "hook" $argv | source
 end
 
 # initialize mamba
@@ -64,6 +66,8 @@ if test -f "$HOME/mambaforge/etc/fish/conf.d/mamba.fish"
     source "$HOME/mambaforge/etc/fish/conf.d/mamba.fish"
 else if test -f "$HOME/miniconda3/etc/fish/conf.d/mamba.fish"
     source "$HOME/miniconda3/etc/fish/conf.d/mamba.fish"
+else if test -f "$HOME/miniforge3/etc/fish/conf.d/mamba.fish"
+    source "$HOME/miniforge3/etc/fish/conf.d/mamba.fish"
 end
 
 # system update
