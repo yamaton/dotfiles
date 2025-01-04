@@ -140,7 +140,7 @@ if string match -i -q '*microsoft*' (uname -r)
     set -gx VAGRANT_WSL_ENABLE_WINDOWS_ACCESS 1
 end
 
-
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
