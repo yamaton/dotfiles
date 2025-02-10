@@ -35,9 +35,9 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v nvim)" ]] || [[ "$confirm" == [yY
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$NAME"
     elif [[ "$(uname -m)" == "x86_64" ]] && [[ "$(uname -s)" == "Linux" ]]; then
-        readonly URI="https://github.com/neovim/neovim/releases/download/v${VERSION}/nvim.appimage"
+        readonly URI="https://github.com/neovim/neovim/releases/download/v${VERSION}/nvim-linux-x86_64.appimage"
         mkdir -p "$BIN_DIR" && cd "$BIN_DIR"
-        wget -N "$URI"
+        wget -N "$URI" -O nvim.appimage
         chmod +x ./nvim.appimage
         sudo apt install -y fuse
         sudo ln -sf "${BIN_DIR}/nvim.appimage" /usr/local/bin/nvim
