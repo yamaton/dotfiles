@@ -5,6 +5,9 @@ set -gx EDITOR nvim
 set -gx PAGER less
 set -gx XDG_CONFIG_HOME ~/.config
 
+# colorize orphaned links
+set -gx LS_COLORS "or=40;31;01"
+
 # telemetry optout
 set -gx DO_NOT_TRACK 1  # https://consoledonottrack.com/
 set -gx DOTNET_CLI_TELEMETRY_OPTOUT 1
@@ -89,7 +92,8 @@ fish_add_path ~/.gems/bin
 fish_add_path ~/.yarn/bin
 
 # npm
-fish_add_path ~/.local/bin/node/bin
+# fish_add_path ~/.local/bin/node/bin
+fish_add_path ~/.local/share/condax/envs/nodejs/bin
 
 # deno
 set -gx DENO_INSTALL ~/.deno

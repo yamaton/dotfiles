@@ -7,6 +7,9 @@ export PAGER=less
 export SHELL=zsh
 export LC_NUMERIC=en_US.UTF-8
 
+# colorize orphaned links
+export LS_COLORS="or=40;31;01"
+
 # XDG
 [[ "$(uname -s)" == "Linux" ]] && export XDG_CONFIG_HOME="$HOME/.config"
 

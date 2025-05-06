@@ -7,6 +7,9 @@ export PAGER=less
 export SHELL=zsh
 export LC_NUMERIC=en_US.UTF-8
 
+# colorize orphaned links
+export LS_COLORS="or=40;31;01"
+
 # XDG
 [[ "$(uname -s)" == "Linux" ]] && export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -64,3 +67,23 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
         export MANPATH="$(brew --prefix)/opt/coreutils/libexec/gnuman:${MANPATH}"
     fi
 fi
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+    *:/home/vierbein/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=/home/vierbein/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+
+# <<< juliaup initialize <<<
+
+. "$HOME/.cargo/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/vierbein/.lmstudio/bin"
