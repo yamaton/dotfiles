@@ -93,7 +93,7 @@ fish_add_path ~/.yarn/bin
 
 # npm
 # fish_add_path ~/.local/bin/node/bin
-fish_add_path ~/.local/share/condax/envs/nodejs/bin
+fish_add_path ~/.pixi/envs/nodejs/bin
 
 # deno
 set -gx DENO_INSTALL ~/.deno
