@@ -29,7 +29,7 @@ fi
 
 if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
-        brew install "$CMD"
+        brew install "$HOMEBREW_NAME"
     elif [[ "$(uname -s)" == "Linux" ]] && [[ "$(command -v apt)" ]]; then
         case "$(uname -m)" in
             "x86_64") readonly FILE="git-delta-musl_${VERSION}_amd64.deb" ;;
@@ -41,6 +41,8 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         wget -N "$URI"
         sudo apt install ./"$FILE"
         rm -f ./"$FILE"
+    elif [[ -x "$(command -v pixi)" ]]; then
+        pixi global install "$HOMEBREW_NAME"
     fi
 
     wget -N "https://raw.githubusercontent.com/dandavison/delta/master/etc/completion/completion.bash"

@@ -33,6 +33,9 @@ fpath+=( $HOME/miniconda3/share/zsh/conda-zsh-completion "${fpath[@]}" )
 ## local bin
 export PATH="$HOME/.local/bin:$PATH"
 
+## pixi global
+export PATH="$HOME/.pixi/bin:$PATH"
+
 ## rust and cargo
 if [[ "$(command -v cargo)" ]]; then
     export PATH="$HOME/.cargo/bin:$PATH"
@@ -51,7 +54,8 @@ export POWERSHELL_TELEMETRY_OPTOUT=1
 export CHTSH="$HOME"/.config/cht.sh
 
 ## npm
-export PATH="$PATH:$HOME/.local/bin/node/bin"
+# export PATH="$PATH:$HOME/.local/bin/node/bin"
+export PATH="$PATH:$HOME/.pixi/envs/nodejs/bin"
 
 ## pipx
 export PATH="$HOME/.local/bin:$PATH"

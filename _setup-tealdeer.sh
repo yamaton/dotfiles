@@ -30,7 +30,8 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$NAME"
         ln -sf "${BASEDIR}/.config/${NAME}" "${HOME}/Library/Application Support/${NAME}"
-
+    elif [[ -x "$(command -v pixi)" ]]; then
+        pixi global install "$NAME"
     elif [[ "$(uname -s)" == "Linux" ]]; then
         case "$(uname -m)" in
             "x86_64") FILE="tealdeer-linux-x86_64-musl" ;;
@@ -43,16 +44,16 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         chmod +x tldr
         mkdir -p ~/.local/bin/
         mv tldr ~/.local/bin/
-
-        URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_zsh"
-        mkdir -p ~/.config/zsh/completions
-        wget -cN -O ~/.config/zsh/completions/_tldr "$URI"
-
-        URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_fish"
-        mkdir -p ~/.config/fish/completions
-        wget -cN -O ~/.config/fish/completions/tldr.fish "$URI"
-
-        mkdir -p "${HOME}/.config/tealdeer" && cd "${HOME}/.config/tealdeer"
-        wget -cN "https://raw.githubusercontent.com/yamaton/dotfiles/master/.config/tealdeer/config.toml"
     fi
+
+    URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_zsh"
+    mkdir -p ~/.config/zsh/completions
+    wget -cN -O ~/.config/zsh/completions/_tldr "$URI"
+
+    URI="https://github.com/dbrgn/tealdeer/releases/download/v${VERSION}/completions_fish"
+    mkdir -p ~/.config/fish/completions
+    wget -cN -O ~/.config/fish/completions/tldr.fish "$URI"
+
+    mkdir -p "${HOME}/.config/tealdeer" && cd "${HOME}/.config/tealdeer"
+    wget -cN "https://raw.githubusercontent.com/yamaton/dotfiles/master/.config/tealdeer/config.toml"
 fi

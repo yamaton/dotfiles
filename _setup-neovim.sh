@@ -39,17 +39,17 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v nvim)" ]] || [[ "$confirm" == [yY
         mkdir -p "$BIN_DIR" && cd "$BIN_DIR"
         wget -N "$URI" -O nvim.appimage
         chmod +x ./nvim.appimage
-        sudo apt install -y fuse
         sudo ln -sf "${BIN_DIR}/nvim.appimage" /usr/local/bin/nvim
-
-        mkdir -p ~/.local/share/man/man1
-        readonly MANURL="https://raw.githubusercontent.com/neovim/neovim/v${VERSION}/src/man/nvim.1"
-        wget --output-document ~/.local/share/man/man1/nvim.1 -N "$MANURL"
-        mandb ~/.local/share/man
-
+    elif [[ -x "$(command -v pixi)" ]]; then
+        pixi global install "$CMD"
     elif [[ "$(command -v apt)" ]]; then
         sudo apt install --no-install-recommends -y neovim
     fi
+
+    mkdir -p ~/.local/share/man/man1
+    readonly MANURL="https://raw.githubusercontent.com/neovim/neovim/v${VERSION}/src/man/nvim.1"
+    wget --output-document ~/.local/share/man/man1/nvim.1 -N "$MANURL"
+    mandb ~/.local/share/man
 
     mkdir -p "$REPO_DIR" && cd "$REPO_DIR"
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

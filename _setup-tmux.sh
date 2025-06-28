@@ -53,6 +53,8 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v tmux)" ]] || [[ "$confirm" == [yY
 
         # clipboard integration
         sudo apt install -y xsel wl-clipboard
+    elif [[ -x "$(command -v pixi)" ]]; then
+        pixi global install "$CMD"
     fi
 
     [[ -f "${HOME}/.tmux.conf" ]] && mv -f "${HOME}/.tmux.conf" "${HOME}/.tmux.conf.backup"

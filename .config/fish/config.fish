@@ -46,6 +46,9 @@ if type -q go
     fish_add_path (go env GOPATH)/bin
 end
 
+# pixi global
+fish_add_path "$HOME/.pixi/bin"
+
 # dotnet tools
 fish_add_path ~/.dotnet/tools
 

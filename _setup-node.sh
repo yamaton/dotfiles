@@ -11,7 +11,7 @@ readonly cmd=node
 version="$(curl --silent https://formulae.brew.sh/api/formula/${cmd}.json | jq -r '.versions.stable')"
 readonly version
 
-if [[ "$(command -v $CMD)" ]]; then
+if [[ "$(command -v $cmd)" ]]; then
     current="$("$cmd" --version | cut -c 2-)"
     readonly CURRENT
     confirm=N
@@ -23,7 +23,7 @@ if [[ "$(command -v $CMD)" ]]; then
 fi
 
 
-if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
+if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${cmd})" ]] || [[ "$confirm" == [yY] ]]; then
 
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$cmd"
@@ -45,5 +45,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         rm -rf "$HOME"/.local/bin/node
         mv "$dir" "$HOME"/.local/bin/node
         rm -f ./"$file"
+   elif [[ -x "$(command -v pixi)" ]]; then
+        pixi global install "$cmd"
     fi
 fi

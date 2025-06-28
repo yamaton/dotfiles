@@ -50,5 +50,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         )
         mandb ~/.local/share/man/
         rm -rf "$DIR" "$FILE"
+    elif [[ -x "$(command -v pixi)" ]]; then
+        pixi global install "$CMD"
     fi
 fi

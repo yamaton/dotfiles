@@ -43,5 +43,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${NAME})" ]] || [[ "$confirm" == 
         mandb ~/.local/share/man
         cd ..
         rm -rf "$NAME"_"$VERSION"
+    elif [[ -x "$(command -v pixi)" ]]; then
+        pixi global install "$NAME"
     fi
 fi

@@ -63,5 +63,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${NAME})" ]] || [[ "$confirm" == 
         mv "${DIRNAME}"/man/man1/*.1 ~/.local/share/man/man1
         mandb ~/.local/share/man
         rm -rf "$DIRNAME"
+    elif [[ -x "$(command -v pixi)" ]]; then
+        pixi global install "$NAME"
     fi
 fi

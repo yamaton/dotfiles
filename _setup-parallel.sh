@@ -26,6 +26,8 @@ fi
 if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [yY] ]]; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
         brew install "$CMD"
+    elif [[ -x "$(command -v pixi)" ]]; then
+        pixi global install "$CMD"
     else
         readonly URI="https://ftpmirror.gnu.org/parallel/parallel-latest.tar.bz2"
         wget -N "$URI"

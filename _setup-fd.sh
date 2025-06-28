@@ -8,6 +8,7 @@ if [[ "${TRACE-0}" == "1" ]]; then
 fi
 
 readonly CMD=fd
+readonly NAME=fd-find
 
 VERSION="$(curl --silent https://formulae.brew.sh/api/formula/${CMD}.json | jq -r '.versions.stable')"
 readonly VERSION
@@ -50,5 +51,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         )
         mandb ~/.local/share/man/
         rm -rf "$DIR" "$FILE"
+    elif [[ -x "$(command -v pixi)" ]]; then
+        pixi global install "$NAME"
     fi
 fi

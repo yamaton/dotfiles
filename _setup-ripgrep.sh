@@ -45,5 +45,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v $CMD)" ]] || [[ "$confirm" == [yY
         elif [[ "$(command -v apt)" ]]; then
             sudo apt install ripgrep -y
         fi
+    elif [[ -x "$(command -v pixi)" ]]; then
+        pixi global install "$NAME"
     fi
 fi

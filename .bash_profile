@@ -16,6 +16,9 @@ export LS_COLORS="or=40;31;01"
 ## local bin
 export PATH="$HOME/.local/bin:$PATH"
 
+## pixi global
+export PATH="$HOME/.pixi/bin:$PATH"
+
 ## rust
 export PATH="$HOME/.cargo/bin:$PATH"
 export RUST_BACKTRACE=1
@@ -31,7 +34,8 @@ export POWERSHELL_TELEMETRY_OPTOUT=1
 export CHTSH="$HOME"/.config/cht.sh
 
 ## npm
-export PATH="$PATH:$HOME/.local/bin/node/bin"
+# export PATH="$PATH:$HOME/.local/bin/node/bin"
+export PATH="$PATH:$HOME/.pixi/envs/nodejs/bin"
 
 ## pipx
 export PATH="$HOME/.local/bin:$PATH"

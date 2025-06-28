@@ -40,6 +40,8 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v nnn)" ]] || [[ "$confirm" == [yY]
         tar -xvf ./"$FILE"
         mv -f nnn-static ~/.local/bin/nnn
         rm -f "$FILE"
+    elif [[ -x "$(command -v pixi)" ]]; then
+        pixi global install "$CMD"
     else
         echo "${CMD}: Unavailable for $(uname -m)"
     fi
