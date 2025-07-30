@@ -14,7 +14,8 @@ if [[ "$(command -v $CMD)" ]]; then
     CURRENT="$("$CMD" --version | cut -d ' ' -f1)"
     readonly CURRENT
     confirm=N
-    if [[ "$VERSION" == "$CURRENT" ]]; then        echo "... already the latest: ${CMD} ${CURRENT}"
+    if [[ "$VERSION" == "$CURRENT" ]]; then
+        echo "... already the latest: ${CMD} ${CURRENT}"
     else
         echo "${CMD} ${VERSION} is available: (current ${CMD} ${CURRENT})"
         read -rp "Upgrade to ${CMD} ${VERSION}? (y/N): " confirm
@@ -26,13 +27,12 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${CMD})" ]] || [[ "$confirm" == [
         brew install "${CMD}"
         "$(brew --prefix)"/opt/fzf/install
     elif [[ "$(uname -s)" == "Linux" ]]; then
-        readonly URI="https://github.com/junegunn/fzf/archive/${VERSION}.tar.gz"
-        rm -rf ~/.fzf && mkdir ~/.fzf
+        readonly URI="https://github.com/junegunn/fzf/releases/download/v${VERSION}/fzf-${VERSION}-linux_amd64.tar.gz"
+        rm -rf ~/.fzf
         wget -N "$URI"
         FILE="$(basename "$URI")"
         readonly FILE
-        tar xvzf ./"$FILE" -C ~/.fzf
+        tar xvzf ./"$FILE" -C ~/.local/bin
         rm -f "$FILE"
-        ~/.fzf/"fzf-${VERSION}"/install
     fi
 fi
