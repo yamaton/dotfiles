@@ -21,6 +21,7 @@ fi
 
 
 BASEDIR="$(dirname "$(readlink -f "$0")")"
+declare -a APPLIST
 # -t strips newline
 readarray -t APPLIST < "$BASEDIR/check-updates-apps.txt"
 echo ""
