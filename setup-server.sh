@@ -67,7 +67,7 @@ cd "${BASEDIR}" || exit
 
 
 # custom installations
-APPS=(tmux emacs neovim tealdeer cheatsheet ripgrep bat fd parallel nnn fzf broot delta topgrade zoxide yq hyperfine)
+APPS=(tmux emacs neovim tealdeer cheatsheet ripgrep bat fd parallel fzf delta topgrade zoxide yq hyperfine)
 for app in "${APPS[@]}"; do
     echo ""
     echo "--------------------------"
