@@ -4,7 +4,6 @@ bat
 fd
 ripgrep
 rga
-parallel
 broot
 fzf
 nnn

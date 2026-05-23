@@ -61,13 +61,7 @@ if [[ "${1-}" == "-f" ]] || [[ ! "$(command -v ${NAME})" ]] || [[ "$confirm" == 
 
         cp -f "$BASEDIR"/.config/topgrade.toml ~/.config/topgrade.toml
 
-        # check if nala is installed in debian systems
-        if [[ "$(command -v apt)" ]] && [[ ! "$(command -v nala)" ]]; then
-            echo "--------------------------------------------"
-            echo "Installing nala"
-            echo "--------------------------------------------"
-            curl https://gitlab.com/volian/volian-archive/-/raw/main/install-nala.sh | bash
-            sudo apt update && sudo apt install nala
-        fi
+        # install nala
+        sudo apt update && sudo apt install nala
     fi
 fi

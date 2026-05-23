@@ -161,7 +161,8 @@ echo ""
 echo "-------------------"
 echo "  Jetbrains Mono"
 echo "-------------------"
-if [[ "$(command -v apt)" ]] && [[ "$(lsb_release -c -s)" == "jammy" ]]; then
+RELEASE="$(lsb_release -c -s)"
+if command -v apt >/dev/null 2>&1 && [[ "$RELEASE" =~ ^(jammy|noble)$ ]]; then
     sudo apt update
     sudo apt install -y fonts-jetbrains-mono
 else

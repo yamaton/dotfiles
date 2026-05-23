@@ -8,7 +8,8 @@ if [[ "${TRACE-0}" == "1" ]]; then
 fi
 
 if [[ ! "$(command -v docker)" ]] || [[ "${1-}" == "-f" ]]; then
-    if [[ "$(lsb_release -c -s)" == "focal" ]] || [[ "$(lsb_release -c -s)" == "jammy" ]]; then
+    RELEASE="$(lsb_release -c -s)"
+    if command -v apt >/dev/null 2>&1 && [[ "$RELEASE" =~ ^(jammy|noble)$ ]]; then
         sudo apt install docker.io
         sudo systemctl enable --now docker
         sudo usermod -aG docker "$USER"
